@@ -1086,7 +1086,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           height: 550.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
+                                .primaryBackground,
                           ),
                           child: DefaultTabController(
                             length: 5,
@@ -1094,9 +1094,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             child: Column(
                               children: [
                                 TabBar(
+                                  indicator: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        25.0,
+                                    ),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
                                   isScrollable: true,
                                   labelColor:
-                                      FlutterFlowTheme.of(context).alternate,
+                                      FlutterFlowTheme.of(context).primaryText,
                                   unselectedLabelColor:
                                       FlutterFlowTheme.of(context)
                                           .secondaryText,
@@ -1108,7 +1115,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       ),
                                   indicatorColor:
                                       FlutterFlowTheme.of(context).alternate,
-                                  indicatorWeight: 2.0,
+                                  indicatorWeight: 0.0,
                                   tabs: [
                                     Tab(
                                       text: 'Posts',
