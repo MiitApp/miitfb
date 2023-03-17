@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1095828821911",
+    "firebase_url": "https://miit-firebase-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "miit-firebase",
+    "storage_bucket": "miit-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095828821911:android:53ebe1ee350c5bceb596d2",
+        "android_client_info": {
+          "package_name": "com.miitfb.co"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095828821911-ag3u75sdrhoq0gtn4ihufmbq4fqgiont.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.miitfb.co",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "1095828821911-gap1ncsp09ljvj2cuke9dbi6oqaev435.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi_CX8F2RpgI_FaX8qlTMARAXFz7IVO2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095828821911-gap1ncsp09ljvj2cuke9dbi6oqaev435.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1095828821911-atsfctgogodcomgisujjqg9um9sbqu1b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.miitfb.co"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
