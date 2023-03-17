@@ -1087,13 +1087,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           decoration: BoxDecoration(),
                           child: Stack(
                             children: [
-                              Container(
-                                width: double.infinity,
-                                height: 45.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(25.0),
+                              Padding(
+                                padding: const EdgeInsets.only(left:12.0, right:12.0, top: 11.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 48.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(25.0),
+                                  ),
                                 ),
                               ),
                               DefaultTabController(
@@ -1101,47 +1104,71 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 initialIndex: 0,
                                 child: Column(
                                   children: [
-                                    TabBar(
-                                      isScrollable: true,
-                                      labelColor: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      unselectedLabelColor:
-                                          FlutterFlowTheme.of(context)
-                                              .lineColor,
-                                      labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              20.0, 0.0, 20.0, 0.0),
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Noto Sans',
-                                            fontSize: 16.0,
+                                    Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child: TabBar(
+                                        isScrollable: true,
+                                        indicator: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(25.0),
+                                          color:FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          border: Border.all(
+                                              color:FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                              width: 5.0,
                                           ),
-                                      indicatorColor:
-                                          FlutterFlowTheme.of(context)
-                                              .alternate,
-                                      indicatorWeight: 2.0,
-                                      tabs: [
-                                        Tab(
-                                          text: 'Posts',
                                         ),
-                                        Tab(
-                                          text: 'Tags',
-                                        ),
-                                        Tab(
-                                          text: 'Saved',
-                                        ),
-                                        Tab(
-                                          text: 'Profile',
-                                        ),
-                                        Tab(
-                                          text: 'Events',
-                                        ),
-                                      ],
+                                        labelColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        unselectedLabelColor:
+                                            FlutterFlowTheme.of(context)
+                                                .lineColor,
+                                        labelPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                               30.0, 0.0, 30.0, 0.0),
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Noto Sans',
+                                            ),
+                                        indicatorColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                        indicatorWeight: 0.0,
+                                        tabs: [
+                                          Tab(
+                                            text: 'Profile',
+                                          ),
+                                          Tab(
+                                            text: 'Posts',
+                                          ),
+                                          Tab(
+                                            text: 'Tags',
+                                          ),
+                                          Tab(
+                                            text: 'Saved',
+                                          ),
+                                          Tab(
+                                            text: 'Events',
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                     Expanded(
                                       child: TabBarView(
                                         children: [
+                                          KeepAliveWidgetWrapper(
+                                            builder: (context) => Text(
+                                              'Tab View 4',
+                                              style:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText1
+                                                  .override(
+                                                fontFamily: 'Noto Sans',
+                                                fontSize: 32.0,
+                                              ),
+                                            ),
+                                          ),
                                           KeepAliveWidgetWrapper(
                                             builder: (context) => StreamBuilder<
                                                 List<PostsRecord>>(
@@ -1432,18 +1459,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   },
                                                 );
                                               },
-                                            ),
-                                          ),
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => Text(
-                                              'Tab View 4',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Noto Sans',
-                                                        fontSize: 32.0,
-                                                      ),
                                             ),
                                           ),
                                           KeepAliveWidgetWrapper(
