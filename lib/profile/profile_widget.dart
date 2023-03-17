@@ -1107,7 +1107,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           .primaryText,
                                       unselectedLabelColor:
                                           FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                              .lineColor,
                                       labelPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               20.0, 0.0, 20.0, 0.0),
