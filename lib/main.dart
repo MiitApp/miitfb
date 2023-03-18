@@ -162,7 +162,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   color: currentIndex == 0
                       ? FlutterFlowTheme.of(context).primaryBtnText
                       : FlutterFlowTheme.of(context).secondaryText,
-                  size: 26.0,
+                  size: 20.0,
                 ),
                 Text(
                   'Home',
@@ -188,7 +188,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   color: currentIndex == 1
                       ? FlutterFlowTheme.of(context).primaryBtnText
                       : FlutterFlowTheme.of(context).secondaryText,
-                  size: 26.0,
+                  size: 22.0,
                 ),
                 Text(
                   'Feed',
@@ -214,7 +214,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   color: currentIndex == 2
                       ? FlutterFlowTheme.of(context).primaryBtnText
                       : FlutterFlowTheme.of(context).secondaryText,
-                  size: 22.0,
+                  size: 20.0,
                 ),
                 Text(
                   'Connect',

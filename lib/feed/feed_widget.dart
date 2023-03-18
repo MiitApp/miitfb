@@ -92,7 +92,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                           child: Icon(
                             FFIcons.ksearch,
                             color: Colors.black,
-                            size: 26.0,
+                            size: 24.0,
                           ),
                         ),
                       ),
@@ -206,7 +206,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                             ),
                           ),
                           Stack(
-                            alignment: AlignmentDirectional(0.0, -1.0),
+                            alignment: AlignmentDirectional(-0.125, -1.125),
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -216,7 +216,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     context.pushNamed('Notifications');
                                   },
                                   child: Icon(
-                                    FFIcons.kheart,
+                                    Icons.mark_chat_unread_outlined,
                                     color: Colors.black,
                                     size: 28.0,
                                   ),
@@ -232,7 +232,17 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     width: 10.0,
                                     height: 10.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFF83639),
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryColor,
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryColor
+                                        ],
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(1.0, -1.0),
+                                        end: AlignmentDirectional(-1.0, 1.0),
+                                      ),
                                       shape: BoxShape.circle,
                                     ),
                                   ),
