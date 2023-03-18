@@ -200,7 +200,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             ),
                           ),
                           Stack(
-                            alignment: AlignmentDirectional(-0.125, -0.875),
+                            alignment: AlignmentDirectional(-0.125, -1.0),
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -210,7 +210,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     context.pushNamed('Notifications');
                                   },
                                   child: Icon(
-                                    Icons.mark_email_unread_outlined,
+                                    Icons.mark_chat_unread_outlined,
                                     color: Colors.black,
                                     size: 30.0,
                                   ),
