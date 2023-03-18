@@ -946,49 +946,67 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     ),
                                   ),
                                 ),
-                                FutureBuilder<List<PostsRecord>>(
-                                  future: queryPostsRecordOnce(
-                                    queryBuilder: (postsRecord) => postsRecord
-                                        .where('deleted', isEqualTo: false)
-                                        .orderBy('time_posted',
-                                            descending: true),
+                                Container(
+                                  width: double.infinity,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.07,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(25.0),
                                   ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 12.0,
-                                          height: 12.0,
-                                          child: CircularProgressIndicator(
-                                            color: Colors.white,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: DefaultTabController(
+                                      length: 2,
+                                      initialIndex: 0,
+                                      child: Column(
+                                        children: [
+                                          TabBar(
+                                            labelColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBtnText,
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1,
+                                            indicatorColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            indicatorWeight: 0.0,
+                                            tabs: [
+                                              Tab(
+                                                text: 'Discover',
+                                              ),
+                                              Tab(
+                                                text: 'For  You',
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                      );
-                                    }
-                                    List<PostsRecord>
-                                        questionFeedPostsRecordList =
-                                        snapshot.data!;
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount:
-                                          questionFeedPostsRecordList.length,
-                                      itemBuilder:
-                                          (context, questionFeedIndex) {
-                                        final questionFeedPostsRecord =
-                                            questionFeedPostsRecordList[
-                                                questionFeedIndex];
-                                        return PostWidget(
-                                          key: Key(
-                                              'Keyb7n_${questionFeedIndex}_of_${questionFeedPostsRecordList.length}'),
-                                          post: questionFeedPostsRecord,
-                                        );
-                                      },
-                                    );
-                                  },
+                                          Expanded(
+                                            child: TabBarView(
+                                              children: [
+                                                Container(),
+                                                Container(),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 10.0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 0.5,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                    ),
+                                  ),
                                 ),
                                 PagedListView<DocumentSnapshot<Object?>?,
                                     PostsRecord>(
@@ -1089,7 +1107,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                           .itemList![postFeedIndex];
                                       return PostWidget(
                                         key: Key(
-                                            'Keynps_${postFeedIndex}_of_${_model.pagingController!.itemList!.length}'),
+                                            'Key388_${postFeedIndex}_of_${_model.pagingController!.itemList!.length}'),
                                         post: postFeedPostsRecord,
                                       );
                                     },
