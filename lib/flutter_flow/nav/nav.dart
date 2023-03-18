@@ -71,19 +71,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? ProfileWidget() : SignUpWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : SignUpWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? ProfileWidget() : SignUpWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : SignUpWidget(),
           routes: [
             FFRoute(
               name: 'Feed',
               path: 'feed',
               requireAuth: true,
-              builder: (context, params) => FeedWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Feed')
+                  : FeedWidget(),
             ),
             FFRoute(
               name: 'Notifications',
@@ -187,18 +189,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SelectTaggedUsersWidget(),
             ),
             FFRoute(
+              name: 'EditProfile',
+              path: 'editProfile',
+              requireAuth: true,
+              builder: (context, params) => EditProfileWidget(),
+            ),
+            FFRoute(
               name: 'ProfileOther',
               path: 'profileOther',
               requireAuth: true,
               builder: (context, params) => ProfileOtherWidget(
                 username: params.getParam('username', ParamType.String),
               ),
-            ),
-            FFRoute(
-              name: 'EditProfile',
-              path: 'editProfile',
-              requireAuth: true,
-              builder: (context, params) => EditProfileWidget(),
             ),
             FFRoute(
               name: 'FollowersFollowing',
@@ -252,6 +254,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'getStarted',
               requireAuth: true,
               builder: (context, params) => GetStartedWidget(),
+            ),
+            FFRoute(
+              name: 'Find',
+              path: 'find',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Find')
+                  : FindWidget(),
+            ),
+            FFRoute(
+              name: 'Connect',
+              path: 'connect',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Connect')
+                  : ConnectWidget(),
+            ),
+            FFRoute(
+              name: 'Questions',
+              path: 'questions',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Questions')
+                  : QuestionsWidget(),
+            ),
+            FFRoute(
+              name: 'Share',
+              path: 'share',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Share')
+                  : ShareWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
