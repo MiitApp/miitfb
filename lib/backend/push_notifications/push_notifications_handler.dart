@@ -108,8 +108,12 @@ class ParameterData {
 
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
+  'Home': ParameterData.none(),
   'Feed': ParameterData.none(),
   'Notifications': ParameterData.none(),
+  'Connect': ParameterData.none(),
+  'Find': ParameterData.none(),
+  'Questions': ParameterData.none(),
   'Search': ParameterData.none(),
   'Profile': ParameterData.none(),
   'Comments': (data) async => ParameterData(
@@ -160,10 +164,6 @@ final parametersBuilderMap =
         },
       ),
   'Get_Started': ParameterData.none(),
-  'Find': ParameterData.none(),
-  'Connect': ParameterData.none(),
-  'Questions': ParameterData.none(),
-  'Share': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

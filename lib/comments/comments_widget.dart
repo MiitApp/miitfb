@@ -488,7 +488,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                             .PhotoCaption(
                                                           width:
                                                               double.infinity,
-                                                          height: 17.0,
+                                                          height: 18.0,
                                                           name: valueOrDefault<
                                                               String>(
                                                             rowUsersRecord
