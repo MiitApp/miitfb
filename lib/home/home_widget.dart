@@ -86,7 +86,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                           child: Icon(
                             FFIcons.ksearch,
                             color: Colors.black,
-                            size: 26.0,
+                            size: 24.0,
                           ),
                         ),
                       ),
@@ -200,7 +200,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             ),
                           ),
                           Stack(
-                            alignment: AlignmentDirectional(0.0, -1.0),
+                            alignment: AlignmentDirectional(-0.125, -0.875),
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -210,9 +210,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     context.pushNamed('Notifications');
                                   },
                                   child: Icon(
-                                    FFIcons.kheart,
+                                    Icons.mark_email_unread_outlined,
                                     color: Colors.black,
-                                    size: 28.0,
+                                    size: 30.0,
                                   ),
                                 ),
                               ),
@@ -226,7 +226,17 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     width: 10.0,
                                     height: 10.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFF83639),
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          FlutterFlowTheme.of(context)
+                                              .tertiaryColor,
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryColor
+                                        ],
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(1.0, -1.0),
+                                        end: AlignmentDirectional(-1.0, 1.0),
+                                      ),
                                       shape: BoxShape.circle,
                                     ),
                                   ),
