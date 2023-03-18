@@ -884,6 +884,53 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     ),
                                   ),
                                 ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  if (currentUserDisplayName != null &&
+                                      currentUserDisplayName != '')
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 6.0, 0.0, 0.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => Text(
+                                          '@',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Noto Sans',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryColor,
+                                                fontSize: 15.0,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  if (currentUserDisplayName != null &&
+                                      currentUserDisplayName != '')
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 6.0, 0.0, 0.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => Text(
+                                          valueOrDefault(
+                                              currentUserDocument?.username,
+                                              ''),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Noto Sans',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryColor,
+                                                fontSize: 15.0,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ),
                               if (valueOrDefault(
                                           currentUserDocument?.bio, '') !=
                                       null &&
