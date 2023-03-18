@@ -200,7 +200,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             ),
                           ),
                           Stack(
-                            alignment: AlignmentDirectional(-0.125, -1.0),
+                            alignment: AlignmentDirectional(-0.125, -1.125),
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
