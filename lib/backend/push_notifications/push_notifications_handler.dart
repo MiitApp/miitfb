@@ -78,10 +78,10 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   @override
   Widget build(BuildContext context) => _loading
       ? Container(
-          color: Colors.white,
+          color: Colors.transparent,
           child: Image.asset(
-            'assets/images/FlutterFlowgram.png',
-            fit: BoxFit.cover,
+            'assets/images/loading.png',
+            fit: BoxFit.scaleDown,
           ),
         )
       : widget.child;

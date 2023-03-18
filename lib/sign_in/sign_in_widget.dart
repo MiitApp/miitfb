@@ -2,7 +2,9 @@ import '/auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'sign_in_model.dart';
@@ -20,11 +22,22 @@ class _SignInWidgetState extends State<SignInWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
+  late StreamSubscription<bool> _keyboardVisibilitySubscription;
+  bool _isKeyboardVisible = false;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => SignInModel());
+
+    if (!isWeb) {
+      _keyboardVisibilitySubscription =
+          KeyboardVisibilityController().onChange.listen((bool visible) {
+        setState(() {
+          _isKeyboardVisible = visible;
+        });
+      });
+    }
 
     _model.emailAddressController ??= TextEditingController();
     _model.passwordController ??= TextEditingController();
@@ -36,6 +49,9 @@ class _SignInWidgetState extends State<SignInWidget> {
     _model.dispose();
 
     _unfocusNode.dispose();
+    if (!isWeb) {
+      _keyboardVisibilitySubscription.cancel();
+    }
     super.dispose();
   }
 
@@ -45,7 +61,7 @@ class _SignInWidgetState extends State<SignInWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -59,15 +75,17 @@ class _SignInWidgetState extends State<SignInWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                        child: Image.asset(
-                          'assets/images/Cover.png',
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          fit: BoxFit.cover,
+                      if (!(isWeb
+                          ? MediaQuery.of(context).viewInsets.bottom > 0
+                          : _isKeyboardVisible))
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 24.0),
+                          child: Image.asset(
+                            'assets/images/landing_page.png',
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
                       Form(
                         key: _model.formKey,
                         autovalidateMode: AutovalidateMode.disabled,
@@ -219,7 +237,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         .override(
                                           fontFamily: 'Noto Sans',
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
+                                              .secondaryText,
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -259,7 +277,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            color: FlutterFlowTheme.of(context).primaryText,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
                                       fontFamily: 'Noto Sans',
@@ -281,9 +299,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                 Container(
                   width: double.infinity,
                   height: 0.5,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFDADADA),
-                  ),
+                  decoration: BoxDecoration(),
                 ),
                 Column(
                   mainAxisSize: MainAxisSize.max,
@@ -319,7 +335,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     .override(
                                       fontFamily: 'Noto Sans',
                                       color: FlutterFlowTheme.of(context)
-                                          .alternate,
+                                          .secondaryColor,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
