@@ -73,7 +73,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                 Expanded(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       if (!(isWeb
                           ? MediaQuery.of(context).viewInsets.bottom > 0
@@ -82,8 +82,8 @@ class _SignInWidgetState extends State<SignInWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 24.0),
                           child: Image.asset(
-                            'assets/images/landing_page.png',
-                            fit: BoxFit.cover,
+                            'assets/images/Landing.png',
+                            fit: BoxFit.fitWidth,
                           ),
                         ),
                       Form(

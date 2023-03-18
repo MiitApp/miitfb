@@ -68,22 +68,22 @@ class _SignUpWidgetState extends State<SignUpWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
+                if (!(isWeb
+                    ? MediaQuery.of(context).viewInsets.bottom > 0
+                    : _isKeyboardVisible))
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                    child: Image.asset(
+                      'assets/images/Landing.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 Expanded(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      if (!(isWeb
-                          ? MediaQuery.of(context).viewInsets.bottom > 0
-                          : _isKeyboardVisible))
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 24.0),
-                          child: Image.asset(
-                            'assets/images/landing_page.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
