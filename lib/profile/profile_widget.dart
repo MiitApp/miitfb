@@ -50,144 +50,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        iconTheme:
-            IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
-        automaticallyImplyLeading: false,
-        title: AuthUserStreamWidget(
-          builder: (context) => Text(
-            valueOrDefault<String>(
-              valueOrDefault(currentUserDocument?.username, ''),
-              'user',
-            ),
-            style: FlutterFlowTheme.of(context).title3.override(
-                  fontFamily: 'Noto Sans',
-                  fontSize: 24.0,
-                ),
-          ),
-        ),
-        actions: [
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 23.0, 0.0),
-                child: InkWell(
-                  onTap: () async {
-                    FFAppState().update(() {
-                      FFAppState().uploadPhoto = '';
-                      FFAppState().taggedUsers = [];
-                    });
-                    FFAppState().update(() {
-                      FFAppState().location = '';
-                      FFAppState().calltoactionenabled = false;
-                    });
-                    FFAppState().update(() {
-                      FFAppState().calltoactiontext = '';
-                      FFAppState().calltoactionurl = '';
-                    });
-                    final selectedMedia = await selectMedia(
-                      mediaSource: MediaSource.photoGallery,
-                      multiImage: false,
-                    );
-                    if (selectedMedia != null &&
-                        selectedMedia.every((m) =>
-                            validateFileFormat(m.storagePath, context))) {
-                      setState(() => _model.isMediaUploading1 = true);
-                      var selectedUploadedFiles = <FFUploadedFile>[];
-                      var downloadUrls = <String>[];
-                      try {
-                        showUploadMessage(
-                          context,
-                          'Uploading file...',
-                          showLoading: true,
-                        );
-                        selectedUploadedFiles = selectedMedia
-                            .map((m) => FFUploadedFile(
-                                  name: m.storagePath.split('/').last,
-                                  bytes: m.bytes,
-                                  height: m.dimensions?.height,
-                                  width: m.dimensions?.width,
-                                ))
-                            .toList();
-
-                        downloadUrls = (await Future.wait(
-                          selectedMedia.map(
-                            (m) async =>
-                                await uploadData(m.storagePath, m.bytes),
-                          ),
-                        ))
-                            .where((u) => u != null)
-                            .map((u) => u!)
-                            .toList();
-                      } finally {
-                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        _model.isMediaUploading1 = false;
-                      }
-                      if (selectedUploadedFiles.length ==
-                              selectedMedia.length &&
-                          downloadUrls.length == selectedMedia.length) {
-                        setState(() {
-                          _model.uploadedLocalFile1 =
-                              selectedUploadedFiles.first;
-                          _model.uploadedFileUrl1 = downloadUrls.first;
-                        });
-                        showUploadMessage(context, 'Success!');
-                      } else {
-                        setState(() {});
-                        showUploadMessage(context, 'Failed to upload media');
-                        return;
-                      }
-                    }
-
-                    if (_model.uploadedFileUrl1 != null &&
-                        _model.uploadedFileUrl1 != '') {
-                      FFAppState().update(() {
-                        FFAppState().uploadPhoto = _model.uploadedFileUrl1;
-                      });
-
-                      context.pushNamed(
-                        'NewPost',
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.leftToRight,
-                          ),
-                        },
-                      );
-                    }
-                  },
-                  child: Icon(
-                    FFIcons.kadd,
-                    color: Colors.black,
-                    size: 28.0,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 23.0, 0.0),
-                child: InkWell(
-                  onTap: () async {
-                    GoRouter.of(context).prepareAuthEvent();
-                    await signOut();
-                    GoRouter.of(context).clearRedirectLocation();
-
-                    context.goNamedAuth('SignUp', mounted);
-                  },
-                  child: Icon(
-                    Icons.logout,
-                    color: Colors.black,
-                    size: 26.0,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-        centerTitle: false,
-        elevation: 0.0,
-      ),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -214,13 +76,38 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             Stack(
                               alignment: AlignmentDirectional(0.0, 1.0),
                               children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 23.0, 0.0),
+                                      child: InkWell(
+                                        onTap: () async {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+                                          await signOut();
+                                          GoRouter.of(context)
+                                              .clearRedirectLocation();
+
+                                          context.goNamedAuth(
+                                              'SignUp', mounted);
+                                        },
+                                        child: Icon(
+                                          Icons.logout,
+                                          color: Colors.black,
+                                          size: 26.0,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                                 AuthUserStreamWidget(
                                   builder: (context) => Container(
                                     height: MediaQuery.of(context).size.height *
-                                        0.5,
+                                        0.65,
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
                                         image: Image.network(
@@ -232,7 +119,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 ),
                                 Container(
                                   height:
-                                      MediaQuery.of(context).size.height * 0.5,
+                                      MediaQuery.of(context).size.height * 0.65,
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: [
@@ -464,7 +351,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       m.storagePath,
                                                                       context))) {
                                                             setState(() => _model
-                                                                    .isMediaUploading2 =
+                                                                    .isMediaUploading =
                                                                 true);
                                                             var selectedUploadedFiles =
                                                                 <FFUploadedFile>[];
@@ -513,7 +400,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               ScaffoldMessenger
                                                                       .of(context)
                                                                   .hideCurrentSnackBar();
-                                                              _model.isMediaUploading2 =
+                                                              _model.isMediaUploading =
                                                                   false;
                                                             }
                                                             if (selectedUploadedFiles
@@ -525,10 +412,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     selectedMedia
                                                                         .length) {
                                                               setState(() {
-                                                                _model.uploadedLocalFile2 =
+                                                                _model.uploadedLocalFile =
                                                                     selectedUploadedFiles
                                                                         .first;
-                                                                _model.uploadedFileUrl2 =
+                                                                _model.uploadedFileUrl =
                                                                     downloadUrls
                                                                         .first;
                                                               });
@@ -544,9 +431,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             }
                                                           }
 
-                                                          if (_model.uploadedFileUrl2 !=
+                                                          if (_model.uploadedFileUrl !=
                                                                   null &&
-                                                              _model.uploadedFileUrl2 !=
+                                                              _model.uploadedFileUrl !=
                                                                   '') {
                                                             final storiesCreateData =
                                                                 {
@@ -554,7 +441,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 user:
                                                                     currentUserReference,
                                                                 storyPhoto: _model
-                                                                    .uploadedFileUrl2,
+                                                                    .uploadedFileUrl,
                                                                 timeCreated:
                                                                     getCurrentTimestamp,
                                                                 expireTime: functions
