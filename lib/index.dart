@@ -22,8 +22,8 @@ export '/sign_up_username_confirmation/sign_up_username_confirmation_widget.dart
 export '/tag_users/tag_users_widget.dart' show TagUsersWidget;
 export '/select_tagged_users/select_tagged_users_widget.dart'
     show SelectTaggedUsersWidget;
-export '/profile_other/profile_other_widget.dart' show ProfileOtherWidget;
 export '/edit_profile/edit_profile_widget.dart' show EditProfileWidget;
+export '/profile_other/profile_other_widget.dart' show ProfileOtherWidget;
 export '/followers_following/followers_following_widget.dart'
     show FollowersFollowingWidget;
 export '/followers_following_other/followers_following_other_widget.dart'
@@ -34,3 +34,7 @@ export '/new_message/new_message_widget.dart' show NewMessageWidget;
 export '/individual_message/individual_message_widget.dart'
     show IndividualMessageWidget;
 export '/get_started/get_started_widget.dart' show GetStartedWidget;
+export '/find/find_widget.dart' show FindWidget;
+export '/connect/connect_widget.dart' show ConnectWidget;
+export '/questions/questions_widget.dart' show QuestionsWidget;
+export '/share/share_widget.dart' show ShareWidget;

@@ -134,12 +134,12 @@ final parametersBuilderMap =
   'SignUp_UsernameConfirmation': ParameterData.none(),
   'TagUsers': ParameterData.none(),
   'SelectTaggedUsers': ParameterData.none(),
+  'EditProfile': ParameterData.none(),
   'ProfileOther': (data) async => ParameterData(
         allParams: {
           'username': getParameter<String>(data, 'username'),
         },
       ),
-  'EditProfile': ParameterData.none(),
   'FollowersFollowing': ParameterData.none(),
   'FollowersFollowingOther': (data) async => ParameterData(
         allParams: {
@@ -160,6 +160,10 @@ final parametersBuilderMap =
         },
       ),
   'Get_Started': ParameterData.none(),
+  'Find': ParameterData.none(),
+  'Connect': ParameterData.none(),
+  'Questions': ParameterData.none(),
+  'Share': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {
