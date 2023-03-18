@@ -121,9 +121,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Questions',
               path: 'questions',
               requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Questions')
-                  : QuestionsWidget(),
+              builder: (context, params) => QuestionsWidget(),
             ),
             FFRoute(
               name: 'Search',
