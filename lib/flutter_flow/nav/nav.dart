@@ -80,6 +80,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : SignUpWidget(),
           routes: [
             FFRoute(
+              name: 'Home',
+              path: 'home',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Home')
+                  : HomeWidget(),
+            ),
+            FFRoute(
               name: 'Feed',
               path: 'feed',
               requireAuth: true,
@@ -92,6 +100,30 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'notifications',
               requireAuth: true,
               builder: (context, params) => NotificationsWidget(),
+            ),
+            FFRoute(
+              name: 'Connect',
+              path: 'connect',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Connect')
+                  : ConnectWidget(),
+            ),
+            FFRoute(
+              name: 'Find',
+              path: 'find',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Find')
+                  : FindWidget(),
+            ),
+            FFRoute(
+              name: 'Questions',
+              path: 'questions',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Questions')
+                  : QuestionsWidget(),
             ),
             FFRoute(
               name: 'Search',
@@ -232,7 +264,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Messages',
               path: 'messages',
               requireAuth: true,
-              builder: (context, params) => MessagesWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Messages')
+                  : MessagesWidget(),
             ),
             FFRoute(
               name: 'NewMessage',
@@ -254,38 +288,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'getStarted',
               requireAuth: true,
               builder: (context, params) => GetStartedWidget(),
-            ),
-            FFRoute(
-              name: 'Find',
-              path: 'find',
-              requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Find')
-                  : FindWidget(),
-            ),
-            FFRoute(
-              name: 'Connect',
-              path: 'connect',
-              requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Connect')
-                  : ConnectWidget(),
-            ),
-            FFRoute(
-              name: 'Questions',
-              path: 'questions',
-              requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Questions')
-                  : QuestionsWidget(),
-            ),
-            FFRoute(
-              name: 'Share',
-              path: 'share',
-              requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Share')
-                  : ShareWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
