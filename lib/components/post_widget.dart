@@ -148,7 +148,6 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                 width: double.infinity,
                 height: 350.0,
                 child: Stack(
-                  alignment: AlignmentDirectional(0.0, 0.0),
                   children: [
                     Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
@@ -302,7 +301,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                       ),
                     if (widget.post!.taggedUsers!.toList().length > 0)
                       Align(
-                        alignment: AlignmentDirectional(1.0, -1.0),
+                        alignment: AlignmentDirectional(0.95, -1.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 12.0, 0.0),
@@ -456,7 +455,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     child: Icon(
                                       FFIcons.kheart1,
                                       color: FlutterFlowTheme.of(context)
-                                          .alternate,
+                                          .tertiaryColor,
                                       size: 28.0,
                                     ),
                                   ).animateOnPageLoad(animationsMap[
