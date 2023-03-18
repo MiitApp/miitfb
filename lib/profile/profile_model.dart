@@ -15,15 +15,10 @@ import 'package:url_launcher/url_launcher.dart';
 class ProfileModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
-  bool isMediaUploading1 = false;
-  FFUploadedFile uploadedLocalFile1 =
+  bool isMediaUploading = false;
+  FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl1 = '';
-
-  bool isMediaUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl2 = '';
+  String uploadedFileUrl = '';
 
   /// Initialization and disposal methods.
 
