@@ -151,7 +151,7 @@ class _NavBarPageState extends State<NavBarPage> {
         margin: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 10.0),
         padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
         width: MediaQuery.of(context).size.width * 1.0,
-        elevation: 3.0,
+        elevation: 0.0,
         items: [
           FloatingNavbarItem(
             customWidget: Column(
@@ -162,7 +162,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   color: currentIndex == 0
                       ? FlutterFlowTheme.of(context).primaryBtnText
                       : FlutterFlowTheme.of(context).secondaryText,
-                  size: 28.0,
+                  size: 26.0,
                 ),
                 Text(
                   'Home',
@@ -188,7 +188,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   color: currentIndex == 1
                       ? FlutterFlowTheme.of(context).primaryBtnText
                       : FlutterFlowTheme.of(context).secondaryText,
-                  size: 28.0,
+                  size: 26.0,
                 ),
                 Text(
                   'Feed',
@@ -208,11 +208,13 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  FontAwesomeIcons.addressCard,
+                  currentIndex == 2
+                      ? FontAwesomeIcons.solidAddressCard
+                      : FontAwesomeIcons.addressCard,
                   color: currentIndex == 2
                       ? FlutterFlowTheme.of(context).primaryBtnText
                       : FlutterFlowTheme.of(context).secondaryText,
-                  size: 24.0,
+                  size: 22.0,
                 ),
                 Text(
                   'Connect',
@@ -259,8 +261,8 @@ class _NavBarPageState extends State<NavBarPage> {
               children: [
                 Icon(
                   currentIndex == 4
-                      ? Icons.mark_chat_unread_rounded
-                      : Icons.mark_chat_unread_outlined,
+                      ? Icons.mail_rounded
+                      : Icons.mail_outline_outlined,
                   color: currentIndex == 4
                       ? FlutterFlowTheme.of(context).primaryBtnText
                       : FlutterFlowTheme.of(context).secondaryText,
