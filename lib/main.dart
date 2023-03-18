@@ -130,7 +130,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'Feed': FeedWidget(),
       'Connect': ConnectWidget(),
       'Find': FindWidget(),
-      'Questions': QuestionsWidget(),
       'Messages': MessagesWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -260,35 +259,9 @@ class _NavBarPageState extends State<NavBarPage> {
               children: [
                 Icon(
                   currentIndex == 4
-                      ? FontAwesomeIcons.solidQuestionCircle
-                      : FontAwesomeIcons.questionCircle,
-                  color: currentIndex == 4
-                      ? FlutterFlowTheme.of(context).primaryBtnText
-                      : FlutterFlowTheme.of(context).secondaryText,
-                  size: 24.0,
-                ),
-                Text(
-                  'Ask',
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: currentIndex == 4
-                        ? FlutterFlowTheme.of(context).primaryBtnText
-                        : FlutterFlowTheme.of(context).secondaryText,
-                    fontSize: 11.0,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          FloatingNavbarItem(
-            customWidget: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  currentIndex == 5
                       ? Icons.mark_chat_unread_rounded
                       : Icons.mark_chat_unread_outlined,
-                  color: currentIndex == 5
+                  color: currentIndex == 4
                       ? FlutterFlowTheme.of(context).primaryBtnText
                       : FlutterFlowTheme.of(context).secondaryText,
                   size: 24.0,
@@ -297,7 +270,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   'Chat',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 5
+                    color: currentIndex == 4
                         ? FlutterFlowTheme.of(context).primaryBtnText
                         : FlutterFlowTheme.of(context).secondaryText,
                     fontSize: 11.0,
