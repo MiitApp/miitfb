@@ -126,7 +126,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.normal,
                                               ),
                                         ),
@@ -176,7 +176,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Noto Sans',
+                                              fontFamily: 'Poppins',
                                               fontWeight: FontWeight.normal,
                                             ),
                                       ),
@@ -266,8 +266,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -316,8 +315,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -391,8 +389,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -456,7 +453,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 color: Colors.black,
                                                 fontSize: 16.0,
                                                 fontWeight: FontWeight.w500,
@@ -493,7 +490,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 color: Colors.black,
                                                 fontSize: 16.0,
                                                 fontWeight: FontWeight.w500,
@@ -546,7 +543,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 color: Colors.black,
                                                 fontSize: 16.0,
                                                 fontWeight: FontWeight.w500,
@@ -583,7 +580,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 color: Colors.black,
                                                 fontSize: 16.0,
                                                 fontWeight: FontWeight.w500,
@@ -631,7 +628,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Noto Sans',
+                                          fontFamily: 'Poppins',
                                           color: Color(0xFFF83639),
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.w500,

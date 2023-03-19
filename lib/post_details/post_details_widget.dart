@@ -126,7 +126,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                         'USER',
                       ),
                       style: FlutterFlowTheme.of(context).bodyText2.override(
-                            fontFamily: 'Noto Sans',
+                            fontFamily: 'Poppins',
                             letterSpacing: 0.5,
                             fontWeight: FontWeight.w500,
                           ),
@@ -223,7 +223,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .title1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 lineHeight: 1.2,
                                               ),
                                         ),
@@ -237,7 +237,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Noto Sans',
+                                                  fontFamily: 'Poppins',
                                                   fontSize: 14.0,
                                                   fontWeight: FontWeight.normal,
                                                   lineHeight: 1.5,
@@ -259,7 +259,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Noto Sans',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)

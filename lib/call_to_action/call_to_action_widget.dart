@@ -63,7 +63,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
         title: Text(
           'Call to action',
           style: FlutterFlowTheme.of(context).subtitle1.override(
-                fontFamily: 'Noto Sans',
+                fontFamily: 'Poppins',
                 fontSize: 16.0,
               ),
         ),
@@ -93,7 +93,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                   child: Text(
                     'Done',
                     style: FlutterFlowTheme.of(context).subtitle1.override(
-                          fontFamily: 'Noto Sans',
+                          fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).secondaryColor,
                           fontSize: 16.0,
                           fontWeight: FontWeight.w500,
@@ -130,7 +130,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                   child: Text(
                     'Create a call to action button that will appear at the bottom of your uploaded image.',
                     style: FlutterFlowTheme.of(context).bodyText2.override(
-                          fontFamily: 'Noto Sans',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.normal,
                         ),
                   ),
@@ -160,7 +160,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -184,7 +184,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 14.0,
@@ -234,7 +234,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontWeight: FontWeight.normal,
                                     ),
                                 validator: _model.textController1Validator
@@ -265,7 +265,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                           'Button link',
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -282,7 +282,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                             hintText: 'Button link',
                             hintStyle:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
                                       fontSize: 14.0,
@@ -331,7 +331,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontWeight: FontWeight.normal,
                                   ),
                           keyboardType: TextInputType.url,
@@ -404,7 +404,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 color: Colors.white,
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.w500,

@@ -65,7 +65,7 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
           builder: (context) => Text(
             valueOrDefault(currentUserDocument?.username, ''),
             style: FlutterFlowTheme.of(context).subtitle1.override(
-                  fontFamily: 'Noto Sans',
+                  fontFamily: 'Poppins',
                   fontSize: 16.0,
                 ),
           ),
@@ -117,7 +117,7 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                         unselectedLabelColor: Color(0x80000000),
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Noto Sans',
+                                  fontFamily: 'Poppins',
                                   fontSize: 15.0,
                                 ),
                         indicatorColor: FlutterFlowTheme.of(context).alternate,
@@ -273,7 +273,7 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Noto Sans',
+                                                                            'Poppins',
                                                                         fontSize:
                                                                             14.0,
                                                                       ),
@@ -297,7 +297,7 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Noto Sans',
+                                                                                'Poppins',
                                                                             fontSize:
                                                                                 14.0,
                                                                           ),
@@ -382,7 +382,7 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                             maxLines:
                                                                                 1,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Noto Sans',
+                                                                                  fontFamily: 'Poppins',
                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                   fontSize: 14.0,
                                                                                   fontWeight: FontWeight.w500,
@@ -411,7 +411,7 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                     .bodyText2
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Noto Sans',
+                                                                          'Poppins',
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
@@ -531,7 +531,7 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Noto Sans',
+                                                                              fontFamily: 'Poppins',
                                                                               fontSize: 13.0,
                                                                               fontWeight: FontWeight.w600,
                                                                             ),

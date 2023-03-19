@@ -122,7 +122,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
         title: Text(
           'New post',
           style: FlutterFlowTheme.of(context).subtitle1.override(
-                fontFamily: 'Noto Sans',
+                fontFamily: 'Poppins',
                 fontSize: 16.0,
               ),
         ),
@@ -179,7 +179,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                   child: Text(
                     'Share',
                     style: FlutterFlowTheme.of(context).subtitle1.override(
-                          fontFamily: 'Noto Sans',
+                          fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).secondaryColor,
                           fontSize: 16.0,
                           fontWeight: FontWeight.w500,
@@ -261,7 +261,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontWeight: FontWeight.normal,
                                       lineHeight: 1.5,
                                     ),
@@ -269,7 +269,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -317,7 +317,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
                                     lineHeight: 1.5,
@@ -373,7 +373,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Noto Sans',
+                                            fontFamily: 'Poppins',
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.normal,
                                           ),
@@ -431,8 +431,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.w600,
@@ -448,7 +447,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Noto Sans',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -518,7 +517,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Noto Sans',
+                                                  fontFamily: 'Poppins',
                                                   fontSize: 14.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
@@ -575,7 +574,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Noto Sans',
+                                                  fontFamily: 'Poppins',
                                                   fontSize: 14.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
@@ -645,7 +644,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                             .bodyText1
                                                             .override(
                                                               fontFamily:
-                                                                  'Noto Sans',
+                                                                  'Poppins',
                                                               fontSize: 13.0,
                                                               fontWeight:
                                                                   FontWeight
@@ -697,7 +696,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                             .bodyText1
                                                             .override(
                                                               fontFamily:
-                                                                  'Noto Sans',
+                                                                  'Poppins',
                                                               fontSize: 13.0,
                                                               fontWeight:
                                                                   FontWeight
@@ -749,7 +748,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                             .bodyText1
                                                             .override(
                                                               fontFamily:
-                                                                  'Noto Sans',
+                                                                  'Poppins',
                                                               fontSize: 13.0,
                                                               fontWeight:
                                                                   FontWeight
@@ -801,7 +800,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                             .bodyText1
                                                             .override(
                                                               fontFamily:
-                                                                  'Noto Sans',
+                                                                  'Poppins',
                                                               fontSize: 13.0,
                                                               fontWeight:
                                                                   FontWeight
@@ -857,8 +856,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.w600,
@@ -905,7 +903,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Noto Sans',
+                                          fontFamily: 'Poppins',
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -946,7 +944,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Noto Sans',
+                                          fontFamily: 'Poppins',
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.normal,
                                         ),

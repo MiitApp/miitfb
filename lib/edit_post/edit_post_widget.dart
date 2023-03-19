@@ -79,7 +79,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                 child: Text(
                   'Cancel',
                   style: FlutterFlowTheme.of(context).subtitle1.override(
-                        fontFamily: 'Noto Sans',
+                        fontFamily: 'Poppins',
                         color: FlutterFlowTheme.of(context).primaryText,
                         fontSize: 16.0,
                         fontWeight: FontWeight.normal,
@@ -92,7 +92,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
         title: Text(
           'Edit info',
           style: FlutterFlowTheme.of(context).subtitle1.override(
-                fontFamily: 'Noto Sans',
+                fontFamily: 'Poppins',
                 fontSize: 16.0,
               ),
         ),
@@ -117,7 +117,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                   child: Text(
                     'Done',
                     style: FlutterFlowTheme.of(context).subtitle1.override(
-                          fontFamily: 'Noto Sans',
+                          fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).secondaryColor,
                           fontSize: 16.0,
                           fontWeight: FontWeight.w500,
@@ -190,7 +190,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: Color(0x7F000000),
                                     ),
                               ),
@@ -224,7 +224,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Noto Sans',
+                                          fontFamily: 'Poppins',
                                           fontSize: 12.0,
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -320,7 +320,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Noto Sans',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                           ),
                                     ),
@@ -344,7 +344,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                       hintText: 'Add a caption...',
                       hintStyle:
                           FlutterFlowTheme.of(context).bodyText2.override(
-                                fontFamily: 'Noto Sans',
+                                fontFamily: 'Poppins',
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.normal,
                               ),
@@ -390,7 +390,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                       ),
                     ),
                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Noto Sans',
+                          fontFamily: 'Poppins',
                           fontSize: 14.0,
                           fontWeight: FontWeight.normal,
                         ),

@@ -153,7 +153,7 @@ class _ConnectWidgetState extends State<ConnectWidget>
                       Text(
                         'Firenze - Giardino Bardini',
                         style: FlutterFlowTheme.of(context).title1.override(
-                              fontFamily: 'Noto Sans',
+                              fontFamily: 'Poppins',
                               color: Colors.white,
                               fontSize: 32.0,
                               fontWeight: FontWeight.w500,
@@ -175,7 +175,7 @@ class _ConnectWidgetState extends State<ConnectWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .title3
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         color: Colors.white,
                                       ),
                                 ),
@@ -204,7 +204,7 @@ class _ConnectWidgetState extends State<ConnectWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText2
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBtnText,
@@ -231,7 +231,7 @@ class _ConnectWidgetState extends State<ConnectWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                       ),
@@ -248,7 +248,7 @@ class _ConnectWidgetState extends State<ConnectWidget>
                           'Description',
                           style:
                               FlutterFlowTheme.of(context).bodyText2.override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     color: Colors.white,
                                   ),
                         ),
@@ -260,7 +260,7 @@ class _ConnectWidgetState extends State<ConnectWidget>
                           'Non so se la bellezza salverà il mondo ma sicuramente aiuta. Sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
                           style:
                               FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     color: Color(0x9AFFFFFF),
                                   ),
                         ),

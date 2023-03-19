@@ -54,7 +54,7 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
         title: Text(
           'Select users',
           style: FlutterFlowTheme.of(context).subtitle1.override(
-                fontFamily: 'Noto Sans',
+                fontFamily: 'Poppins',
                 fontSize: 16.0,
               ),
         ),
@@ -127,7 +127,7 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.normal,
                                       lineHeight: 1.5,
@@ -208,7 +208,7 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -231,7 +231,7 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                           'Cancel',
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -299,7 +299,7 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Noto Sans',
+                                                  fontFamily: 'Poppins',
                                                   fontSize: 14.0,
                                                 ),
                                           ),
@@ -314,7 +314,7 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText2
                                                       .override(
-                                                        fontFamily: 'Noto Sans',
+                                                        fontFamily: 'Poppins',
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),

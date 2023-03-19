@@ -212,7 +212,7 @@ class _NewFollowerNotificationWidgetState
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         color: (currentUserDocument?.following
                                                         ?.toList() ??
                                                     [])
@@ -280,7 +280,7 @@ class _NewFollowerNotificationWidgetState
                 },
                 textAlign: TextAlign.start,
                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Noto Sans',
+                      fontFamily: 'Poppins',
                       color: FlutterFlowTheme.of(context).primaryColor,
                       fontSize: 0.0,
                     ),

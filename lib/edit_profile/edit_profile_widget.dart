@@ -77,7 +77,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                 child: Text(
                   'Cancel',
                   style: FlutterFlowTheme.of(context).subtitle1.override(
-                        fontFamily: 'Noto Sans',
+                        fontFamily: 'Poppins',
                         color: FlutterFlowTheme.of(context).primaryText,
                         fontSize: 14.0,
                         fontWeight: FontWeight.normal,
@@ -90,7 +90,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
         title: Text(
           'Edit profile',
           style: FlutterFlowTheme.of(context).subtitle1.override(
-                fontFamily: 'Noto Sans',
+                fontFamily: 'Poppins',
                 fontSize: 16.0,
               ),
         ),
@@ -144,7 +144,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       child: Text(
                         'Done',
                         style: FlutterFlowTheme.of(context).subtitle1.override(
-                              fontFamily: 'Noto Sans',
+                              fontFamily: 'Poppins',
                               color:
                                   FlutterFlowTheme.of(context).secondaryColor,
                               fontSize: 16.0,
@@ -280,7 +280,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     child: Text(
                       'Edit picture',
                       style: FlutterFlowTheme.of(context).bodyText2.override(
-                            fontFamily: 'Noto Sans',
+                            fontFamily: 'Poppins',
                             color: FlutterFlowTheme.of(context).secondaryColor,
                             fontSize: 14.0,
                             fontWeight: FontWeight.w500,
@@ -314,7 +314,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -333,7 +333,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 14.0,
@@ -383,7 +383,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -423,7 +423,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -444,7 +444,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 14.0,
@@ -494,7 +494,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -539,7 +539,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -559,7 +559,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 14.0,
@@ -609,7 +609,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -643,7 +643,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -662,7 +662,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 14.0,
@@ -712,7 +712,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -753,7 +753,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       child: Text(
                         'Enable profile contact button',
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Noto Sans',
+                              fontFamily: 'Poppins',
                               fontSize: 14.0,
                               fontWeight: FontWeight.normal,
                             ),

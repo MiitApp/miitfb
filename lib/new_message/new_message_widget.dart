@@ -138,7 +138,7 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                             hintText: 'Search',
                             hintStyle:
                                 FlutterFlowTheme.of(context).bodyText2.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.normal,
                                       lineHeight: 1.5,
@@ -225,7 +225,7 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -258,7 +258,7 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                   },
                   textAlign: TextAlign.start,
                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Noto Sans',
+                        fontFamily: 'Poppins',
                         color: FlutterFlowTheme.of(context).primaryColor,
                         fontSize: 1.0,
                       ),
@@ -403,7 +403,7 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Noto Sans',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 14.0,
                                                       ),
                                                 ),
@@ -421,8 +421,7 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                                                             context)
                                                         .bodyText2
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -628,7 +627,7 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                                                             .bodyText1
                                                             .override(
                                                               fontFamily:
-                                                                  'Noto Sans',
+                                                                  'Poppins',
                                                               fontSize: 14.0,
                                                             ),
                                                       ),
@@ -649,7 +648,7 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                                                               .bodyText2
                                                               .override(
                                                                 fontFamily:
-                                                                    'Noto Sans',
+                                                                    'Poppins',
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,

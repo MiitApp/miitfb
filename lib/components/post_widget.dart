@@ -281,7 +281,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Noto Sans',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                             fontSize: 15.0,
                                             fontWeight: FontWeight.w500,
@@ -687,7 +687,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Noto Sans',
+                                          fontFamily: 'Poppins',
                                           fontSize: 12.0,
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -888,7 +888,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Noto Sans',
+                                          fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontWeight: FontWeight.normal,
@@ -934,7 +934,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Noto Sans',
+                                          fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontWeight: FontWeight.normal,
@@ -1083,7 +1083,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Noto Sans',
+                                            fontFamily: 'Poppins',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             fontWeight: FontWeight.normal,
@@ -1137,7 +1137,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                           'now',
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Noto Sans',
+                              fontFamily: 'Poppins',
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontWeight: FontWeight.normal,
                             ),

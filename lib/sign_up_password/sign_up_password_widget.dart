@@ -64,7 +64,7 @@ class _SignUpPasswordWidgetState extends State<SignUpPasswordWidget> {
                           'Create a Password',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Noto Sans',
+                                fontFamily: 'Poppins',
                                 lineHeight: 1.5,
                               ),
                         ),
@@ -77,7 +77,7 @@ class _SignUpPasswordWidgetState extends State<SignUpPasswordWidget> {
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyText2.override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontWeight: FontWeight.normal,
                                     lineHeight: 1.5,
                                   ),
@@ -97,7 +97,7 @@ class _SignUpPasswordWidgetState extends State<SignUpPasswordWidget> {
                               hintStyle: FlutterFlowTheme.of(context)
                                   .bodyText2
                                   .override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -149,7 +149,7 @@ class _SignUpPasswordWidgetState extends State<SignUpPasswordWidget> {
                             ),
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -186,7 +186,7 @@ class _SignUpPasswordWidgetState extends State<SignUpPasswordWidget> {
                             color: FlutterFlowTheme.of(context).secondaryColor,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: Colors.white,
                                       fontSize: 14.0,
                                     ),
@@ -223,7 +223,7 @@ class _SignUpPasswordWidgetState extends State<SignUpPasswordWidget> {
                             'Already have an account?',
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
                                       fontWeight: FontWeight.normal,
@@ -250,7 +250,7 @@ class _SignUpPasswordWidgetState extends State<SignUpPasswordWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                       fontWeight: FontWeight.w500,

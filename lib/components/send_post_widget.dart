@@ -226,7 +226,7 @@ class _SendPostWidgetState extends State<SendPostWidget> {
                                                             .bodyText1
                                                             .override(
                                                               fontFamily:
-                                                                  'Noto Sans',
+                                                                  'Poppins',
                                                               fontSize: 14.0,
                                                             ),
                                                       ),
@@ -247,7 +247,7 @@ class _SendPostWidgetState extends State<SendPostWidget> {
                                                               .bodyText2
                                                               .override(
                                                                 fontFamily:
-                                                                    'Noto Sans',
+                                                                    'Poppins',
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,

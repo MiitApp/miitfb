@@ -75,7 +75,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                 builder: (context) => Text(
                   valueOrDefault(currentUserDocument?.username, ''),
                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Noto Sans',
+                        fontFamily: 'Poppins',
                         fontSize: 24.0,
                       ),
                 ),
@@ -247,8 +247,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.w600,
@@ -297,7 +296,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                               .bodyText2
                                                               .override(
                                                                 fontFamily:
-                                                                    'Noto Sans',
+                                                                    'Poppins',
                                                                 fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight
@@ -343,7 +342,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                               .bodyText2
                                                               .override(
                                                                 fontFamily:
-                                                                    'Noto Sans',
+                                                                    'Poppins',
                                                                 fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight
@@ -399,7 +398,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                               .bodyText2
                                                               .override(
                                                                 fontFamily:
-                                                                    'Noto Sans',
+                                                                    'Poppins',
                                                                 fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight

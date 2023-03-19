@@ -103,7 +103,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyText2
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -141,7 +141,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -162,7 +162,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyText2
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -215,7 +215,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -235,7 +235,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Noto Sans',
+                                          fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontWeight: FontWeight.w500,
@@ -280,7 +280,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                             color: FlutterFlowTheme.of(context).primaryText,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: Colors.white,
                                       fontSize: 14.0,
                                     ),
@@ -315,7 +315,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                             'Don\'t have an account?',
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
                                       fontWeight: FontWeight.normal,
@@ -333,7 +333,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryColor,
                                       fontWeight: FontWeight.w500,

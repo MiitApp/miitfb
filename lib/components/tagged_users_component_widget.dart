@@ -118,7 +118,7 @@ class _TaggedUsersComponentWidgetState
                           maxLines: 1,
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontSize: 14.0,
                                   ),
                         ),
@@ -130,7 +130,7 @@ class _TaggedUsersComponentWidgetState
                             maxLines: 1,
                             style:
                                 FlutterFlowTheme.of(context).bodyText2.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontWeight: FontWeight.normal,
                                     ),
                           ),
@@ -253,7 +253,7 @@ class _TaggedUsersComponentWidgetState
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Noto Sans',
+                                            fontFamily: 'Poppins',
                                             color: (currentUserDocument
                                                             ?.following
                                                             ?.toList() ??
@@ -317,7 +317,7 @@ class _TaggedUsersComponentWidgetState
                   },
                   textAlign: TextAlign.start,
                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Noto Sans',
+                        fontFamily: 'Poppins',
                         color: FlutterFlowTheme.of(context).primaryColor,
                         fontSize: 0.0,
                       ),

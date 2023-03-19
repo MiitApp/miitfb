@@ -9,7 +9,6 @@ import '/flutter_flow/upload_media.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
@@ -55,7 +54,7 @@ class _FeedWidgetState extends State<FeedWidget> {
       body: NestedScrollView(
         headerSliverBuilder: (context, _) => [
           SliverAppBar(
-            expandedHeight: 60.0,
+            expandedHeight: 80.0,
             pinned: false,
             floating: true,
             snap: true,
@@ -66,34 +65,23 @@ class _FeedWidgetState extends State<FeedWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Container(
                   width: MediaQuery.of(context).size.width * 1.0,
+                  height: 80.0,
                   decoration: BoxDecoration(),
                   child: Row(
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
-                        child: InkWell(
-                          onTap: () async {
-                            HapticFeedback.lightImpact();
-
-                            context.pushNamed(
-                              'Search',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 0),
-                                ),
-                              },
-                            );
-                          },
-                          child: Icon(
-                            FFIcons.ksearch,
-                            color: Colors.black,
-                            size: 24.0,
-                          ),
+                            EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                        child: Text(
+                          'Discover',
+                          style: FlutterFlowTheme.of(context).title1.override(
+                                fontFamily: 'Poppins',
+                                fontSize: 36.0,
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                       ),
                       Row(
@@ -257,6 +245,7 @@ class _FeedWidgetState extends State<FeedWidget> {
               ),
             ],
             centerTitle: false,
+            toolbarHeight: 60.0,
             elevation: 0.0,
           )
         ],
@@ -653,16 +642,17 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                       0.0, 13.0, 0.0, 0.0),
                                               child: Text(
                                                 'Your story',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Noto Sans',
-                                                      color: Color(0x80000000),
-                                                      fontSize: 12.0,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                    ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color:
+                                                              Color(0x80000000),
+                                                          fontSize: 12.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
                                               ),
                                             ),
                                           ],
@@ -909,7 +899,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Noto Sans',
+                                                                            'Poppins',
                                                                         color: Colors
                                                                             .black,
                                                                         fontSize:
