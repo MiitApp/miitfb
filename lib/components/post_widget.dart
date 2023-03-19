@@ -224,7 +224,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                           borderRadius: BorderRadius.circular(12.0),
                           child: Image.network(
                             widget.post!.postPhoto!,
-                            width: MediaQuery.of(context).size.width * 0.95,
+                            width: MediaQuery.of(context).size.width * 1.0,
                             height: 350.0,
                             fit: BoxFit.cover,
                           ),
@@ -249,7 +249,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                             await launchURL(widget.post!.callToActionLink!);
                           },
                           child: Container(
-                            width: MediaQuery.of(context).size.width * 0.95,
+                            width: MediaQuery.of(context).size.width * 1.0,
                             height: 50.0,
                             decoration: BoxDecoration(
                               color:
@@ -302,7 +302,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                         alignment: AlignmentDirectional(0.95, -1.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 12.0, 12.0, 0.0),
+                              0.0, 32.0, 12.0, 0.0),
                           child: InkWell(
                             onTap: () async {
                               await showModalBottomSheet(

@@ -2,9 +2,9 @@ import '/backend/backend.dart';
 import '/components/post_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'post_details_model.dart';
@@ -51,82 +51,6 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        iconTheme:
-            IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
-        automaticallyImplyLeading: false,
-        leading: InkWell(
-          onTap: () async {
-            context.pop();
-          },
-          child: Icon(
-            Icons.arrow_back_ios_rounded,
-            color: Colors.black,
-            size: 24.0,
-          ),
-        ),
-        title: StreamBuilder<PostsRecord>(
-          stream: PostsRecord.getDocument(widget.post!),
-          builder: (context, snapshot) {
-            // Customize what your widget looks like when it's loading.
-            if (!snapshot.hasData) {
-              return Center(
-                child: SizedBox(
-                  width: 12.0,
-                  height: 12.0,
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
-                  ),
-                ),
-              );
-            }
-            final appBarTextPostsRecord = snapshot.data!;
-            return Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                StreamBuilder<UsersRecord>(
-                  stream:
-                      UsersRecord.getDocument(appBarTextPostsRecord.postUser!),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 12.0,
-                          height: 12.0,
-                          child: CircularProgressIndicator(
-                            color: Colors.white,
-                          ),
-                        ),
-                      );
-                    }
-                    final usernameUsersRecord = snapshot.data!;
-                    return Text(
-                      valueOrDefault<String>(
-                        functions.returnAllCaps(usernameUsersRecord.username!),
-                        'USER',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyText2.override(
-                            fontFamily: 'Poppins',
-                            letterSpacing: 0.5,
-                            fontWeight: FontWeight.w500,
-                          ),
-                    );
-                  },
-                ),
-                Text(
-                  'Posts',
-                  style: FlutterFlowTheme.of(context).subtitle1,
-                ),
-              ],
-            );
-          },
-        ),
-        actions: [],
-        centerTitle: true,
-        elevation: 0.0,
-      ),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -156,27 +80,46 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                       return Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Container(
-                            width: double.infinity,
-                            height: 0.5,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFDADADA),
-                            ),
-                          ),
-                          if (!columnPostsRecord.deleted!)
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 12.0, 0.0, 0.0),
-                                child: wrapWithModel(
-                                  model: _model.postModel,
-                                  updateCallback: () => setState(() {}),
-                                  child: PostWidget(
-                                    post: columnPostsRecord,
+                          Expanded(
+                            child: Stack(
+                              children: [
+                                if (!columnPostsRecord.deleted!)
+                                  wrapWithModel(
+                                    model: _model.postModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: PostWidget(
+                                      post: columnPostsRecord,
+                                    ),
+                                  ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 32.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    onTap: () async {
+                                      context.safePop();
+                                    },
+                                    child: Container(
+                                      width: 40.0,
+                                      height: 40.0,
+                                      decoration: BoxDecoration(
+                                        color: Color(0x51FFFFFF),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: FaIcon(
+                                          FontAwesomeIcons.angleLeft,
+                                          color: Colors.black,
+                                          size: 24.0,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
+                          ),
                           if (columnPostsRecord.deleted ?? true)
                             Expanded(
                               child: Container(
