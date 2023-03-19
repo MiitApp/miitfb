@@ -14,6 +14,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 import 'feed_model.dart';
 export 'feed_model.dart';
+import 'package:flutter/services.dart';
 
 class FeedWidget extends StatefulWidget {
   const FeedWidget({Key? key}) : super(key: key);
