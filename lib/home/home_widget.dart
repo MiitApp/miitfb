@@ -1,10 +1,12 @@
 import '/auth/auth_util.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/components/new_event_widget.dart';
+import '/components/new_users_widget.dart';
+import '/components/question_card_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_media.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_model.dart';
@@ -49,7 +51,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       body: NestedScrollView(
         headerSliverBuilder: (context, _) => [
           SliverAppBar(
-            expandedHeight: 60.0,
+            expandedHeight: 80.0,
             pinned: false,
             floating: true,
             snap: true,
@@ -60,34 +62,23 @@ class _HomeWidgetState extends State<HomeWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Container(
                   width: MediaQuery.of(context).size.width * 1.0,
+                  height: 80.0,
                   decoration: BoxDecoration(),
                   child: Row(
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
-                        child: InkWell(
-                          onTap: () async {
-                            HapticFeedback.lightImpact();
-
-                            context.pushNamed(
-                              'Search',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 0),
-                                ),
-                              },
-                            );
-                          },
-                          child: Icon(
-                            FFIcons.ksearch,
-                            color: Colors.black,
-                            size: 24.0,
-                          ),
+                            EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                        child: Text(
+                          'What\'s New',
+                          style: FlutterFlowTheme.of(context).title1.override(
+                                fontFamily: 'Poppins',
+                                fontSize: 36.0,
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                       ),
                       Row(
@@ -212,7 +203,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   child: Icon(
                                     Icons.mark_chat_unread_outlined,
                                     color: Colors.black,
-                                    size: 30.0,
+                                    size: 28.0,
                                   ),
                                 ),
                               ),
@@ -229,7 +220,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       gradient: LinearGradient(
                                         colors: [
                                           FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .secondaryColor,
                                           FlutterFlowTheme.of(context)
                                               .secondaryColor
                                         ],
@@ -251,6 +242,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               ),
             ],
             centerTitle: false,
+            toolbarHeight: 60.0,
             elevation: 0.0,
           )
         ],
@@ -401,6 +393,104 @@ class _HomeWidgetState extends State<HomeWidget> {
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 10.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 0.5,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.questionCardModel,
+                                updateCallback: () => setState(() {}),
+                                child: QuestionCardWidget(),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 10.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 0.5,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.newUsersModel,
+                                updateCallback: () => setState(() {}),
+                                child: NewUsersWidget(),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 10.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 0.5,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 15.0, 0.0),
+                                child: wrapWithModel(
+                                  model: _model.newEventModel,
+                                  updateCallback: () => setState(() {}),
+                                  child: NewEventWidget(),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 10.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 0.5,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 10.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 0.5,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 10.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 0.5,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ],
