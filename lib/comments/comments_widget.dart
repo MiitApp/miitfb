@@ -488,7 +488,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                             .PhotoCaption(
                                                           width:
                                                               double.infinity,
-                                                          height: 18.0,
+                                                          height: 20.0,
                                                           name: valueOrDefault<
                                                               String>(
                                                             rowUsersRecord
@@ -837,7 +837,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                   .PhotoCaption(
                                                                 width: double
                                                                     .infinity,
-                                                                height: 17.0,
+                                                                height: 19.0,
                                                                 name:
                                                                     valueOrDefault<
                                                                         String>(
@@ -1154,7 +1154,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                             FFIcons.kheart1,
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .alternate,
+                                                                .tertiaryColor,
                                                             size: 14.0,
                                                           ),
                                                         ).animateOnPageLoad(

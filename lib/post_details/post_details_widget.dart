@@ -155,9 +155,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                 child: Container(
                   width: double.infinity,
                   height: 100.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
+                  decoration: BoxDecoration(),
                   child: StreamBuilder<PostsRecord>(
                     stream: PostsRecord.getDocument(widget.post!),
                     builder: (context, snapshot) {
