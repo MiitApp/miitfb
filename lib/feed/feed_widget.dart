@@ -924,9 +924,6 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     ],
                                   ),
                                 ),
-                                // STORIES
-
-                                // DIVIDER
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
@@ -939,142 +936,56 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     ),
                                   ),
                                 ),
-                                // DIVIDER
-
-                                // TAB BAR HOLDER
-                                Stack(
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.only(left: 10.0, right: 80.0),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(25.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      width:
-                                      double.infinity,
-                                      height:
-                                      54,
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height:
-                                      54,
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            14.0, 4.0, 4.0, 4.0),
-                                        child: DefaultTabController(
-                                          length: 2,
-                                          initialIndex: 0,
-                                          child: Column(
-                                            children: [
-                                              Container(
-                                                width: double.infinity,
-                                                child: Row(
-                                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                                  children: [
-                                                    Expanded(
-                                                      flex: 4,
-                                                      child: TabBar(
-                                                        isScrollable: false,
-                                                        indicator: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(25.0),
-                                                          color:FlutterFlowTheme.of(context)
-                                                              .secondaryColor,
-                                                          border: Border.all(
-                                                            color:FlutterFlowTheme.of(context)
-                                                                .secondaryBackground,
-                                                            width: 0.0,
-                                                          ),
-                                                        ),
-                                                        labelColor: FlutterFlowTheme.of(context)
-                                                            .primaryBtnText,
-                                                        unselectedLabelColor:
-                                                        FlutterFlowTheme.of(context)
-                                                            .lineColor,
-                                                        labelPadding:
-                                                        EdgeInsetsDirectional.fromSTEB(
-                                                            30.0, 0.0, 30.0, 0.0),
-                                                        labelStyle: FlutterFlowTheme.of(context)
-                                                            .bodyText1
-                                                            .override(
-                                                          fontFamily: 'Noto Sans',
-                                                        ),
-                                                        indicatorColor:
-                                                        FlutterFlowTheme.of(context)
-                                                            .alternate,
-                                                        indicatorWeight: 0.0,
-                                                        tabs: [
-                                                          Tab(
-                                                            text: 'Discover',
-                                                          ),
-                                                          Tab(
-                                                            text: 'For  You',
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 1,
-                                                      child: Padding(
-                                                        padding: EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                            0.0, 0.0, 0.0, 4.0),
-                                                        child: InkWell(
-                                                          onTap: () async {
-                                                            HapticFeedback
-                                                                .lightImpact();
-
-                                                            context.pushNamed(
-                                                              'Search',
-                                                              extra: <String,
-                                                                  dynamic>{
-                                                                kTransitionInfoKey:
-                                                                TransitionInfo(
-                                                                  hasTransition: true,
-                                                                  transitionType:
-                                                                  PageTransitionType
-                                                                      .fade,
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                      0),
-                                                                ),
-                                                              },
-                                                            );
-                                                          },
-                                                          child: Icon(
-                                                            Icons.manage_search_rounded,
-                                                            color: Colors.black,
-                                                            size: 40.0,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
+                                Container(
+                                  width: double.infinity,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.07,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(25.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: DefaultTabController(
+                                      length: 2,
+                                      initialIndex: 0,
+                                      child: Column(
+                                        children: [
+                                          TabBar(
+                                            labelColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBtnText,
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1,
+                                            indicatorColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            indicatorWeight: 0.0,
+                                            tabs: [
+                                              Tab(
+                                                text: 'Discover',
                                               ),
-                                              Expanded(
-                                                child: TabBarView(
-                                                  children: [
-                                                    Container(
-                                                      height: 0,
-                                                    ),
-                                                    Container(
-                                                      height: 0,
-                                                    ),
-                                                  ],
-                                                ),
+                                              Tab(
+                                                text: 'For  You',
                                               ),
                                             ],
                                           ),
-                                        ),
+                                          Expanded(
+                                            child: TabBarView(
+                                              children: [
+                                                Container(),
+                                                Container(),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ],
+                                  ),
                                 ),
-                                // TAB BAR HOLDER
-
-                                // DIVIDER
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
@@ -1087,9 +998,6 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     ),
                                   ),
                                 ),
-                                // DIVIDER
-
-                                // FEED
                                 PagedListView<DocumentSnapshot<Object?>?,
                                     PostsRecord>(
                                   pagingController: () {
