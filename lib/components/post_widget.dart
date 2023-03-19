@@ -140,9 +140,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
               Container(
                 width: double.infinity,
                 height: 0.5,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
-                ),
+                decoration: BoxDecoration(),
               ),
               Container(
                 width: double.infinity,
