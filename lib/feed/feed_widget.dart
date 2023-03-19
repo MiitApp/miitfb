@@ -1095,10 +1095,14 @@ class _FeedWidgetState extends State<FeedWidget> {
                                       final postFeedPostsRecord = _model
                                           .pagingController!
                                           .itemList![postFeedIndex];
-                                      return PostWidget(
-                                        key: Key(
-                                            'Key388_${postFeedIndex}_of_${_model.pagingController!.itemList!.length}'),
-                                        post: postFeedPostsRecord,
+                                      return Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 10.0, 0.0),
+                                        child: PostWidget(
+                                          key: Key(
+                                              'Key388_${postFeedIndex}_of_${_model.pagingController!.itemList!.length}'),
+                                          post: postFeedPostsRecord,
+                                        ),
                                       );
                                     },
                                   ),
