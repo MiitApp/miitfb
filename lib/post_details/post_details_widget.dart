@@ -97,19 +97,25 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 32.0, 0.0, 0.0),
-                                  child: Container(
-                                    width: 40.0,
-                                    height: 40.0,
-                                    decoration: BoxDecoration(
-                                      color: Color(0x51FFFFFF),
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: FaIcon(
-                                        FontAwesomeIcons.angleLeft,
-                                        color: Colors.black,
-                                        size: 24.0,
+                                  child: InkWell(
+                                    onTap: () async {
+                                      context.safePop();
+                                    },
+                                    child: Container(
+                                      width: 40.0,
+                                      height: 40.0,
+                                      decoration: BoxDecoration(
+                                        color: Color(0x51FFFFFF),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: FaIcon(
+                                          FontAwesomeIcons.angleLeft,
+                                          color: Colors.black,
+                                          size: 24.0,
+                                        ),
                                       ),
                                     ),
                                   ),
