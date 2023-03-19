@@ -73,36 +73,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            // START PROFILE IMAGE STACK
                             Stack(
                               alignment: AlignmentDirectional(0.0, 1.0),
                               children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 23.0, 0.0),
-                                      child: InkWell(
-                                        onTap: () async {
-                                          GoRouter.of(context)
-                                              .prepareAuthEvent();
-                                          await signOut();
-                                          GoRouter.of(context)
-                                              .clearRedirectLocation();
-
-                                          context.goNamedAuth(
-                                              'SignUp', mounted);
-                                        },
-                                        child: Icon(
-                                          Icons.logout,
-                                          color: Colors.black,
-                                          size: 26.0,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
                                 AuthUserStreamWidget(
                                   builder: (context) => Container(
                                     height: MediaQuery.of(context).size.height *
@@ -743,8 +717,40 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     ],
                                   ),
                                 ),
+                                Positioned(
+                                  top:24.0,
+                                  right: 20.0,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 23.0, 0.0),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            await signOut();
+                                            GoRouter.of(context)
+                                                .clearRedirectLocation();
+
+                                            context.goNamedAuth(
+                                                'SignUp', mounted);
+                                          },
+                                          child: Icon(
+                                            Icons.logout,
+                                            color: Colors.black,
+                                            size: 26.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
+                            // END PROFILE IMAGE STACK
                           ],
                         ),
                         Container(
@@ -1001,7 +1007,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         Container(
                           width: double.infinity,
                           height: 550.0,
-                          decoration: BoxDecoration(),
                           child: Stack(
                             children: [
                               Padding(
