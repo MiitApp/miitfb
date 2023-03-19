@@ -73,7 +73,7 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                           'Add Your Birthday',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Noto Sans',
+                                fontFamily: 'Poppins',
                                 lineHeight: 1.5,
                               ),
                         ),
@@ -86,7 +86,7 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyText2.override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontWeight: FontWeight.normal,
                                     lineHeight: 1.5,
                                   ),
@@ -152,7 +152,7 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Noto Sans',
+                                            fontFamily: 'Poppins',
                                             color: _model.datePicked != null
                                                 ? FlutterFlowTheme.of(context)
                                                     .primaryText
@@ -198,7 +198,7 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                             color: FlutterFlowTheme.of(context).secondaryColor,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: Colors.white,
                                       fontSize: 14.0,
                                     ),
@@ -219,7 +219,7 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyText2.override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontWeight: FontWeight.normal,
                                     lineHeight: 1.5,
                                   ),
@@ -249,7 +249,7 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                             'Already have an account?',
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
                                       fontWeight: FontWeight.normal,
@@ -276,7 +276,7 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                       fontWeight: FontWeight.w500,

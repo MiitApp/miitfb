@@ -87,7 +87,7 @@ class _FollowersFollowingOtherWidgetState
                 'user',
               ),
               style: FlutterFlowTheme.of(context).subtitle1.override(
-                    fontFamily: 'Noto Sans',
+                    fontFamily: 'Poppins',
                     fontSize: 16.0,
                   ),
             );
@@ -156,7 +156,7 @@ class _FollowersFollowingOtherWidgetState
                             unselectedLabelColor: Color(0x80000000),
                             labelStyle:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 15.0,
                                     ),
                             indicatorColor:

@@ -169,7 +169,7 @@ class _SearchWidgetState extends State<SearchWidget>
                             hintText: 'Search',
                             hintStyle:
                                 FlutterFlowTheme.of(context).bodyText2.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.normal,
                                       lineHeight: 1.5,
@@ -261,7 +261,7 @@ class _SearchWidgetState extends State<SearchWidget>
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -286,7 +286,7 @@ class _SearchWidgetState extends State<SearchWidget>
                       child: Text(
                         'Cancel',
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Noto Sans',
+                              fontFamily: 'Poppins',
                               fontSize: 16.0,
                               fontWeight: FontWeight.normal,
                             ),
@@ -346,7 +346,7 @@ class _SearchWidgetState extends State<SearchWidget>
                       },
                       textAlign: TextAlign.start,
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Noto Sans',
+                            fontFamily: 'Poppins',
                             color: Colors.white,
                             fontSize: 1.0,
                           ),
@@ -389,7 +389,7 @@ class _SearchWidgetState extends State<SearchWidget>
                             unselectedLabelColor: Color(0x80000000),
                             labelStyle:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 16.0,
                                     ),
                             indicatorColor: Colors.black,
@@ -505,7 +505,7 @@ class _SearchWidgetState extends State<SearchWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Noto Sans',
+                                                                      'Poppins',
                                                                   fontSize:
                                                                       14.0,
                                                                 ),
@@ -531,7 +531,7 @@ class _SearchWidgetState extends State<SearchWidget>
                                                                   .bodyText2
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Noto Sans',
+                                                                        'Poppins',
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
@@ -716,8 +716,7 @@ class _SearchWidgetState extends State<SearchWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontSize: 14.0,
                                                         ),
                                               ),
@@ -733,7 +732,7 @@ class _SearchWidgetState extends State<SearchWidget>
                                                           context)
                                                       .bodyText2
                                                       .override(
-                                                        fontFamily: 'Noto Sans',
+                                                        fontFamily: 'Poppins',
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),

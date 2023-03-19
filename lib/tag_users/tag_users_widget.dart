@@ -49,7 +49,7 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
         title: Text(
           'Tag users',
           style: FlutterFlowTheme.of(context).subtitle1.override(
-                fontFamily: 'Noto Sans',
+                fontFamily: 'Poppins',
                 fontSize: 16.0,
               ),
         ),
@@ -66,7 +66,7 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                   child: Text(
                     'Done',
                     style: FlutterFlowTheme.of(context).subtitle1.override(
-                          fontFamily: 'Noto Sans',
+                          fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).secondaryColor,
                           fontSize: 16.0,
                           fontWeight: FontWeight.w500,
@@ -118,7 +118,7 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                       child: Text(
                         'Tag users so others know who is shown in the photo.',
                         style: FlutterFlowTheme.of(context).bodyText2.override(
-                              fontFamily: 'Noto Sans',
+                              fontFamily: 'Poppins',
                               fontWeight: FontWeight.normal,
                             ),
                       ),
@@ -207,8 +207,7 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontSize: 14.0,
                                                         ),
                                               ),
@@ -223,7 +222,7 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                                                           context)
                                                       .bodyText2
                                                       .override(
-                                                        fontFamily: 'Noto Sans',
+                                                        fontFamily: 'Poppins',
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),

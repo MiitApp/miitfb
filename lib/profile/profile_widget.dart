@@ -546,7 +546,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Noto Sans',
+                                                                    'Poppins',
                                                                 fontSize: 17.0,
                                                               ),
                                                         );
@@ -567,7 +567,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             .bodyText1
                                                             .override(
                                                               fontFamily:
-                                                                  'Noto Sans',
+                                                                  'Poppins',
                                                               fontSize: 14.0,
                                                               fontWeight:
                                                                   FontWeight
@@ -641,7 +641,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Noto Sans',
+                                                                    'Poppins',
                                                                 fontSize: 17.0,
                                                               ),
                                                         );
@@ -662,7 +662,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             .bodyText1
                                                             .override(
                                                               fontFamily:
-                                                                  'Noto Sans',
+                                                                  'Poppins',
                                                               fontSize: 14.0,
                                                               fontWeight:
                                                                   FontWeight
@@ -705,7 +705,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             .bodyText1
                                                             .override(
                                                               fontFamily:
-                                                                  'Noto Sans',
+                                                                  'Poppins',
                                                               fontSize: 17.0,
                                                             ),
                                                       ),
@@ -725,7 +725,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             .bodyText1
                                                             .override(
                                                               fontFamily:
-                                                                  'Noto Sans',
+                                                                  'Poppins',
                                                               fontSize: 14.0,
                                                               fontWeight:
                                                                   FontWeight
@@ -765,7 +765,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Noto Sans',
+                                            fontFamily: 'Poppins',
                                             fontSize: 15.0,
                                           ),
                                     ),
@@ -785,7 +785,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryColor,
@@ -807,7 +807,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryColor,
@@ -834,7 +834,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Noto Sans',
+                                            fontFamily: 'Poppins',
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.normal,
                                           ),
@@ -862,7 +862,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Noto Sans',
+                                              fontFamily: 'Poppins',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .tertiaryColor,
@@ -924,8 +924,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontSize: 13.0,
                                                           fontWeight:
                                                               FontWeight.w600,
@@ -979,7 +978,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Noto Sans',
+                                                                'Poppins',
                                                             fontSize: 13.0,
                                                             fontWeight:
                                                                 FontWeight.w600,
@@ -1031,7 +1030,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Noto Sans',
+                                            fontFamily: 'Poppins',
                                             fontSize: 16.0,
                                           ),
                                       indicatorColor:
@@ -1358,7 +1357,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Noto Sans',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 32.0,
                                                       ),
                                             ),
@@ -1370,7 +1369,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Noto Sans',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 32.0,
                                                       ),
                                             ),

@@ -191,7 +191,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   size: 22.0,
                 ),
                 Text(
-                  'Feed',
+                  'Discover',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 1

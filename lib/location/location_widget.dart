@@ -61,7 +61,7 @@ class _LocationWidgetState extends State<LocationWidget> {
         title: Text(
           'Location',
           style: FlutterFlowTheme.of(context).subtitle1.override(
-                fontFamily: 'Noto Sans',
+                fontFamily: 'Poppins',
                 fontSize: 16.0,
               ),
         ),
@@ -85,7 +85,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                   child: Text(
                     'Done',
                     style: FlutterFlowTheme.of(context).subtitle1.override(
-                          fontFamily: 'Noto Sans',
+                          fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).secondaryColor,
                           fontSize: 16.0,
                           fontWeight: FontWeight.w500,
@@ -122,7 +122,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                   child: Text(
                     'Add a location so users know where your photo was taken or what it might be a picture of.',
                     style: FlutterFlowTheme.of(context).bodyText2.override(
-                          fontFamily: 'Noto Sans',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.normal,
                         ),
                   ),
@@ -152,7 +152,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -176,7 +176,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 14.0,
@@ -226,7 +226,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontWeight: FontWeight.normal,
                                     ),
                                 validator: _model.textControllerValidator

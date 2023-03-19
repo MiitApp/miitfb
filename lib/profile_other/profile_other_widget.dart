@@ -91,7 +91,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
         title: Text(
           widget.username!,
           style: FlutterFlowTheme.of(context).bodyText1.override(
-                fontFamily: 'Noto Sans',
+                fontFamily: 'Poppins',
                 fontSize: 16.0,
               ),
         ),
@@ -355,7 +355,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Noto Sans',
+                                                                    'Poppins',
                                                                 fontSize: 17.0,
                                                               ),
                                                     );
@@ -371,8 +371,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -448,7 +447,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Noto Sans',
+                                                                    'Poppins',
                                                                 fontSize: 17.0,
                                                               ),
                                                     );
@@ -464,8 +463,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -509,7 +507,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Noto Sans',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 17.0,
                                                       ),
                                                 ),
@@ -523,8 +521,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -551,7 +548,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         fontSize: 15.0,
                                       ),
                                 ),
@@ -566,7 +563,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -587,7 +584,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Noto Sans',
+                                          fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .tertiaryColor,
                                           fontSize: 14.0,
@@ -769,7 +766,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Noto Sans',
+                                                                    'Poppins',
                                                                 color: (currentUserDocument?.following?.toList() ??
                                                                             [])
                                                                         .contains(columnUsersRecord!
@@ -882,7 +879,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                             .bodyText1
                                                             .override(
                                                               fontFamily:
-                                                                  'Noto Sans',
+                                                                  'Poppins',
                                                               fontSize: 13.0,
                                                               fontWeight:
                                                                   FontWeight
@@ -984,7 +981,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Noto Sans',
+                                                                      'Poppins',
                                                                   fontSize:
                                                                       13.0,
                                                                   fontWeight:
@@ -1089,7 +1086,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Noto Sans',
+                                                                      'Poppins',
                                                                   fontSize:
                                                                       13.0,
                                                                   fontWeight:
@@ -1148,7 +1145,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Noto Sans',
+                                                                'Poppins',
                                                             fontSize: 13.0,
                                                             fontWeight:
                                                                 FontWeight.w600,
@@ -1226,7 +1223,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Noto Sans',
+                                          fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
                                           fontSize: 0.0,
@@ -1257,7 +1254,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Noto Sans',
+                                              fontFamily: 'Poppins',
                                               fontSize: 0.0,
                                               lineHeight: 0.0,
                                             ),

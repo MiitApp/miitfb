@@ -66,7 +66,7 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                           'Create Username',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Noto Sans',
+                                fontFamily: 'Poppins',
                                 lineHeight: 1.5,
                               ),
                         ),
@@ -79,7 +79,7 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyText2.override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     fontWeight: FontWeight.normal,
                                     lineHeight: 1.5,
                                   ),
@@ -134,7 +134,7 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .bodyText2
                                                   .override(
-                                                    fontFamily: 'Noto Sans',
+                                                    fontFamily: 'Poppins',
                                                     fontSize: 14.0,
                                                     fontWeight:
                                                         FontWeight.normal,
@@ -181,7 +181,7 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Noto Sans',
+                                              fontFamily: 'Poppins',
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.normal,
                                             ),
@@ -313,7 +313,7 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .subtitle2
                                           .override(
-                                            fontFamily: 'Noto Sans',
+                                            fontFamily: 'Poppins',
                                             color: Colors.white,
                                             fontSize: 14.0,
                                           ),
@@ -355,7 +355,7 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                             'Already have an account?',
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
                                       fontWeight: FontWeight.normal,
@@ -382,7 +382,7 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                       fontWeight: FontWeight.w500,

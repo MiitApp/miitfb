@@ -127,7 +127,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                       return Text(
                         usernameUsersRecord.username!,
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Noto Sans',
+                              fontFamily: 'Poppins',
                               fontSize: 24.0,
                             ),
                       );
@@ -308,7 +308,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Noto Sans',
+                                                                                'Poppins',
                                                                             color:
                                                                                 Colors.white,
                                                                             fontSize:
@@ -858,7 +858,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Noto Sans',
+                                                                                'Poppins',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryText,
                                                                             fontSize:
@@ -1358,19 +1358,18 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1,
                                                 hintText: 'Message...',
-                                                hintStyle: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Noto Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
                                                               .secondaryText,
-                                                      fontSize: 15.0,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                    ),
+                                                          fontSize: 15.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
@@ -1419,7 +1418,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Noto Sans',
+                                                        fontFamily: 'Poppins',
                                                         fontSize: 15.0,
                                                         fontWeight:
                                                             FontWeight.normal,
@@ -1518,7 +1517,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Noto Sans',
+                                                                    'Poppins',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,

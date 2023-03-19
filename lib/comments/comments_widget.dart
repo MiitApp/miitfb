@@ -95,7 +95,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
         title: Text(
           'Comments',
           style: FlutterFlowTheme.of(context).title3.override(
-                fontFamily: 'Noto Sans',
+                fontFamily: 'Poppins',
                 fontSize: 16.0,
               ),
         ),
@@ -522,7 +522,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                               .bodyText2
                                                               .override(
                                                                 fontFamily:
-                                                                    'Noto Sans',
+                                                                    'Poppins',
                                                                 fontSize: 11.5,
                                                                 fontWeight:
                                                                     FontWeight
@@ -883,7 +883,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                     .bodyText2
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Noto Sans',
+                                                                          'Poppins',
                                                                       fontSize:
                                                                           11.5,
                                                                       fontWeight:
@@ -917,7 +917,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                       .bodyText2
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Noto Sans',
+                                                                            'Poppins',
                                                                         fontSize:
                                                                             11.5,
                                                                         fontWeight:
@@ -969,7 +969,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                         .bodyText2
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Noto Sans',
+                                                                              'Poppins',
                                                                           fontSize:
                                                                               11.5,
                                                                           fontWeight:
@@ -1016,7 +1016,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                           .bodyText2
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Noto Sans',
+                                                                                'Poppins',
                                                                             fontSize:
                                                                                 11.5,
                                                                             fontWeight:
@@ -1200,7 +1200,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 28.0,
                                     ),
                               ),
@@ -1209,7 +1209,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 28.0,
                                     ),
                               ),
@@ -1218,7 +1218,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 28.0,
                                     ),
                               ),
@@ -1227,7 +1227,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 28.0,
                                     ),
                               ),
@@ -1236,7 +1236,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 28.0,
                                     ),
                               ),
@@ -1245,7 +1245,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 28.0,
                                     ),
                               ),
@@ -1254,7 +1254,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Noto Sans',
+                                      fontFamily: 'Poppins',
                                       fontSize: 28.0,
                                     ),
                               ),
@@ -1310,7 +1310,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                     context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Noto Sans',
+                                                  fontFamily: 'Poppins',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryText,
@@ -1356,7 +1356,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.normal,
                                                 lineHeight: 1.5,
                                               ),
@@ -1488,16 +1488,15 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                               },
                                               child: Text(
                                                 'Post',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Noto Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
                                                               .secondaryColor,
-                                                    ),
+                                                        ),
                                               ),
                                             );
                                           },
@@ -1536,7 +1535,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Noto Sans',
+                                        fontFamily: 'Poppins',
                                         lineHeight: 1.2,
                                       ),
                                 ),
@@ -1549,7 +1548,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Noto Sans',
+                                          fontFamily: 'Poppins',
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.normal,
                                           lineHeight: 1.5,
@@ -1569,7 +1568,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Noto Sans',
+                                            fontFamily: 'Poppins',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                             fontSize: 14.0,

@@ -477,7 +477,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Noto Sans',
+                                          fontFamily: 'Poppins',
                                           color: Colors.white,
                                         ),
                                     elevation: 2.0,

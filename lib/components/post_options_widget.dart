@@ -124,7 +124,7 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.normal,
                                               ),
                                         ),
@@ -174,7 +174,7 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Noto Sans',
+                                              fontFamily: 'Poppins',
                                               fontWeight: FontWeight.normal,
                                             ),
                                       ),
@@ -261,8 +261,7 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -298,8 +297,7 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -390,8 +388,7 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Noto Sans',
+                                                          fontFamily: 'Poppins',
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -440,7 +437,7 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Noto Sans',
+                                    fontFamily: 'Poppins',
                                     color: Color(0xFFF83639),
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.w500,

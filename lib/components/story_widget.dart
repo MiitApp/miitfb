@@ -220,7 +220,7 @@ class _StoryWidgetState extends State<StoryWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 color: Colors.white,
                                               ),
                                         ),
@@ -242,7 +242,7 @@ class _StoryWidgetState extends State<StoryWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Noto Sans',
+                                                fontFamily: 'Poppins',
                                                 color: Color(0x80FFFFFF),
                                                 fontWeight: FontWeight.normal,
                                               ),
