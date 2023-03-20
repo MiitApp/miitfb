@@ -44,6 +44,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
 
     return Container(
       width: double.infinity,
+      height: MediaQuery.of(context).size.height*0.4,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primaryBackground,
         borderRadius: BorderRadius.only(
