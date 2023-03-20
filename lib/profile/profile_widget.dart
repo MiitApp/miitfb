@@ -1,6 +1,7 @@
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/components/profile_settings_widget.dart';
 import '/components/story_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -85,17 +86,22 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           0.0, 0.0, 23.0, 0.0),
                                       child: InkWell(
                                         onTap: () async {
-                                          GoRouter.of(context)
-                                              .prepareAuthEvent();
-                                          await signOut();
-                                          GoRouter.of(context)
-                                              .clearRedirectLocation();
-
-                                          context.goNamedAuth(
-                                              'SignUp', mounted);
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            enableDrag: false,
+                                            context: context,
+                                            builder: (context) {
+                                              return Padding(
+                                                padding: MediaQuery.of(context)
+                                                    .viewInsets,
+                                                child: ProfileSettingsWidget(),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
                                         },
                                         child: Icon(
-                                          Icons.logout,
+                                          Icons.more_vert_rounded,
                                           color: Colors.black,
                                           size: 26.0,
                                         ),
