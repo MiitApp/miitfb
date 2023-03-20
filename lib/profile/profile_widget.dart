@@ -3,14 +3,12 @@ import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/profile_settings_widget.dart';
 import '/components/story_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_media.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -76,13 +74,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            // START PROFILE IMAGE STACK
                             Stack(
                               alignment: AlignmentDirectional(0.0, 1.0),
                               children: [
                                 AuthUserStreamWidget(
                                   builder: (context) => Container(
                                     height: MediaQuery.of(context).size.height *
-                                        0.9,
+                                        0.65,
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
@@ -94,30 +93,19 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   ),
                                 ),
                                 Container(
-                                  width: double.infinity,
-                                  height: 120.0,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.65,
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(0.0),
-                                      bottomRight: Radius.circular(0.0),
-                                      topLeft: Radius.circular(12.0),
-                                      topRight: Radius.circular(12.0),
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color(0x00F7F7F9),
+                                        FlutterFlowTheme.of(context)
+                                            .primaryBackground
+                                      ],
+                                      stops: [0.0, 1.0],
+                                      begin: AlignmentDirectional(0.0, -1.0),
+                                      end: AlignmentDirectional(0, 1.0),
                                     ),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      SizedBox(
-                                        width: 50.0,
-                                        child: Divider(
-                                          thickness: 1.0,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                        ),
-                                      ),
-                                    ],
                                   ),
                                 ),
                                 Padding(
@@ -779,17 +767,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 ),
                               ],
                             ),
+                            // END PROFILE IMAGE STACK
                           ],
                         ),
                         Container(
                           height: MediaQuery.of(context).size.height * 0.1,
                           decoration: BoxDecoration(),
-                          child: Row(
+                          child: Column(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Column(
                               if (currentUserDisplayName != null &&
                                   currentUserDisplayName != '')
                                 Padding(
@@ -809,7 +796,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   if (currentUserDisplayName != null &&
                                       currentUserDisplayName != '')
@@ -818,7 +804,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           15.0, 6.0, 0.0, 0.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => Text(
-                                          currentUserDisplayName,
+                                          '@',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -831,131 +817,85 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         ),
                                       ),
                                     ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      if (currentUserDisplayName != null &&
-                                          currentUserDisplayName != '')
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  15.0, 6.0, 0.0, 0.0),
-                                          child: AuthUserStreamWidget(
-                                            builder: (context) => Text(
-                                              '@',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryColor,
-                                                        fontSize: 15.0,
-                                                      ),
-                                            ),
-                                          ),
+                                  if (currentUserDisplayName != null &&
+                                      currentUserDisplayName != '')
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 6.0, 0.0, 0.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => Text(
+                                          valueOrDefault(
+                                              currentUserDocument?.username,
+                                              ''),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryColor,
+                                                fontSize: 15.0,
+                                              ),
                                         ),
-                                      if (currentUserDisplayName != null &&
-                                          currentUserDisplayName != '')
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 6.0, 0.0, 0.0),
-                                          child: AuthUserStreamWidget(
-                                            builder: (context) => Text(
-                                              valueOrDefault(
-                                                  currentUserDocument?.username,
-                                                  ''),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryColor,
-                                                        fontSize: 15.0,
-                                                      ),
-                                            ),
-                                          ),
-                                        ),
-                                    ],
-                                  ),
+                                      ),
+                                    ),
                                 ],
                               ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 20.0, 0.0),
-                                    child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 40.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 40.0,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
-                                      icon: FaIcon(
-                                        FontAwesomeIcons.heart,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        size: 20.0,
-                                      ),
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
-                                      },
+                              if (valueOrDefault(
+                                          currentUserDocument?.bio, '') !=
+                                      null &&
+                                  valueOrDefault(
+                                          currentUserDocument?.bio, '') !=
+                                      '')
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 4.0, 0.0, 0.0),
+                                  child: AuthUserStreamWidget(
+                                    builder: (context) => Text(
+                                      valueOrDefault(
+                                          currentUserDocument?.bio, ''),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 14.0,
+                                            fontWeight: FontWeight.normal,
+                                          ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 20.0, 0.0),
-                                    child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 40.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 40.0,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
-                                      icon: Icon(
-                                        Icons.person_add_alt,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        size: 20.0,
-                                      ),
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
+                                ),
+                              if (valueOrDefault(
+                                          currentUserDocument?.website, '') !=
+                                      null &&
+                                  valueOrDefault(
+                                          currentUserDocument?.website, '') !=
+                                      '')
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 4.0, 0.0, 0.0),
+                                  child: AuthUserStreamWidget(
+                                    builder: (context) => InkWell(
+                                      onTap: () async {
+                                        await launchURL(valueOrDefault(
+                                            currentUserDocument?.website, ''));
                                       },
+                                      child: Text(
+                                        valueOrDefault(
+                                            currentUserDocument?.website, ''),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiaryColor,
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                      ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 20.0, 0.0),
-                                    child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 40.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 40.0,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .primaryColor,
-                                      icon: FaIcon(
-                                        FontAwesomeIcons.envelope,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        size: 20.0,
-                                      ),
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
                             ],
                           ),
                         ),
@@ -1083,7 +1023,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         Container(
                           width: double.infinity,
                           height: 550.0,
-                          decoration: BoxDecoration(),
                           child: Stack(
                             children: [
                               Padding(
@@ -1118,13 +1057,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 .secondaryBackground,
                                             width: 5.0,
                                           ),
-                                      indicatorColor:
-                                          FlutterFlowTheme.of(context)
-                                              .alternate,
-                                      indicatorWeight: 2.0,
-                                      tabs: [
-                                        Tab(
-                                          text: 'Posts',
                                         ),
                                         labelColor: FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -1467,99 +1399,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   },
                                                 );
                                               },
-                                            ),
-                                          ),
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                if (valueOrDefault(
-                                                            currentUserDocument
-                                                                ?.website,
-                                                            '') !=
-                                                        null &&
-                                                    valueOrDefault(
-                                                            currentUserDocument
-                                                                ?.website,
-                                                            '') !=
-                                                        '')
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(15.0, 4.0,
-                                                                0.0, 0.0),
-                                                    child: AuthUserStreamWidget(
-                                                      builder: (context) =>
-                                                          InkWell(
-                                                        onTap: () async {
-                                                          await launchURL(
-                                                              valueOrDefault(
-                                                                  currentUserDocument
-                                                                      ?.website,
-                                                                  ''));
-                                                        },
-                                                        child: Text(
-                                                          valueOrDefault(
-                                                              currentUserDocument
-                                                                  ?.website,
-                                                              ''),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .tertiaryColor,
-                                                                fontSize: 14.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                if (valueOrDefault(
-                                                            currentUserDocument
-                                                                ?.bio,
-                                                            '') !=
-                                                        null &&
-                                                    valueOrDefault(
-                                                            currentUserDocument
-                                                                ?.bio,
-                                                            '') !=
-                                                        '')
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(15.0, 4.0,
-                                                                0.0, 0.0),
-                                                    child: AuthUserStreamWidget(
-                                                      builder: (context) =>
-                                                          Text(
-                                                        valueOrDefault(
-                                                            currentUserDocument
-                                                                ?.bio,
-                                                            ''),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyText1
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              fontSize: 14.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .normal,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                              ],
                                             ),
                                           ),
                                           KeepAliveWidgetWrapper(
