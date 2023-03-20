@@ -92,6 +92,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     ),
                                   ),
                                 ),
+                                // MASK
                                 Container(
                                   height:
                                       MediaQuery.of(context).size.height * 0.65,
@@ -108,6 +109,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     ),
                                   ),
                                 ),
+                                // MASK
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 0.0, 15.0, 0.0),
@@ -720,14 +722,27 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 ),
                                 Positioned(
                                   top: 24.0,
-                                  right: 12.0,
+                                  // right: 0.0,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
+                                      Container(
+                                        width: 40,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white54,
+                                            borderRadius: BorderRadius.circular(40)
+                                        ),
+                                        child: Icon(
+                                          Icons.chevron_left_rounded,
+                                          color: Colors.black,
+                                          size: 26.0,
+                                        ),
+                                      ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 23.0, 0.0),
+                                            0.0, 0.0, 20.0, 0.0),
                                         child: InkWell(
                                           onTap: () async {
                                             await showModalBottomSheet(
