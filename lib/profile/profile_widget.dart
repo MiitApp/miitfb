@@ -79,38 +79,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             Stack(
                               alignment: AlignmentDirectional(0.0, 1.0),
                               children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 23.0, 0.0),
-                                      child: InkWell(
-                                        onTap: () async {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return Padding(
-                                                padding: MediaQuery.of(context)
-                                                    .viewInsets,
-                                                child: ProfileSettingsWidget(),
-                                              );
-                                            },
-                                          ).then((value) => setState(() {}));
-                                        },
-                                        child: Icon(
-                                          Icons.more_vert_rounded,
-                                          color: Colors.black,
-                                          size: 26.0,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
                                 AuthUserStreamWidget(
                                   builder: (context) => Container(
                                     height: MediaQuery.of(context).size.height *
@@ -762,6 +730,53 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     ],
                                   ),
                                 ),
+                                Positioned(
+                                  top: 24.0,
+                                  right: 12.0,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 23.0, 0.0),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
+                                                  child:
+                                                      ProfileSettingsWidget(),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          child: Container(
+                                            width: 40,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white54,
+                                              borderRadius: BorderRadius.circular(40)
+                                            ),
+                                            child: Icon(
+                                              Icons.more_vert_rounded,
+                                              color: Colors.black,
+                                              size: 26.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           ],
@@ -775,6 +790,24 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Column(
+                              if (currentUserDisplayName != null &&
+                                  currentUserDisplayName != '')
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 6.0, 0.0, 0.0),
+                                  child: AuthUserStreamWidget(
+                                    builder: (context) => Text(
+                                      currentUserDisplayName,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 15.0,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              Row(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -790,6 +823,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               .bodyText1
                                               .override(
                                                 fontFamily: 'Poppins',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryColor,
                                                 fontSize: 15.0,
                                               ),
                                         ),
@@ -1050,13 +1086,17 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           decoration: BoxDecoration(),
                           child: Stack(
                             children: [
-                              Container(
-                                width: double.infinity,
-                                height: 45.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(25.0),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 12.0, right: 12.0, top: 11.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 48.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(25.0),
+                                  ),
                                 ),
                               ),
                               DefaultTabController(
@@ -1064,21 +1104,19 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 initialIndex: 0,
                                 child: Column(
                                   children: [
-                                    TabBar(
-                                      isScrollable: true,
-                                      labelColor: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      unselectedLabelColor:
-                                          FlutterFlowTheme.of(context)
-                                              .lineColor,
-                                      labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              20.0, 0.0, 20.0, 0.0),
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 16.0,
+                                    Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child: TabBar(
+                                        isScrollable: true,
+                                        indicator: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(25.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            width: 5.0,
                                           ),
                                       indicatorColor:
                                           FlutterFlowTheme.of(context)
@@ -1088,23 +1126,57 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         Tab(
                                           text: 'Posts',
                                         ),
-                                        Tab(
-                                          text: 'Tags',
-                                        ),
-                                        Tab(
-                                          text: 'Saved',
-                                        ),
-                                        Tab(
-                                          text: 'Profile',
-                                        ),
-                                        Tab(
-                                          text: 'Events',
-                                        ),
-                                      ],
+                                        labelColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        unselectedLabelColor:
+                                            FlutterFlowTheme.of(context)
+                                                .lineColor,
+                                        labelPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                30.0, 0.0, 30.0, 0.0),
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Noto Sans',
+                                            ),
+                                        indicatorColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                        indicatorWeight: 0.0,
+                                        tabs: [
+                                          Tab(
+                                            text: 'Profile',
+                                          ),
+                                          Tab(
+                                            text: 'Posts',
+                                          ),
+                                          Tab(
+                                            text: 'Tags',
+                                          ),
+                                          Tab(
+                                            text: 'Saved',
+                                          ),
+                                          Tab(
+                                            text: 'Events',
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                     Expanded(
                                       child: TabBarView(
                                         children: [
+                                          KeepAliveWidgetWrapper(
+                                            builder: (context) => Text(
+                                              'Tab View 4',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Noto Sans',
+                                                        fontSize: 32.0,
+                                                      ),
+                                            ),
+                                          ),
                                           KeepAliveWidgetWrapper(
                                             builder: (context) => StreamBuilder<
                                                 List<PostsRecord>>(
