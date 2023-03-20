@@ -3,12 +3,14 @@ import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/profile_settings_widget.dart';
 import '/components/story_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_media.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -74,7 +76,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // START PROFILE IMAGE STACK
                             Stack(
                               alignment: AlignmentDirectional(0.0, 1.0),
                               children: [
@@ -113,7 +114,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 AuthUserStreamWidget(
                                   builder: (context) => Container(
                                     height: MediaQuery.of(context).size.height *
-                                        0.65,
+                                        0.9,
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
@@ -125,19 +126,30 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   ),
                                 ),
                                 Container(
-                                  height:
-                                  MediaQuery.of(context).size.height * 0.65,
+                                  width: double.infinity,
+                                  height: 120.0,
                                   decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Color(0x00F7F7F9),
-                                        FlutterFlowTheme.of(context)
-                                            .primaryBackground
-                                      ],
-                                      stops: [0.0, 1.0],
-                                      begin: AlignmentDirectional(0.0, -1.0),
-                                      end: AlignmentDirectional(0, 1.0),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(0.0),
+                                      bottomRight: Radius.circular(0.0),
+                                      topLeft: Radius.circular(12.0),
+                                      topRight: Radius.circular(12.0),
                                     ),
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      SizedBox(
+                                        width: 50.0,
+                                        child: Divider(
+                                          thickness: 1.0,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 Padding(
@@ -150,16 +162,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child:
-                                        StreamBuilder<List<StoriesRecord>>(
+                                            StreamBuilder<List<StoriesRecord>>(
                                           stream: queryStoriesRecord(
                                             queryBuilder: (storiesRecord) =>
                                                 storiesRecord
                                                     .where('user',
-                                                    isEqualTo:
-                                                    currentUserReference)
+                                                        isEqualTo:
+                                                            currentUserReference)
                                                     .where('expire_time',
-                                                    isGreaterThan:
-                                                    getCurrentTimestamp),
+                                                        isGreaterThan:
+                                                            getCurrentTimestamp),
                                             singleRecord: true,
                                           ),
                                           builder: (context, snapshot) {
@@ -170,21 +182,21 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   width: 12.0,
                                                   height: 12.0,
                                                   child:
-                                                  CircularProgressIndicator(
+                                                      CircularProgressIndicator(
                                                     color: Colors.white,
                                                   ),
                                                 ),
                                               );
                                             }
                                             List<StoriesRecord>
-                                            stackStoriesRecordList =
-                                            snapshot.data!;
+                                                stackStoriesRecordList =
+                                                snapshot.data!;
                                             final stackStoriesRecord =
-                                            stackStoriesRecordList
-                                                .isNotEmpty
-                                                ? stackStoriesRecordList
-                                                .first
-                                                : null;
+                                                stackStoriesRecordList
+                                                        .isNotEmpty
+                                                    ? stackStoriesRecordList
+                                                        .first
+                                                    : null;
                                             return Container(
                                               width: 100.0,
                                               height: 100.0,
@@ -196,26 +208,26 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       null)
                                                     Align(
                                                       alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
                                                       child: InkWell(
                                                         onTap: () async {
                                                           await showModalBottomSheet(
                                                             isScrollControlled:
-                                                            true,
+                                                                true,
                                                             backgroundColor:
-                                                            Colors
-                                                                .transparent,
+                                                                Colors
+                                                                    .transparent,
                                                             context: context,
                                                             builder: (context) {
                                                               return Padding(
                                                                 padding: MediaQuery.of(
-                                                                    context)
+                                                                        context)
                                                                     .viewInsets,
                                                                 child:
-                                                                StoryWidget(
+                                                                    StoryWidget(
                                                                   story:
-                                                                  stackStoriesRecord,
+                                                                      stackStoriesRecord,
                                                                 ),
                                                               );
                                                             },
@@ -226,18 +238,18 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                           width: 100.0,
                                                           height: 100.0,
                                                           decoration:
-                                                          BoxDecoration(
+                                                              BoxDecoration(
                                                             gradient:
-                                                            LinearGradient(
+                                                                LinearGradient(
                                                               colors: [
                                                                 FlutterFlowTheme.of(
-                                                                    context)
+                                                                        context)
                                                                     .tertiaryColor,
                                                                 FlutterFlowTheme.of(
-                                                                    context)
+                                                                        context)
                                                                     .secondaryColor,
                                                                 FlutterFlowTheme.of(
-                                                                    context)
+                                                                        context)
                                                                     .alternate
                                                               ],
                                                               stops: [
@@ -246,176 +258,176 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 1.0
                                                               ],
                                                               begin:
-                                                              AlignmentDirectional(
-                                                                  1.0,
-                                                                  -1.0),
+                                                                  AlignmentDirectional(
+                                                                      1.0,
+                                                                      -1.0),
                                                               end:
-                                                              AlignmentDirectional(
-                                                                  -1.0,
-                                                                  1.0),
+                                                                  AlignmentDirectional(
+                                                                      -1.0,
+                                                                      1.0),
                                                             ),
                                                             shape:
-                                                            BoxShape.circle,
+                                                                BoxShape.circle,
                                                           ),
                                                         ),
                                                       ),
                                                     ),
                                                   Align(
                                                     alignment:
-                                                    AlignmentDirectional(
-                                                        0.0, 0.0),
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
                                                     child: AuthUserStreamWidget(
                                                       builder: (context) =>
                                                           InkWell(
-                                                            onTap: () async {
-                                                              if (stackStoriesRecord !=
-                                                                  null) {
-                                                                showModalBottomSheet(
-                                                                  isScrollControlled:
+                                                        onTap: () async {
+                                                          if (stackStoriesRecord !=
+                                                              null) {
+                                                            showModalBottomSheet(
+                                                              isScrollControlled:
                                                                   true,
-                                                                  backgroundColor:
+                                                              backgroundColor:
                                                                   Colors
                                                                       .transparent,
-                                                                  context: context,
-                                                                  builder:
-                                                                      (context) {
-                                                                    return Padding(
-                                                                      padding: MediaQuery.of(
+                                                              context: context,
+                                                              builder:
+                                                                  (context) {
+                                                                return Padding(
+                                                                  padding: MediaQuery.of(
                                                                           context)
-                                                                          .viewInsets,
-                                                                      child:
+                                                                      .viewInsets,
+                                                                  child:
                                                                       StoryWidget(
-                                                                        story:
+                                                                    story:
                                                                         stackStoriesRecord,
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                ).then((value) =>
-                                                                    setState(
-                                                                            () {}));
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
 
-                                                                await Future.delayed(
-                                                                    const Duration(
-                                                                        milliseconds:
+                                                            await Future.delayed(
+                                                                const Duration(
+                                                                    milliseconds:
                                                                         5000));
-                                                                Navigator.pop(
-                                                                    context);
-                                                              }
-                                                            },
-                                                            child: Container(
-                                                              width: 93.0,
-                                                              height: 93.0,
-                                                              decoration:
+                                                            Navigator.pop(
+                                                                context);
+                                                          }
+                                                        },
+                                                        child: Container(
+                                                          width: 93.0,
+                                                          height: 93.0,
+                                                          decoration:
                                                               BoxDecoration(
-                                                                color: FlutterFlowTheme
+                                                            color: FlutterFlowTheme
                                                                     .of(context)
-                                                                    .secondaryBackground,
-                                                                image:
+                                                                .secondaryBackground,
+                                                            image:
                                                                 DecorationImage(
-                                                                  fit: BoxFit.cover,
-                                                                  image:
+                                                              fit: BoxFit.cover,
+                                                              image:
                                                                   Image.network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      currentUserPhoto,
-                                                                      'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
-                                                                    ),
-                                                                  ).image,
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  currentUserPhoto,
+                                                                  'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
                                                                 ),
-                                                                shape:
+                                                              ).image,
+                                                            ),
+                                                            shape:
                                                                 BoxShape.circle,
-                                                                border: Border.all(
-                                                                  color: FlutterFlowTheme
+                                                            border: Border.all(
+                                                              color: FlutterFlowTheme
                                                                       .of(context)
-                                                                      .primaryBackground,
-                                                                  width: 3.0,
-                                                                ),
-                                                              ),
+                                                                  .primaryBackground,
+                                                              width: 3.0,
                                                             ),
                                                           ),
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
                                                   if (!(stackStoriesRecord !=
                                                       null))
                                                     Align(
                                                       alignment:
-                                                      AlignmentDirectional(
-                                                          1.0, 1.0),
+                                                          AlignmentDirectional(
+                                                              1.0, 1.0),
                                                       child: InkWell(
                                                         onTap: () async {
                                                           final selectedMedia =
-                                                          await selectMediaWithSourceBottomSheet(
+                                                              await selectMediaWithSourceBottomSheet(
                                                             context: context,
                                                             imageQuality: 80,
                                                             allowPhoto: true,
                                                             pickerFontFamily:
-                                                            'Inter',
+                                                                'Inter',
                                                           );
                                                           if (selectedMedia !=
-                                                              null &&
+                                                                  null &&
                                                               selectedMedia.every((m) =>
                                                                   validateFileFormat(
                                                                       m.storagePath,
                                                                       context))) {
                                                             setState(() => _model
-                                                                .isMediaUploading =
-                                                            true);
+                                                                    .isMediaUploading =
+                                                                true);
                                                             var selectedUploadedFiles =
-                                                            <FFUploadedFile>[];
+                                                                <FFUploadedFile>[];
                                                             var downloadUrls =
-                                                            <String>[];
+                                                                <String>[];
                                                             try {
                                                               showUploadMessage(
                                                                 context,
                                                                 'Uploading file...',
                                                                 showLoading:
-                                                                true,
+                                                                    true,
                                                               );
                                                               selectedUploadedFiles =
                                                                   selectedMedia
                                                                       .map((m) =>
-                                                                      FFUploadedFile(
-                                                                        name:
-                                                                        m.storagePath.split('/').last,
-                                                                        bytes:
-                                                                        m.bytes,
-                                                                        height:
-                                                                        m.dimensions?.height,
-                                                                        width:
-                                                                        m.dimensions?.width,
-                                                                      ))
+                                                                          FFUploadedFile(
+                                                                            name:
+                                                                                m.storagePath.split('/').last,
+                                                                            bytes:
+                                                                                m.bytes,
+                                                                            height:
+                                                                                m.dimensions?.height,
+                                                                            width:
+                                                                                m.dimensions?.width,
+                                                                          ))
                                                                       .toList();
 
                                                               downloadUrls =
                                                                   (await Future
-                                                                      .wait(
-                                                                    selectedMedia
-                                                                        .map(
-                                                                          (m) async =>
+                                                                          .wait(
+                                                                selectedMedia
+                                                                    .map(
+                                                                  (m) async =>
                                                                       await uploadData(
                                                                           m.storagePath,
                                                                           m.bytes),
-                                                                    ),
-                                                                  ))
+                                                                ),
+                                                              ))
                                                                       .where((u) =>
-                                                                  u !=
-                                                                      null)
+                                                                          u !=
+                                                                          null)
                                                                       .map((u) =>
-                                                                  u!)
+                                                                          u!)
                                                                       .toList();
                                                             } finally {
                                                               ScaffoldMessenger
-                                                                  .of(context)
+                                                                      .of(context)
                                                                   .hideCurrentSnackBar();
                                                               _model.isMediaUploading =
-                                                              false;
+                                                                  false;
                                                             }
                                                             if (selectedUploadedFiles
-                                                                .length ==
-                                                                selectedMedia
-                                                                    .length &&
+                                                                        .length ==
+                                                                    selectedMedia
+                                                                        .length &&
                                                                 downloadUrls
-                                                                    .length ==
+                                                                        .length ==
                                                                     selectedMedia
                                                                         .length) {
                                                               setState(() {
@@ -439,46 +451,46 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                           }
 
                                                           if (_model.uploadedFileUrl !=
-                                                              null &&
+                                                                  null &&
                                                               _model.uploadedFileUrl !=
                                                                   '') {
                                                             final storiesCreateData =
-                                                            {
+                                                                {
                                                               ...createStoriesRecordData(
                                                                 user:
-                                                                currentUserReference,
+                                                                    currentUserReference,
                                                                 storyPhoto: _model
                                                                     .uploadedFileUrl,
                                                                 timeCreated:
-                                                                getCurrentTimestamp,
+                                                                    getCurrentTimestamp,
                                                                 expireTime: functions
                                                                     .tomorrowTime(
-                                                                    getCurrentTimestamp),
+                                                                        getCurrentTimestamp),
                                                               ),
                                                               'views':
-                                                              FFAppState()
-                                                                  .emptyList,
+                                                                  FFAppState()
+                                                                      .emptyList,
                                                             };
                                                             await StoriesRecord
                                                                 .collection
                                                                 .doc()
                                                                 .set(
-                                                                storiesCreateData);
+                                                                    storiesCreateData);
                                                           }
                                                         },
                                                         child: Container(
                                                           width: 30.0,
                                                           height: 30.0,
                                                           decoration:
-                                                          BoxDecoration(
+                                                              BoxDecoration(
                                                             color: FlutterFlowTheme
-                                                                .of(context)
+                                                                    .of(context)
                                                                 .secondaryColor,
                                                             shape:
-                                                            BoxShape.circle,
+                                                                BoxShape.circle,
                                                             border: Border.all(
                                                               color: FlutterFlowTheme
-                                                                  .of(context)
+                                                                      .of(context)
                                                                   .primaryBackground,
                                                               width: 3.0,
                                                             ),
@@ -505,12 +517,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                    10.0, 0.0, 0.0, 0.0),
+                                                        10.0, 0.0, 0.0, 0.0),
                                                 child: Column(
                                                   mainAxisSize:
-                                                  MainAxisSize.max,
+                                                      MainAxisSize.max,
                                                   crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
+                                                      CrossAxisAlignment.center,
                                                   children: [
                                                     StreamBuilder<
                                                         List<PostsRecord>>(
@@ -519,7 +531,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             postsRecord.where(
                                                                 'post_user',
                                                                 isEqualTo:
-                                                                currentUserReference),
+                                                                    currentUserReference),
                                                       ),
                                                       builder:
                                                           (context, snapshot) {
@@ -530,7 +542,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               width: 12.0,
                                                               height: 12.0,
                                                               child:
-                                                              CircularProgressIndicator(
+                                                                  CircularProgressIndicator(
                                                                 color: Colors
                                                                     .white,
                                                               ),
@@ -538,48 +550,48 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                           );
                                                         }
                                                         List<PostsRecord>
-                                                        numberPostsRecordList =
-                                                        snapshot.data!;
+                                                            numberPostsRecordList =
+                                                            snapshot.data!;
                                                         return Text(
                                                           formatNumber(
                                                             numberPostsRecordList
                                                                 .length,
                                                             formatType:
-                                                            FormatType
-                                                                .compact,
+                                                                FormatType
+                                                                    .compact,
                                                           ),
                                                           style: FlutterFlowTheme
-                                                              .of(context)
+                                                                  .of(context)
                                                               .bodyText1
                                                               .override(
-                                                            fontFamily:
-                                                            'Poppins',
-                                                            fontSize: 17.0,
-                                                          ),
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                fontSize: 17.0,
+                                                              ),
                                                         );
                                                       },
                                                     ),
                                                     Padding(
                                                       padding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(
-                                                          0.0,
-                                                          2.0,
-                                                          0.0,
-                                                          0.0),
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  2.0,
+                                                                  0.0,
+                                                                  0.0),
                                                       child: Text(
                                                         'Posts',
                                                         style: FlutterFlowTheme
-                                                            .of(context)
+                                                                .of(context)
                                                             .bodyText1
                                                             .override(
-                                                          fontFamily:
-                                                          'Poppins',
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                          FontWeight
-                                                              .normal,
-                                                        ),
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              fontSize: 14.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
+                                                            ),
                                                       ),
                                                     ),
                                                   ],
@@ -594,14 +606,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 },
                                                 child: Column(
                                                   mainAxisSize:
-                                                  MainAxisSize.max,
+                                                      MainAxisSize.max,
                                                   children: [
                                                     StreamBuilder<
                                                         List<FollowersRecord>>(
                                                       stream:
-                                                      queryFollowersRecord(
+                                                          queryFollowersRecord(
                                                         parent:
-                                                        currentUserReference,
+                                                            currentUserReference,
                                                         singleRecord: true,
                                                       ),
                                                       builder:
@@ -613,7 +625,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               width: 12.0,
                                                               height: 12.0,
                                                               child:
-                                                              CircularProgressIndicator(
+                                                                  CircularProgressIndicator(
                                                                 color: Colors
                                                                     .white,
                                                               ),
@@ -621,14 +633,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                           );
                                                         }
                                                         List<FollowersRecord>
-                                                        numberFollowersRecordList =
-                                                        snapshot.data!;
+                                                            numberFollowersRecordList =
+                                                            snapshot.data!;
                                                         final numberFollowersRecord =
-                                                        numberFollowersRecordList
-                                                            .isNotEmpty
-                                                            ? numberFollowersRecordList
-                                                            .first
-                                                            : null;
+                                                            numberFollowersRecordList
+                                                                    .isNotEmpty
+                                                                ? numberFollowersRecordList
+                                                                    .first
+                                                                : null;
                                                         return Text(
                                                           valueOrDefault<
                                                               String>(
@@ -638,43 +650,43 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   .toList()
                                                                   .length,
                                                               formatType:
-                                                              FormatType
-                                                                  .compact,
+                                                                  FormatType
+                                                                      .compact,
                                                             ),
                                                             '0',
                                                           ),
                                                           style: FlutterFlowTheme
-                                                              .of(context)
+                                                                  .of(context)
                                                               .bodyText1
                                                               .override(
-                                                            fontFamily:
-                                                            'Poppins',
-                                                            fontSize: 17.0,
-                                                          ),
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                fontSize: 17.0,
+                                                              ),
                                                         );
                                                       },
                                                     ),
                                                     Padding(
                                                       padding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(
-                                                          0.0,
-                                                          2.0,
-                                                          0.0,
-                                                          0.0),
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  2.0,
+                                                                  0.0,
+                                                                  0.0),
                                                       child: Text(
                                                         'Followers',
                                                         style: FlutterFlowTheme
-                                                            .of(context)
+                                                                .of(context)
                                                             .bodyText1
                                                             .override(
-                                                          fontFamily:
-                                                          'Poppins',
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                          FontWeight
-                                                              .normal,
-                                                        ),
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              fontSize: 14.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
+                                                            ),
                                                       ),
                                                     ),
                                                   ],
@@ -689,55 +701,55 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 },
                                                 child: Column(
                                                   mainAxisSize:
-                                                  MainAxisSize.max,
+                                                      MainAxisSize.max,
                                                   children: [
                                                     AuthUserStreamWidget(
                                                       builder: (context) =>
                                                           Text(
-                                                            valueOrDefault<String>(
-                                                              formatNumber(
-                                                                (currentUserDocument
-                                                                    ?.following
-                                                                    ?.toList() ??
+                                                        valueOrDefault<String>(
+                                                          formatNumber(
+                                                            (currentUserDocument
+                                                                        ?.following
+                                                                        ?.toList() ??
                                                                     [])
-                                                                    .length,
-                                                                formatType:
+                                                                .length,
+                                                            formatType:
                                                                 FormatType
                                                                     .compact,
-                                                              ),
-                                                              '0',
-                                                            ),
-                                                            style: FlutterFlowTheme
+                                                          ),
+                                                          '0',
+                                                        ),
+                                                        style: FlutterFlowTheme
                                                                 .of(context)
-                                                                .bodyText1
-                                                                .override(
+                                                            .bodyText1
+                                                            .override(
                                                               fontFamily:
-                                                              'Poppins',
+                                                                  'Poppins',
                                                               fontSize: 17.0,
                                                             ),
-                                                          ),
+                                                      ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(
-                                                          0.0,
-                                                          2.0,
-                                                          0.0,
-                                                          0.0),
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  2.0,
+                                                                  0.0,
+                                                                  0.0),
                                                       child: Text(
                                                         'Following',
                                                         style: FlutterFlowTheme
-                                                            .of(context)
+                                                                .of(context)
                                                             .bodyText1
                                                             .override(
-                                                          fontFamily:
-                                                          'Poppins',
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                          FontWeight
-                                                              .normal,
-                                                        ),
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              fontSize: 14.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
+                                                            ),
                                                       ),
                                                     ),
                                                   ],
@@ -750,68 +762,21 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     ],
                                   ),
                                 ),
-                                Positioned(
-                                  top:24.0,
-                                  right: 20.0,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 23.0, 0.0),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            GoRouter.of(context)
-                                                .prepareAuthEvent();
-                                            await signOut();
-                                            GoRouter.of(context)
-                                                .clearRedirectLocation();
-
-                                            context.goNamedAuth(
-                                                'SignUp', mounted);
-                                          },
-                                          child: Icon(
-                                            Icons.logout,
-                                            color: Colors.black,
-                                            size: 26.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
                               ],
                             ),
-                            // END PROFILE IMAGE STACK
                           ],
                         ),
                         Container(
                           height: MediaQuery.of(context).size.height * 0.1,
                           decoration: BoxDecoration(),
-                          child: Column(
+                          child: Row(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              if (currentUserDisplayName != null &&
-                                  currentUserDisplayName != '')
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 6.0, 0.0, 0.0),
-                                  child: AuthUserStreamWidget(
-                                    builder: (context) => Text(
-                                      currentUserDisplayName,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 15.0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              Row(
+                              Column(
                                 mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   if (currentUserDisplayName != null &&
                                       currentUserDisplayName != '')
@@ -820,98 +785,141 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           15.0, 6.0, 0.0, 0.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => Text(
-                                          '@',
+                                          currentUserDisplayName,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
-                                            color:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                            fontSize: 15.0,
-                                          ),
+                                                fontFamily: 'Poppins',
+                                                fontSize: 15.0,
+                                              ),
                                         ),
                                       ),
                                     ),
-                                  if (currentUserDisplayName != null &&
-                                      currentUserDisplayName != '')
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 6.0, 0.0, 0.0),
-                                      child: AuthUserStreamWidget(
-                                        builder: (context) => Text(
-                                          valueOrDefault(
-                                              currentUserDocument?.username,
-                                              ''),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                            fontFamily: 'Poppins',
-                                            color:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                            fontSize: 15.0,
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      if (currentUserDisplayName != null &&
+                                          currentUserDisplayName != '')
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 6.0, 0.0, 0.0),
+                                          child: AuthUserStreamWidget(
+                                            builder: (context) => Text(
+                                              '@',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryColor,
+                                                        fontSize: 15.0,
+                                                      ),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ),
+                                      if (currentUserDisplayName != null &&
+                                          currentUserDisplayName != '')
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 6.0, 0.0, 0.0),
+                                          child: AuthUserStreamWidget(
+                                            builder: (context) => Text(
+                                              valueOrDefault(
+                                                  currentUserDocument?.username,
+                                                  ''),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryColor,
+                                                        fontSize: 15.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
                                 ],
                               ),
-                              if (valueOrDefault(
-                                  currentUserDocument?.bio, '') !=
-                                  null &&
-                                  valueOrDefault(
-                                      currentUserDocument?.bio, '') !=
-                                      '')
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 4.0, 0.0, 0.0),
-                                  child: AuthUserStreamWidget(
-                                    builder: (context) => Text(
-                                      valueOrDefault(
-                                          currentUserDocument?.bio, ''),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.normal,
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 20.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 40.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 40.0,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .tertiaryColor,
+                                      icon: FaIcon(
+                                        FontAwesomeIcons.heart,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                        size: 20.0,
                                       ),
-                                    ),
-                                  ),
-                                ),
-                              if (valueOrDefault(
-                                  currentUserDocument?.website, '') !=
-                                  null &&
-                                  valueOrDefault(
-                                      currentUserDocument?.website, '') !=
-                                      '')
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 4.0, 0.0, 0.0),
-                                  child: AuthUserStreamWidget(
-                                    builder: (context) => InkWell(
-                                      onTap: () async {
-                                        await launchURL(valueOrDefault(
-                                            currentUserDocument?.website, ''));
+                                      onPressed: () {
+                                        print('IconButton pressed ...');
                                       },
-                                      child: Text(
-                                        valueOrDefault(
-                                            currentUserDocument?.website, ''),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                          fontFamily: 'Poppins',
-                                          color:
-                                          FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
-                                          fontSize: 14.0,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                      ),
                                     ),
                                   ),
-                                ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 20.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 40.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 40.0,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
+                                      icon: Icon(
+                                        Icons.person_add_alt,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                        size: 20.0,
+                                      ),
+                                      onPressed: () {
+                                        print('IconButton pressed ...');
+                                      },
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 20.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 40.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 40.0,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      icon: FaIcon(
+                                        FontAwesomeIcons.envelope,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                        size: 20.0,
+                                      ),
+                                      onPressed: () {
+                                        print('IconButton pressed ...');
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -933,7 +941,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           kTransitionInfoKey: TransitionInfo(
                                             hasTransition: true,
                                             transitionType:
-                                            PageTransitionType.bottomToTop,
+                                                PageTransitionType.bottomToTop,
                                           ),
                                         },
                                       );
@@ -943,31 +951,31 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       decoration: BoxDecoration(
                                         color: Color(0xFFEFEFEF),
                                         borderRadius:
-                                        BorderRadius.circular(40.0),
+                                            BorderRadius.circular(40.0),
                                       ),
                                       child: Align(
                                         alignment:
-                                        AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              8.0, 6.0, 8.0, 6.0),
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  8.0, 6.0, 8.0, 6.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                             children: [
                                               Text(
                                                 'Edit profile',
                                                 style:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyText1
-                                                    .override(
-                                                  fontFamily: 'Poppins',
-                                                  fontSize: 13.0,
-                                                  fontWeight:
-                                                  FontWeight.w600,
-                                                ),
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 13.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
                                               ),
                                             ],
                                           ),
@@ -995,7 +1003,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                             decoration: BoxDecoration(
                                               color: Color(0xFFEFEFEF),
                                               borderRadius:
-                                              BorderRadius.circular(40.0),
+                                                  BorderRadius.circular(40.0),
                                             ),
                                             child: Align(
                                               alignment: AlignmentDirectional(
@@ -1003,25 +1011,25 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                    8.0, 6.0, 8.0, 6.0),
+                                                        8.0, 6.0, 8.0, 6.0),
                                                 child: Row(
                                                   mainAxisSize:
-                                                  MainAxisSize.max,
+                                                      MainAxisSize.max,
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                                      MainAxisAlignment.center,
                                                   children: [
                                                     Text(
                                                       'Email',
                                                       style: FlutterFlowTheme
-                                                          .of(context)
+                                                              .of(context)
                                                           .bodyText1
                                                           .override(
-                                                        fontFamily:
-                                                        'Poppins',
-                                                        fontSize: 13.0,
-                                                        fontWeight:
-                                                        FontWeight.w600,
-                                                      ),
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            fontSize: 13.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
                                                     ),
                                                   ],
                                                 ),
@@ -1039,18 +1047,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         Container(
                           width: double.infinity,
                           height: 550.0,
+                          decoration: BoxDecoration(),
                           child: Stack(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left:12.0, right:12.0, top: 11.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 48.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                  ),
+                              Container(
+                                width: double.infinity,
+                                height: 45.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(25.0),
                                 ),
                               ),
                               DefaultTabController(
@@ -1058,71 +1064,47 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 initialIndex: 0,
                                 child: Column(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(12.0),
-                                      child: TabBar(
-                                        isScrollable: true,
-                                        indicator: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(25.0),
-                                          color:FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          border: Border.all(
-                                            color:FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            width: 5.0,
+                                    TabBar(
+                                      isScrollable: true,
+                                      labelColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      unselectedLabelColor:
+                                          FlutterFlowTheme.of(context)
+                                              .lineColor,
+                                      labelPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              20.0, 0.0, 20.0, 0.0),
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 16.0,
                                           ),
+                                      indicatorColor:
+                                          FlutterFlowTheme.of(context)
+                                              .alternate,
+                                      indicatorWeight: 2.0,
+                                      tabs: [
+                                        Tab(
+                                          text: 'Posts',
                                         ),
-                                        labelColor: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        unselectedLabelColor:
-                                        FlutterFlowTheme.of(context)
-                                            .lineColor,
-                                        labelPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
-                                            30.0, 0.0, 30.0, 0.0),
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                          fontFamily: 'Noto Sans',
+                                        Tab(
+                                          text: 'Tags',
                                         ),
-                                        indicatorColor:
-                                        FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        indicatorWeight: 0.0,
-                                        tabs: [
-                                          Tab(
-                                            text: 'Profile',
-                                          ),
-                                          Tab(
-                                            text: 'Posts',
-                                          ),
-                                          Tab(
-                                            text: 'Tags',
-                                          ),
-                                          Tab(
-                                            text: 'Saved',
-                                          ),
-                                          Tab(
-                                            text: 'Events',
-                                          ),
-                                        ],
-                                      ),
+                                        Tab(
+                                          text: 'Saved',
+                                        ),
+                                        Tab(
+                                          text: 'Profile',
+                                        ),
+                                        Tab(
+                                          text: 'Events',
+                                        ),
+                                      ],
                                     ),
                                     Expanded(
                                       child: TabBarView(
                                         children: [
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => Text(
-                                              'Tab View 4',
-                                              style:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyText1
-                                                  .override(
-                                                fontFamily: 'Noto Sans',
-                                                fontSize: 32.0,
-                                              ),
-                                            ),
-                                          ),
                                           KeepAliveWidgetWrapper(
                                             builder: (context) => StreamBuilder<
                                                 List<PostsRecord>>(
@@ -1130,12 +1112,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 queryBuilder: (postsRecord) =>
                                                     postsRecord
                                                         .where('post_user',
-                                                        isEqualTo:
-                                                        currentUserReference)
+                                                            isEqualTo:
+                                                                currentUserReference)
                                                         .where('deleted',
-                                                        isEqualTo: false)
+                                                            isEqualTo: false)
                                                         .orderBy('time_posted',
-                                                        descending: true),
+                                                            descending: true),
                                               ),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
@@ -1145,19 +1127,19 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       width: 12.0,
                                                       height: 12.0,
                                                       child:
-                                                      CircularProgressIndicator(
+                                                          CircularProgressIndicator(
                                                         color: Colors.white,
                                                       ),
                                                     ),
                                                   );
                                                 }
                                                 List<PostsRecord>
-                                                profilePhotosPostsRecordList =
-                                                snapshot.data!;
+                                                    profilePhotosPostsRecordList =
+                                                    snapshot.data!;
                                                 return GridView.builder(
                                                   padding: EdgeInsets.zero,
                                                   gridDelegate:
-                                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                                      SliverGridDelegateWithFixedCrossAxisCount(
                                                     crossAxisCount: 3,
                                                     crossAxisSpacing: 1.0,
                                                     mainAxisSpacing: 1.0,
@@ -1166,22 +1148,22 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   primary: false,
                                                   shrinkWrap: true,
                                                   scrollDirection:
-                                                  Axis.vertical,
+                                                      Axis.vertical,
                                                   itemCount:
-                                                  profilePhotosPostsRecordList
-                                                      .length,
+                                                      profilePhotosPostsRecordList
+                                                          .length,
                                                   itemBuilder: (context,
                                                       profilePhotosIndex) {
                                                     final profilePhotosPostsRecord =
-                                                    profilePhotosPostsRecordList[
-                                                    profilePhotosIndex];
+                                                        profilePhotosPostsRecordList[
+                                                            profilePhotosIndex];
                                                     return InkWell(
                                                       onTap: () async {
                                                         context.pushNamed(
                                                           'PostDetails',
                                                           queryParams: {
                                                             'post':
-                                                            serializeParam(
+                                                                serializeParam(
                                                               profilePhotosPostsRecord
                                                                   .reference,
                                                               ParamType
@@ -1192,10 +1174,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       },
                                                       child: Hero(
                                                         tag:
-                                                        profilePhotosPostsRecord
-                                                            .postPhoto!,
+                                                            profilePhotosPostsRecord
+                                                                .postPhoto!,
                                                         transitionOnUserGestures:
-                                                        true,
+                                                            true,
                                                         child: Image.network(
                                                           profilePhotosPostsRecord
                                                               .postPhoto!,
@@ -1217,12 +1199,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 queryBuilder: (postsRecord) =>
                                                     postsRecord
                                                         .where('tagged_users',
-                                                        arrayContains:
-                                                        currentUserReference)
+                                                            arrayContains:
+                                                                currentUserReference)
                                                         .where('deleted',
-                                                        isEqualTo: false)
+                                                            isEqualTo: false)
                                                         .orderBy('time_posted',
-                                                        descending: true),
+                                                            descending: true),
                                               ),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
@@ -1232,19 +1214,19 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       width: 12.0,
                                                       height: 12.0,
                                                       child:
-                                                      CircularProgressIndicator(
+                                                          CircularProgressIndicator(
                                                         color: Colors.white,
                                                       ),
                                                     ),
                                                   );
                                                 }
                                                 List<PostsRecord>
-                                                taggedPhotosPostsRecordList =
-                                                snapshot.data!;
+                                                    taggedPhotosPostsRecordList =
+                                                    snapshot.data!;
                                                 return GridView.builder(
                                                   padding: EdgeInsets.zero,
                                                   gridDelegate:
-                                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                                      SliverGridDelegateWithFixedCrossAxisCount(
                                                     crossAxisCount: 3,
                                                     crossAxisSpacing: 1.0,
                                                     mainAxisSpacing: 1.0,
@@ -1253,22 +1235,22 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   primary: false,
                                                   shrinkWrap: true,
                                                   scrollDirection:
-                                                  Axis.vertical,
+                                                      Axis.vertical,
                                                   itemCount:
-                                                  taggedPhotosPostsRecordList
-                                                      .length,
+                                                      taggedPhotosPostsRecordList
+                                                          .length,
                                                   itemBuilder: (context,
                                                       taggedPhotosIndex) {
                                                     final taggedPhotosPostsRecord =
-                                                    taggedPhotosPostsRecordList[
-                                                    taggedPhotosIndex];
+                                                        taggedPhotosPostsRecordList[
+                                                            taggedPhotosIndex];
                                                     return InkWell(
                                                       onTap: () async {
                                                         context.pushNamed(
                                                           'PostDetails',
                                                           queryParams: {
                                                             'post':
-                                                            serializeParam(
+                                                                serializeParam(
                                                               taggedPhotosPostsRecord
                                                                   .reference,
                                                               ParamType
@@ -1279,10 +1261,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       },
                                                       child: Hero(
                                                         tag:
-                                                        taggedPhotosPostsRecord
-                                                            .postPhoto!,
+                                                            taggedPhotosPostsRecord
+                                                                .postPhoto!,
                                                         transitionOnUserGestures:
-                                                        true,
+                                                            true,
                                                         child: Image.network(
                                                           taggedPhotosPostsRecord
                                                               .postPhoto!,
@@ -1312,35 +1294,35 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       width: 12.0,
                                                       height: 12.0,
                                                       child:
-                                                      CircularProgressIndicator(
+                                                          CircularProgressIndicator(
                                                         color: Colors.white,
                                                       ),
                                                     ),
                                                   );
                                                 }
                                                 List<BookmarksRecord>
-                                                bookmarkedPhotosBookmarksRecordList =
-                                                snapshot.data!;
+                                                    bookmarkedPhotosBookmarksRecordList =
+                                                    snapshot.data!;
                                                 // Return an empty Container when the item does not exist.
                                                 if (snapshot.data!.isEmpty) {
                                                   return Container();
                                                 }
                                                 final bookmarkedPhotosBookmarksRecord =
-                                                bookmarkedPhotosBookmarksRecordList
-                                                    .isNotEmpty
-                                                    ? bookmarkedPhotosBookmarksRecordList
-                                                    .first
-                                                    : null;
+                                                    bookmarkedPhotosBookmarksRecordList
+                                                            .isNotEmpty
+                                                        ? bookmarkedPhotosBookmarksRecordList
+                                                            .first
+                                                        : null;
                                                 return Builder(
                                                   builder: (context) {
                                                     final bookmarkedposts =
-                                                    bookmarkedPhotosBookmarksRecord!
-                                                        .postRefs!
-                                                        .toList();
+                                                        bookmarkedPhotosBookmarksRecord!
+                                                            .postRefs!
+                                                            .toList();
                                                     return GridView.builder(
                                                       padding: EdgeInsets.zero,
                                                       gridDelegate:
-                                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                                          SliverGridDelegateWithFixedCrossAxisCount(
                                                         crossAxisCount: 3,
                                                         crossAxisSpacing: 1.0,
                                                         mainAxisSpacing: 1.0,
@@ -1349,19 +1331,19 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       primary: false,
                                                       shrinkWrap: true,
                                                       scrollDirection:
-                                                      Axis.vertical,
+                                                          Axis.vertical,
                                                       itemCount: bookmarkedposts
                                                           .length,
                                                       itemBuilder: (context,
                                                           bookmarkedpostsIndex) {
                                                         final bookmarkedpostsItem =
-                                                        bookmarkedposts[
-                                                        bookmarkedpostsIndex];
+                                                            bookmarkedposts[
+                                                                bookmarkedpostsIndex];
                                                         return StreamBuilder<
                                                             PostsRecord>(
                                                           stream: PostsRecord
                                                               .getDocument(
-                                                              bookmarkedpostsItem),
+                                                                  bookmarkedpostsItem),
                                                           builder: (context,
                                                               snapshot) {
                                                             // Customize what your widget looks like when it's loading.
@@ -1372,7 +1354,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   width: 12.0,
                                                                   height: 12.0,
                                                                   child:
-                                                                  CircularProgressIndicator(
+                                                                      CircularProgressIndicator(
                                                                     color: Colors
                                                                         .white,
                                                                   ),
@@ -1380,7 +1362,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               );
                                                             }
                                                             final photoPostsRecord =
-                                                            snapshot.data!;
+                                                                snapshot.data!;
                                                             return InkWell(
                                                               onTap: () async {
                                                                 context
@@ -1388,7 +1370,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   'PostDetails',
                                                                   queryParams: {
                                                                     'post':
-                                                                    serializeParam(
+                                                                        serializeParam(
                                                                       bookmarkedpostsItem,
                                                                       ParamType
                                                                           .DocumentReference,
@@ -1397,7 +1379,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 );
                                                               },
                                                               child:
-                                                              Image.network(
+                                                                  Image.network(
                                                                 photoPostsRecord
                                                                     .postPhoto!,
                                                                 width: 100.0,
@@ -1416,15 +1398,108 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                             ),
                                           ),
                                           KeepAliveWidgetWrapper(
+                                            builder: (context) => Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                if (valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.website,
+                                                            '') !=
+                                                        null &&
+                                                    valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.website,
+                                                            '') !=
+                                                        '')
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(15.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: AuthUserStreamWidget(
+                                                      builder: (context) =>
+                                                          InkWell(
+                                                        onTap: () async {
+                                                          await launchURL(
+                                                              valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.website,
+                                                                  ''));
+                                                        },
+                                                        child: Text(
+                                                          valueOrDefault(
+                                                              currentUserDocument
+                                                                  ?.website,
+                                                              ''),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiaryColor,
+                                                                fontSize: 14.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                if (valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.bio,
+                                                            '') !=
+                                                        null &&
+                                                    valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.bio,
+                                                            '') !=
+                                                        '')
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(15.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: AuthUserStreamWidget(
+                                                      builder: (context) =>
+                                                          Text(
+                                                        valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.bio,
+                                                            ''),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyText1
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              fontSize: 14.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                              ],
+                                            ),
+                                          ),
+                                          KeepAliveWidgetWrapper(
                                             builder: (context) => Text(
                                               'Tab View 5',
                                               style:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyText1
-                                                  .override(
-                                                fontFamily: 'Poppins',
-                                                fontSize: 32.0,
-                                              ),
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        fontSize: 32.0,
+                                                      ),
                                             ),
                                           ),
                                         ],
