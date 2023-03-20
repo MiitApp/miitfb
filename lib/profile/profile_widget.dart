@@ -1,6 +1,7 @@
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/components/profile_settings_widget.dart';
 import '/components/story_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -77,6 +78,38 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             Stack(
                               alignment: AlignmentDirectional(0.0, 1.0),
                               children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 23.0, 0.0),
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            enableDrag: false,
+                                            context: context,
+                                            builder: (context) {
+                                              return Padding(
+                                                padding: MediaQuery.of(context)
+                                                    .viewInsets,
+                                                child: ProfileSettingsWidget(),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
+                                        },
+                                        child: Icon(
+                                          Icons.more_vert_rounded,
+                                          color: Colors.black,
+                                          size: 26.0,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                                 AuthUserStreamWidget(
                                   builder: (context) => Container(
                                     height: MediaQuery.of(context).size.height *
