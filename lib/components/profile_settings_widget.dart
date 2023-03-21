@@ -78,7 +78,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                       ),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                        EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                         child: FaIcon(
                           FontAwesomeIcons.edit,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -89,7 +89,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,7 +124,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                       ),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                        EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                         child: FaIcon(
                           FontAwesomeIcons.slidersH,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -135,7 +135,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -170,7 +170,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                       ),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                        EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                         child: Icon(
                           Icons.link_rounded,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -181,7 +181,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -216,7 +216,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                       ),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                        EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                         child: Icon(
                           Icons.share_rounded,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -227,7 +227,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -262,7 +262,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                       ),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                        EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                         child: Icon(
                           Icons.logout,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -273,7 +273,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
