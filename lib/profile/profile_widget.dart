@@ -61,8 +61,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    // color: FlutterFlowTheme.of(context).primaryBackground,
-                  ),
+                      // color: FlutterFlowTheme.of(context).primaryBackground,
+                      ),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -115,8 +115,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                15.0, 0.0, 15.0, 0.0),
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    15.0, 0.0, 15.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -126,12 +126,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                     queryBuilder: (storiesRecord) =>
                                                         storiesRecord
                                                             .where('user',
-                                                            isEqualTo:
-                                                            currentUserReference)
+                                                                isEqualTo:
+                                                                    currentUserReference)
                                                             .where(
-                                                            'expire_time',
-                                                            isGreaterThan:
-                                                            getCurrentTimestamp),
+                                                                'expire_time',
+                                                                isGreaterThan:
+                                                                    getCurrentTimestamp),
                                                     singleRecord: true,
                                                   ),
                                                   builder: (context, snapshot) {
@@ -142,21 +142,21 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                           width: 12.0,
                                                           height: 12.0,
                                                           child:
-                                                          CircularProgressIndicator(
+                                                              CircularProgressIndicator(
                                                             color: Colors.white,
                                                           ),
                                                         ),
                                                       );
                                                     }
                                                     List<StoriesRecord>
-                                                    stackStoriesRecordList =
-                                                    snapshot.data!;
+                                                        stackStoriesRecordList =
+                                                        snapshot.data!;
                                                     final stackStoriesRecord =
-                                                    stackStoriesRecordList
-                                                        .isNotEmpty
-                                                        ? stackStoriesRecordList
-                                                        .first
-                                                        : null;
+                                                        stackStoriesRecordList
+                                                                .isNotEmpty
+                                                            ? stackStoriesRecordList
+                                                                .first
+                                                            : null;
                                                     return Container(
                                                       width: 100.0,
                                                       height: 100.0,
@@ -164,50 +164,50 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       // PROFILE IMAGE
                                                       child: Stack(
                                                         alignment:
-                                                        AlignmentDirectional(
-                                                            1.0, 1.0),
+                                                            AlignmentDirectional(
+                                                                1.0, 1.0),
                                                         children: [
                                                           if (stackStoriesRecord !=
                                                               null)
                                                             Align(
                                                               alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
+                                                                  AlignmentDirectional(
+                                                                      0.0, 0.0),
                                                               child: InkWell(
                                                                 onTap:
                                                                     () async {
                                                                   await showModalBottomSheet(
                                                                     isScrollControlled:
-                                                                    true,
+                                                                        true,
                                                                     backgroundColor:
-                                                                    Colors
-                                                                        .transparent,
+                                                                        Colors
+                                                                            .transparent,
                                                                     context:
-                                                                    context,
+                                                                        context,
                                                                     builder:
                                                                         (context) {
                                                                       return Padding(
                                                                         padding:
-                                                                        MediaQuery.of(context).viewInsets,
+                                                                            MediaQuery.of(context).viewInsets,
                                                                         child:
-                                                                        StoryWidget(
+                                                                            StoryWidget(
                                                                           story:
-                                                                          stackStoriesRecord,
+                                                                              stackStoriesRecord,
                                                                         ),
                                                                       );
                                                                     },
                                                                   ).then((value) =>
                                                                       setState(
-                                                                              () {}));
+                                                                          () {}));
                                                                 },
                                                                 child:
-                                                                Container(
+                                                                    Container(
                                                                   width: 100.0,
                                                                   height: 100.0,
                                                                   decoration:
-                                                                  BoxDecoration(
+                                                                      BoxDecoration(
                                                                     gradient:
-                                                                    LinearGradient(
+                                                                        LinearGradient(
                                                                       colors: [
                                                                         FlutterFlowTheme.of(context)
                                                                             .tertiaryColor,
@@ -236,174 +236,174 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             ),
                                                           Align(
                                                             alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
                                                             child:
-                                                            AuthUserStreamWidget(
+                                                                AuthUserStreamWidget(
                                                               builder:
                                                                   (context) =>
-                                                                  InkWell(
-                                                                    onTap:
-                                                                        () async {
-                                                                      if (stackStoriesRecord !=
-                                                                          null) {
-                                                                        showModalBottomSheet(
-                                                                          isScrollControlled:
+                                                                      InkWell(
+                                                                onTap:
+                                                                    () async {
+                                                                  if (stackStoriesRecord !=
+                                                                      null) {
+                                                                    showModalBottomSheet(
+                                                                      isScrollControlled:
                                                                           true,
-                                                                          backgroundColor:
+                                                                      backgroundColor:
                                                                           Colors
                                                                               .transparent,
-                                                                          context:
+                                                                      context:
                                                                           context,
-                                                                          builder:
-                                                                              (context) {
-                                                                            return Padding(
-                                                                              padding:
+                                                                      builder:
+                                                                          (context) {
+                                                                        return Padding(
+                                                                          padding:
                                                                               MediaQuery.of(context).viewInsets,
-                                                                              child:
+                                                                          child:
                                                                               StoryWidget(
-                                                                                story:
+                                                                            story:
                                                                                 stackStoriesRecord,
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        ).then((value) =>
-                                                                            setState(
-                                                                                    () {}));
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    ).then((value) =>
+                                                                        setState(
+                                                                            () {}));
 
-                                                                        await Future.delayed(const Duration(
-                                                                            milliseconds:
+                                                                    await Future.delayed(const Duration(
+                                                                        milliseconds:
                                                                             5000));
-                                                                        Navigator.pop(
-                                                                            context);
-                                                                      }
-                                                                    },
-                                                                    child:
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  }
+                                                                },
+                                                                child:
                                                                     Container(
-                                                                      width: 93.0,
-                                                                      height: 93.0,
-                                                                      decoration:
+                                                                  width: 93.0,
+                                                                  height: 93.0,
+                                                                  decoration:
                                                                       BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(
+                                                                    color: FlutterFlowTheme.of(
                                                                             context)
-                                                                            .secondaryBackground,
-                                                                        image:
+                                                                        .secondaryBackground,
+                                                                    image:
                                                                         DecorationImage(
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                          image: Image
-                                                                              .network(
-                                                                            valueOrDefault<
-                                                                                String>(
-                                                                              currentUserPhoto,
-                                                                              'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
-                                                                            ),
-                                                                          ).image,
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                      image: Image
+                                                                          .network(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          currentUserPhoto,
+                                                                          'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
                                                                         ),
-                                                                        shape: BoxShape
-                                                                            .circle,
-                                                                        border:
+                                                                      ).image,
+                                                                    ),
+                                                                    shape: BoxShape
+                                                                        .circle,
+                                                                    border:
                                                                         Border
                                                                             .all(
-                                                                          color: FlutterFlowTheme.of(
+                                                                      color: FlutterFlowTheme.of(
                                                                               context)
-                                                                              .primaryBackground,
-                                                                          width:
+                                                                          .primaryBackground,
+                                                                      width:
                                                                           3.0,
-                                                                        ),
-                                                                      ),
                                                                     ),
                                                                   ),
+                                                                ),
+                                                              ),
                                                             ),
                                                           ),
                                                           if (!(stackStoriesRecord !=
                                                               null))
                                                             Align(
                                                               alignment:
-                                                              AlignmentDirectional(
-                                                                  1.0, 1.0),
+                                                                  AlignmentDirectional(
+                                                                      1.0, 1.0),
                                                               child: InkWell(
                                                                 onTap:
                                                                     () async {
                                                                   final selectedMedia =
-                                                                  await selectMediaWithSourceBottomSheet(
+                                                                      await selectMediaWithSourceBottomSheet(
                                                                     context:
-                                                                    context,
+                                                                        context,
                                                                     imageQuality:
-                                                                    80,
+                                                                        80,
                                                                     allowPhoto:
-                                                                    true,
+                                                                        true,
                                                                     pickerFontFamily:
-                                                                    'Inter',
+                                                                        'Inter',
                                                                   );
                                                                   if (selectedMedia !=
-                                                                      null &&
+                                                                          null &&
                                                                       selectedMedia.every((m) => validateFileFormat(
                                                                           m.storagePath,
                                                                           context))) {
                                                                     setState(() =>
-                                                                    _model.isMediaUploading =
-                                                                    true);
+                                                                        _model.isMediaUploading =
+                                                                            true);
                                                                     var selectedUploadedFiles =
-                                                                    <FFUploadedFile>[];
+                                                                        <FFUploadedFile>[];
                                                                     var downloadUrls =
-                                                                    <String>[];
+                                                                        <String>[];
                                                                     try {
                                                                       showUploadMessage(
                                                                         context,
                                                                         'Uploading file...',
                                                                         showLoading:
-                                                                        true,
+                                                                            true,
                                                                       );
                                                                       selectedUploadedFiles = selectedMedia
                                                                           .map((m) => FFUploadedFile(
-                                                                        name: m.storagePath.split('/').last,
-                                                                        bytes: m.bytes,
-                                                                        height: m.dimensions?.height,
-                                                                        width: m.dimensions?.width,
-                                                                      ))
+                                                                                name: m.storagePath.split('/').last,
+                                                                                bytes: m.bytes,
+                                                                                height: m.dimensions?.height,
+                                                                                width: m.dimensions?.width,
+                                                                              ))
                                                                           .toList();
 
                                                                       downloadUrls = (await Future
-                                                                          .wait(
+                                                                              .wait(
                                                                         selectedMedia
                                                                             .map(
-                                                                              (m) async => await uploadData(
+                                                                          (m) async => await uploadData(
                                                                               m.storagePath,
                                                                               m.bytes),
                                                                         ),
                                                                       ))
                                                                           .where((u) =>
-                                                                      u !=
-                                                                          null)
+                                                                              u !=
+                                                                              null)
                                                                           .map((u) =>
-                                                                      u!)
+                                                                              u!)
                                                                           .toList();
                                                                     } finally {
                                                                       ScaffoldMessenger.of(
-                                                                          context)
+                                                                              context)
                                                                           .hideCurrentSnackBar();
                                                                       _model.isMediaUploading =
-                                                                      false;
+                                                                          false;
                                                                     }
                                                                     if (selectedUploadedFiles.length ==
-                                                                        selectedMedia
-                                                                            .length &&
+                                                                            selectedMedia
+                                                                                .length &&
                                                                         downloadUrls.length ==
                                                                             selectedMedia.length) {
                                                                       setState(
-                                                                              () {
-                                                                            _model.uploadedLocalFile =
-                                                                                selectedUploadedFiles.first;
-                                                                            _model.uploadedFileUrl =
-                                                                                downloadUrls.first;
-                                                                          });
+                                                                          () {
+                                                                        _model.uploadedLocalFile =
+                                                                            selectedUploadedFiles.first;
+                                                                        _model.uploadedFileUrl =
+                                                                            downloadUrls.first;
+                                                                      });
                                                                       showUploadMessage(
                                                                           context,
                                                                           'Success!');
                                                                     } else {
                                                                       setState(
-                                                                              () {});
+                                                                          () {});
                                                                       showUploadMessage(
                                                                           context,
                                                                           'Failed to upload media');
@@ -412,51 +412,51 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   }
 
                                                                   if (_model.uploadedFileUrl !=
-                                                                      null &&
+                                                                          null &&
                                                                       _model.uploadedFileUrl !=
                                                                           '') {
                                                                     final storiesCreateData =
-                                                                    {
+                                                                        {
                                                                       ...createStoriesRecordData(
                                                                         user:
-                                                                        currentUserReference,
+                                                                            currentUserReference,
                                                                         storyPhoto:
-                                                                        _model.uploadedFileUrl,
+                                                                            _model.uploadedFileUrl,
                                                                         timeCreated:
-                                                                        getCurrentTimestamp,
+                                                                            getCurrentTimestamp,
                                                                         expireTime:
-                                                                        functions.tomorrowTime(getCurrentTimestamp),
+                                                                            functions.tomorrowTime(getCurrentTimestamp),
                                                                       ),
                                                                       'views':
-                                                                      FFAppState()
-                                                                          .emptyList,
+                                                                          FFAppState()
+                                                                              .emptyList,
                                                                     };
                                                                     await StoriesRecord
                                                                         .collection
                                                                         .doc()
                                                                         .set(
-                                                                        storiesCreateData);
+                                                                            storiesCreateData);
                                                                   }
                                                                 },
                                                                 child:
-                                                                Container(
+                                                                    Container(
                                                                   width: 30.0,
                                                                   height: 30.0,
                                                                   decoration:
-                                                                  BoxDecoration(
+                                                                      BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
-                                                                        context)
+                                                                            context)
                                                                         .secondaryColor,
                                                                     shape: BoxShape
                                                                         .circle,
                                                                     border:
-                                                                    Border
-                                                                        .all(
+                                                                        Border
+                                                                            .all(
                                                                       color: FlutterFlowTheme.of(
-                                                                          context)
+                                                                              context)
                                                                           .primaryBackground,
                                                                       width:
-                                                                      3.0,
+                                                                          3.0,
                                                                     ),
                                                                   ),
                                                                   child: Icon(
@@ -477,87 +477,87 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 Expanded(
                                                   child: Column(
                                                     crossAxisAlignment:
-                                                    CrossAxisAlignment
-                                                        .start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Row(
                                                         mainAxisSize:
-                                                        MainAxisSize.max,
+                                                            MainAxisSize.max,
                                                         mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
                                                         crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
+                                                            CrossAxisAlignment
+                                                                .center,
                                                         children: [
                                                           if (currentUserDisplayName !=
-                                                              null &&
+                                                                  null &&
                                                               currentUserDisplayName !=
                                                                   '')
                                                             Padding(
                                                               padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                  20.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          20.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
                                                               child:
-                                                              AuthUserStreamWidget(
+                                                                  AuthUserStreamWidget(
                                                                 builder:
                                                                     (context) =>
-                                                                    AutoSizeText(
-                                                                      currentUserDisplayName
-                                                                          .maybeHandleOverflow(
-                                                                        maxChars:
+                                                                        AutoSizeText(
+                                                                  currentUserDisplayName
+                                                                      .maybeHandleOverflow(
+                                                                    maxChars:
                                                                         15,
-                                                                        replacement:
+                                                                    replacement:
                                                                         '…',
-                                                                      ),
-                                                                      maxLines: 1,
-                                                                      style: FlutterFlowTheme.of(
+                                                                  ),
+                                                                  maxLines: 1,
+                                                                  style: FlutterFlowTheme.of(
                                                                           context)
-                                                                          .bodyText1
-                                                                          .override(
+                                                                      .bodyText1
+                                                                      .override(
                                                                         fontFamily:
-                                                                        'Poppins',
+                                                                            'Poppins',
                                                                         fontSize:
-                                                                        18.0,
+                                                                            18.0,
                                                                       ),
-                                                                    ),
+                                                                ),
                                                               ),
                                                             ),
                                                           InkWell(
                                                             onTap: () async {
                                                               await showModalBottomSheet(
                                                                 isScrollControlled:
-                                                                true,
+                                                                    true,
                                                                 backgroundColor:
-                                                                Colors
-                                                                    .transparent,
+                                                                    Colors
+                                                                        .transparent,
                                                                 enableDrag:
-                                                                false,
+                                                                    false,
                                                                 context:
-                                                                context,
+                                                                    context,
                                                                 builder:
                                                                     (context) {
                                                                   return Padding(
                                                                     padding: MediaQuery.of(
-                                                                        context)
+                                                                            context)
                                                                         .viewInsets,
                                                                     child:
-                                                                    ProfileSettingsWidget(),
+                                                                        ProfileSettingsWidget(),
                                                                   );
                                                                 },
                                                               ).then((value) =>
                                                                   setState(
-                                                                          () {}));
+                                                                      () {}));
                                                             },
                                                             child: Icon(
                                                               Icons
                                                                   .more_vert_rounded,
                                                               color: FlutterFlowTheme
-                                                                  .of(context)
+                                                                      .of(context)
                                                                   .secondaryText,
                                                               size: 26.0,
                                                             ),
@@ -566,101 +566,101 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                            0.0,
-                                                            0.0,
-                                                            0.0,
-                                                            4.0),
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    4.0),
                                                         child: Row(
                                                           mainAxisSize:
-                                                          MainAxisSize.max,
+                                                              MainAxisSize.max,
                                                           crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
+                                                              CrossAxisAlignment
+                                                                  .center,
                                                           children: [
                                                             if (currentUserDisplayName !=
-                                                                null &&
+                                                                    null &&
                                                                 currentUserDisplayName !=
                                                                     '')
                                                               Padding(
                                                                 padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                    20.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            20.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child:
-                                                                AuthUserStreamWidget(
+                                                                    AuthUserStreamWidget(
                                                                   builder:
                                                                       (context) =>
-                                                                      Text(
-                                                                        '@',
-                                                                        style: FlutterFlowTheme.of(
+                                                                          Text(
+                                                                    '@',
+                                                                    style: FlutterFlowTheme.of(
                                                                             context)
-                                                                            .bodyText1
-                                                                            .override(
+                                                                        .bodyText1
+                                                                        .override(
                                                                           fontFamily:
-                                                                          'Poppins',
+                                                                              'Poppins',
                                                                           color:
-                                                                          FlutterFlowTheme.of(context).primaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryColor,
                                                                           fontSize:
-                                                                          15.0,
+                                                                              15.0,
                                                                         ),
-                                                                      ),
+                                                                  ),
                                                                 ),
                                                               ),
                                                             if (currentUserDisplayName !=
-                                                                null &&
+                                                                    null &&
                                                                 currentUserDisplayName !=
                                                                     '')
                                                               AuthUserStreamWidget(
                                                                 builder:
                                                                     (context) =>
-                                                                    Text(
-                                                                      valueOrDefault(
-                                                                          currentUserDocument
-                                                                              ?.username,
-                                                                          ''),
-                                                                      style: FlutterFlowTheme.of(
+                                                                        Text(
+                                                                  valueOrDefault(
+                                                                      currentUserDocument
+                                                                          ?.username,
+                                                                      ''),
+                                                                  style: FlutterFlowTheme.of(
                                                                           context)
-                                                                          .bodyText1
-                                                                          .override(
+                                                                      .bodyText1
+                                                                      .override(
                                                                         fontFamily:
-                                                                        'Poppins',
+                                                                            'Poppins',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryColor,
                                                                         fontSize:
-                                                                        15.0,
+                                                                            15.0,
                                                                       ),
-                                                                    ),
+                                                                ),
                                                               ),
                                                           ],
                                                         ),
                                                       ),
                                                       Row(
                                                         mainAxisSize:
-                                                        MainAxisSize.max,
+                                                            MainAxisSize.max,
                                                         children: [
                                                           Expanded(
                                                             child: Column(
                                                               mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
+                                                                  CrossAxisAlignment
+                                                                      .center,
                                                               children: [
                                                                 StreamBuilder<
                                                                     List<
                                                                         PostsRecord>>(
                                                                   stream:
-                                                                  queryPostsRecord(
+                                                                      queryPostsRecord(
                                                                     queryBuilder: (postsRecord) => postsRecord.where(
                                                                         'post_user',
                                                                         isEqualTo:
-                                                                        currentUserReference),
+                                                                            currentUserReference),
                                                                   ),
                                                                   builder: (context,
                                                                       snapshot) {
@@ -669,62 +669,62 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                         .hasData) {
                                                                       return Center(
                                                                         child:
-                                                                        SizedBox(
+                                                                            SizedBox(
                                                                           width:
-                                                                          12.0,
+                                                                              12.0,
                                                                           height:
-                                                                          12.0,
+                                                                              12.0,
                                                                           child:
-                                                                          CircularProgressIndicator(
+                                                                              CircularProgressIndicator(
                                                                             color:
-                                                                            Colors.white,
+                                                                                Colors.white,
                                                                           ),
                                                                         ),
                                                                       );
                                                                     }
                                                                     List<PostsRecord>
-                                                                    numberPostsRecordList =
-                                                                    snapshot
-                                                                        .data!;
+                                                                        numberPostsRecordList =
+                                                                        snapshot
+                                                                            .data!;
                                                                     return Text(
                                                                       formatNumber(
                                                                         numberPostsRecordList
                                                                             .length,
                                                                         formatType:
-                                                                        FormatType.compact,
+                                                                            FormatType.compact,
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
-                                                                          context)
+                                                                              context)
                                                                           .bodyText1
                                                                           .override(
-                                                                        fontFamily:
-                                                                        'Poppins',
-                                                                        fontSize:
-                                                                        14.0,
-                                                                      ),
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            fontSize:
+                                                                                14.0,
+                                                                          ),
                                                                     );
                                                                   },
                                                                 ),
                                                                 Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                      0.0,
-                                                                      2.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Text(
                                                                     'Posts',
                                                                     style: FlutterFlowTheme.of(
-                                                                        context)
+                                                                            context)
                                                                         .bodyText1
                                                                         .override(
-                                                                      fontFamily:
-                                                                      'Poppins',
-                                                                      fontSize:
-                                                                      10.0,
-                                                                      fontWeight:
-                                                                      FontWeight.normal,
-                                                                    ),
+                                                                          fontFamily:
+                                                                              'Poppins',
+                                                                          fontSize:
+                                                                              10.0,
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                        ),
                                                                   ),
                                                                 ),
                                                               ],
@@ -738,47 +738,47 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               },
                                                               child: Column(
                                                                 mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
+                                                                    MainAxisSize
+                                                                        .max,
                                                                 children: [
                                                                   StreamBuilder<
                                                                       List<
                                                                           FollowersRecord>>(
                                                                     stream:
-                                                                    queryFollowersRecord(
+                                                                        queryFollowersRecord(
                                                                       parent:
-                                                                      currentUserReference,
+                                                                          currentUserReference,
                                                                       singleRecord:
-                                                                      true,
+                                                                          true,
                                                                     ),
                                                                     builder:
                                                                         (context,
-                                                                        snapshot) {
+                                                                            snapshot) {
                                                                       // Customize what your widget looks like when it's loading.
                                                                       if (!snapshot
                                                                           .hasData) {
                                                                         return Center(
                                                                           child:
-                                                                          SizedBox(
+                                                                              SizedBox(
                                                                             width:
-                                                                            12.0,
+                                                                                12.0,
                                                                             height:
-                                                                            12.0,
+                                                                                12.0,
                                                                             child:
-                                                                            CircularProgressIndicator(
+                                                                                CircularProgressIndicator(
                                                                               color: Colors.white,
                                                                             ),
                                                                           ),
                                                                         );
                                                                       }
                                                                       List<FollowersRecord>
-                                                                      numberFollowersRecordList =
-                                                                      snapshot
-                                                                          .data!;
+                                                                          numberFollowersRecordList =
+                                                                          snapshot
+                                                                              .data!;
                                                                       final numberFollowersRecord = numberFollowersRecordList
-                                                                          .isNotEmpty
+                                                                              .isNotEmpty
                                                                           ? numberFollowersRecordList
-                                                                          .first
+                                                                              .first
                                                                           : null;
                                                                       return Text(
                                                                         valueOrDefault<
@@ -786,39 +786,39 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                           formatNumber(
                                                                             numberFollowersRecord!.userRefs!.toList().length,
                                                                             formatType:
-                                                                            FormatType.compact,
+                                                                                FormatType.compact,
                                                                           ),
                                                                           '0',
                                                                         ),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                          fontFamily: 'Poppins',
-                                                                          fontSize: 14.0,
-                                                                        ),
+                                                                              fontFamily: 'Poppins',
+                                                                              fontSize: 14.0,
+                                                                            ),
                                                                       );
                                                                     },
                                                                   ),
                                                                   Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                            0.0,
+                                                                            2.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                     child: Text(
                                                                       'Followers',
                                                                       style: FlutterFlowTheme.of(
-                                                                          context)
+                                                                              context)
                                                                           .bodyText1
                                                                           .override(
-                                                                        fontFamily:
-                                                                        'Poppins',
-                                                                        fontSize:
-                                                                        10.0,
-                                                                        fontWeight:
-                                                                        FontWeight.normal,
-                                                                      ),
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            fontSize:
+                                                                                10.0,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                          ),
                                                                     ),
                                                                   ),
                                                                 ],
@@ -833,54 +833,54 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               },
                                                               child: Column(
                                                                 mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
+                                                                    MainAxisSize
+                                                                        .max,
                                                                 children: [
                                                                   AuthUserStreamWidget(
                                                                     builder:
                                                                         (context) =>
-                                                                        Text(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            formatNumber(
-                                                                              (currentUserDocument?.following?.toList() ?? [])
-                                                                                  .length,
-                                                                              formatType:
+                                                                            Text(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        formatNumber(
+                                                                          (currentUserDocument?.following?.toList() ?? [])
+                                                                              .length,
+                                                                          formatType:
                                                                               FormatType.compact,
-                                                                            ),
-                                                                            '0',
-                                                                          ),
-                                                                          style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                            fontFamily:
-                                                                            'Poppins',
-                                                                            fontSize:
-                                                                            14.0,
-                                                                          ),
                                                                         ),
+                                                                        '0',
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            fontSize:
+                                                                                14.0,
+                                                                          ),
+                                                                    ),
                                                                   ),
                                                                   Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                            0.0,
+                                                                            2.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                     child: Text(
                                                                       'Following',
                                                                       style: FlutterFlowTheme.of(
-                                                                          context)
+                                                                              context)
                                                                           .bodyText1
                                                                           .override(
-                                                                        fontFamily:
-                                                                        'Poppins',
-                                                                        fontSize:
-                                                                        10.0,
-                                                                        fontWeight:
-                                                                        FontWeight.normal,
-                                                                      ),
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            fontSize:
+                                                                                10.0,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                          ),
                                                                     ),
                                                                   ),
                                                                 ],
@@ -959,7 +959,7 @@ class SliderTabBar extends StatelessWidget {
                     isScrollable: true,
                     indicator: BoxDecoration(
                       borderRadius:
-                      BorderRadius.circular(25.0),
+                          BorderRadius.circular(25.0),
                       color: FlutterFlowTheme.of(context)
                           .primaryBackground,
                       border: Border.all(
@@ -971,19 +971,19 @@ class SliderTabBar extends StatelessWidget {
                     labelColor: FlutterFlowTheme.of(context)
                         .primaryText,
                     unselectedLabelColor:
-                    FlutterFlowTheme.of(context)
-                        .lineColor,
+                        FlutterFlowTheme.of(context)
+                            .lineColor,
                     labelPadding:
-                    EdgeInsetsDirectional.fromSTEB(
-                        30.0, 0.0, 30.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(
+                            30.0, 0.0, 30.0, 0.0),
                     labelStyle: FlutterFlowTheme.of(context)
                         .bodyText1
                         .override(
-                      fontFamily: 'Noto Sans',
-                    ),
+                          fontFamily: 'Noto Sans',
+                        ),
                     indicatorColor:
-                    FlutterFlowTheme.of(context)
-                        .alternate,
+                        FlutterFlowTheme.of(context)
+                            .alternate,
                     indicatorWeight: 0.0,
                     tabs: [
                       Tab(
@@ -1011,12 +1011,12 @@ class SliderTabBar extends StatelessWidget {
                         builder: (context) => Text(
                           'Tab View 4',
                           style:
-                          FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                            fontFamily: 'Noto Sans',
-                            fontSize: 32.0,
-                          ),
+                              FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Noto Sans',
+                                    fontSize: 32.0,
+                                  ),
                         ),
                       ),
                       KeepAliveWidgetWrapper(
@@ -1026,12 +1026,12 @@ class SliderTabBar extends StatelessWidget {
                             queryBuilder: (postsRecord) =>
                                 postsRecord
                                     .where('post_user',
-                                    isEqualTo:
-                                    currentUserReference)
+                                        isEqualTo:
+                                            currentUserReference)
                                     .where('deleted',
-                                    isEqualTo: false)
+                                        isEqualTo: false)
                                     .orderBy('time_posted',
-                                    descending: true),
+                                        descending: true),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -1041,19 +1041,19 @@ class SliderTabBar extends StatelessWidget {
                                   width: 12.0,
                                   height: 12.0,
                                   child:
-                                  CircularProgressIndicator(
+                                      CircularProgressIndicator(
                                     color: Colors.white,
                                   ),
                                 ),
                               );
                             }
                             List<PostsRecord>
-                            profilePhotosPostsRecordList =
-                            snapshot.data!;
+                                profilePhotosPostsRecordList =
+                                snapshot.data!;
                             return GridView.builder(
                               padding: EdgeInsets.zero,
                               gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 3,
                                 crossAxisSpacing: 1.0,
                                 mainAxisSpacing: 1.0,
@@ -1062,22 +1062,22 @@ class SliderTabBar extends StatelessWidget {
                               primary: false,
                               shrinkWrap: true,
                               scrollDirection:
-                              Axis.vertical,
+                                  Axis.vertical,
                               itemCount:
-                              profilePhotosPostsRecordList
-                                  .length,
+                                  profilePhotosPostsRecordList
+                                      .length,
                               itemBuilder: (context,
                                   profilePhotosIndex) {
                                 final profilePhotosPostsRecord =
-                                profilePhotosPostsRecordList[
-                                profilePhotosIndex];
+                                    profilePhotosPostsRecordList[
+                                        profilePhotosIndex];
                                 return InkWell(
                                   onTap: () async {
                                     context.pushNamed(
                                       'PostDetails',
                                       queryParams: {
                                         'post':
-                                        serializeParam(
+                                            serializeParam(
                                           profilePhotosPostsRecord
                                               .reference,
                                           ParamType
@@ -1088,10 +1088,10 @@ class SliderTabBar extends StatelessWidget {
                                   },
                                   child: Hero(
                                     tag:
-                                    profilePhotosPostsRecord
-                                        .postPhoto!,
+                                        profilePhotosPostsRecord
+                                            .postPhoto!,
                                     transitionOnUserGestures:
-                                    true,
+                                        true,
                                     child: Image.network(
                                       profilePhotosPostsRecord
                                           .postPhoto!,
@@ -1113,12 +1113,12 @@ class SliderTabBar extends StatelessWidget {
                             queryBuilder: (postsRecord) =>
                                 postsRecord
                                     .where('tagged_users',
-                                    arrayContains:
-                                    currentUserReference)
+                                        arrayContains:
+                                            currentUserReference)
                                     .where('deleted',
-                                    isEqualTo: false)
+                                        isEqualTo: false)
                                     .orderBy('time_posted',
-                                    descending: true),
+                                        descending: true),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -1128,19 +1128,19 @@ class SliderTabBar extends StatelessWidget {
                                   width: 12.0,
                                   height: 12.0,
                                   child:
-                                  CircularProgressIndicator(
+                                      CircularProgressIndicator(
                                     color: Colors.white,
                                   ),
                                 ),
                               );
                             }
                             List<PostsRecord>
-                            taggedPhotosPostsRecordList =
-                            snapshot.data!;
+                                taggedPhotosPostsRecordList =
+                                snapshot.data!;
                             return GridView.builder(
                               padding: EdgeInsets.zero,
                               gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 3,
                                 crossAxisSpacing: 1.0,
                                 mainAxisSpacing: 1.0,
@@ -1149,22 +1149,22 @@ class SliderTabBar extends StatelessWidget {
                               primary: false,
                               shrinkWrap: true,
                               scrollDirection:
-                              Axis.vertical,
+                                  Axis.vertical,
                               itemCount:
-                              taggedPhotosPostsRecordList
-                                  .length,
+                                  taggedPhotosPostsRecordList
+                                      .length,
                               itemBuilder: (context,
                                   taggedPhotosIndex) {
                                 final taggedPhotosPostsRecord =
-                                taggedPhotosPostsRecordList[
-                                taggedPhotosIndex];
+                                    taggedPhotosPostsRecordList[
+                                        taggedPhotosIndex];
                                 return InkWell(
                                   onTap: () async {
                                     context.pushNamed(
                                       'PostDetails',
                                       queryParams: {
                                         'post':
-                                        serializeParam(
+                                            serializeParam(
                                           taggedPhotosPostsRecord
                                               .reference,
                                           ParamType
@@ -1175,10 +1175,10 @@ class SliderTabBar extends StatelessWidget {
                                   },
                                   child: Hero(
                                     tag:
-                                    taggedPhotosPostsRecord
-                                        .postPhoto!,
+                                        taggedPhotosPostsRecord
+                                            .postPhoto!,
                                     transitionOnUserGestures:
-                                    true,
+                                        true,
                                     child: Image.network(
                                       taggedPhotosPostsRecord
                                           .postPhoto!,
@@ -1208,35 +1208,35 @@ class SliderTabBar extends StatelessWidget {
                                   width: 12.0,
                                   height: 12.0,
                                   child:
-                                  CircularProgressIndicator(
+                                      CircularProgressIndicator(
                                     color: Colors.white,
                                   ),
                                 ),
                               );
                             }
                             List<BookmarksRecord>
-                            bookmarkedPhotosBookmarksRecordList =
-                            snapshot.data!;
+                                bookmarkedPhotosBookmarksRecordList =
+                                snapshot.data!;
                             // Return an empty Container when the item does not exist.
                             if (snapshot.data!.isEmpty) {
                               return Container();
                             }
                             final bookmarkedPhotosBookmarksRecord =
-                            bookmarkedPhotosBookmarksRecordList
-                                .isNotEmpty
-                                ? bookmarkedPhotosBookmarksRecordList
-                                .first
-                                : null;
+                                bookmarkedPhotosBookmarksRecordList
+                                        .isNotEmpty
+                                    ? bookmarkedPhotosBookmarksRecordList
+                                        .first
+                                    : null;
                             return Builder(
                               builder: (context) {
                                 final bookmarkedposts =
-                                bookmarkedPhotosBookmarksRecord!
-                                    .postRefs!
-                                    .toList();
+                                    bookmarkedPhotosBookmarksRecord!
+                                        .postRefs!
+                                        .toList();
                                 return GridView.builder(
                                   padding: EdgeInsets.zero,
                                   gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                      SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 3,
                                     crossAxisSpacing: 1.0,
                                     mainAxisSpacing: 1.0,
@@ -1245,19 +1245,19 @@ class SliderTabBar extends StatelessWidget {
                                   primary: false,
                                   shrinkWrap: true,
                                   scrollDirection:
-                                  Axis.vertical,
+                                      Axis.vertical,
                                   itemCount: bookmarkedposts
                                       .length,
                                   itemBuilder: (context,
                                       bookmarkedpostsIndex) {
                                     final bookmarkedpostsItem =
-                                    bookmarkedposts[
-                                    bookmarkedpostsIndex];
+                                        bookmarkedposts[
+                                            bookmarkedpostsIndex];
                                     return StreamBuilder<
                                         PostsRecord>(
                                       stream: PostsRecord
                                           .getDocument(
-                                          bookmarkedpostsItem),
+                                              bookmarkedpostsItem),
                                       builder: (context,
                                           snapshot) {
                                         // Customize what your widget looks like when it's loading.
@@ -1268,7 +1268,7 @@ class SliderTabBar extends StatelessWidget {
                                               width: 12.0,
                                               height: 12.0,
                                               child:
-                                              CircularProgressIndicator(
+                                                  CircularProgressIndicator(
                                                 color: Colors
                                                     .white,
                                               ),
@@ -1276,7 +1276,7 @@ class SliderTabBar extends StatelessWidget {
                                           );
                                         }
                                         final photoPostsRecord =
-                                        snapshot.data!;
+                                            snapshot.data!;
                                         return InkWell(
                                           onTap: () async {
                                             context
@@ -1284,7 +1284,7 @@ class SliderTabBar extends StatelessWidget {
                                               'PostDetails',
                                               queryParams: {
                                                 'post':
-                                                serializeParam(
+                                                    serializeParam(
                                                   bookmarkedpostsItem,
                                                   ParamType
                                                       .DocumentReference,
@@ -1293,7 +1293,7 @@ class SliderTabBar extends StatelessWidget {
                                             );
                                           },
                                           child:
-                                          Image.network(
+                                              Image.network(
                                             photoPostsRecord
                                                 .postPhoto!,
                                             width: 100.0,
@@ -1315,12 +1315,12 @@ class SliderTabBar extends StatelessWidget {
                         builder: (context) => Text(
                           'Tab View 5',
                           style:
-                          FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                            fontFamily: 'Poppins',
-                            fontSize: 32.0,
-                          ),
+                              FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 32.0,
+                                  ),
                         ),
                       ),
                     ],
