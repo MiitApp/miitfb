@@ -61,8 +61,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    // color: FlutterFlowTheme.of(context).primaryBackground,
-                  ),
+                      // color: FlutterFlowTheme.of(context).primaryBackground,
+                      ),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -78,19 +78,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               alignment: AlignmentDirectional(0.0, 1.0),
                               children: [
                                 // COVER IMAGE
-                                AuthUserStreamWidget(
-                                  builder: (context) => Container(
-                                    height: MediaQuery.of(context).size.height,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: Image.network(
-                                          currentUserPhoto,
-                                        ).image,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                CoverImage(),
+                                //BIO BOX
                                 Container(
                                   width: double.infinity,
                                   height: 186.0,
@@ -107,8 +96,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
+                                      // HANDLE
                                       Padding(
-                                        padding: const EdgeInsets.only (top:16.0, bottom:8.0),
+                                        padding: const EdgeInsets.only(
+                                            top: 16.0, bottom: 8.0),
                                         child: SizedBox(
                                           width: 50.0,
                                           child: Divider(
@@ -118,12 +109,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           ),
                                         ),
                                       ),
+
                                       Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                15.0, 0.0, 15.0, 0.0),
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    15.0, 0.0, 15.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -133,11 +126,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                     queryBuilder: (storiesRecord) =>
                                                         storiesRecord
                                                             .where('user',
-                                                            isEqualTo:
-                                                            currentUserReference)
-                                                            .where('expire_time',
-                                                            isGreaterThan:
-                                                            getCurrentTimestamp),
+                                                                isEqualTo:
+                                                                    currentUserReference)
+                                                            .where(
+                                                                'expire_time',
+                                                                isGreaterThan:
+                                                                    getCurrentTimestamp),
                                                     singleRecord: true,
                                                   ),
                                                   builder: (context, snapshot) {
@@ -148,78 +142,78 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                           width: 12.0,
                                                           height: 12.0,
                                                           child:
-                                                          CircularProgressIndicator(
+                                                              CircularProgressIndicator(
                                                             color: Colors.white,
                                                           ),
                                                         ),
                                                       );
                                                     }
                                                     List<StoriesRecord>
-                                                    stackStoriesRecordList =
-                                                    snapshot.data!;
+                                                        stackStoriesRecordList =
+                                                        snapshot.data!;
                                                     final stackStoriesRecord =
-                                                    stackStoriesRecordList
-                                                        .isNotEmpty
-                                                        ? stackStoriesRecordList
-                                                        .first
-                                                        : null;
+                                                        stackStoriesRecordList
+                                                                .isNotEmpty
+                                                            ? stackStoriesRecordList
+                                                                .first
+                                                            : null;
                                                     return Container(
                                                       width: 100.0,
                                                       height: 100.0,
+
+                                                      // PROFILE IMAGE
                                                       child: Stack(
                                                         alignment:
-                                                        AlignmentDirectional(
-                                                            1.0, 1.0),
+                                                            AlignmentDirectional(
+                                                                1.0, 1.0),
                                                         children: [
                                                           if (stackStoriesRecord !=
                                                               null)
                                                             Align(
                                                               alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
+                                                                  AlignmentDirectional(
+                                                                      0.0, 0.0),
                                                               child: InkWell(
-                                                                onTap: () async {
+                                                                onTap:
+                                                                    () async {
                                                                   await showModalBottomSheet(
                                                                     isScrollControlled:
-                                                                    true,
+                                                                        true,
                                                                     backgroundColor:
-                                                                    Colors
-                                                                        .transparent,
+                                                                        Colors
+                                                                            .transparent,
                                                                     context:
-                                                                    context,
+                                                                        context,
                                                                     builder:
                                                                         (context) {
                                                                       return Padding(
-                                                                        padding: MediaQuery.of(
-                                                                            context)
-                                                                            .viewInsets,
+                                                                        padding:
+                                                                            MediaQuery.of(context).viewInsets,
                                                                         child:
-                                                                        StoryWidget(
+                                                                            StoryWidget(
                                                                           story:
-                                                                          stackStoriesRecord,
+                                                                              stackStoriesRecord,
                                                                         ),
                                                                       );
                                                                     },
                                                                   ).then((value) =>
                                                                       setState(
-                                                                              () {}));
+                                                                          () {}));
                                                                 },
-                                                                child: Container(
+                                                                child:
+                                                                    Container(
                                                                   width: 100.0,
                                                                   height: 100.0,
                                                                   decoration:
-                                                                  BoxDecoration(
+                                                                      BoxDecoration(
                                                                     gradient:
-                                                                    LinearGradient(
+                                                                        LinearGradient(
                                                                       colors: [
-                                                                        FlutterFlowTheme.of(
-                                                                            context)
+                                                                        FlutterFlowTheme.of(context)
                                                                             .tertiaryColor,
-                                                                        FlutterFlowTheme.of(
-                                                                            context)
+                                                                        FlutterFlowTheme.of(context)
                                                                             .secondaryColor,
-                                                                        FlutterFlowTheme.of(
-                                                                            context)
+                                                                        FlutterFlowTheme.of(context)
                                                                             .alternate
                                                                       ],
                                                                       stops: [
@@ -227,12 +221,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                         0.5,
                                                                         1.0
                                                                       ],
-                                                                      begin:
-                                                                      AlignmentDirectional(
+                                                                      begin: AlignmentDirectional(
                                                                           1.0,
                                                                           -1.0),
-                                                                      end:
-                                                                      AlignmentDirectional(
+                                                                      end: AlignmentDirectional(
                                                                           -1.0,
                                                                           1.0),
                                                                     ),
@@ -244,177 +236,174 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             ),
                                                           Align(
                                                             alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
                                                             child:
-                                                            AuthUserStreamWidget(
-                                                              builder: (context) =>
-                                                                  InkWell(
-                                                                    onTap: () async {
-                                                                      if (stackStoriesRecord !=
-                                                                          null) {
-                                                                        showModalBottomSheet(
-                                                                          isScrollControlled:
+                                                                AuthUserStreamWidget(
+                                                              builder:
+                                                                  (context) =>
+                                                                      InkWell(
+                                                                onTap:
+                                                                    () async {
+                                                                  if (stackStoriesRecord !=
+                                                                      null) {
+                                                                    showModalBottomSheet(
+                                                                      isScrollControlled:
                                                                           true,
-                                                                          backgroundColor:
+                                                                      backgroundColor:
                                                                           Colors
                                                                               .transparent,
-                                                                          context:
+                                                                      context:
                                                                           context,
-                                                                          builder:
-                                                                              (context) {
-                                                                            return Padding(
-                                                                              padding: MediaQuery.of(
-                                                                                  context)
-                                                                                  .viewInsets,
-                                                                              child:
+                                                                      builder:
+                                                                          (context) {
+                                                                        return Padding(
+                                                                          padding:
+                                                                              MediaQuery.of(context).viewInsets,
+                                                                          child:
                                                                               StoryWidget(
-                                                                                story:
+                                                                            story:
                                                                                 stackStoriesRecord,
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        ).then((value) =>
-                                                                            setState(
-                                                                                    () {}));
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    ).then((value) =>
+                                                                        setState(
+                                                                            () {}));
 
-                                                                        await Future.delayed(
-                                                                            const Duration(
-                                                                                milliseconds:
-                                                                                5000));
-                                                                        Navigator.pop(
-                                                                            context);
-                                                                      }
-                                                                    },
-                                                                    child: Container(
-                                                                      width: 93.0,
-                                                                      height: 93.0,
-                                                                      decoration:
+                                                                    await Future.delayed(const Duration(
+                                                                        milliseconds:
+                                                                            5000));
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  }
+                                                                },
+                                                                child:
+                                                                    Container(
+                                                                  width: 93.0,
+                                                                  height: 93.0,
+                                                                  decoration:
                                                                       BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(
+                                                                    color: FlutterFlowTheme.of(
                                                                             context)
-                                                                            .secondaryBackground,
-                                                                        image:
+                                                                        .secondaryBackground,
+                                                                    image:
                                                                         DecorationImage(
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                          image: Image
-                                                                              .network(
-                                                                            valueOrDefault<
-                                                                                String>(
-                                                                              currentUserPhoto,
-                                                                              'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
-                                                                            ),
-                                                                          ).image,
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                      image: Image
+                                                                          .network(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          currentUserPhoto,
+                                                                          'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
                                                                         ),
-                                                                        shape: BoxShape
-                                                                            .circle,
-                                                                        border:
-                                                                        Border.all(
-                                                                          color: FlutterFlowTheme.of(
+                                                                      ).image,
+                                                                    ),
+                                                                    shape: BoxShape
+                                                                        .circle,
+                                                                    border:
+                                                                        Border
+                                                                            .all(
+                                                                      color: FlutterFlowTheme.of(
                                                                               context)
-                                                                              .primaryBackground,
-                                                                          width: 3.0,
-                                                                        ),
-                                                                      ),
+                                                                          .primaryBackground,
+                                                                      width:
+                                                                          3.0,
                                                                     ),
                                                                   ),
+                                                                ),
+                                                              ),
                                                             ),
                                                           ),
                                                           if (!(stackStoriesRecord !=
                                                               null))
                                                             Align(
                                                               alignment:
-                                                              AlignmentDirectional(
-                                                                  1.0, 1.0),
+                                                                  AlignmentDirectional(
+                                                                      1.0, 1.0),
                                                               child: InkWell(
-                                                                onTap: () async {
+                                                                onTap:
+                                                                    () async {
                                                                   final selectedMedia =
-                                                                  await selectMediaWithSourceBottomSheet(
+                                                                      await selectMediaWithSourceBottomSheet(
                                                                     context:
-                                                                    context,
+                                                                        context,
                                                                     imageQuality:
-                                                                    80,
+                                                                        80,
                                                                     allowPhoto:
-                                                                    true,
+                                                                        true,
                                                                     pickerFontFamily:
-                                                                    'Inter',
+                                                                        'Inter',
                                                                   );
                                                                   if (selectedMedia !=
-                                                                      null &&
-                                                                      selectedMedia.every((m) =>
-                                                                          validateFileFormat(
-                                                                              m.storagePath,
-                                                                              context))) {
+                                                                          null &&
+                                                                      selectedMedia.every((m) => validateFileFormat(
+                                                                          m.storagePath,
+                                                                          context))) {
                                                                     setState(() =>
-                                                                    _model.isMediaUploading =
-                                                                    true);
+                                                                        _model.isMediaUploading =
+                                                                            true);
                                                                     var selectedUploadedFiles =
-                                                                    <FFUploadedFile>[];
+                                                                        <FFUploadedFile>[];
                                                                     var downloadUrls =
-                                                                    <String>[];
+                                                                        <String>[];
                                                                     try {
                                                                       showUploadMessage(
                                                                         context,
                                                                         'Uploading file...',
                                                                         showLoading:
-                                                                        true,
+                                                                            true,
                                                                       );
-                                                                      selectedUploadedFiles =
-                                                                          selectedMedia
-                                                                              .map((m) =>
-                                                                              FFUploadedFile(
+                                                                      selectedUploadedFiles = selectedMedia
+                                                                          .map((m) => FFUploadedFile(
                                                                                 name: m.storagePath.split('/').last,
                                                                                 bytes: m.bytes,
                                                                                 height: m.dimensions?.height,
                                                                                 width: m.dimensions?.width,
                                                                               ))
-                                                                              .toList();
+                                                                          .toList();
 
                                                                       downloadUrls = (await Future
-                                                                          .wait(
+                                                                              .wait(
                                                                         selectedMedia
                                                                             .map(
-                                                                              (m) async => await uploadData(
+                                                                          (m) async => await uploadData(
                                                                               m.storagePath,
                                                                               m.bytes),
                                                                         ),
                                                                       ))
                                                                           .where((u) =>
-                                                                      u !=
-                                                                          null)
+                                                                              u !=
+                                                                              null)
                                                                           .map((u) =>
-                                                                      u!)
+                                                                              u!)
                                                                           .toList();
                                                                     } finally {
                                                                       ScaffoldMessenger.of(
-                                                                          context)
+                                                                              context)
                                                                           .hideCurrentSnackBar();
                                                                       _model.isMediaUploading =
-                                                                      false;
+                                                                          false;
                                                                     }
-                                                                    if (selectedUploadedFiles
-                                                                        .length ==
-                                                                        selectedMedia
-                                                                            .length &&
-                                                                        downloadUrls
-                                                                            .length ==
+                                                                    if (selectedUploadedFiles.length ==
                                                                             selectedMedia
-                                                                                .length) {
-                                                                      setState(() {
+                                                                                .length &&
+                                                                        downloadUrls.length ==
+                                                                            selectedMedia.length) {
+                                                                      setState(
+                                                                          () {
                                                                         _model.uploadedLocalFile =
-                                                                            selectedUploadedFiles
-                                                                                .first;
+                                                                            selectedUploadedFiles.first;
                                                                         _model.uploadedFileUrl =
-                                                                            downloadUrls
-                                                                                .first;
+                                                                            downloadUrls.first;
                                                                       });
                                                                       showUploadMessage(
                                                                           context,
                                                                           'Success!');
                                                                     } else {
                                                                       setState(
-                                                                              () {});
+                                                                          () {});
                                                                       showUploadMessage(
                                                                           context,
                                                                           'Failed to upload media');
@@ -423,50 +412,51 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   }
 
                                                                   if (_model.uploadedFileUrl !=
-                                                                      null &&
+                                                                          null &&
                                                                       _model.uploadedFileUrl !=
                                                                           '') {
                                                                     final storiesCreateData =
-                                                                    {
+                                                                        {
                                                                       ...createStoriesRecordData(
                                                                         user:
-                                                                        currentUserReference,
+                                                                            currentUserReference,
                                                                         storyPhoto:
-                                                                        _model
-                                                                            .uploadedFileUrl,
+                                                                            _model.uploadedFileUrl,
                                                                         timeCreated:
-                                                                        getCurrentTimestamp,
+                                                                            getCurrentTimestamp,
                                                                         expireTime:
-                                                                        functions
-                                                                            .tomorrowTime(getCurrentTimestamp),
+                                                                            functions.tomorrowTime(getCurrentTimestamp),
                                                                       ),
                                                                       'views':
-                                                                      FFAppState()
-                                                                          .emptyList,
+                                                                          FFAppState()
+                                                                              .emptyList,
                                                                     };
                                                                     await StoriesRecord
                                                                         .collection
                                                                         .doc()
                                                                         .set(
-                                                                        storiesCreateData);
+                                                                            storiesCreateData);
                                                                   }
                                                                 },
-                                                                child: Container(
+                                                                child:
+                                                                    Container(
                                                                   width: 30.0,
                                                                   height: 30.0,
                                                                   decoration:
-                                                                  BoxDecoration(
+                                                                      BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
-                                                                        context)
+                                                                            context)
                                                                         .secondaryColor,
                                                                     shape: BoxShape
                                                                         .circle,
                                                                     border:
-                                                                    Border.all(
+                                                                        Border
+                                                                            .all(
                                                                       color: FlutterFlowTheme.of(
-                                                                          context)
+                                                                              context)
                                                                           .primaryBackground,
-                                                                      width: 3.0,
+                                                                      width:
+                                                                          3.0,
                                                                     ),
                                                                   ),
                                                                   child: Icon(
@@ -487,78 +477,87 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 Expanded(
                                                   child: Column(
                                                     crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Row(
                                                         mainAxisSize:
-                                                        MainAxisSize.max,
+                                                            MainAxisSize.max,
                                                         mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
                                                         crossAxisAlignment:
-                                                        CrossAxisAlignment.center,
+                                                            CrossAxisAlignment
+                                                                .center,
                                                         children: [
                                                           if (currentUserDisplayName !=
-                                                              null &&
+                                                                  null &&
                                                               currentUserDisplayName !=
                                                                   '')
                                                             Padding(
                                                               padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                  20.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          20.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
                                                               child:
-                                                              AuthUserStreamWidget(
-                                                                builder: (context) =>
-                                                                    AutoSizeText(
-                                                                      currentUserDisplayName
-                                                                          .maybeHandleOverflow(
-                                                                        maxChars: 15,
-                                                                        replacement: '…',
-                                                                      ),
-                                                                      maxLines: 1,
-                                                                      style: FlutterFlowTheme
-                                                                          .of(context)
-                                                                          .bodyText1
-                                                                          .override(
+                                                                  AuthUserStreamWidget(
+                                                                builder:
+                                                                    (context) =>
+                                                                        AutoSizeText(
+                                                                  currentUserDisplayName
+                                                                      .maybeHandleOverflow(
+                                                                    maxChars:
+                                                                        15,
+                                                                    replacement:
+                                                                        '…',
+                                                                  ),
+                                                                  maxLines: 1,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1
+                                                                      .override(
                                                                         fontFamily:
-                                                                        'Poppins',
+                                                                            'Poppins',
                                                                         fontSize:
-                                                                        18.0,
+                                                                            18.0,
                                                                       ),
-                                                                    ),
+                                                                ),
                                                               ),
                                                             ),
                                                           InkWell(
                                                             onTap: () async {
                                                               await showModalBottomSheet(
                                                                 isScrollControlled:
-                                                                true,
+                                                                    true,
                                                                 backgroundColor:
-                                                                Colors
-                                                                    .transparent,
-                                                                enableDrag: false,
-                                                                context: context,
-                                                                builder: (context) {
+                                                                    Colors
+                                                                        .transparent,
+                                                                enableDrag:
+                                                                    false,
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) {
                                                                   return Padding(
-                                                                    padding: MediaQuery
-                                                                        .of(context)
+                                                                    padding: MediaQuery.of(
+                                                                            context)
                                                                         .viewInsets,
                                                                     child:
-                                                                    ProfileSettingsWidget(),
+                                                                        ProfileSettingsWidget(),
                                                                   );
                                                                 },
                                                               ).then((value) =>
-                                                                  setState(() {}));
+                                                                  setState(
+                                                                      () {}));
                                                             },
                                                             child: Icon(
-                                                              Icons.more_vert_rounded,
-                                                              color:
-                                                              FlutterFlowTheme.of(
-                                                                  context)
+                                                              Icons
+                                                                  .more_vert_rounded,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .secondaryText,
                                                               size: 26.0,
                                                             ),
@@ -566,98 +565,101 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         ],
                                                       ),
                                                       Padding(
-                                                        padding: EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                            0.0, 0.0, 0.0, 4.0),
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    4.0),
                                                         child: Row(
                                                           mainAxisSize:
-                                                          MainAxisSize.max,
+                                                              MainAxisSize.max,
                                                           crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
+                                                              CrossAxisAlignment
+                                                                  .center,
                                                           children: [
                                                             if (currentUserDisplayName !=
-                                                                null &&
+                                                                    null &&
                                                                 currentUserDisplayName !=
                                                                     '')
                                                               Padding(
                                                                 padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                    20.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            20.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child:
-                                                                AuthUserStreamWidget(
+                                                                    AuthUserStreamWidget(
                                                                   builder:
                                                                       (context) =>
-                                                                      Text(
-                                                                        '@',
-                                                                        style: FlutterFlowTheme
-                                                                            .of(context)
-                                                                            .bodyText1
-                                                                            .override(
+                                                                          Text(
+                                                                    '@',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1
+                                                                        .override(
                                                                           fontFamily:
-                                                                          'Poppins',
-                                                                          color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                              .primaryColor,
+                                                                              'Poppins',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryColor,
                                                                           fontSize:
-                                                                          15.0,
+                                                                              15.0,
                                                                         ),
-                                                                      ),
+                                                                  ),
                                                                 ),
                                                               ),
                                                             if (currentUserDisplayName !=
-                                                                null &&
+                                                                    null &&
                                                                 currentUserDisplayName !=
                                                                     '')
                                                               AuthUserStreamWidget(
-                                                                builder: (context) =>
-                                                                    Text(
-                                                                      valueOrDefault(
-                                                                          currentUserDocument
-                                                                              ?.username,
-                                                                          ''),
-                                                                      style: FlutterFlowTheme
-                                                                          .of(context)
-                                                                          .bodyText1
-                                                                          .override(
+                                                                builder:
+                                                                    (context) =>
+                                                                        Text(
+                                                                  valueOrDefault(
+                                                                      currentUserDocument
+                                                                          ?.username,
+                                                                      ''),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1
+                                                                      .override(
                                                                         fontFamily:
-                                                                        'Poppins',
-                                                                        color: FlutterFlowTheme.of(
-                                                                            context)
+                                                                            'Poppins',
+                                                                        color: FlutterFlowTheme.of(context)
                                                                             .primaryColor,
                                                                         fontSize:
-                                                                        15.0,
+                                                                            15.0,
                                                                       ),
-                                                                    ),
+                                                                ),
                                                               ),
                                                           ],
                                                         ),
                                                       ),
                                                       Row(
                                                         mainAxisSize:
-                                                        MainAxisSize.max,
+                                                            MainAxisSize.max,
                                                         children: [
                                                           Expanded(
                                                             child: Column(
                                                               mainAxisSize:
-                                                              MainAxisSize.max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
+                                                                  CrossAxisAlignment
+                                                                      .center,
                                                               children: [
                                                                 StreamBuilder<
                                                                     List<
                                                                         PostsRecord>>(
                                                                   stream:
-                                                                  queryPostsRecord(
-                                                                    queryBuilder: (postsRecord) =>
-                                                                        postsRecord.where(
-                                                                            'post_user',
-                                                                            isEqualTo:
+                                                                      queryPostsRecord(
+                                                                    queryBuilder: (postsRecord) => postsRecord.where(
+                                                                        'post_user',
+                                                                        isEqualTo:
                                                                             currentUserReference),
                                                                   ),
                                                                   builder: (context,
@@ -667,64 +669,62 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                         .hasData) {
                                                                       return Center(
                                                                         child:
-                                                                        SizedBox(
-                                                                          width: 12.0,
+                                                                            SizedBox(
+                                                                          width:
+                                                                              12.0,
                                                                           height:
-                                                                          12.0,
+                                                                              12.0,
                                                                           child:
-                                                                          CircularProgressIndicator(
-                                                                            color: Colors
-                                                                                .white,
+                                                                              CircularProgressIndicator(
+                                                                            color:
+                                                                                Colors.white,
                                                                           ),
                                                                         ),
                                                                       );
                                                                     }
                                                                     List<PostsRecord>
-                                                                    numberPostsRecordList =
-                                                                    snapshot
-                                                                        .data!;
+                                                                        numberPostsRecordList =
+                                                                        snapshot
+                                                                            .data!;
                                                                     return Text(
                                                                       formatNumber(
                                                                         numberPostsRecordList
                                                                             .length,
                                                                         formatType:
-                                                                        FormatType
-                                                                            .compact,
+                                                                            FormatType.compact,
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
-                                                                          context)
+                                                                              context)
                                                                           .bodyText1
                                                                           .override(
-                                                                        fontFamily:
-                                                                        'Poppins',
-                                                                        fontSize:
-                                                                        14.0,
-                                                                      ),
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            fontSize:
+                                                                                14.0,
+                                                                          ),
                                                                     );
                                                                   },
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                  EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                      0.0,
-                                                                      2.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Text(
                                                                     'Posts',
-                                                                    style: FlutterFlowTheme
-                                                                        .of(context)
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
                                                                         .bodyText1
                                                                         .override(
-                                                                      fontFamily:
-                                                                      'Poppins',
-                                                                      fontSize:
-                                                                      10.0,
-                                                                      fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                    ),
+                                                                          fontFamily:
+                                                                              'Poppins',
+                                                                          fontSize:
+                                                                              10.0,
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                        ),
                                                                   ),
                                                                 ),
                                                               ],
@@ -738,96 +738,87 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               },
                                                               child: Column(
                                                                 mainAxisSize:
-                                                                MainAxisSize.max,
+                                                                    MainAxisSize
+                                                                        .max,
                                                                 children: [
                                                                   StreamBuilder<
                                                                       List<
                                                                           FollowersRecord>>(
                                                                     stream:
-                                                                    queryFollowersRecord(
+                                                                        queryFollowersRecord(
                                                                       parent:
-                                                                      currentUserReference,
+                                                                          currentUserReference,
                                                                       singleRecord:
-                                                                      true,
+                                                                          true,
                                                                     ),
-                                                                    builder: (context,
-                                                                        snapshot) {
+                                                                    builder:
+                                                                        (context,
+                                                                            snapshot) {
                                                                       // Customize what your widget looks like when it's loading.
                                                                       if (!snapshot
                                                                           .hasData) {
                                                                         return Center(
                                                                           child:
-                                                                          SizedBox(
+                                                                              SizedBox(
                                                                             width:
-                                                                            12.0,
+                                                                                12.0,
                                                                             height:
-                                                                            12.0,
+                                                                                12.0,
                                                                             child:
-                                                                            CircularProgressIndicator(
-                                                                              color: Colors
-                                                                                  .white,
+                                                                                CircularProgressIndicator(
+                                                                              color: Colors.white,
                                                                             ),
                                                                           ),
                                                                         );
                                                                       }
                                                                       List<FollowersRecord>
-                                                                      numberFollowersRecordList =
-                                                                      snapshot
-                                                                          .data!;
-                                                                      final numberFollowersRecord =
-                                                                      numberFollowersRecordList
-                                                                          .isNotEmpty
+                                                                          numberFollowersRecordList =
+                                                                          snapshot
+                                                                              .data!;
+                                                                      final numberFollowersRecord = numberFollowersRecordList
+                                                                              .isNotEmpty
                                                                           ? numberFollowersRecordList
-                                                                          .first
+                                                                              .first
                                                                           : null;
                                                                       return Text(
                                                                         valueOrDefault<
                                                                             String>(
                                                                           formatNumber(
-                                                                            numberFollowersRecord!
-                                                                                .userRefs!
-                                                                                .toList()
-                                                                                .length,
+                                                                            numberFollowersRecord!.userRefs!.toList().length,
                                                                             formatType:
-                                                                            FormatType
-                                                                                .compact,
+                                                                                FormatType.compact,
                                                                           ),
                                                                           '0',
                                                                         ),
-                                                                        style: FlutterFlowTheme.of(
-                                                                            context)
+                                                                        style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                          fontFamily:
-                                                                          'Poppins',
-                                                                          fontSize:
-                                                                          14.0,
-                                                                        ),
+                                                                              fontFamily: 'Poppins',
+                                                                              fontSize: 14.0,
+                                                                            ),
                                                                       );
                                                                     },
                                                                   ),
                                                                   Padding(
-                                                                    padding:
-                                                                    EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                            0.0,
+                                                                            2.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                     child: Text(
                                                                       'Followers',
                                                                       style: FlutterFlowTheme.of(
-                                                                          context)
+                                                                              context)
                                                                           .bodyText1
                                                                           .override(
-                                                                        fontFamily:
-                                                                        'Poppins',
-                                                                        fontSize:
-                                                                        10.0,
-                                                                        fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                      ),
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            fontSize:
+                                                                                10.0,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                          ),
                                                                     ),
                                                                   ),
                                                                 ],
@@ -842,57 +833,54 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               },
                                                               child: Column(
                                                                 mainAxisSize:
-                                                                MainAxisSize.max,
+                                                                    MainAxisSize
+                                                                        .max,
                                                                 children: [
                                                                   AuthUserStreamWidget(
                                                                     builder:
                                                                         (context) =>
-                                                                        Text(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            formatNumber(
-                                                                              (currentUserDocument?.following?.toList() ??
-                                                                                  [])
-                                                                                  .length,
-                                                                              formatType:
-                                                                              FormatType
-                                                                                  .compact,
-                                                                            ),
-                                                                            '0',
-                                                                          ),
-                                                                          style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                            fontFamily:
-                                                                            'Poppins',
-                                                                            fontSize:
-                                                                            14.0,
-                                                                          ),
+                                                                            Text(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        formatNumber(
+                                                                          (currentUserDocument?.following?.toList() ?? [])
+                                                                              .length,
+                                                                          formatType:
+                                                                              FormatType.compact,
                                                                         ),
+                                                                        '0',
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            fontSize:
+                                                                                14.0,
+                                                                          ),
+                                                                    ),
                                                                   ),
                                                                   Padding(
-                                                                    padding:
-                                                                    EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0,
-                                                                        0.0),
+                                                                            0.0,
+                                                                            2.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                     child: Text(
                                                                       'Following',
                                                                       style: FlutterFlowTheme.of(
-                                                                          context)
+                                                                              context)
                                                                           .bodyText1
                                                                           .override(
-                                                                        fontFamily:
-                                                                        'Poppins',
-                                                                        fontSize:
-                                                                        10.0,
-                                                                        fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                      ),
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            fontSize:
+                                                                                10.0,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                          ),
                                                                     ),
                                                                   ),
                                                                 ],
@@ -912,628 +900,672 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     ],
                                   ),
                                 ),
-
                               ],
                             ),
                           ],
                         ),
-                        
+
                         // SOCIAL LINKS
-                        Container(
-                          width: double.infinity,
-                          height: 80,
-                          decoration: BoxDecoration(),
-                          child: ListView(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 0.0, 20.0),
-                            primary: false,
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 12.0, 0.0),
-                                child: Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    'https://www.pngitem.com/pimgs/m/10-100273_transparent-background-website-icon-hd-png-download.png',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 12.0, 0.0),
-                                child: Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    'https://www.edigitalagency.com.au/wp-content/uploads/Facebook-logo-blue-circle-large-transparent-png.png',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 12.0, 0.0),
-                                child: Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    'https://image.similarpng.com/very-thumbnail/2020/06/Instagram-logo-transparent-PNG.png',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 12.0, 0.0),
-                                child: Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    'https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-twitter-social-media-round-icon-png-image_6315985.png',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 12.0, 0.0),
-                                child: Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    'https://assets.stickpng.com/images/602179070ad3230004b93c28.png',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 12.0, 0.0),
-                                child: Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    'https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png',
-                                    fit: BoxFit.fitHeight,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 12.0, 0.0),
-                                child: Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    'https://assets.stickpng.com/images/580b57fcd9996e24bc43c536.png',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 12.0, 0.0),
-                                child: Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    'https://cdn.freebiesupply.com/logos/large/2x/linkedin-icon-logo-png-transparent.png',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 12.0, 0.0),
-                                child: Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    'https://assets.stickpng.com/images/580b57fcd9996e24bc43c52e.png',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 12.0, 0.0),
-                                child: Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    'https://assets.stickpng.com/images/580b57fcd9996e24bc43c536.png',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 12.0, 0.0),
-                                child: Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    'https://cdn-icons-png.flaticon.com/512/38/38401.png',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 12.0, 0.0),
-                                child: Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    'https://www.edigitalagency.com.au/wp-content/uploads/OnlyFans-logo-symbol-icon-png-blue-background.png',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        
+                        SocialLinks(),
+
                         // SLIDER TAB BAR
-                        Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height-260,
-                          child: Stack(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 12.0, right: 12.0, top: 11.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 48.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                  ),
-                                ),
-                              ),
-                              DefaultTabController(
-                                length: 5,
-                                initialIndex: 0,
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(12.0),
-                                      child: TabBar(
-                                        isScrollable: true,
-                                        indicator: BoxDecoration(
-                                          borderRadius:
-                                          BorderRadius.circular(25.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            width: 5.0,
-                                          ),
-                                        ),
-                                        labelColor: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        unselectedLabelColor:
-                                        FlutterFlowTheme.of(context)
-                                            .lineColor,
-                                        labelPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
-                                            30.0, 0.0, 30.0, 0.0),
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                          fontFamily: 'Noto Sans',
-                                        ),
-                                        indicatorColor:
-                                        FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        indicatorWeight: 0.0,
-                                        tabs: [
-                                          Tab(
-                                            text: 'Profile',
-                                          ),
-                                          Tab(
-                                            text: 'Posts',
-                                          ),
-                                          Tab(
-                                            text: 'Tags',
-                                          ),
-                                          Tab(
-                                            text: 'Saved',
-                                          ),
-                                          Tab(
-                                            text: 'Events',
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: TabBarView(
-                                        children: [
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => Text(
-                                              'Tab View 4',
-                                              style:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyText1
-                                                  .override(
-                                                fontFamily: 'Noto Sans',
-                                                fontSize: 32.0,
-                                              ),
-                                            ),
-                                          ),
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => StreamBuilder<
-                                                List<PostsRecord>>(
-                                              stream: queryPostsRecord(
-                                                queryBuilder: (postsRecord) =>
-                                                    postsRecord
-                                                        .where('post_user',
-                                                        isEqualTo:
-                                                        currentUserReference)
-                                                        .where('deleted',
-                                                        isEqualTo: false)
-                                                        .orderBy('time_posted',
-                                                        descending: true),
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 12.0,
-                                                      height: 12.0,
-                                                      child:
-                                                      CircularProgressIndicator(
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<PostsRecord>
-                                                profilePhotosPostsRecordList =
-                                                snapshot.data!;
-                                                return GridView.builder(
-                                                  padding: EdgeInsets.zero,
-                                                  gridDelegate:
-                                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: 3,
-                                                    crossAxisSpacing: 1.0,
-                                                    mainAxisSpacing: 1.0,
-                                                    childAspectRatio: 1.0,
-                                                  ),
-                                                  primary: false,
-                                                  shrinkWrap: true,
-                                                  scrollDirection:
-                                                  Axis.vertical,
-                                                  itemCount:
-                                                  profilePhotosPostsRecordList
-                                                      .length,
-                                                  itemBuilder: (context,
-                                                      profilePhotosIndex) {
-                                                    final profilePhotosPostsRecord =
-                                                    profilePhotosPostsRecordList[
-                                                    profilePhotosIndex];
-                                                    return InkWell(
-                                                      onTap: () async {
-                                                        context.pushNamed(
-                                                          'PostDetails',
-                                                          queryParams: {
-                                                            'post':
-                                                            serializeParam(
-                                                              profilePhotosPostsRecord
-                                                                  .reference,
-                                                              ParamType
-                                                                  .DocumentReference,
-                                                            ),
-                                                          }.withoutNulls,
-                                                        );
-                                                      },
-                                                      child: Hero(
-                                                        tag:
-                                                        profilePhotosPostsRecord
-                                                            .postPhoto!,
-                                                        transitionOnUserGestures:
-                                                        true,
-                                                        child: Image.network(
-                                                          profilePhotosPostsRecord
-                                                              .postPhoto!,
-                                                          width: 100.0,
-                                                          height: 100.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => StreamBuilder<
-                                                List<PostsRecord>>(
-                                              stream: queryPostsRecord(
-                                                queryBuilder: (postsRecord) =>
-                                                    postsRecord
-                                                        .where('tagged_users',
-                                                        arrayContains:
-                                                        currentUserReference)
-                                                        .where('deleted',
-                                                        isEqualTo: false)
-                                                        .orderBy('time_posted',
-                                                        descending: true),
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 12.0,
-                                                      height: 12.0,
-                                                      child:
-                                                      CircularProgressIndicator(
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<PostsRecord>
-                                                taggedPhotosPostsRecordList =
-                                                snapshot.data!;
-                                                return GridView.builder(
-                                                  padding: EdgeInsets.zero,
-                                                  gridDelegate:
-                                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: 3,
-                                                    crossAxisSpacing: 1.0,
-                                                    mainAxisSpacing: 1.0,
-                                                    childAspectRatio: 1.0,
-                                                  ),
-                                                  primary: false,
-                                                  shrinkWrap: true,
-                                                  scrollDirection:
-                                                  Axis.vertical,
-                                                  itemCount:
-                                                  taggedPhotosPostsRecordList
-                                                      .length,
-                                                  itemBuilder: (context,
-                                                      taggedPhotosIndex) {
-                                                    final taggedPhotosPostsRecord =
-                                                    taggedPhotosPostsRecordList[
-                                                    taggedPhotosIndex];
-                                                    return InkWell(
-                                                      onTap: () async {
-                                                        context.pushNamed(
-                                                          'PostDetails',
-                                                          queryParams: {
-                                                            'post':
-                                                            serializeParam(
-                                                              taggedPhotosPostsRecord
-                                                                  .reference,
-                                                              ParamType
-                                                                  .DocumentReference,
-                                                            ),
-                                                          }.withoutNulls,
-                                                        );
-                                                      },
-                                                      child: Hero(
-                                                        tag:
-                                                        taggedPhotosPostsRecord
-                                                            .postPhoto!,
-                                                        transitionOnUserGestures:
-                                                        true,
-                                                        child: Image.network(
-                                                          taggedPhotosPostsRecord
-                                                              .postPhoto!,
-                                                          width: 100.0,
-                                                          height: 100.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => StreamBuilder<
-                                                List<BookmarksRecord>>(
-                                              stream: queryBookmarksRecord(
-                                                parent: currentUserReference,
-                                                singleRecord: true,
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 12.0,
-                                                      height: 12.0,
-                                                      child:
-                                                      CircularProgressIndicator(
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<BookmarksRecord>
-                                                bookmarkedPhotosBookmarksRecordList =
-                                                snapshot.data!;
-                                                // Return an empty Container when the item does not exist.
-                                                if (snapshot.data!.isEmpty) {
-                                                  return Container();
-                                                }
-                                                final bookmarkedPhotosBookmarksRecord =
-                                                bookmarkedPhotosBookmarksRecordList
-                                                    .isNotEmpty
-                                                    ? bookmarkedPhotosBookmarksRecordList
-                                                    .first
-                                                    : null;
-                                                return Builder(
-                                                  builder: (context) {
-                                                    final bookmarkedposts =
-                                                    bookmarkedPhotosBookmarksRecord!
-                                                        .postRefs!
-                                                        .toList();
-                                                    return GridView.builder(
-                                                      padding: EdgeInsets.zero,
-                                                      gridDelegate:
-                                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                                        crossAxisCount: 3,
-                                                        crossAxisSpacing: 1.0,
-                                                        mainAxisSpacing: 1.0,
-                                                        childAspectRatio: 1.0,
-                                                      ),
-                                                      primary: false,
-                                                      shrinkWrap: true,
-                                                      scrollDirection:
-                                                      Axis.vertical,
-                                                      itemCount: bookmarkedposts
-                                                          .length,
-                                                      itemBuilder: (context,
-                                                          bookmarkedpostsIndex) {
-                                                        final bookmarkedpostsItem =
-                                                        bookmarkedposts[
-                                                        bookmarkedpostsIndex];
-                                                        return StreamBuilder<
-                                                            PostsRecord>(
-                                                          stream: PostsRecord
-                                                              .getDocument(
-                                                              bookmarkedpostsItem),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 12.0,
-                                                                  height: 12.0,
-                                                                  child:
-                                                                  CircularProgressIndicator(
-                                                                    color: Colors
-                                                                        .white,
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            }
-                                                            final photoPostsRecord =
-                                                            snapshot.data!;
-                                                            return InkWell(
-                                                              onTap: () async {
-                                                                context
-                                                                    .pushNamed(
-                                                                  'PostDetails',
-                                                                  queryParams: {
-                                                                    'post':
-                                                                    serializeParam(
-                                                                      bookmarkedpostsItem,
-                                                                      ParamType
-                                                                          .DocumentReference,
-                                                                    ),
-                                                                  }.withoutNulls,
-                                                                );
-                                                              },
-                                                              child:
-                                                              Image.network(
-                                                                photoPostsRecord
-                                                                    .postPhoto!,
-                                                                width: 100.0,
-                                                                height: 100.0,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            );
-                                                          },
-                                                        );
-                                                      },
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => Text(
-                                              'Tab View 5',
-                                              style:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyText1
-                                                  .override(
-                                                fontFamily: 'Poppins',
-                                                fontSize: 32.0,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        SliderTabBar(),
                       ],
                     ),
                   ),
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SliderTabBar extends StatelessWidget {
+  const SliderTabBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: MediaQuery.of(context).size.height - 260,
+      child: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+                left: 12.0, right: 12.0, top: 11.0),
+            child: Container(
+              width: double.infinity,
+              height: 48.0,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context)
+                    .secondaryBackground,
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+            ),
+          ),
+          DefaultTabController(
+            length: 5,
+            initialIndex: 0,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: TabBar(
+                    isScrollable: true,
+                    indicator: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(25.0),
+                      color: FlutterFlowTheme.of(context)
+                          .primaryBackground,
+                      border: Border.all(
+                        color: FlutterFlowTheme.of(context)
+                            .secondaryBackground,
+                        width: 5.0,
+                      ),
+                    ),
+                    labelColor: FlutterFlowTheme.of(context)
+                        .primaryText,
+                    unselectedLabelColor:
+                        FlutterFlowTheme.of(context)
+                            .lineColor,
+                    labelPadding:
+                        EdgeInsetsDirectional.fromSTEB(
+                            30.0, 0.0, 30.0, 0.0),
+                    labelStyle: FlutterFlowTheme.of(context)
+                        .bodyText1
+                        .override(
+                          fontFamily: 'Noto Sans',
+                        ),
+                    indicatorColor:
+                        FlutterFlowTheme.of(context)
+                            .alternate,
+                    indicatorWeight: 0.0,
+                    tabs: [
+                      Tab(
+                        text: 'Profile',
+                      ),
+                      Tab(
+                        text: 'Posts',
+                      ),
+                      Tab(
+                        text: 'Tags',
+                      ),
+                      Tab(
+                        text: 'Saved',
+                      ),
+                      Tab(
+                        text: 'Events',
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: TabBarView(
+                    children: [
+                      KeepAliveWidgetWrapper(
+                        builder: (context) => Text(
+                          'Tab View 4',
+                          style:
+                              FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Noto Sans',
+                                    fontSize: 32.0,
+                                  ),
+                        ),
+                      ),
+                      KeepAliveWidgetWrapper(
+                        builder: (context) => StreamBuilder<
+                            List<PostsRecord>>(
+                          stream: queryPostsRecord(
+                            queryBuilder: (postsRecord) =>
+                                postsRecord
+                                    .where('post_user',
+                                        isEqualTo:
+                                            currentUserReference)
+                                    .where('deleted',
+                                        isEqualTo: false)
+                                    .orderBy('time_posted',
+                                        descending: true),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 12.0,
+                                  height: 12.0,
+                                  child:
+                                      CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              );
+                            }
+                            List<PostsRecord>
+                                profilePhotosPostsRecordList =
+                                snapshot.data!;
+                            return GridView.builder(
+                              padding: EdgeInsets.zero,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                crossAxisSpacing: 1.0,
+                                mainAxisSpacing: 1.0,
+                                childAspectRatio: 1.0,
+                              ),
+                              primary: false,
+                              shrinkWrap: true,
+                              scrollDirection:
+                                  Axis.vertical,
+                              itemCount:
+                                  profilePhotosPostsRecordList
+                                      .length,
+                              itemBuilder: (context,
+                                  profilePhotosIndex) {
+                                final profilePhotosPostsRecord =
+                                    profilePhotosPostsRecordList[
+                                        profilePhotosIndex];
+                                return InkWell(
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'PostDetails',
+                                      queryParams: {
+                                        'post':
+                                            serializeParam(
+                                          profilePhotosPostsRecord
+                                              .reference,
+                                          ParamType
+                                              .DocumentReference,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Hero(
+                                    tag:
+                                        profilePhotosPostsRecord
+                                            .postPhoto!,
+                                    transitionOnUserGestures:
+                                        true,
+                                    child: Image.network(
+                                      profilePhotosPostsRecord
+                                          .postPhoto!,
+                                      width: 100.0,
+                                      height: 100.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                      KeepAliveWidgetWrapper(
+                        builder: (context) => StreamBuilder<
+                            List<PostsRecord>>(
+                          stream: queryPostsRecord(
+                            queryBuilder: (postsRecord) =>
+                                postsRecord
+                                    .where('tagged_users',
+                                        arrayContains:
+                                            currentUserReference)
+                                    .where('deleted',
+                                        isEqualTo: false)
+                                    .orderBy('time_posted',
+                                        descending: true),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 12.0,
+                                  height: 12.0,
+                                  child:
+                                      CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              );
+                            }
+                            List<PostsRecord>
+                                taggedPhotosPostsRecordList =
+                                snapshot.data!;
+                            return GridView.builder(
+                              padding: EdgeInsets.zero,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                crossAxisSpacing: 1.0,
+                                mainAxisSpacing: 1.0,
+                                childAspectRatio: 1.0,
+                              ),
+                              primary: false,
+                              shrinkWrap: true,
+                              scrollDirection:
+                                  Axis.vertical,
+                              itemCount:
+                                  taggedPhotosPostsRecordList
+                                      .length,
+                              itemBuilder: (context,
+                                  taggedPhotosIndex) {
+                                final taggedPhotosPostsRecord =
+                                    taggedPhotosPostsRecordList[
+                                        taggedPhotosIndex];
+                                return InkWell(
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'PostDetails',
+                                      queryParams: {
+                                        'post':
+                                            serializeParam(
+                                          taggedPhotosPostsRecord
+                                              .reference,
+                                          ParamType
+                                              .DocumentReference,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Hero(
+                                    tag:
+                                        taggedPhotosPostsRecord
+                                            .postPhoto!,
+                                    transitionOnUserGestures:
+                                        true,
+                                    child: Image.network(
+                                      taggedPhotosPostsRecord
+                                          .postPhoto!,
+                                      width: 100.0,
+                                      height: 100.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                      KeepAliveWidgetWrapper(
+                        builder: (context) => StreamBuilder<
+                            List<BookmarksRecord>>(
+                          stream: queryBookmarksRecord(
+                            parent: currentUserReference,
+                            singleRecord: true,
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 12.0,
+                                  height: 12.0,
+                                  child:
+                                      CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              );
+                            }
+                            List<BookmarksRecord>
+                                bookmarkedPhotosBookmarksRecordList =
+                                snapshot.data!;
+                            // Return an empty Container when the item does not exist.
+                            if (snapshot.data!.isEmpty) {
+                              return Container();
+                            }
+                            final bookmarkedPhotosBookmarksRecord =
+                                bookmarkedPhotosBookmarksRecordList
+                                        .isNotEmpty
+                                    ? bookmarkedPhotosBookmarksRecordList
+                                        .first
+                                    : null;
+                            return Builder(
+                              builder: (context) {
+                                final bookmarkedposts =
+                                    bookmarkedPhotosBookmarksRecord!
+                                        .postRefs!
+                                        .toList();
+                                return GridView.builder(
+                                  padding: EdgeInsets.zero,
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3,
+                                    crossAxisSpacing: 1.0,
+                                    mainAxisSpacing: 1.0,
+                                    childAspectRatio: 1.0,
+                                  ),
+                                  primary: false,
+                                  shrinkWrap: true,
+                                  scrollDirection:
+                                      Axis.vertical,
+                                  itemCount: bookmarkedposts
+                                      .length,
+                                  itemBuilder: (context,
+                                      bookmarkedpostsIndex) {
+                                    final bookmarkedpostsItem =
+                                        bookmarkedposts[
+                                            bookmarkedpostsIndex];
+                                    return StreamBuilder<
+                                        PostsRecord>(
+                                      stream: PostsRecord
+                                          .getDocument(
+                                              bookmarkedpostsItem),
+                                      builder: (context,
+                                          snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot
+                                            .hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 12.0,
+                                              height: 12.0,
+                                              child:
+                                                  CircularProgressIndicator(
+                                                color: Colors
+                                                    .white,
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        final photoPostsRecord =
+                                            snapshot.data!;
+                                        return InkWell(
+                                          onTap: () async {
+                                            context
+                                                .pushNamed(
+                                              'PostDetails',
+                                              queryParams: {
+                                                'post':
+                                                    serializeParam(
+                                                  bookmarkedpostsItem,
+                                                  ParamType
+                                                      .DocumentReference,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child:
+                                              Image.network(
+                                            photoPostsRecord
+                                                .postPhoto!,
+                                            width: 100.0,
+                                            height: 100.0,
+                                            fit: BoxFit
+                                                .cover,
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                      KeepAliveWidgetWrapper(
+                        builder: (context) => Text(
+                          'Tab View 5',
+                          style:
+                              FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 32.0,
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SocialLinks extends StatelessWidget {
+  const SocialLinks({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 80,
+      decoration: BoxDecoration(),
+      child: ListView(
+        padding: EdgeInsetsDirectional.fromSTEB(
+            20.0, 0.0, 0.0, 20.0),
+        primary: false,
+        scrollDirection: Axis.horizontal,
+        children: [
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                0.0, 0.0, 12.0, 0.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://www.pngitem.com/pimgs/m/10-100273_transparent-background-website-icon-hd-png-download.png',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                0.0, 0.0, 12.0, 0.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://www.edigitalagency.com.au/wp-content/uploads/Facebook-logo-blue-circle-large-transparent-png.png',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                0.0, 0.0, 12.0, 0.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://image.similarpng.com/very-thumbnail/2020/06/Instagram-logo-transparent-PNG.png',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                0.0, 0.0, 12.0, 0.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-twitter-social-media-round-icon-png-image_6315985.png',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                0.0, 0.0, 12.0, 0.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://assets.stickpng.com/images/602179070ad3230004b93c28.png',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                0.0, 0.0, 12.0, 0.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png',
+                fit: BoxFit.fitHeight,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                0.0, 0.0, 12.0, 0.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://assets.stickpng.com/images/580b57fcd9996e24bc43c536.png',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                0.0, 0.0, 12.0, 0.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://cdn.freebiesupply.com/logos/large/2x/linkedin-icon-logo-png-transparent.png',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                0.0, 0.0, 12.0, 0.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://assets.stickpng.com/images/580b57fcd9996e24bc43c52e.png',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                0.0, 0.0, 12.0, 0.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://assets.stickpng.com/images/580b57fcd9996e24bc43c536.png',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                0.0, 0.0, 12.0, 0.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://cdn-icons-png.flaticon.com/512/38/38401.png',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                0.0, 0.0, 12.0, 0.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://www.edigitalagency.com.au/wp-content/uploads/OnlyFans-logo-symbol-icon-png-blue-background.png',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CoverImage extends StatelessWidget {
+  const CoverImage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AuthUserStreamWidget(
+      builder: (context) => Container(
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: Image.network(
+              currentUserPhoto,
+            ).image,
           ),
         ),
       ),
