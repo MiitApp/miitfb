@@ -60,7 +60,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  height: 50.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primaryBackground,
                   ),
@@ -80,7 +79,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 AuthUserStreamWidget(
                                   builder: (context) => Container(
                                     height: MediaQuery.of(context).size.height *
-                                        0.9,
+                                        0.85,
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
@@ -93,7 +92,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 ),
                                 Container(
                                   width: double.infinity,
-                                  height: 120.0,
+                                  height: 140.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
@@ -919,6 +918,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             ),
                           ],
                         ),
+                        
+                        // SOCIAL LINKS
                         Container(
                           width: double.infinity,
                           height: MediaQuery.of(context).size.height * 0.1,
@@ -1086,7 +1087,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.network(
-                                      'https://www.freeiconspng.com/thumbs/spotify-icon/spotify-icon-22.png',
+                                      'https://assets.stickpng.com/images/580b57fcd9996e24bc43c536.png',
                                       fit: BoxFit.fitWidth,
                                     ),
                                   ),
@@ -1127,9 +1128,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             ),
                           ),
                         ),
+                        
+                        // SLIDER TAB BAR
                         Container(
                           width: double.infinity,
-                          height: 550.0,
+                          height: MediaQuery.of(context).size.height*0.7,
                           child: Stack(
                             children: [
                               Padding(
