@@ -14,40 +14,32 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 import 'feed_model.dart';
 export 'feed_model.dart';
+import 'package:flutter/services.dart';
 
 class FeedWidget extends StatefulWidget {
   const FeedWidget({Key? key}) : super(key: key);
-
   @override
   _FeedWidgetState createState() => _FeedWidgetState();
 }
-
 class _FeedWidgetState extends State<FeedWidget> {
   late FeedModel _model;
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
-
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => FeedModel());
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
-
   @override
   void dispose() {
     _model.dispose();
-
     _unfocusNode.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -74,14 +66,14 @@ class _FeedWidgetState extends State<FeedWidget> {
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                         child: Text(
                           'Discover',
                           style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Poppins',
-                                fontSize: 36.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            fontFamily: 'Poppins',
+                            fontSize: 36.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       Row(
@@ -114,9 +106,9 @@ class _FeedWidgetState extends State<FeedWidget> {
                                         validateFileFormat(
                                             m.storagePath, context))) {
                                   setState(
-                                      () => _model.isMediaUploading2 = true);
+                                          () => _model.isMediaUploading2 = true);
                                   var selectedUploadedFiles =
-                                      <FFUploadedFile>[];
+                                  <FFUploadedFile>[];
                                   var downloadUrls = <String>[];
                                   try {
                                     showUploadMessage(
@@ -126,17 +118,17 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     );
                                     selectedUploadedFiles = selectedMedia
                                         .map((m) => FFUploadedFile(
-                                              name:
-                                                  m.storagePath.split('/').last,
-                                              bytes: m.bytes,
-                                              height: m.dimensions?.height,
-                                              width: m.dimensions?.width,
-                                            ))
+                                      name:
+                                      m.storagePath.split('/').last,
+                                      bytes: m.bytes,
+                                      height: m.dimensions?.height,
+                                      width: m.dimensions?.width,
+                                    ))
                                         .toList();
 
                                     downloadUrls = (await Future.wait(
                                       selectedMedia.map(
-                                        (m) async => await uploadData(
+                                            (m) async => await uploadData(
                                             m.storagePath, m.bytes),
                                       ),
                                     ))
@@ -149,7 +141,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     _model.isMediaUploading2 = false;
                                   }
                                   if (selectedUploadedFiles.length ==
-                                          selectedMedia.length &&
+                                      selectedMedia.length &&
                                       downloadUrls.length ==
                                           selectedMedia.length) {
                                     setState(() {
@@ -166,21 +158,19 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     return;
                                   }
                                 }
-
                                 if (_model.uploadedFileUrl2 != null &&
                                     _model.uploadedFileUrl2 != '') {
                                   FFAppState().update(() {
                                     FFAppState().uploadPhoto =
                                         _model.uploadedFileUrl2;
                                   });
-
                                   context.pushNamed(
                                     'NewPost',
                                     extra: <String, dynamic>{
                                       kTransitionInfoKey: TransitionInfo(
                                         hasTransition: true,
                                         transitionType:
-                                            PageTransitionType.leftToRight,
+                                        PageTransitionType.leftToRight,
                                       ),
                                     },
                                   );
@@ -211,9 +201,9 @@ class _FeedWidgetState extends State<FeedWidget> {
                                 ),
                               ),
                               if ((currentUserDocument?.unreadNotifications
-                                              ?.toList() ??
-                                          [])
-                                      .length >
+                                  ?.toList() ??
+                                  [])
+                                  .length >
                                   0)
                                 AuthUserStreamWidget(
                                   builder: (context) => Container(
@@ -296,13 +286,13 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                 queryBuilder: (storiesRecord) =>
                                                     storiesRecord
                                                         .where('expire_time',
-                                                            isGreaterThanOrEqualTo:
-                                                                getCurrentTimestamp)
+                                                        isGreaterThanOrEqualTo:
+                                                        getCurrentTimestamp)
                                                         .where('user',
-                                                            isEqualTo:
-                                                                currentUserReference)
+                                                        isEqualTo:
+                                                        currentUserReference)
                                                         .orderBy('expire_time',
-                                                            descending: true),
+                                                        descending: true),
                                                 singleRecord: true,
                                               ),
                                               builder: (context, snapshot) {
@@ -313,21 +303,21 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                       width: 12.0,
                                                       height: 12.0,
                                                       child:
-                                                          CircularProgressIndicator(
+                                                      CircularProgressIndicator(
                                                         color: Colors.white,
                                                       ),
                                                     ),
                                                   );
                                                 }
                                                 List<StoriesRecord>
-                                                    stackStoriesRecordList =
-                                                    snapshot.data!;
+                                                stackStoriesRecordList =
+                                                snapshot.data!;
                                                 final stackStoriesRecord =
-                                                    stackStoriesRecordList
-                                                            .isNotEmpty
-                                                        ? stackStoriesRecordList
-                                                            .first
-                                                        : null;
+                                                stackStoriesRecordList
+                                                    .isNotEmpty
+                                                    ? stackStoriesRecordList
+                                                    .first
+                                                    : null;
                                                 return Stack(
                                                   children: [
                                                     if (!(stackStoriesRecord !=
@@ -335,78 +325,78 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                       InkWell(
                                                         onTap: () async {
                                                           final selectedMedia =
-                                                              await selectMediaWithSourceBottomSheet(
+                                                          await selectMediaWithSourceBottomSheet(
                                                             context: context,
                                                             imageQuality: 80,
                                                             allowPhoto: true,
                                                             pickerFontFamily:
-                                                                'Inter',
+                                                            'Inter',
                                                           );
                                                           if (selectedMedia !=
-                                                                  null &&
+                                                              null &&
                                                               selectedMedia.every((m) =>
                                                                   validateFileFormat(
                                                                       m.storagePath,
                                                                       context))) {
                                                             setState(() => _model
-                                                                    .isMediaUploading1 =
-                                                                true);
+                                                                .isMediaUploading1 =
+                                                            true);
                                                             var selectedUploadedFiles =
-                                                                <FFUploadedFile>[];
+                                                            <FFUploadedFile>[];
                                                             var downloadUrls =
-                                                                <String>[];
+                                                            <String>[];
                                                             try {
                                                               showUploadMessage(
                                                                 context,
                                                                 'Uploading file...',
                                                                 showLoading:
-                                                                    true,
+                                                                true,
                                                               );
                                                               selectedUploadedFiles =
                                                                   selectedMedia
                                                                       .map((m) =>
-                                                                          FFUploadedFile(
-                                                                            name:
-                                                                                m.storagePath.split('/').last,
-                                                                            bytes:
-                                                                                m.bytes,
-                                                                            height:
-                                                                                m.dimensions?.height,
-                                                                            width:
-                                                                                m.dimensions?.width,
-                                                                          ))
+                                                                      FFUploadedFile(
+                                                                        name:
+                                                                        m.storagePath.split('/').last,
+                                                                        bytes:
+                                                                        m.bytes,
+                                                                        height:
+                                                                        m.dimensions?.height,
+                                                                        width:
+                                                                        m.dimensions?.width,
+                                                                      ))
                                                                       .toList();
 
                                                               downloadUrls =
                                                                   (await Future
-                                                                          .wait(
-                                                                selectedMedia
-                                                                    .map(
-                                                                  (m) async =>
+                                                                      .wait(
+                                                                    selectedMedia
+                                                                        .map(
+                                                                          (m) async =>
                                                                       await uploadData(
                                                                           m.storagePath,
                                                                           m.bytes),
-                                                                ),
-                                                              ))
+                                                                    ),
+                                                                  ))
                                                                       .where((u) =>
-                                                                          u !=
-                                                                          null)
+                                                                  u !=
+                                                                      null)
                                                                       .map((u) =>
-                                                                          u!)
+                                                                  u!)
                                                                       .toList();
                                                             } finally {
                                                               ScaffoldMessenger
-                                                                      .of(context)
+                                                                  .of(context)
                                                                   .hideCurrentSnackBar();
                                                               _model.isMediaUploading1 =
-                                                                  false;
+                                                              false;
                                                             }
                                                             if (selectedUploadedFiles
-                                                                        .length ==
-                                                                    selectedMedia
-                                                                        .length &&
+                                                                .length ==
+                                                                selectedMedia
+                                                                    .length &&
                                                                 downloadUrls
-                                                                        .length ==
+                                                                    .length ==
                                                                     selectedMedia
                                                                         .length) {
                                                               setState(() {
@@ -430,81 +420,81 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                           }
 
                                                           if (_model.uploadedFileUrl2 !=
-                                                                  null &&
+                                                              null &&
                                                               _model.uploadedFileUrl2 !=
                                                                   '') {
                                                             final storiesCreateData =
-                                                                {
+                                                            {
                                                               ...createStoriesRecordData(
                                                                 user:
-                                                                    currentUserReference,
+                                                                currentUserReference,
                                                                 storyPhoto: _model
                                                                     .uploadedFileUrl2,
                                                                 timeCreated:
-                                                                    getCurrentTimestamp,
+                                                                getCurrentTimestamp,
                                                                 expireTime: functions
                                                                     .tomorrowTime(
-                                                                        getCurrentTimestamp),
+                                                                    getCurrentTimestamp),
                                                               ),
                                                               'views':
-                                                                  FFAppState()
-                                                                      .emptyList,
+                                                              FFAppState()
+                                                                  .emptyList,
                                                             };
                                                             await StoriesRecord
                                                                 .collection
                                                                 .doc()
                                                                 .set(
-                                                                    storiesCreateData);
+                                                                storiesCreateData);
                                                           }
                                                         },
                                                         child: Stack(
                                                           alignment:
-                                                              AlignmentDirectional(
-                                                                  1.2, 1.2),
+                                                          AlignmentDirectional(
+                                                              1.2, 1.2),
                                                           children: [
                                                             AuthUserStreamWidget(
                                                               builder:
                                                                   (context) =>
-                                                                      Container(
-                                                                width: 60.0,
-                                                                height: 60.0,
-                                                                decoration:
+                                                                  Container(
+                                                                    width: 60.0,
+                                                                    height: 60.0,
+                                                                    decoration:
                                                                     BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
+                                                                      color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryBackground,
-                                                                  image:
+                                                                          .secondaryBackground,
+                                                                      image:
                                                                       DecorationImage(
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                    image: Image
-                                                                        .network(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        currentUserPhoto,
-                                                                        'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                        image: Image
+                                                                            .network(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            currentUserPhoto,
+                                                                            'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
+                                                                          ),
+                                                                        ).image,
                                                                       ),
-                                                                    ).image,
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                    ),
                                                                   ),
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                ),
-                                                              ),
                                                             ),
                                                             Container(
                                                               width: 30.0,
                                                               height: 30.0,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                              BoxDecoration(
                                                                 color: FlutterFlowTheme.of(
-                                                                        context)
+                                                                    context)
                                                                     .secondaryColor,
                                                                 shape: BoxShape
                                                                     .circle,
                                                                 border:
-                                                                    Border.all(
+                                                                Border.all(
                                                                   color: FlutterFlowTheme.of(
-                                                                          context)
+                                                                      context)
                                                                       .primaryBackground,
                                                                   width: 3.0,
                                                                 ),
@@ -526,18 +516,18 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                         width: 65.0,
                                                         height: 65.0,
                                                         decoration:
-                                                            BoxDecoration(
+                                                        BoxDecoration(
                                                           gradient:
-                                                              LinearGradient(
+                                                          LinearGradient(
                                                             colors: [
                                                               FlutterFlowTheme.of(
-                                                                      context)
+                                                                  context)
                                                                   .tertiaryColor,
                                                               FlutterFlowTheme.of(
-                                                                      context)
+                                                                  context)
                                                                   .secondaryColor,
                                                               FlutterFlowTheme.of(
-                                                                      context)
+                                                                  context)
                                                                   .alternate
                                                             ],
                                                             stops: [
@@ -546,89 +536,89 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                               1.0
                                                             ],
                                                             begin:
-                                                                AlignmentDirectional(
-                                                                    1.0, -1.0),
+                                                            AlignmentDirectional(
+                                                                1.0, -1.0),
                                                             end:
-                                                                AlignmentDirectional(
-                                                                    -1.0, 1.0),
+                                                            AlignmentDirectional(
+                                                                -1.0, 1.0),
                                                           ),
                                                           shape:
-                                                              BoxShape.circle,
+                                                          BoxShape.circle,
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
                                                           child:
-                                                              AuthUserStreamWidget(
+                                                          AuthUserStreamWidget(
                                                             builder:
                                                                 (context) =>
-                                                                    InkWell(
-                                                              onTap: () async {
-                                                                showModalBottomSheet(
-                                                                  isScrollControlled:
+                                                                InkWell(
+                                                                  onTap: () async {
+                                                                    showModalBottomSheet(
+                                                                      isScrollControlled:
                                                                       true,
-                                                                  backgroundColor:
+                                                                      backgroundColor:
                                                                       Colors
                                                                           .transparent,
-                                                                  context:
+                                                                      context:
                                                                       context,
-                                                                  builder:
-                                                                      (context) {
-                                                                    return Padding(
-                                                                      padding: MediaQuery.of(
+                                                                      builder:
+                                                                          (context) {
+                                                                        return Padding(
+                                                                          padding: MediaQuery.of(
                                                                               context)
-                                                                          .viewInsets,
-                                                                      child:
+                                                                              .viewInsets,
+                                                                          child:
                                                                           StoryWidget(
-                                                                        story:
+                                                                            story:
                                                                             stackStoriesRecord,
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                ).then((value) =>
-                                                                    setState(
-                                                                        () {}));
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    ).then((value) =>
+                                                                        setState(
+                                                                                () {}));
 
-                                                                await Future.delayed(
-                                                                    const Duration(
-                                                                        milliseconds:
+                                                                    await Future.delayed(
+                                                                        const Duration(
+                                                                            milliseconds:
                                                                             5000));
-                                                                Navigator.pop(
-                                                                    context);
-                                                              },
-                                                              child: Container(
-                                                                width: 60.0,
-                                                                height: 60.0,
-                                                                decoration:
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  child: Container(
+                                                                    width: 60.0,
+                                                                    height: 60.0,
+                                                                    decoration:
                                                                     BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
+                                                                      color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryBackground,
-                                                                  image:
+                                                                          .secondaryBackground,
+                                                                      image:
                                                                       DecorationImage(
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                    image: Image
-                                                                        .network(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        currentUserPhoto,
-                                                                        'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                        image: Image
+                                                                            .network(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            currentUserPhoto,
+                                                                            'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
+                                                                          ),
+                                                                        ).image,
                                                                       ),
-                                                                    ).image,
-                                                                  ),
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                  border: Border
-                                                                      .all(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    width: 2.0,
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                      border: Border
+                                                                          .all(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        width: 2.0,
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -639,20 +629,20 @@ class _FeedWidgetState extends State<FeedWidget> {
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 13.0, 0.0, 0.0),
+                                                  0.0, 13.0, 0.0, 0.0),
                                               child: Text(
                                                 'Your story',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color:
-                                                              Color(0x80000000),
-                                                          fontSize: 12.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Poppins',
+                                                  color:
+                                                  Color(0x80000000),
+                                                  fontSize: 12.0,
+                                                  fontWeight:
+                                                  FontWeight.normal,
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -662,13 +652,13 @@ class _FeedWidgetState extends State<FeedWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             15.0, 0.0, 0.0, 0.0),
                                         child:
-                                            StreamBuilder<List<StoriesRecord>>(
+                                        StreamBuilder<List<StoriesRecord>>(
                                           stream: queryStoriesRecord(
                                             queryBuilder: (storiesRecord) =>
                                                 storiesRecord
                                                     .where('expire_time',
-                                                        isGreaterThanOrEqualTo:
-                                                            getCurrentTimestamp)
+                                                    isGreaterThanOrEqualTo:
+                                                    getCurrentTimestamp)
                                                     .orderBy('expire_time'),
                                           ),
                                           builder: (context, snapshot) {
@@ -679,244 +669,244 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                   width: 12.0,
                                                   height: 12.0,
                                                   child:
-                                                      CircularProgressIndicator(
+                                                  CircularProgressIndicator(
                                                     color: Colors.white,
                                                   ),
                                                 ),
                                               );
                                             }
                                             List<StoriesRecord>
-                                                userStoriesStoriesRecordList =
-                                                snapshot.data!;
+                                            userStoriesStoriesRecordList =
+                                            snapshot.data!;
                                             return Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: List.generate(
                                                   userStoriesStoriesRecordList
                                                       .length,
-                                                  (userStoriesIndex) {
-                                                final userStoriesStoriesRecord =
+                                                      (userStoriesIndex) {
+                                                    final userStoriesStoriesRecord =
                                                     userStoriesStoriesRecordList[
-                                                        userStoriesIndex];
-                                                return Visibility(
-                                                  visible:
+                                                    userStoriesIndex];
+                                                    return Visibility(
+                                                      visible:
                                                       userStoriesStoriesRecord
-                                                              .user !=
+                                                          .user !=
                                                           currentUserReference,
-                                                  child: Padding(
-                                                    padding:
+                                                      child: Padding(
+                                                        padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
-                                                                15.0, 0.0),
-                                                    child: FutureBuilder<
-                                                        UsersRecord>(
-                                                      future: UsersRecord
-                                                          .getDocumentOnce(
+                                                            15.0, 0.0),
+                                                        child: FutureBuilder<
+                                                            UsersRecord>(
+                                                          future: UsersRecord
+                                                              .getDocumentOnce(
                                                               userStoriesStoriesRecord
                                                                   .user!),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 12.0,
-                                                              height: 12.0,
-                                                              child:
+                                                          builder:
+                                                              (context, snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot.hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 12.0,
+                                                                  height: 12.0,
+                                                                  child:
                                                                   CircularProgressIndicator(
-                                                                color: Colors
-                                                                    .white,
-                                                              ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        final columnUsersRecord =
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            }
+                                                            final columnUsersRecord =
                                                             snapshot.data!;
-                                                        return InkWell(
-                                                          onTap: () async {
-                                                            showModalBottomSheet(
-                                                              isScrollControlled:
+                                                            return InkWell(
+                                                              onTap: () async {
+                                                                showModalBottomSheet(
+                                                                  isScrollControlled:
                                                                   true,
-                                                              backgroundColor:
+                                                                  backgroundColor:
                                                                   Colors
                                                                       .transparent,
-                                                              context: context,
-                                                              builder:
-                                                                  (context) {
-                                                                return Padding(
-                                                                  padding: MediaQuery.of(
+                                                                  context: context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return Padding(
+                                                                      padding: MediaQuery.of(
                                                                           context)
-                                                                      .viewInsets,
-                                                                  child:
+                                                                          .viewInsets,
+                                                                      child:
                                                                       StoryWidget(
-                                                                    story:
+                                                                        story:
                                                                         userStoriesStoriesRecord,
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                setState(
-                                                                    () {}));
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    setState(
+                                                                            () {}));
 
-                                                            if (!userStoriesStoriesRecord
-                                                                .views!
-                                                                .toList()
-                                                                .contains(
+                                                                if (!userStoriesStoriesRecord
+                                                                    .views!
+                                                                    .toList()
+                                                                    .contains(
                                                                     currentUserReference)) {
-                                                              final storiesUpdateData =
+                                                                  final storiesUpdateData =
                                                                   {
-                                                                'views': FieldValue
-                                                                    .arrayUnion([
-                                                                  currentUserReference
-                                                                ]),
-                                                              };
-                                                              await userStoriesStoriesRecord
-                                                                  .reference
-                                                                  .update(
+                                                                    'views': FieldValue
+                                                                        .arrayUnion([
+                                                                      currentUserReference
+                                                                    ]),
+                                                                  };
+                                                                  await userStoriesStoriesRecord
+                                                                      .reference
+                                                                      .update(
                                                                       storiesUpdateData);
-                                                            }
-                                                            await Future.delayed(
-                                                                const Duration(
-                                                                    milliseconds:
+                                                                }
+                                                                await Future.delayed(
+                                                                    const Duration(
+                                                                        milliseconds:
                                                                         5000));
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: Column(
-                                                            mainAxisSize:
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Column(
+                                                                mainAxisSize:
                                                                 MainAxisSize
                                                                     .max,
-                                                            children: [
-                                                              Container(
-                                                                width: 65.0,
-                                                                height: 65.0,
-                                                                decoration:
+                                                                children: [
+                                                                  Container(
+                                                                    width: 65.0,
+                                                                    height: 65.0,
+                                                                    decoration:
                                                                     BoxDecoration(
-                                                                  gradient:
+                                                                      gradient:
                                                                       LinearGradient(
-                                                                    colors: [
-                                                                      FlutterFlowTheme.of(
+                                                                        colors: [
+                                                                          FlutterFlowTheme.of(
                                                                               context)
-                                                                          .tertiaryColor,
-                                                                      FlutterFlowTheme.of(
+                                                                              .tertiaryColor,
+                                                                          FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryColor,
-                                                                      FlutterFlowTheme.of(
+                                                                              .secondaryColor,
+                                                                          FlutterFlowTheme.of(
                                                                               context)
-                                                                          .alternate
-                                                                    ],
-                                                                    stops: [
-                                                                      0.0,
-                                                                      0.5,
-                                                                      1.0
-                                                                    ],
-                                                                    begin:
+                                                                              .alternate
+                                                                        ],
+                                                                        stops: [
+                                                                          0.0,
+                                                                          0.5,
+                                                                          1.0
+                                                                        ],
+                                                                        begin:
                                                                         AlignmentDirectional(
                                                                             1.0,
                                                                             -1.0),
-                                                                    end: AlignmentDirectional(
-                                                                        -1.0,
-                                                                        1.0),
-                                                                  ),
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                ),
-                                                                child:
+                                                                        end: AlignmentDirectional(
+                                                                            -1.0,
+                                                                            1.0),
+                                                                      ),
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                    ),
+                                                                    child:
                                                                     Container(
-                                                                  width: 65.0,
-                                                                  height: 65.0,
-                                                                  decoration:
+                                                                      width: 65.0,
+                                                                      height: 65.0,
+                                                                      decoration:
                                                                       BoxDecoration(
-                                                                    color: userStoriesStoriesRecord
+                                                                        color: userStoriesStoriesRecord
                                                                             .views!
                                                                             .toList()
                                                                             .contains(
-                                                                                currentUserReference)
-                                                                        ? Color(
+                                                                            currentUserReference)
+                                                                            ? Color(
                                                                             0xFFDADADA)
-                                                                        : Color(
+                                                                            : Color(
                                                                             0x00999999),
-                                                                    shape: BoxShape
-                                                                        .circle,
-                                                                  ),
-                                                                  child: Align(
-                                                                    alignment:
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                      ),
+                                                                      child: Align(
+                                                                        alignment:
                                                                         AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
-                                                                    child:
+                                                                        child:
                                                                         Container(
-                                                                      width:
-                                                                          60.0,
-                                                                      height:
-                                                                          60.0,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                          image:
-                                                                              Image.network(
-                                                                            valueOrDefault<String>(
-                                                                              columnUsersRecord.photoUrl,
-                                                                              'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
-                                                                            ),
-                                                                          ).image,
-                                                                        ),
-                                                                        shape: BoxShape
-                                                                            .circle,
-                                                                        border:
-                                                                            Border.all(
-                                                                          color:
-                                                                              Colors.white,
                                                                           width:
+                                                                          60.0,
+                                                                          height:
+                                                                          60.0,
+                                                                          decoration:
+                                                                          BoxDecoration(
+                                                                            color: FlutterFlowTheme.of(context)
+                                                                                .secondaryBackground,
+                                                                            image:
+                                                                            DecorationImage(
+                                                                              fit: BoxFit
+                                                                                  .cover,
+                                                                              image:
+                                                                              Image.network(
+                                                                                valueOrDefault<String>(
+                                                                                  columnUsersRecord.photoUrl,
+                                                                                  'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
+                                                                                ),
+                                                                              ).image,
+                                                                            ),
+                                                                            shape: BoxShape
+                                                                                .circle,
+                                                                            border:
+                                                                            Border.all(
+                                                                              color:
+                                                                              Colors.white,
+                                                                              width:
                                                                               2.0,
+                                                                            ),
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
+                                                                  Padding(
+                                                                    padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            0.0,
-                                                                            8.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child: Text(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    columnUsersRecord
-                                                                        .username,
-                                                                    'user',
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
+                                                                        0.0,
+                                                                        8.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                                    child: Text(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        columnUsersRecord
+                                                                            .username,
+                                                                        'user',
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
-                                                                      .override(
+                                                                          .bodyText1
+                                                                          .override(
                                                                         fontFamily:
-                                                                            'Poppins',
+                                                                        'Poppins',
                                                                         color: Colors
                                                                             .black,
                                                                         fontSize:
-                                                                            12.0,
+                                                                        12.0,
                                                                         fontWeight:
-                                                                            FontWeight.normal,
+                                                                        FontWeight.normal,
                                                                       ),
-                                                                ),
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
-                                                            ],
-                                                          ),
-                                                        );
-                                                      },
-                                                    ),
-                                                  ),
-                                                );
-                                              }),
+                                                            );
+                                                          },
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }),
                                             );
                                           },
                                         ),
@@ -924,6 +914,9 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     ],
                                   ),
                                 ),
+                                // STORIES
+
+                                // DIVIDER
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
@@ -936,56 +929,142 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: double.infinity,
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.07,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 12.0, 0.0),
-                                    child: DefaultTabController(
-                                      length: 2,
-                                      initialIndex: 0,
-                                      child: Column(
-                                        children: [
-                                          TabBar(
-                                            labelColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBtnText,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyText1,
-                                            indicatorColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            indicatorWeight: 0.0,
-                                            tabs: [
-                                              Tab(
-                                                text: 'Discover',
+                                // DIVIDER
+
+                                // TAB BAR HOLDER
+                                Stack(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(left: 10.0, right: 80.0),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(25.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      width:
+                                      double.infinity,
+                                      height:
+                                      54,
+                                    ),
+                                    Container(
+                                      width: double.infinity,
+                                      height:
+                                      54,
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            14.0, 4.0, 4.0, 4.0),
+                                        child: DefaultTabController(
+                                          length: 2,
+                                          initialIndex: 0,
+                                          child: Column(
+                                            children: [
+                                              Container(
+                                                width: double.infinity,
+                                                child: Row(
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children: [
+                                                    Expanded(
+                                                      flex: 4,
+                                                      child: TabBar(
+                                                        isScrollable: false,
+                                                        indicator: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(25.0),
+                                                          color:FlutterFlowTheme.of(context)
+                                                              .secondaryColor,
+                                                          border: Border.all(
+                                                            color:FlutterFlowTheme.of(context)
+                                                                .secondaryBackground,
+                                                            width: 0.0,
+                                                          ),
+                                                        ),
+                                                        labelColor: FlutterFlowTheme.of(context)
+                                                            .primaryBtnText,
+                                                        unselectedLabelColor:
+                                                        FlutterFlowTheme.of(context)
+                                                            .lineColor,
+                                                        labelPadding:
+                                                        EdgeInsetsDirectional.fromSTEB(
+                                                            30.0, 0.0, 30.0, 0.0),
+                                                        labelStyle: FlutterFlowTheme.of(context)
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily: 'Noto Sans',
+                                                        ),
+                                                        indicatorColor:
+                                                        FlutterFlowTheme.of(context)
+                                                            .alternate,
+                                                        indicatorWeight: 0.0,
+                                                        tabs: [
+                                                          Tab(
+                                                            text: 'Discover',
+                                                          ),
+                                                          Tab(
+                                                            text: 'For  You',
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: Padding(
+                                                        padding: EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            0.0, 0.0, 0.0, 4.0),
+                                                        child: InkWell(
+                                                          onTap: () async {
+                                                            HapticFeedback
+                                                                .lightImpact();
+
+                                                            context.pushNamed(
+                                                              'Search',
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                kTransitionInfoKey:
+                                                                TransitionInfo(
+                                                                  hasTransition: true,
+                                                                  transitionType:
+                                                                  PageTransitionType
+                                                                      .fade,
+                                                                  duration: Duration(
+                                                                      milliseconds:
+                                                                      0),
+                                                                ),
+                                                              },
+                                                            );
+                                                          },
+                                                          child: Icon(
+                                                            Icons.manage_search_rounded,
+                                                            color: Colors.black,
+                                                            size: 40.0,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                              Tab(
-                                                text: 'For  You',
+                                              Expanded(
+                                                child: TabBarView(
+                                                  children: [
+                                                    Container(
+                                                      height: 0,
+                                                    ),
+                                                    Container(
+                                                      height: 0,
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ],
                                           ),
-                                          Expanded(
-                                            child: TabBarView(
-                                              children: [
-                                                Container(),
-                                                Container(),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                  ],
                                 ),
+                                // TAB BAR HOLDER
+
+                                // DIVIDER
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
@@ -998,18 +1077,21 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     ),
                                   ),
                                 ),
+                                // DIVIDER
+
+                                // FEED
                                 PagedListView<DocumentSnapshot<Object?>?,
                                     PostsRecord>(
                                   pagingController: () {
                                     final Query<Object?> Function(
-                                            Query<Object?>) queryBuilder =
+                                        Query<Object?>) queryBuilder =
                                         (postsRecord) => postsRecord
-                                            .where('deleted', isEqualTo: false)
-                                            .orderBy('time_posted',
-                                                descending: true);
+                                        .where('deleted', isEqualTo: false)
+                                        .orderBy('time_posted',
+                                        descending: true);
                                     if (_model.pagingController != null) {
                                       final query =
-                                          queryBuilder(PostsRecord.collection);
+                                      queryBuilder(PostsRecord.collection);
                                       if (query != _model.pagingQuery) {
                                         // The query has changed
                                         _model.pagingQuery = query;
@@ -1020,7 +1102,6 @@ class _FeedWidgetState extends State<FeedWidget> {
                                       }
                                       return _model.pagingController!;
                                     }
-
                                     _model.pagingController =
                                         PagingController(firstPageKey: null);
                                     _model.pagingQuery =
@@ -1028,49 +1109,49 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     _model.pagingController!
                                         .addPageRequestListener(
                                             (nextPageMarker) {
-                                      queryPostsRecordPage(
-                                        queryBuilder: (postsRecord) =>
-                                            postsRecord
-                                                .where('deleted',
+                                          queryPostsRecordPage(
+                                            queryBuilder: (postsRecord) =>
+                                                postsRecord
+                                                    .where('deleted',
                                                     isEqualTo: false)
-                                                .orderBy('time_posted',
+                                                    .orderBy('time_posted',
                                                     descending: true),
-                                        nextPageMarker: nextPageMarker,
-                                        pageSize: 5,
-                                        isStream: true,
-                                      ).then((page) {
-                                        _model.pagingController!.appendPage(
-                                          page.data,
-                                          page.nextPageMarker,
-                                        );
-                                        final streamSubscription =
+                                            nextPageMarker: nextPageMarker,
+                                            pageSize: 5,
+                                            isStream: true,
+                                          ).then((page) {
+                                            _model.pagingController!.appendPage(
+                                              page.data,
+                                              page.nextPageMarker,
+                                            );
+                                            final streamSubscription =
                                             page.dataStream?.listen((data) {
-                                          data.forEach((item) {
-                                            final itemIndexes = _model
-                                                .pagingController!.itemList!
-                                                .asMap()
-                                                .map((k, v) => MapEntry(
+                                              data.forEach((item) {
+                                                final itemIndexes = _model
+                                                    .pagingController!.itemList!
+                                                    .asMap()
+                                                    .map((k, v) => MapEntry(
                                                     v.reference.id, k));
-                                            final index =
+                                                final index =
                                                 itemIndexes[item.reference.id];
-                                            final items = _model
-                                                .pagingController!.itemList!;
-                                            if (index != null) {
-                                              items.replaceRange(
-                                                  index, index + 1, [item]);
-                                              _model.pagingController!
-                                                  .itemList = {
-                                                for (var item in items)
-                                                  item.reference: item
-                                              }.values.toList();
-                                            }
+                                                final items = _model
+                                                    .pagingController!.itemList!;
+                                                if (index != null) {
+                                                  items.replaceRange(
+                                                      index, index + 1, [item]);
+                                                  _model.pagingController!
+                                                      .itemList = {
+                                                    for (var item in items)
+                                                      item.reference: item
+                                                  }.values.toList();
+                                                }
+                                              });
+                                              setState(() {});
+                                            });
+                                            _model.streamSubscriptions
+                                                .add(streamSubscription);
                                           });
-                                          setState(() {});
                                         });
-                                        _model.streamSubscriptions
-                                            .add(streamSubscription);
-                                      });
-                                    });
                                     return _model.pagingController!;
                                   }(),
                                   padding: EdgeInsets.zero,
@@ -1078,18 +1159,18 @@ class _FeedWidgetState extends State<FeedWidget> {
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   builderDelegate:
-                                      PagedChildBuilderDelegate<PostsRecord>(
+                                  PagedChildBuilderDelegate<PostsRecord>(
                                     // Customize what your widget looks like when it's loading the first page.
                                     firstPageProgressIndicatorBuilder: (_) =>
                                         Center(
-                                      child: SizedBox(
-                                        width: 12.0,
-                                        height: 12.0,
-                                        child: CircularProgressIndicator(
-                                          color: Colors.white,
+                                          child: SizedBox(
+                                            width: 12.0,
+                                            height: 12.0,
+                                            child: CircularProgressIndicator(
+                                              color: Colors.white,
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
 
                                     itemBuilder: (context, _, postFeedIndex) {
                                       final postFeedPostsRecord = _model
