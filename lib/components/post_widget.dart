@@ -1011,9 +1011,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                             snapshot.data!;
                                         return custom_widgets.PhotoCaption(
                                           width: double.infinity,
-
                                           height: 19.0,
-
                                           name: valueOrDefault<String>(
                                             photoCaptionUsersRecord.username,
                                             'user',
