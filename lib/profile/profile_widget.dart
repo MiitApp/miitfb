@@ -1035,408 +1035,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             ),
                           ),
                         ),
-                        Container(
-                          width: double.infinity,
-                          height: 550.0,
-                          child: Stack(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 12.0, right: 12.0, top: 11.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 48.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                  ),
-                                ),
-                              ),
-                              DefaultTabController(
-                                length: 5,
-                                initialIndex: 0,
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(12.0),
-                                      child: TabBar(
-                                        isScrollable: true,
-                                        indicator: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(25.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            width: 5.0,
-                                          ),
-                                        ),
-                                        labelColor: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        unselectedLabelColor:
-                                            FlutterFlowTheme.of(context)
-                                                .lineColor,
-                                        labelPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                30.0, 0.0, 30.0, 0.0),
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Noto Sans',
-                                            ),
-                                        indicatorColor:
-                                            FlutterFlowTheme.of(context)
-                                                .alternate,
-                                        indicatorWeight: 0.0,
-                                        tabs: [
-                                          Tab(
-                                            text: 'Profile',
-                                          ),
-                                          Tab(
-                                            text: 'Posts',
-                                          ),
-                                          Tab(
-                                            text: 'Tags',
-                                          ),
-                                          Tab(
-                                            text: 'Saved',
-                                          ),
-                                          Tab(
-                                            text: 'Events',
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: TabBarView(
-                                        children: [
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => Text(
-                                              'Tab View 4',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Noto Sans',
-                                                        fontSize: 32.0,
-                                                      ),
-                                            ),
-                                          ),
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => StreamBuilder<
-                                                List<PostsRecord>>(
-                                              stream: queryPostsRecord(
-                                                queryBuilder: (postsRecord) =>
-                                                    postsRecord
-                                                        .where('post_user',
-                                                            isEqualTo:
-                                                                currentUserReference)
-                                                        .where('deleted',
-                                                            isEqualTo: false)
-                                                        .orderBy('time_posted',
-                                                            descending: true),
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 12.0,
-                                                      height: 12.0,
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<PostsRecord>
-                                                    profilePhotosPostsRecordList =
-                                                    snapshot.data!;
-                                                return GridView.builder(
-                                                  padding: EdgeInsets.zero,
-                                                  gridDelegate:
-                                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: 3,
-                                                    crossAxisSpacing: 1.0,
-                                                    mainAxisSpacing: 1.0,
-                                                    childAspectRatio: 1.0,
-                                                  ),
-                                                  primary: false,
-                                                  shrinkWrap: true,
-                                                  scrollDirection:
-                                                      Axis.vertical,
-                                                  itemCount:
-                                                      profilePhotosPostsRecordList
-                                                          .length,
-                                                  itemBuilder: (context,
-                                                      profilePhotosIndex) {
-                                                    final profilePhotosPostsRecord =
-                                                        profilePhotosPostsRecordList[
-                                                            profilePhotosIndex];
-                                                    return InkWell(
-                                                      onTap: () async {
-                                                        context.pushNamed(
-                                                          'PostDetails',
-                                                          queryParams: {
-                                                            'post':
-                                                                serializeParam(
-                                                              profilePhotosPostsRecord
-                                                                  .reference,
-                                                              ParamType
-                                                                  .DocumentReference,
-                                                            ),
-                                                          }.withoutNulls,
-                                                        );
-                                                      },
-                                                      child: Hero(
-                                                        tag:
-                                                            profilePhotosPostsRecord
-                                                                .postPhoto!,
-                                                        transitionOnUserGestures:
-                                                            true,
-                                                        child: Image.network(
-                                                          profilePhotosPostsRecord
-                                                              .postPhoto!,
-                                                          width: 100.0,
-                                                          height: 100.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => StreamBuilder<
-                                                List<PostsRecord>>(
-                                              stream: queryPostsRecord(
-                                                queryBuilder: (postsRecord) =>
-                                                    postsRecord
-                                                        .where('tagged_users',
-                                                            arrayContains:
-                                                                currentUserReference)
-                                                        .where('deleted',
-                                                            isEqualTo: false)
-                                                        .orderBy('time_posted',
-                                                            descending: true),
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 12.0,
-                                                      height: 12.0,
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<PostsRecord>
-                                                    taggedPhotosPostsRecordList =
-                                                    snapshot.data!;
-                                                return GridView.builder(
-                                                  padding: EdgeInsets.zero,
-                                                  gridDelegate:
-                                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: 3,
-                                                    crossAxisSpacing: 1.0,
-                                                    mainAxisSpacing: 1.0,
-                                                    childAspectRatio: 1.0,
-                                                  ),
-                                                  primary: false,
-                                                  shrinkWrap: true,
-                                                  scrollDirection:
-                                                      Axis.vertical,
-                                                  itemCount:
-                                                      taggedPhotosPostsRecordList
-                                                          .length,
-                                                  itemBuilder: (context,
-                                                      taggedPhotosIndex) {
-                                                    final taggedPhotosPostsRecord =
-                                                        taggedPhotosPostsRecordList[
-                                                            taggedPhotosIndex];
-                                                    return InkWell(
-                                                      onTap: () async {
-                                                        context.pushNamed(
-                                                          'PostDetails',
-                                                          queryParams: {
-                                                            'post':
-                                                                serializeParam(
-                                                              taggedPhotosPostsRecord
-                                                                  .reference,
-                                                              ParamType
-                                                                  .DocumentReference,
-                                                            ),
-                                                          }.withoutNulls,
-                                                        );
-                                                      },
-                                                      child: Hero(
-                                                        tag:
-                                                            taggedPhotosPostsRecord
-                                                                .postPhoto!,
-                                                        transitionOnUserGestures:
-                                                            true,
-                                                        child: Image.network(
-                                                          taggedPhotosPostsRecord
-                                                              .postPhoto!,
-                                                          width: 100.0,
-                                                          height: 100.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => StreamBuilder<
-                                                List<BookmarksRecord>>(
-                                              stream: queryBookmarksRecord(
-                                                parent: currentUserReference,
-                                                singleRecord: true,
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 12.0,
-                                                      height: 12.0,
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<BookmarksRecord>
-                                                    bookmarkedPhotosBookmarksRecordList =
-                                                    snapshot.data!;
-                                                // Return an empty Container when the item does not exist.
-                                                if (snapshot.data!.isEmpty) {
-                                                  return Container();
-                                                }
-                                                final bookmarkedPhotosBookmarksRecord =
-                                                    bookmarkedPhotosBookmarksRecordList
-                                                            .isNotEmpty
-                                                        ? bookmarkedPhotosBookmarksRecordList
-                                                            .first
-                                                        : null;
-                                                return Builder(
-                                                  builder: (context) {
-                                                    final bookmarkedposts =
-                                                        bookmarkedPhotosBookmarksRecord!
-                                                            .postRefs!
-                                                            .toList();
-                                                    return GridView.builder(
-                                                      padding: EdgeInsets.zero,
-                                                      gridDelegate:
-                                                          SliverGridDelegateWithFixedCrossAxisCount(
-                                                        crossAxisCount: 3,
-                                                        crossAxisSpacing: 1.0,
-                                                        mainAxisSpacing: 1.0,
-                                                        childAspectRatio: 1.0,
-                                                      ),
-                                                      primary: false,
-                                                      shrinkWrap: true,
-                                                      scrollDirection:
-                                                          Axis.vertical,
-                                                      itemCount: bookmarkedposts
-                                                          .length,
-                                                      itemBuilder: (context,
-                                                          bookmarkedpostsIndex) {
-                                                        final bookmarkedpostsItem =
-                                                            bookmarkedposts[
-                                                                bookmarkedpostsIndex];
-                                                        return StreamBuilder<
-                                                            PostsRecord>(
-                                                          stream: PostsRecord
-                                                              .getDocument(
-                                                                  bookmarkedpostsItem),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 12.0,
-                                                                  height: 12.0,
-                                                                  child:
-                                                                      CircularProgressIndicator(
-                                                                    color: Colors
-                                                                        .white,
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            }
-                                                            final photoPostsRecord =
-                                                                snapshot.data!;
-                                                            return InkWell(
-                                                              onTap: () async {
-                                                                context
-                                                                    .pushNamed(
-                                                                  'PostDetails',
-                                                                  queryParams: {
-                                                                    'post':
-                                                                        serializeParam(
-                                                                      bookmarkedpostsItem,
-                                                                      ParamType
-                                                                          .DocumentReference,
-                                                                    ),
-                                                                  }.withoutNulls,
-                                                                );
-                                                              },
-                                                              child:
-                                                                  Image.network(
-                                                                photoPostsRecord
-                                                                    .postPhoto!,
-                                                                width: 100.0,
-                                                                height: 100.0,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            );
-                                                          },
-                                                        );
-                                                      },
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                          KeepAliveWidgetWrapper(
-                                            builder: (context) => Text(
-                                              'Tab View 5',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 32.0,
-                                                      ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        SliderTabBar(),
                       ],
                     ),
                   ),
@@ -1445,6 +1044,418 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SliderTabBar extends StatelessWidget {
+  const SliderTabBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 550.0,
+      child: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+                left: 12.0, right: 12.0, top: 11.0),
+            child: Container(
+              width: double.infinity,
+              height: 48.0,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context)
+                    .secondaryBackground,
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+            ),
+          ),
+          DefaultTabController(
+            length: 5,
+            initialIndex: 0,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: TabBar(
+                    isScrollable: true,
+                    indicator: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(25.0),
+                      color: FlutterFlowTheme.of(context)
+                          .primaryBackground,
+                      border: Border.all(
+                        color: FlutterFlowTheme.of(context)
+                            .secondaryBackground,
+                        width: 5.0,
+                      ),
+                    ),
+                    labelColor: FlutterFlowTheme.of(context)
+                        .primaryText,
+                    unselectedLabelColor:
+                        FlutterFlowTheme.of(context)
+                            .lineColor,
+                    labelPadding:
+                        EdgeInsetsDirectional.fromSTEB(
+                            30.0, 0.0, 30.0, 0.0),
+                    labelStyle: FlutterFlowTheme.of(context)
+                        .bodyText1
+                        .override(
+                          fontFamily: 'Noto Sans',
+                        ),
+                    indicatorColor:
+                        FlutterFlowTheme.of(context)
+                            .alternate,
+                    indicatorWeight: 0.0,
+                    tabs: [
+                      Tab(
+                        text: 'Profile',
+                      ),
+                      Tab(
+                        text: 'Posts',
+                      ),
+                      Tab(
+                        text: 'Tags',
+                      ),
+                      Tab(
+                        text: 'Saved',
+                      ),
+                      Tab(
+                        text: 'Events',
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: TabBarView(
+                    children: [
+                      KeepAliveWidgetWrapper(
+                        builder: (context) => Text(
+                          'Tab View 4',
+                          style:
+                              FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Noto Sans',
+                                    fontSize: 32.0,
+                                  ),
+                        ),
+                      ),
+                      KeepAliveWidgetWrapper(
+                        builder: (context) => StreamBuilder<
+                            List<PostsRecord>>(
+                          stream: queryPostsRecord(
+                            queryBuilder: (postsRecord) =>
+                                postsRecord
+                                    .where('post_user',
+                                        isEqualTo:
+                                            currentUserReference)
+                                    .where('deleted',
+                                        isEqualTo: false)
+                                    .orderBy('time_posted',
+                                        descending: true),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 12.0,
+                                  height: 12.0,
+                                  child:
+                                      CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              );
+                            }
+                            List<PostsRecord>
+                                profilePhotosPostsRecordList =
+                                snapshot.data!;
+                            return GridView.builder(
+                              padding: EdgeInsets.zero,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                crossAxisSpacing: 1.0,
+                                mainAxisSpacing: 1.0,
+                                childAspectRatio: 1.0,
+                              ),
+                              primary: false,
+                              shrinkWrap: true,
+                              scrollDirection:
+                                  Axis.vertical,
+                              itemCount:
+                                  profilePhotosPostsRecordList
+                                      .length,
+                              itemBuilder: (context,
+                                  profilePhotosIndex) {
+                                final profilePhotosPostsRecord =
+                                    profilePhotosPostsRecordList[
+                                        profilePhotosIndex];
+                                return InkWell(
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'PostDetails',
+                                      queryParams: {
+                                        'post':
+                                            serializeParam(
+                                          profilePhotosPostsRecord
+                                              .reference,
+                                          ParamType
+                                              .DocumentReference,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Hero(
+                                    tag:
+                                        profilePhotosPostsRecord
+                                            .postPhoto!,
+                                    transitionOnUserGestures:
+                                        true,
+                                    child: Image.network(
+                                      profilePhotosPostsRecord
+                                          .postPhoto!,
+                                      width: 100.0,
+                                      height: 100.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                      KeepAliveWidgetWrapper(
+                        builder: (context) => StreamBuilder<
+                            List<PostsRecord>>(
+                          stream: queryPostsRecord(
+                            queryBuilder: (postsRecord) =>
+                                postsRecord
+                                    .where('tagged_users',
+                                        arrayContains:
+                                            currentUserReference)
+                                    .where('deleted',
+                                        isEqualTo: false)
+                                    .orderBy('time_posted',
+                                        descending: true),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 12.0,
+                                  height: 12.0,
+                                  child:
+                                      CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              );
+                            }
+                            List<PostsRecord>
+                                taggedPhotosPostsRecordList =
+                                snapshot.data!;
+                            return GridView.builder(
+                              padding: EdgeInsets.zero,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                crossAxisSpacing: 1.0,
+                                mainAxisSpacing: 1.0,
+                                childAspectRatio: 1.0,
+                              ),
+                              primary: false,
+                              shrinkWrap: true,
+                              scrollDirection:
+                                  Axis.vertical,
+                              itemCount:
+                                  taggedPhotosPostsRecordList
+                                      .length,
+                              itemBuilder: (context,
+                                  taggedPhotosIndex) {
+                                final taggedPhotosPostsRecord =
+                                    taggedPhotosPostsRecordList[
+                                        taggedPhotosIndex];
+                                return InkWell(
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'PostDetails',
+                                      queryParams: {
+                                        'post':
+                                            serializeParam(
+                                          taggedPhotosPostsRecord
+                                              .reference,
+                                          ParamType
+                                              .DocumentReference,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Hero(
+                                    tag:
+                                        taggedPhotosPostsRecord
+                                            .postPhoto!,
+                                    transitionOnUserGestures:
+                                        true,
+                                    child: Image.network(
+                                      taggedPhotosPostsRecord
+                                          .postPhoto!,
+                                      width: 100.0,
+                                      height: 100.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                      KeepAliveWidgetWrapper(
+                        builder: (context) => StreamBuilder<
+                            List<BookmarksRecord>>(
+                          stream: queryBookmarksRecord(
+                            parent: currentUserReference,
+                            singleRecord: true,
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 12.0,
+                                  height: 12.0,
+                                  child:
+                                      CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              );
+                            }
+                            List<BookmarksRecord>
+                                bookmarkedPhotosBookmarksRecordList =
+                                snapshot.data!;
+                            // Return an empty Container when the item does not exist.
+                            if (snapshot.data!.isEmpty) {
+                              return Container();
+                            }
+                            final bookmarkedPhotosBookmarksRecord =
+                                bookmarkedPhotosBookmarksRecordList
+                                        .isNotEmpty
+                                    ? bookmarkedPhotosBookmarksRecordList
+                                        .first
+                                    : null;
+                            return Builder(
+                              builder: (context) {
+                                final bookmarkedposts =
+                                    bookmarkedPhotosBookmarksRecord!
+                                        .postRefs!
+                                        .toList();
+                                return GridView.builder(
+                                  padding: EdgeInsets.zero,
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3,
+                                    crossAxisSpacing: 1.0,
+                                    mainAxisSpacing: 1.0,
+                                    childAspectRatio: 1.0,
+                                  ),
+                                  primary: false,
+                                  shrinkWrap: true,
+                                  scrollDirection:
+                                      Axis.vertical,
+                                  itemCount: bookmarkedposts
+                                      .length,
+                                  itemBuilder: (context,
+                                      bookmarkedpostsIndex) {
+                                    final bookmarkedpostsItem =
+                                        bookmarkedposts[
+                                            bookmarkedpostsIndex];
+                                    return StreamBuilder<
+                                        PostsRecord>(
+                                      stream: PostsRecord
+                                          .getDocument(
+                                              bookmarkedpostsItem),
+                                      builder: (context,
+                                          snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot
+                                            .hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 12.0,
+                                              height: 12.0,
+                                              child:
+                                                  CircularProgressIndicator(
+                                                color: Colors
+                                                    .white,
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        final photoPostsRecord =
+                                            snapshot.data!;
+                                        return InkWell(
+                                          onTap: () async {
+                                            context
+                                                .pushNamed(
+                                              'PostDetails',
+                                              queryParams: {
+                                                'post':
+                                                    serializeParam(
+                                                  bookmarkedpostsItem,
+                                                  ParamType
+                                                      .DocumentReference,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child:
+                                              Image.network(
+                                            photoPostsRecord
+                                                .postPhoto!,
+                                            width: 100.0,
+                                            height: 100.0,
+                                            fit: BoxFit
+                                                .cover,
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                      KeepAliveWidgetWrapper(
+                        builder: (context) => Text(
+                          'Tab View 5',
+                          style:
+                              FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 32.0,
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
