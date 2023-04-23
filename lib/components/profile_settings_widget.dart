@@ -44,7 +44,6 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
 
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height*0.4,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primaryBackground,
         borderRadius: BorderRadius.only(
@@ -66,43 +65,60 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
               decoration: BoxDecoration(),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Card(
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      elevation: 0.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                      child: Padding(
-                        padding:
-                        EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                        child: FaIcon(
-                          FontAwesomeIcons.edit,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 20.0,
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed(
+                      'EditProfile',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.bottomToTop,
+                        ),
+                      },
+                    );
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Card(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        color: FlutterFlowTheme.of(context).primaryBackground,
+                        elevation: 0.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 8.0, 8.0, 8.0),
+                          child: FaIcon(
+                            FontAwesomeIcons.edit,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 20.0,
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding:
-                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Edit Profile',
-                              style: FlutterFlowTheme.of(context).subtitle2,
-                            ),
-                          ],
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              12.0, 0.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Edit Profile',
+                                style: FlutterFlowTheme.of(context).titleSmall,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -124,7 +140,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                       ),
                       child: Padding(
                         padding:
-                        EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                         child: FaIcon(
                           FontAwesomeIcons.slidersH,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -135,14 +151,14 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'Settings',
-                              style: FlutterFlowTheme.of(context).subtitle2,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ],
                         ),
@@ -170,7 +186,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                       ),
                       child: Padding(
                         padding:
-                        EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                         child: Icon(
                           Icons.link_rounded,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -181,14 +197,14 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'Share URL',
-                              style: FlutterFlowTheme.of(context).subtitle2,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ],
                         ),
@@ -216,7 +232,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                       ),
                       child: Padding(
                         padding:
-                        EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                         child: Icon(
                           Icons.share_rounded,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -227,14 +243,14 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'Share Profile',
-                              style: FlutterFlowTheme.of(context).subtitle2,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ],
                         ),
@@ -262,7 +278,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                       ),
                       child: Padding(
                         padding:
-                        EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                         child: Icon(
                           Icons.logout,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -273,14 +289,14 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'Logout',
-                              style: FlutterFlowTheme.of(context).subtitle2,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ],
                         ),
