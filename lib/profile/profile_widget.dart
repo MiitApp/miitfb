@@ -1086,7 +1086,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.network(
-                                      'https://assets.stickpng.com/images/602179070ad3230004b93c28.png',
+                                      'https://e7.pngegg.com/pngimages/449/200/png-clipart-tiktok-icon-tech-companies-thumbnail.png',
                                       fit: BoxFit.fitWidth,
                                     ),
                                   ),
