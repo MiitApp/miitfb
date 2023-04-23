@@ -40,53 +40,49 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          title: Text(
-            'Tag users',
-            style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Poppins',
-                  fontSize: 16.0,
-                ),
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pop();
-                    },
-                    child: Text(
-                      'Done',
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondary,
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                    ),
-                  ),
-                ],
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Tag users',
+          style: FlutterFlowTheme.of(context).subtitle1.override(
+                fontFamily: 'Poppins',
+                fontSize: 16.0,
               ),
-            ),
-          ],
-          centerTitle: true,
-          elevation: 0.0,
         ),
-        body: SafeArea(
+        actions: [
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                InkWell(
+                  onTap: () async {
+                    context.pop();
+                  },
+                  child: Text(
+                    'Done',
+                    style: FlutterFlowTheme.of(context).subtitle1.override(
+                          fontFamily: 'Poppins',
+                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Form(
             key: _model.formKey,
             autovalidateMode: AutovalidateMode.disabled,
@@ -98,10 +94,6 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed('SelectTaggedUsers');
                       },
@@ -117,7 +109,7 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                           EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 0.0, 6.0),
                       child: Text(
                         'Tag users',
-                        style: FlutterFlowTheme.of(context).titleMedium,
+                        style: FlutterFlowTheme.of(context).subtitle1,
                       ),
                     ),
                     Padding(
@@ -125,7 +117,7 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                           EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 15.0),
                       child: Text(
                         'Tag users so others know who is shown in the photo.',
-                        style: FlutterFlowTheme.of(context).bodySmall.override(
+                        style: FlutterFlowTheme.of(context).bodyText2.override(
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.normal,
                             ),
@@ -213,7 +205,7 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                                                 maxLines: 1,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
+                                                        .bodyText1
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontSize: 14.0,
@@ -228,7 +220,7 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                                                   maxLines: 1,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodySmall
+                                                      .bodyText2
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         fontWeight:
@@ -241,10 +233,6 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                                         ),
                                       ),
                                       InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
                                         onTap: () async {
                                           FFAppState().update(() {
                                             FFAppState().removeFromTaggedUsers(

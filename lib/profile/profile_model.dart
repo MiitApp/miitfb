@@ -1,11 +1,11 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/profile_settings_widget.dart';
 import '/components/story_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/upload_media.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 class ProfileModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
-  bool isDataUploading = false;
+  bool isMediaUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl = '';

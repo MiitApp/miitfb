@@ -42,74 +42,66 @@ class _LocationWidgetState extends State<LocationWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          leading: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              context.pop();
-            },
-            child: Icon(
-              Icons.close_rounded,
-              color: Colors.black,
-              size: 24.0,
-            ),
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+          onTap: () async {
+            context.pop();
+          },
+          child: Icon(
+            Icons.close_rounded,
+            color: Colors.black,
+            size: 24.0,
           ),
-          title: Text(
-            'Location',
-            style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Poppins',
-                  fontSize: 16.0,
-                ),
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      if (_model.formKey.currentState == null ||
-                          !_model.formKey.currentState!.validate()) {
-                        return;
-                      }
-                      FFAppState().update(() {
-                        FFAppState().location = _model.textController.text;
-                      });
-                      context.pop();
-                    },
-                    child: Text(
-                      'Done',
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondary,
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-          centerTitle: true,
-          elevation: 0.0,
         ),
-        body: SafeArea(
+        title: Text(
+          'Location',
+          style: FlutterFlowTheme.of(context).subtitle1.override(
+                fontFamily: 'Poppins',
+                fontSize: 16.0,
+              ),
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                InkWell(
+                  onTap: () async {
+                    if (_model.formKey.currentState == null ||
+                        !_model.formKey.currentState!.validate()) {
+                      return;
+                    }
+                    FFAppState().update(() {
+                      FFAppState().location = _model.textController.text;
+                    });
+                    context.pop();
+                  },
+                  child: Text(
+                    'Done',
+                    style: FlutterFlowTheme.of(context).subtitle1.override(
+                          fontFamily: 'Poppins',
+                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Form(
             key: _model.formKey,
             autovalidateMode: AutovalidateMode.disabled,
@@ -121,7 +113,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 0.0, 6.0),
                   child: Text(
                     'Add a location',
-                    style: FlutterFlowTheme.of(context).titleMedium,
+                    style: FlutterFlowTheme.of(context).subtitle1,
                   ),
                 ),
                 Padding(
@@ -129,7 +121,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                       EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 15.0),
                   child: Text(
                     'Add a location so users know where your photo was taken or what it might be a picture of.',
-                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                    style: FlutterFlowTheme.of(context).bodyText2.override(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.normal,
                         ),
@@ -158,7 +150,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                               child: Text(
                                 'Location',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
@@ -179,10 +171,10 @@ class _LocationWidgetState extends State<LocationWidget> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                      FlutterFlowTheme.of(context).bodyText1,
                                   hintText: 'Location',
                                   hintStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .bodyText1
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
@@ -232,7 +224,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.normal,

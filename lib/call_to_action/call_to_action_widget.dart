@@ -44,80 +44,72 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          leading: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              context.pop();
-            },
-            child: Icon(
-              Icons.close_rounded,
-              color: Colors.black,
-              size: 24.0,
-            ),
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+          onTap: () async {
+            context.pop();
+          },
+          child: Icon(
+            Icons.close_rounded,
+            color: Colors.black,
+            size: 24.0,
           ),
-          title: Text(
-            'Call to action',
-            style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Poppins',
-                  fontSize: 16.0,
-                ),
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      if (_model.formKey.currentState == null ||
-                          !_model.formKey.currentState!.validate()) {
-                        return;
-                      }
-                      FFAppState().update(() {
-                        FFAppState().calltoactiontext =
-                            _model.textController1.text;
-                        FFAppState().calltoactionurl =
-                            _model.textController2.text;
-                      });
-                      FFAppState().update(() {
-                        FFAppState().calltoactionenabled = true;
-                      });
-                      context.pop();
-                    },
-                    child: Text(
-                      'Done',
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondary,
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-          centerTitle: true,
-          elevation: 0.0,
         ),
-        body: SafeArea(
+        title: Text(
+          'Call to action',
+          style: FlutterFlowTheme.of(context).subtitle1.override(
+                fontFamily: 'Poppins',
+                fontSize: 16.0,
+              ),
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                InkWell(
+                  onTap: () async {
+                    if (_model.formKey.currentState == null ||
+                        !_model.formKey.currentState!.validate()) {
+                      return;
+                    }
+                    FFAppState().update(() {
+                      FFAppState().calltoactiontext =
+                          _model.textController1.text;
+                      FFAppState().calltoactionurl =
+                          _model.textController2.text;
+                    });
+                    FFAppState().update(() {
+                      FFAppState().calltoactionenabled = true;
+                    });
+                    context.pop();
+                  },
+                  child: Text(
+                    'Done',
+                    style: FlutterFlowTheme.of(context).subtitle1.override(
+                          fontFamily: 'Poppins',
+                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Form(
             key: _model.formKey,
             autovalidateMode: AutovalidateMode.disabled,
@@ -129,7 +121,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 0.0, 6.0),
                   child: Text(
                     'Call to action button',
-                    style: FlutterFlowTheme.of(context).titleMedium,
+                    style: FlutterFlowTheme.of(context).subtitle1,
                   ),
                 ),
                 Padding(
@@ -137,7 +129,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                       EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 15.0),
                   child: Text(
                     'Create a call to action button that will appear at the bottom of your uploaded image.',
-                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                    style: FlutterFlowTheme.of(context).bodyText2.override(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.normal,
                         ),
@@ -166,7 +158,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                               child: Text(
                                 'Button text',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
@@ -187,10 +179,10 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                      FlutterFlowTheme.of(context).bodyText1,
                                   hintText: 'Button text',
                                   hintStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .bodyText1
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
@@ -240,7 +232,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.normal,
@@ -272,7 +264,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                         child: Text(
                           'Button link',
                           style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                              FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
@@ -286,17 +278,16 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelStyle: FlutterFlowTheme.of(context).bodyMedium,
+                            labelStyle: FlutterFlowTheme.of(context).bodyText1,
                             hintText: 'Button link',
-                            hintStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.normal,
-                                ),
+                            hintStyle:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.normal,
+                                    ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
@@ -339,7 +330,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                             ),
                           ),
                           style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                              FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -391,7 +382,8 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                                 width: double.infinity,
                                 height: 50.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).secondary,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryColor,
                                   borderRadius: BorderRadius.circular(40.0),
                                 ),
                                 child: Align(
@@ -410,7 +402,7 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                                             'Learn More',
                                           ).maybeHandleOverflow(maxChars: 24),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
+                                              .bodyText1
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 color: Colors.white,

@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/new_follower_notification_widget.dart';
 import '/components/todaytomonthnotification_followers_widget.dart';

@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -72,10 +72,6 @@ class _NewFollowerNotificationWidgetState
         }
         final rowUsersRecord = snapshot.data!;
         return InkWell(
-          splashColor: Colors.transparent,
-          focusColor: Colors.transparent,
-          hoverColor: Colors.transparent,
-          highlightColor: Colors.transparent,
           onTap: () async {
             context.pushNamed(
               'ProfileOther',
@@ -153,10 +149,6 @@ class _NewFollowerNotificationWidgetState
                             ? containerFollowersRecordList.first
                             : null;
                     return InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
                       onTap: () async {
                         if ((currentUserDocument?.following?.toList() ?? [])
                             .contains(rowUsersRecord.reference)) {
@@ -199,7 +191,7 @@ class _NewFollowerNotificationWidgetState
                               (currentUserDocument?.following?.toList() ?? [])
                                       .contains(rowUsersRecord.reference)
                                   ? Color(0xFFEFEFEF)
-                                  : FlutterFlowTheme.of(context).secondary,
+                                  : FlutterFlowTheme.of(context).secondaryColor,
                           borderRadius: BorderRadius.circular(40.0),
                         ),
                         child: Align(
@@ -218,7 +210,7 @@ class _NewFollowerNotificationWidgetState
                                       ? 'Following'
                                       : 'Follow',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .bodyText1
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: (currentUserDocument?.following
@@ -287,9 +279,9 @@ class _NewFollowerNotificationWidgetState
                   setState(() {});
                 },
                 textAlign: TextAlign.start,
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                style: FlutterFlowTheme.of(context).bodyText1.override(
                       fontFamily: 'Poppins',
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: FlutterFlowTheme.of(context).primaryColor,
                       fontSize: 0.0,
                     ),
               ),

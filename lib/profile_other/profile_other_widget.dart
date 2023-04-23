@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/components/story_widget.dart';
@@ -70,71 +70,62 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          iconTheme:
-              IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
-          automaticallyImplyLeading: false,
-          leading: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              context.pop();
-            },
-            child: Icon(
-              FFIcons.karrowLeft,
-              color: Colors.black,
-              size: 24.0,
-            ),
+        iconTheme:
+            IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+          onTap: () async {
+            context.pop();
+          },
+          child: Icon(
+            FFIcons.karrowLeft,
+            color: Colors.black,
+            size: 24.0,
           ),
-          title: Text(
-            widget.username!,
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Poppins',
-                  fontSize: 16.0,
-                ),
-          ),
-          actions: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Builder(
-                  builder: (context) => Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        await Share.share(
-                          'miitfirebase://miitfirebase.com${GoRouter.of(context).location}',
-                          sharePositionOrigin: getWidgetBoundingBox(context),
-                        );
-                      },
-                      child: Icon(
-                        Icons.more_vert,
-                        color: Colors.black,
-                        size: 28.0,
-                      ),
+        ),
+        title: Text(
+          widget.username!,
+          style: FlutterFlowTheme.of(context).bodyText1.override(
+                fontFamily: 'Poppins',
+                fontSize: 16.0,
+              ),
+        ),
+        actions: [
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Builder(
+                builder: (context) => Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                  child: InkWell(
+                    onTap: () async {
+                      await Share.share(
+                        'miitfirebase://miitfirebase.com${GoRouter.of(context).location}',
+                        sharePositionOrigin: getWidgetBoundingBox(context),
+                      );
+                    },
+                    child: Icon(
+                      Icons.more_vert,
+                      color: Colors.black,
+                      size: 28.0,
                     ),
                   ),
                 ),
-              ],
-            ),
-          ],
-          centerTitle: true,
-          elevation: 0.0,
-        ),
-        body: SafeArea(
+              ),
+            ],
+          ),
+        ],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -230,34 +221,20 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                         .first
                                                     : null;
                                             return InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
                                               onTap: () async {
                                                 await showModalBottomSheet(
                                                   isScrollControlled: true,
                                                   backgroundColor:
                                                       Colors.transparent,
-                                                  barrierColor:
-                                                      Color(0x00000000),
                                                   context: context,
-                                                  builder:
-                                                      (bottomSheetContext) {
-                                                    return GestureDetector(
-                                                      onTap: () =>
-                                                          FocusScope.of(context)
-                                                              .requestFocus(
-                                                                  _unfocusNode),
-                                                      child: Padding(
-                                                        padding: MediaQuery.of(
-                                                                bottomSheetContext)
-                                                            .viewInsets,
-                                                        child: StoryWidget(
-                                                          story:
-                                                              activeStoryIndicatorStoriesRecord,
-                                                        ),
+                                                  builder: (context) {
+                                                    return Padding(
+                                                      padding:
+                                                          MediaQuery.of(context)
+                                                              .viewInsets,
+                                                      child: StoryWidget(
+                                                        story:
+                                                            activeStoryIndicatorStoriesRecord,
                                                       ),
                                                     );
                                                   },
@@ -272,10 +249,10 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                     colors: [
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .tertiary,
+                                                          .tertiaryColor,
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .secondary,
+                                                          .secondaryColor,
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .alternate
@@ -315,7 +292,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                               border: Border.all(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primary,
+                                                        .primaryColor,
                                                 width: 3.0,
                                               ),
                                             ),
@@ -375,7 +352,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium
+                                                              .bodyText1
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
@@ -392,7 +369,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                     'Posts',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium
+                                                        .bodyText1
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontSize: 14.0,
@@ -407,10 +384,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                         ),
                                         Expanded(
                                           child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               context.pushNamed(
                                                 'FollowersFollowingOther',
@@ -471,7 +444,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium
+                                                              .bodyText1
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
@@ -488,7 +461,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                     'Followers',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium
+                                                        .bodyText1
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontSize: 14.0,
@@ -503,10 +476,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                         ),
                                         Expanded(
                                           child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               context.pushNamed(
                                                 'FollowersFollowingOther',
@@ -536,7 +505,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium
+                                                      .bodyText1
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         fontSize: 17.0,
@@ -550,7 +519,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                     'Following',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium
+                                                        .bodyText1
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontSize: 14.0,
@@ -577,7 +546,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                 child: Text(
                                   columnUsersRecord!.displayName!,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .bodyText1
                                       .override(
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
@@ -592,7 +561,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                 child: Text(
                                   columnUsersRecord!.bio!,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .bodyText1
                                       .override(
                                         fontFamily: 'Poppins',
                                         fontSize: 14.0,
@@ -606,10 +575,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 4.0, 0.0, 0.0),
                                 child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     await launchURL(
                                         columnUsersRecord!.website!);
@@ -617,11 +582,11 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                   child: Text(
                                     columnUsersRecord!.website!,
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .bodyText1
                                         .override(
                                           fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiary,
+                                              .tertiaryColor,
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -670,11 +635,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                         .first
                                                     : null;
                                             return InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
                                               onTap: () async {
                                                 if ((currentUserDocument
                                                             ?.following
@@ -748,7 +708,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                       ? Color(0xFFEFEFEF)
                                                       : FlutterFlowTheme.of(
                                                               context)
-                                                          .secondary,
+                                                          .secondaryColor,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           40.0),
@@ -803,7 +763,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                           }(),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyMedium
+                                                              .bodyText1
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
@@ -840,10 +800,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                       child: Stack(
                                         children: [
                                           InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               FFAppState().update(() {
                                                 FFAppState().tempUserList = [];
@@ -920,7 +876,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                         'Message',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
-                                                            .bodyMedium
+                                                            .bodyText1
                                                             .override(
                                                               fontFamily:
                                                                   'Poppins',
@@ -978,11 +934,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                           .first
                                                       : null;
                                               return InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
                                                 onTap: () async {
                                                   context.pushNamed(
                                                     'IndividualMessage',
@@ -1027,7 +978,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                             'Message',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium
+                                                                .bodyText1
                                                                 .override(
                                                                   fontFamily:
                                                                       'Poppins',
@@ -1088,11 +1039,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                           .first
                                                       : null;
                                               return InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
                                                 onTap: () async {
                                                   context.pushNamed(
                                                     'IndividualMessage',
@@ -1137,7 +1083,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                             'Message',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium
+                                                                .bodyText1
                                                                 .override(
                                                                   fontFamily:
                                                                       'Poppins',
@@ -1166,10 +1112,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
                                           onTap: () async {
                                             await launchUrl(Uri(
                                               scheme: 'mailto',
@@ -1200,7 +1142,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                       'Email',
                                                       style: FlutterFlowTheme
                                                               .of(context)
-                                                          .bodyMedium
+                                                          .bodyText1
                                                           .override(
                                                             fontFamily:
                                                                 'Poppins',
@@ -1279,11 +1221,11 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                     },
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .bodyText1
                                         .override(
                                           fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .primaryColor,
                                           fontSize: 0.0,
                                         ),
                                   ),
@@ -1305,41 +1247,35 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                   initialIndex: 0,
                                   child: Column(
                                     children: [
-                                      Align(
-                                        alignment: Alignment(0.0, 0),
-                                        child: TabBar(
-                                          labelColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .alternate,
-                                          unselectedLabelColor:
-                                              Color(0x80000000),
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Poppins',
-                                                    fontSize: 0.0,
-                                                    lineHeight: 0.0,
-                                                  ),
-                                          indicatorColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .alternate,
-                                          indicatorWeight: 2.0,
-                                          tabs: [
-                                            Tab(
-                                              icon: Icon(
-                                                FFIcons.kgrid,
-                                                size: 30.0,
-                                              ),
+                                      TabBar(
+                                        labelColor: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        unselectedLabelColor: Color(0x80000000),
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 0.0,
+                                              lineHeight: 0.0,
                                             ),
-                                            Tab(
-                                              icon: Icon(
-                                                FFIcons.kmentions,
-                                                size: 28.0,
-                                              ),
+                                        indicatorColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                        indicatorWeight: 2.0,
+                                        tabs: [
+                                          Tab(
+                                            icon: Icon(
+                                              FFIcons.kgrid,
+                                              size: 30.0,
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                          Tab(
+                                            icon: Icon(
+                                              FFIcons.kmentions,
+                                              size: 28.0,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                       Expanded(
                                         child: TabBarView(
@@ -1401,14 +1337,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                           profilePhotosPostsRecordList[
                                                               profilePhotosIndex];
                                                       return InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
                                                         onTap: () async {
                                                           context.pushNamed(
                                                             'PostDetails',
@@ -1500,14 +1428,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                           taggedPhotosPostsRecordList[
                                                               taggedPhotosIndex];
                                                       return InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
                                                         onTap: () async {
                                                           context.pushNamed(
                                                             'PostDetails',
@@ -1596,10 +1516,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                               children: [
                                 Expanded(
                                   child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       HapticFeedback.lightImpact();
 
@@ -1665,10 +1581,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                 ),
                                 Expanded(
                                   child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       HapticFeedback.lightImpact();
 
@@ -1716,10 +1628,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                 ),
                                 Expanded(
                                   child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       HapticFeedback.lightImpact();
 
@@ -1787,7 +1695,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primary,
+                                                                .primaryColor,
                                                         width: 2.0,
                                                       ),
                                                     ),

@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -92,10 +92,6 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 6.0, 0.0),
                             child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 await Share.share(
                                   'miitfirebase://miitfirebase.com${GoRouter.of(context).location}',
@@ -128,7 +124,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                         child: Text(
                                           'Share',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
+                                              .bodyText1
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.normal,
@@ -148,10 +144,6 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               6.0, 0.0, 6.0, 0.0),
                           child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await actions.copyText(
                                 'miitfirebase://miitfirebase.com${GoRouter.of(context).location}',
@@ -182,7 +174,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                       child: Text(
                                         'Link',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .bodyText1
                                             .override(
                                               fontFamily: 'Poppins',
                                               fontWeight: FontWeight.normal,
@@ -243,10 +235,6 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 12.0, 12.0),
                                           child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               final bookmarksUpdateData = {
                                                 'postRefs':
@@ -276,7 +264,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                                     'Save',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium
+                                                        .bodyText1
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontWeight:
@@ -296,10 +284,6 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 12.0, 12.0),
                                           child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               final bookmarksUpdateData = {
                                                 'postRefs':
@@ -329,7 +313,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                                     'Unsave',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium
+                                                        .bodyText1
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontWeight:
@@ -362,10 +346,6 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                             child: Align(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   Navigator.pop(context);
 
@@ -407,7 +387,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                                 'Edit',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
+                                                        .bodyText1
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontWeight:
@@ -448,10 +428,6 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                             children: [
                               if (widget.post!.allowLikes ?? true)
                                 InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     final postsUpdateData =
                                         createPostsRecordData(
@@ -475,7 +451,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                         child: Text(
                                           'Turn off likes',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
+                                              .bodyText1
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 color: Colors.black,
@@ -489,10 +465,6 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                 ),
                               if (!widget.post!.allowLikes!)
                                 InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     final postsUpdateData =
                                         createPostsRecordData(
@@ -516,7 +488,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                         child: Text(
                                           'Turn on likes',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
+                                              .bodyText1
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 color: Colors.black,
@@ -546,10 +518,6 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                             children: [
                               if (widget.post!.allowComments ?? true)
                                 InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     final postsUpdateData =
                                         createPostsRecordData(
@@ -573,7 +541,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                         child: Text(
                                           'Turn off commenting',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
+                                              .bodyText1
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 color: Colors.black,
@@ -587,10 +555,6 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                 ),
                               if (!widget.post!.allowComments!)
                                 InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     final postsUpdateData =
                                         createPostsRecordData(
@@ -614,7 +578,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                         child: Text(
                                           'Turn on commenting',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
+                                              .bodyText1
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 color: Colors.black,
@@ -640,10 +604,6 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 15.0, 15.0, 15.0),
                           child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
                             onTap: () async {
                               final postsUpdateData = createPostsRecordData(
                                 deleted: true,
@@ -666,7 +626,7 @@ class _PersonalPostOptionsWidgetState extends State<PersonalPostOptionsWidget> {
                                   child: Text(
                                     'Delete Post',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .bodyText1
                                         .override(
                                           fontFamily: 'Poppins',
                                           color: Color(0xFFF83639),

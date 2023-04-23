@@ -80,7 +80,7 @@ class _TaggedUsersWidgetState extends State<TaggedUsersWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 12.0),
                   child: Text(
                     'In this photo',
-                    style: FlutterFlowTheme.of(context).titleMedium,
+                    style: FlutterFlowTheme.of(context).subtitle1,
                   ),
                 ),
                 Container(

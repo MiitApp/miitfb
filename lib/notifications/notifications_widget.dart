@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/new_follower_notification_widget.dart';
 import '/components/todaytomonthnotification_followers_widget.dart';
@@ -74,42 +74,38 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          iconTheme:
-              IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
-          automaticallyImplyLeading: false,
-          leading: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              context.pop();
-            },
-            child: Icon(
-              FFIcons.karrowLeft,
-              color: Colors.black,
-              size: 24.0,
-            ),
+        iconTheme:
+            IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+          onTap: () async {
+            context.pop();
+          },
+          child: Icon(
+            FFIcons.karrowLeft,
+            color: Colors.black,
+            size: 24.0,
           ),
-          title: Text(
-            'Notifications',
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Poppins',
-                  fontSize: 24.0,
-                ),
-          ),
-          actions: [],
-          centerTitle: true,
-          elevation: 0.0,
         ),
-        body: SafeArea(
+        title: Text(
+          'Notifications',
+          style: FlutterFlowTheme.of(context).bodyText1.override(
+                fontFamily: 'Poppins',
+                fontSize: 24.0,
+              ),
+        ),
+        actions: [],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -118,7 +114,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                   width: double.infinity,
                   height: 100.0,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primaryBackground,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
                   child: SingleChildScrollView(
                     child: Column(
@@ -143,7 +139,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                     child: Text(
                                       'New',
                                       style: FlutterFlowTheme.of(context)
-                                          .titleMedium,
+                                          .subtitle1,
                                     ),
                                   ),
                                   Padding(
@@ -236,15 +232,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -408,15 +395,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -602,15 +580,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -796,15 +765,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -1033,7 +993,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                     child: Text(
                                       'Today',
                                       style: FlutterFlowTheme.of(context)
-                                          .titleMedium,
+                                          .subtitle1,
                                     ),
                                   ),
                                   Padding(
@@ -1134,15 +1094,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -1306,15 +1257,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -1500,15 +1442,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -1694,15 +1627,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -1938,7 +1862,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                     child: Text(
                                       'This Week',
                                       style: FlutterFlowTheme.of(context)
-                                          .titleMedium,
+                                          .subtitle1,
                                     ),
                                   ),
                                   Padding(
@@ -2043,15 +1967,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -2215,15 +2130,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -2409,15 +2315,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -2603,15 +2500,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -2846,7 +2734,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                     child: Text(
                                       'This Month',
                                       style: FlutterFlowTheme.of(context)
-                                          .titleMedium,
+                                          .subtitle1,
                                     ),
                                   ),
                                   Padding(
@@ -2951,15 +2839,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -3123,15 +3002,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -3317,15 +3187,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -3511,15 +3372,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -3748,7 +3600,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                     child: Text(
                                       'Earlier',
                                       style: FlutterFlowTheme.of(context)
-                                          .titleMedium,
+                                          .subtitle1,
                                     ),
                                   ),
                                   Padding(
@@ -3849,15 +3701,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -4021,15 +3864,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -4215,15 +4049,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -4409,15 +4234,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                             final rowUsersRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -4636,10 +4452,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                               children: [
                                 Expanded(
                                   child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       HapticFeedback.lightImpact();
 
@@ -4679,10 +4491,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                 ),
                                 Expanded(
                                   child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       HapticFeedback.lightImpact();
 
@@ -4730,10 +4538,6 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                 ),
                                 Expanded(
                                   child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       HapticFeedback.lightImpact();
 
@@ -4801,7 +4605,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primary,
+                                                                .primaryColor,
                                                         width: 2.0,
                                                       ),
                                                     ),

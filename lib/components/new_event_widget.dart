@@ -83,7 +83,7 @@ class _NewEventWidgetState extends State<NewEventWidget> {
                   children: [
                     Text(
                       'Main Header',
-                      style: FlutterFlowTheme.of(context).titleMedium,
+                      style: FlutterFlowTheme.of(context).subtitle1,
                     ),
                   ],
                 ),
@@ -95,9 +95,9 @@ class _NewEventWidgetState extends State<NewEventWidget> {
                   children: [
                     Text(
                       'Secondary Text',
-                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                      style: FlutterFlowTheme.of(context).bodyText2.override(
                             fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondary,
+                            color: FlutterFlowTheme.of(context).secondaryColor,
                           ),
                     ),
                   ],
@@ -111,7 +111,7 @@ class _NewEventWidgetState extends State<NewEventWidget> {
                     Expanded(
                       child: Text(
                         'I’ll be working on a few different proposals, let me know when you’ve got time to go over them before the weekend.',
-                        style: FlutterFlowTheme.of(context).bodySmall,
+                        style: FlutterFlowTheme.of(context).bodyText2,
                       ),
                     ),
                   ],
@@ -136,11 +136,12 @@ class _NewEventWidgetState extends State<NewEventWidget> {
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primaryBackground,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Poppins',
-                                  color: FlutterFlowTheme.of(context).primary,
-                                ),
+                        textStyle: FlutterFlowTheme.of(context)
+                            .subtitle2
+                            .override(
+                              fontFamily: 'Poppins',
+                              color: FlutterFlowTheme.of(context).primaryColor,
+                            ),
                         elevation: 0.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
@@ -164,11 +165,13 @@ class _NewEventWidgetState extends State<NewEventWidget> {
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primaryBackground,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                  ),
+                          textStyle: FlutterFlowTheme.of(context)
+                              .subtitle2
+                              .override(
+                                fontFamily: 'Poppins',
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                              ),
                           elevation: 0.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,

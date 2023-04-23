@@ -1,9 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/upload_media.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -59,120 +59,111 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+        automaticallyImplyLeading: false,
+        leading: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              InkWell(
+                onTap: () async {
+                  context.pop();
+                },
+                child: Text(
+                  'Cancel',
+                  style: FlutterFlowTheme.of(context).subtitle1.override(
+                        fontFamily: 'Poppins',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.normal,
+                      ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        title: Text(
+          'Edit profile',
+          style: FlutterFlowTheme.of(context).subtitle1.override(
+                fontFamily: 'Poppins',
+                fontSize: 16.0,
+              ),
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    context.pop();
-                  },
-                  child: Text(
-                    'Cancel',
-                    style: FlutterFlowTheme.of(context).titleMedium.override(
-                          fontFamily: 'Poppins',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.normal,
-                        ),
+                StreamBuilder<List<AdministrativeRecord>>(
+                  stream: queryAdministrativeRecord(
+                    singleRecord: true,
                   ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 12.0,
+                          height: 12.0,
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                          ),
+                        ),
+                      );
+                    }
+                    List<AdministrativeRecord> textAdministrativeRecordList =
+                        snapshot.data!;
+                    final textAdministrativeRecord =
+                        textAdministrativeRecordList.isNotEmpty
+                            ? textAdministrativeRecordList.first
+                            : null;
+                    return InkWell(
+                      onTap: () async {
+                        if (_model.formKey.currentState == null ||
+                            !_model.formKey.currentState!.validate()) {
+                          return;
+                        }
+
+                        final usersUpdateData = createUsersRecordData(
+                          displayName: _model.textController1.text,
+                          photoUrl: FFAppState().tempProfilePic,
+                          bio: _model.textController3.text,
+                          website: _model.textController4.text,
+                          enableEmail: _model.switchValue,
+                          email: _model.textController2.text,
+                        );
+                        await currentUserReference!.update(usersUpdateData);
+                        context.pop();
+                      },
+                      child: Text(
+                        'Done',
+                        style: FlutterFlowTheme.of(context).subtitle1.override(
+                              fontFamily: 'Poppins',
+                              color:
+                                  FlutterFlowTheme.of(context).secondaryColor,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
           ),
-          title: Text(
-            'Edit profile',
-            style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Poppins',
-                  fontSize: 16.0,
-                ),
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  StreamBuilder<List<AdministrativeRecord>>(
-                    stream: queryAdministrativeRecord(
-                      singleRecord: true,
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 12.0,
-                            height: 12.0,
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                            ),
-                          ),
-                        );
-                      }
-                      List<AdministrativeRecord> textAdministrativeRecordList =
-                          snapshot.data!;
-                      final textAdministrativeRecord =
-                          textAdministrativeRecordList.isNotEmpty
-                              ? textAdministrativeRecordList.first
-                              : null;
-                      return InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          if (_model.formKey.currentState == null ||
-                              !_model.formKey.currentState!.validate()) {
-                            return;
-                          }
-
-                          final usersUpdateData = createUsersRecordData(
-                            displayName: _model.textController1.text,
-                            photoUrl: FFAppState().tempProfilePic,
-                            bio: _model.textController3.text,
-                            website: _model.textController4.text,
-                            enableEmail: _model.switchValue,
-                            email: _model.textController2.text,
-                          );
-                          await currentUserReference!.update(usersUpdateData);
-                          context.pop();
-                        },
-                        child: Text(
-                          'Done',
-                          style: FlutterFlowTheme.of(context)
-                              .titleMedium
-                              .override(
-                                fontFamily: 'Poppins',
-                                color: FlutterFlowTheme.of(context).secondary,
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w500,
-                              ),
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
-          centerTitle: true,
-          elevation: 0.0,
-        ),
-        body: SafeArea(
+        ],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -194,10 +185,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                       child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
                         onTap: () async {
                           final selectedMedia = await selectMedia(
                             mediaSource: MediaSource.photoGallery,
@@ -206,7 +193,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           if (selectedMedia != null &&
                               selectedMedia.every((m) =>
                                   validateFileFormat(m.storagePath, context))) {
-                            setState(() => _model.isDataUploading = true);
+                            setState(() => _model.isMediaUploading = true);
                             var selectedUploadedFiles = <FFUploadedFile>[];
                             var downloadUrls = <String>[];
                             try {
@@ -221,7 +208,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         bytes: m.bytes,
                                         height: m.dimensions?.height,
                                         width: m.dimensions?.width,
-                                        blurHash: m.blurHash,
                                       ))
                                   .toList();
 
@@ -237,7 +223,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             } finally {
                               ScaffoldMessenger.of(context)
                                   .hideCurrentSnackBar();
-                              _model.isDataUploading = false;
+                              _model.isMediaUploading = false;
                             }
                             if (selectedUploadedFiles.length ==
                                     selectedMedia.length &&
@@ -251,7 +237,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             } else {
                               setState(() {});
                               showUploadMessage(
-                                  context, 'Failed to upload data');
+                                  context, 'Failed to upload media');
                               return;
                             }
                           }
@@ -293,9 +279,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 15.0),
                     child: Text(
                       'Edit picture',
-                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                      style: FlutterFlowTheme.of(context).bodyText2.override(
                             fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondary,
+                            color: FlutterFlowTheme.of(context).secondaryColor,
                             fontSize: 14.0,
                             fontWeight: FontWeight.w500,
                           ),
@@ -326,7 +312,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             child: Text(
                               'Full Name',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                                  .bodyText1
                                   .override(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
@@ -342,10 +328,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                      FlutterFlowTheme.of(context).bodyText1,
                                   hintText: 'Full Name',
                                   hintStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .bodyText1
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
@@ -395,7 +381,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
@@ -435,7 +421,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             child: Text(
                               'Email',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                                  .bodyText1
                                   .override(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
@@ -453,10 +439,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                      FlutterFlowTheme.of(context).bodyText1,
                                   hintText: 'Username',
                                   hintStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .bodyText1
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
@@ -506,7 +492,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
@@ -551,7 +537,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               child: Text(
                                 'Bio',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
@@ -568,10 +554,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                      FlutterFlowTheme.of(context).bodyText1,
                                   hintText: 'Bio',
                                   hintStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .bodyText1
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
@@ -621,7 +607,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
@@ -655,7 +641,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             child: Text(
                               'Website',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                                  .bodyText1
                                   .override(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
@@ -671,10 +657,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                      FlutterFlowTheme.of(context).bodyText1,
                                   hintText: 'Website',
                                   hintStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .bodyText1
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
@@ -724,7 +710,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
@@ -752,7 +738,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 24.0, 0.0, 6.0),
                 child: Text(
                   'Profile information',
-                  style: FlutterFlowTheme.of(context).titleMedium,
+                  style: FlutterFlowTheme.of(context).subtitle1,
                 ),
               ),
               Padding(
@@ -766,7 +752,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Enable profile contact button',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
                               fontSize: 14.0,
                               fontWeight: FontWeight.normal,
@@ -785,7 +771,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           },
                           activeColor: Colors.white,
                           activeTrackColor:
-                              FlutterFlowTheme.of(context).secondary,
+                              FlutterFlowTheme.of(context).secondaryColor,
                           inactiveTrackColor: Color(0xFFDADADA),
                           inactiveThumbColor: Colors.white,
                         ),

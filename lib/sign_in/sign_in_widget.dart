@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -59,12 +59,12 @@ class _SignInWidgetState extends State<SignInWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-        body: SafeArea(
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Align(
             alignment: AlignmentDirectional(0.0, 0.0),
             child: Column(
@@ -101,7 +101,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 decoration: InputDecoration(
                                   hintText: 'Email Address',
                                   hintStyle: FlutterFlowTheme.of(context)
-                                      .bodySmall
+                                      .bodyText2
                                       .override(
                                         fontFamily: 'Poppins',
                                         fontSize: 14.0,
@@ -139,7 +139,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   fillColor: Color(0xFFF9F9F9),
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
@@ -160,7 +160,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 decoration: InputDecoration(
                                   hintText: 'Password',
                                   hintStyle: FlutterFlowTheme.of(context)
-                                      .bodySmall
+                                      .bodyText2
                                       .override(
                                         fontFamily: 'Poppins',
                                         fontSize: 14.0,
@@ -213,7 +213,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
@@ -233,7 +233,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   Text(
                                     'Forgot password?',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .bodyText1
                                         .override(
                                           fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
@@ -258,7 +258,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                             }
                             GoRouter.of(context).prepareAuthEvent();
 
-                            final user = await authManager.signInWithEmail(
+                            final user = await signInWithEmail(
                               context,
                               _model.emailAddressController.text,
                               _model.passwordController.text,
@@ -278,13 +278,12 @@ class _SignInWidgetState extends State<SignInWidget> {
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primaryText,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                  fontSize: 14.0,
-                                ),
+                            textStyle:
+                                FlutterFlowTheme.of(context).subtitle2.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 14.0,
+                                    ),
                             elevation: 0.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
@@ -314,34 +313,29 @@ class _SignInWidgetState extends State<SignInWidget> {
                         children: [
                           Text(
                             'Don\'t have an account?',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  fontWeight: FontWeight.normal,
-                                ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      fontWeight: FontWeight.normal,
+                                    ),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 3.0, 0.0, 0.0, 0.0),
                             child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed('SignUp');
                               },
                               child: Text(
                                 'Sign Up.',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)
-                                          .secondary,
+                                          .secondaryColor,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),

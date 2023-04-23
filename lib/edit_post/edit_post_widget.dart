@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -61,87 +61,79 @@ class _EditPostWidgetState extends State<EditPostWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+        automaticallyImplyLeading: false,
+        leading: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              InkWell(
+                onTap: () async {
+                  context.pop();
+                },
+                child: Text(
+                  'Cancel',
+                  style: FlutterFlowTheme.of(context).subtitle1.override(
+                        fontFamily: 'Poppins',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.normal,
+                      ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        title: Text(
+          'Edit info',
+          style: FlutterFlowTheme.of(context).subtitle1.override(
+                fontFamily: 'Poppins',
+                fontSize: 16.0,
+              ),
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
                 InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
                   onTap: () async {
+                    final postsUpdateData = {
+                      ...createPostsRecordData(
+                        postCaption: _model.textController.text,
+                        location: FFAppState().location,
+                      ),
+                      'tagged_users': FFAppState().taggedUsers,
+                    };
+                    await widget.post!.reference.update(postsUpdateData);
                     context.pop();
                   },
                   child: Text(
-                    'Cancel',
-                    style: FlutterFlowTheme.of(context).titleMedium.override(
+                    'Done',
+                    style: FlutterFlowTheme.of(context).subtitle1.override(
                           fontFamily: 'Poppins',
-                          color: FlutterFlowTheme.of(context).primaryText,
+                          color: FlutterFlowTheme.of(context).secondaryColor,
                           fontSize: 16.0,
-                          fontWeight: FontWeight.normal,
+                          fontWeight: FontWeight.w500,
                         ),
                   ),
                 ),
               ],
             ),
           ),
-          title: Text(
-            'Edit info',
-            style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Poppins',
-                  fontSize: 16.0,
-                ),
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      final postsUpdateData = {
-                        ...createPostsRecordData(
-                          postCaption: _model.textController.text,
-                          location: FFAppState().location,
-                        ),
-                        'tagged_users': FFAppState().taggedUsers,
-                      };
-                      await widget.post!.reference.update(postsUpdateData);
-                      context.pop();
-                    },
-                    child: Text(
-                      'Done',
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondary,
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-          centerTitle: true,
-          elevation: 0.0,
-        ),
-        body: SafeArea(
+        ],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -196,7 +188,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                                 valueOrDefault(
                                     currentUserDocument?.username, ''),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       color: Color(0x7F000000),
@@ -209,10 +201,6 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 2.0, 0.0, 0.0),
                                 child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed(
                                       'Location',
@@ -234,7 +222,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                                           )
                                         : 'Add location...',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .bodyText1
                                         .override(
                                           fontFamily: 'Poppins',
                                           fontSize: 12.0,
@@ -277,10 +265,6 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 0.0, 21.0),
                           child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
                                 'TagUsers',
@@ -334,7 +318,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                                         }
                                       }(),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .bodyText1
                                           .override(
                                             fontFamily: 'Poppins',
                                             color: Colors.white,
@@ -359,7 +343,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                     decoration: InputDecoration(
                       hintText: 'Add a caption...',
                       hintStyle:
-                          FlutterFlowTheme.of(context).bodySmall.override(
+                          FlutterFlowTheme.of(context).bodyText2.override(
                                 fontFamily: 'Poppins',
                                 fontSize: 14.0,
                                 fontWeight: FontWeight.normal,
@@ -405,7 +389,7 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                         ),
                       ),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Poppins',
                           fontSize: 14.0,
                           fontWeight: FontWeight.normal,

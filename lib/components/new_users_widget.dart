@@ -98,17 +98,18 @@ class _NewUsersWidgetState extends State<NewUsersWidget> {
                               children: [
                                 Icon(
                                   Icons.person_pin_circle_outlined,
-                                  color: FlutterFlowTheme.of(context).tertiary,
+                                  color: FlutterFlowTheme.of(context)
+                                      .tertiaryColor,
                                   size: 24.0,
                                 ),
                                 Text(
                                   '22km away',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodySmall
+                                      .bodyText2
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiary,
+                                            .tertiaryColor,
                                       ),
                                 ),
                               ],
@@ -119,7 +120,7 @@ class _NewUsersWidgetState extends State<NewUsersWidget> {
                               child: AutoSizeText(
                                 'Michael Brown',
                                 maxLines: 1,
-                                style: FlutterFlowTheme.of(context).titleMedium,
+                                style: FlutterFlowTheme.of(context).subtitle1,
                               ),
                             ),
                             Padding(
@@ -129,11 +130,11 @@ class _NewUsersWidgetState extends State<NewUsersWidget> {
                                 '@mbrown',
                                 maxLines: 1,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodySmall
+                                    .bodyText2
                                     .override(
                                       fontFamily: 'Poppins',
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
                                     ),
                               ),
                             ),
@@ -193,17 +194,18 @@ class _NewUsersWidgetState extends State<NewUsersWidget> {
                               children: [
                                 Icon(
                                   Icons.person_pin_circle_outlined,
-                                  color: FlutterFlowTheme.of(context).tertiary,
+                                  color: FlutterFlowTheme.of(context)
+                                      .tertiaryColor,
                                   size: 24.0,
                                 ),
                                 Text(
                                   '7km away',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodySmall
+                                      .bodyText2
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiary,
+                                            .tertiaryColor,
                                       ),
                                 ),
                               ],
@@ -214,7 +216,7 @@ class _NewUsersWidgetState extends State<NewUsersWidget> {
                               child: AutoSizeText(
                                 'Jen Green',
                                 maxLines: 1,
-                                style: FlutterFlowTheme.of(context).titleMedium,
+                                style: FlutterFlowTheme.of(context).subtitle1,
                               ),
                             ),
                             Padding(
@@ -224,11 +226,11 @@ class _NewUsersWidgetState extends State<NewUsersWidget> {
                                 '@jen_bear',
                                 maxLines: 1,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodySmall
+                                    .bodyText2
                                     .override(
                                       fontFamily: 'Poppins',
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
                                     ),
                               ),
                             ),

@@ -41,12 +41,12 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: SafeArea(
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Align(
             alignment: AlignmentDirectional(0.0, 0.0),
             child: Column(
@@ -72,9 +72,7 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                         child: Text(
                           'Add Your Birthday',
                           textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context)
-                              .displaySmall
-                              .override(
+                          style: FlutterFlowTheme.of(context).title1.override(
                                 fontFamily: 'Poppins',
                                 lineHeight: 1.5,
                               ),
@@ -87,7 +85,7 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                           'This wont be part of your public profile.',
                           textAlign: TextAlign.center,
                           style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
+                              FlutterFlowTheme.of(context).bodyText2.override(
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.normal,
                                     lineHeight: 1.5,
@@ -101,10 +99,6 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               40.0, 24.0, 40.0, 0.0),
                           child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
                             onTap: () async {
                               final _datePickedDate = await showDatePicker(
                                 context: context,
@@ -156,7 +150,7 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                                                       .languageCode,
                                             ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .bodyText1
                                           .override(
                                             fontFamily: 'Poppins',
                                             color: _model.datePicked != null
@@ -201,14 +195,13 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).secondary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                  fontSize: 14.0,
-                                ),
+                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            textStyle:
+                                FlutterFlowTheme.of(context).subtitle2.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 14.0,
+                                    ),
                             elevation: 0.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
@@ -225,7 +218,7 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                           'Use your own birthday, even if this account is for a business, a pet or something else.',
                           textAlign: TextAlign.center,
                           style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
+                              FlutterFlowTheme.of(context).bodyText2.override(
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.normal,
                                     lineHeight: 1.5,
@@ -254,23 +247,18 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                         children: [
                           Text(
                             'Already have an account?',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  fontWeight: FontWeight.normal,
-                                ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      fontWeight: FontWeight.normal,
+                                    ),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 3.0, 0.0, 0.0, 0.0),
                             child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.goNamed(
                                   'SignIn',
@@ -286,7 +274,7 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                               child: Text(
                                 'Sign In.',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .bodyText1
                                     .override(
                                       fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)

@@ -49,61 +49,57 @@ class _FollowersFollowingOtherWidgetState
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          leading: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              context.pop();
-            },
-            child: Icon(
-              FFIcons.karrowLeft,
-              color: Colors.black,
-              size: 24.0,
-            ),
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+          onTap: () async {
+            context.pop();
+          },
+          child: Icon(
+            FFIcons.karrowLeft,
+            color: Colors.black,
+            size: 24.0,
           ),
-          title: StreamBuilder<UsersRecord>(
-            stream: UsersRecord.getDocument(widget.userRef!),
-            builder: (context, snapshot) {
-              // Customize what your widget looks like when it's loading.
-              if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 12.0,
-                    height: 12.0,
-                    child: CircularProgressIndicator(
-                      color: Colors.white,
-                    ),
-                  ),
-                );
-              }
-              final textUsersRecord = snapshot.data!;
-              return Text(
-                valueOrDefault<String>(
-                  textUsersRecord.username,
-                  'user',
-                ),
-                style: FlutterFlowTheme.of(context).titleMedium.override(
-                      fontFamily: 'Poppins',
-                      fontSize: 16.0,
-                    ),
-              );
-            },
-          ),
-          actions: [],
-          centerTitle: true,
-          elevation: 0.0,
         ),
-        body: SafeArea(
+        title: StreamBuilder<UsersRecord>(
+          stream: UsersRecord.getDocument(widget.userRef!),
+          builder: (context, snapshot) {
+            // Customize what your widget looks like when it's loading.
+            if (!snapshot.hasData) {
+              return Center(
+                child: SizedBox(
+                  width: 12.0,
+                  height: 12.0,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                  ),
+                ),
+              );
+            }
+            final textUsersRecord = snapshot.data!;
+            return Text(
+              valueOrDefault<String>(
+                textUsersRecord.username,
+                'user',
+              ),
+              style: FlutterFlowTheme.of(context).subtitle1.override(
+                    fontFamily: 'Poppins',
+                    fontSize: 16.0,
+                  ),
+            );
+          },
+        ),
+        actions: [],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: StreamBuilder<UsersRecord>(
             stream: UsersRecord.getDocument(widget.userRef!),
             builder: (context, snapshot) {
@@ -155,49 +151,44 @@ class _FollowersFollowingOtherWidgetState
                       initialIndex: 0,
                       child: Column(
                         children: [
-                          Align(
-                            alignment: Alignment(0.0, 0),
-                            child: TabBar(
-                              labelColor:
-                                  FlutterFlowTheme.of(context).alternate,
-                              unselectedLabelColor: Color(0x80000000),
-                              labelStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15.0,
-                                  ),
-                              indicatorColor:
-                                  FlutterFlowTheme.of(context).alternate,
-                              indicatorWeight: 2.0,
-                              tabs: [
-                                Tab(
-                                  text: valueOrDefault<String>(
-                                    '${formatNumber(
-                                      tabBarFollowersRecord!.userRefs!
+                          TabBar(
+                            labelColor: FlutterFlowTheme.of(context).alternate,
+                            unselectedLabelColor: Color(0x80000000),
+                            labelStyle:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 15.0,
+                                    ),
+                            indicatorColor:
+                                FlutterFlowTheme.of(context).alternate,
+                            indicatorWeight: 2.0,
+                            tabs: [
+                              Tab(
+                                text: valueOrDefault<String>(
+                                  '${formatNumber(
+                                    tabBarFollowersRecord!.userRefs!
+                                        .toList()
+                                        .length,
+                                    formatType: FormatType.compact,
+                                  )} Followers',
+                                  '0 Followers',
+                                ),
+                              ),
+                              Tab(
+                                text: valueOrDefault<String>(
+                                  '${valueOrDefault<String>(
+                                    formatNumber(
+                                      containerUsersRecord.following!
                                           .toList()
                                           .length,
                                       formatType: FormatType.compact,
-                                    )} Followers',
-                                    '0 Followers',
-                                  ),
+                                    ),
+                                    '0',
+                                  )} Following',
+                                  '0 Followers',
                                 ),
-                                Tab(
-                                  text: valueOrDefault<String>(
-                                    '${valueOrDefault<String>(
-                                      formatNumber(
-                                        containerUsersRecord.following!
-                                            .toList()
-                                            .length,
-                                        formatType: FormatType.compact,
-                                      ),
-                                      '0',
-                                    )} Following',
-                                    '0 Followers',
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                           Expanded(
                             child: TabBarView(
