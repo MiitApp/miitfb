@@ -83,6 +83,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   fontFamily: 'Poppins',
                                   fontSize: 36.0,
                                   fontWeight: FontWeight.bold,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .displaySmallFamily),
                                 ),
                           ),
                         ),
@@ -384,11 +387,19 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
-                                              fontFamily: 'Poppins',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmallFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryBtnText,
                                               fontSize: 11.0,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmallFamily),
                                             ),
                                       ),
                                     ),

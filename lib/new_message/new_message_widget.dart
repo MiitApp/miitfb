@@ -145,9 +145,14 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                               hintStyle: FlutterFlowTheme.of(context)
                                   .bodySmall
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodySmallFamily,
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.normal,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodySmallFamily),
                                     lineHeight: 1.5,
                                   ),
                               enabledBorder: OutlineInputBorder(
@@ -236,9 +241,13 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
                                 ),
                             validator: _model.searchInnputControllerValidator
                                 .asValidator(context),
@@ -271,9 +280,12 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                     },
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Poppins',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyMediumFamily,
                           color: FlutterFlowTheme.of(context).primary,
                           fontSize: 1.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
                   ),
                 ],
@@ -418,8 +430,17 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Poppins',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         fontSize: 14.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
                                                       ),
                                                 ),
                                                 Padding(
@@ -436,9 +457,18 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                                                             context)
                                                         .bodySmall
                                                         .override(
-                                                          fontFamily: 'Poppins',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmallFamily,
                                                           fontWeight:
                                                               FontWeight.normal,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmallFamily),
                                                         ),
                                                   ),
                                                 ),
@@ -641,14 +671,22 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                                                         profileDetailsUsersRecord
                                                             .displayName!,
                                                         maxLines: 1,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              fontSize: 14.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  fontSize:
+                                                                      14.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
+                                                                ),
                                                       ),
                                                       Padding(
                                                         padding:
@@ -666,11 +704,17 @@ class _NewMessageWidgetState extends State<NewMessageWidget> {
                                                                   .of(context)
                                                               .bodySmall
                                                               .override(
-                                                                fontFamily:
-                                                                    'Poppins',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodySmallFamily),
                                                               ),
                                                         ),
                                                       ),

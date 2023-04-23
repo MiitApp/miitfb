@@ -101,8 +101,10 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
           title: Text(
             'Notifications',
             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                   fontSize: 24.0,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).bodyMediumFamily),
                 ),
           ),
           actions: [],

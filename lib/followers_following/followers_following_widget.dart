@@ -71,8 +71,10 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
             builder: (context) => Text(
               valueOrDefault(currentUserDocument?.username, ''),
               style: FlutterFlowTheme.of(context).titleMedium.override(
-                    fontFamily: 'Poppins',
+                    fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                     fontSize: 16.0,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).titleMediumFamily),
                   ),
             ),
           ),
@@ -121,11 +123,16 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                         child: TabBar(
                           labelColor: FlutterFlowTheme.of(context).alternate,
                           unselectedLabelColor: Color(0x80000000),
-                          labelStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15.0,
-                                  ),
+                          labelStyle: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                fontSize: 15.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
                           indicatorColor:
                               FlutterFlowTheme.of(context).alternate,
                           indicatorWeight: 2.0,
@@ -286,9 +293,11 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Poppins',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         fontSize:
                                                                             14.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                       ),
                                                                 ),
                                                                 if (!(currentUserDocument
@@ -310,9 +319,11 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Poppins',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             fontSize:
                                                                                 14.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                           ),
                                                                     ),
                                                                   ),
@@ -403,10 +414,11 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                             maxLines:
                                                                                 1,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Poppins',
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                   color: FlutterFlowTheme.of(context).secondary,
                                                                                   fontSize: 14.0,
                                                                                   fontWeight: FontWeight.w500,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                 ),
                                                                           ),
                                                                         );
@@ -432,10 +444,15 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                     .bodySmall
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Poppins',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodySmallFamily,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
                                                                     ),
                                                               ),
                                                             ),
@@ -561,9 +578,10 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Poppins',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               fontSize: 13.0,
                                                                               fontWeight: FontWeight.w600,
+                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                             ),
                                                                       ),
                                                                     ],

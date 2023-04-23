@@ -286,10 +286,16 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: Colors.white,
                                             fontSize: 15.0,
                                             fontWeight: FontWeight.w500,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily),
                                           ),
                                     ),
                                     Icon(
@@ -736,9 +742,15 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Poppins',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           fontSize: 12.0,
                                           fontWeight: FontWeight.normal,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
                                         ),
                                   ),
                               ],
@@ -953,10 +965,16 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Poppins',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontWeight: FontWeight.normal,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
                                         ),
                                   ),
                                 );
@@ -1003,10 +1021,16 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Poppins',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontWeight: FontWeight.normal,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
                                         ),
                                   ),
                                 );
@@ -1160,10 +1184,16 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             fontWeight: FontWeight.normal,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily),
                                           ),
                                     ),
                                   ),
@@ -1214,9 +1244,13 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                           'now',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Poppins',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontWeight: FontWeight.normal,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
                             ),
                       ),
                     ),

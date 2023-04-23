@@ -67,8 +67,10 @@ class _LocationWidgetState extends State<LocationWidget> {
           title: Text(
             'Location',
             style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                   fontSize: 16.0,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).titleMediumFamily),
                 ),
           ),
           actions: [
@@ -95,10 +97,13 @@ class _LocationWidgetState extends State<LocationWidget> {
                     child: Text(
                       'Done',
                       style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily: 'Poppins',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleMediumFamily,
                             color: FlutterFlowTheme.of(context).secondary,
                             fontSize: 16.0,
                             fontWeight: FontWeight.w500,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).titleMediumFamily),
                           ),
                     ),
                   ),
@@ -130,8 +135,11 @@ class _LocationWidgetState extends State<LocationWidget> {
                   child: Text(
                     'Add a location so users know where your photo was taken or what it might be a picture of.',
                     style: FlutterFlowTheme.of(context).bodySmall.override(
-                          fontFamily: 'Poppins',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodySmallFamily,
                           fontWeight: FontWeight.normal,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).bodySmallFamily),
                         ),
                   ),
                 ),
@@ -160,9 +168,14 @@ class _LocationWidgetState extends State<LocationWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                             ),
@@ -184,11 +197,16 @@ class _LocationWidgetState extends State<LocationWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
                                       ),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
@@ -234,8 +252,13 @@ class _LocationWidgetState extends State<LocationWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontWeight: FontWeight.normal,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                                 validator: _model.textControllerValidator
                                     .asValidator(context),

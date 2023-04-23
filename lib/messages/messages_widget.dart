@@ -81,8 +81,11 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                   builder: (context) => Text(
                     valueOrDefault(currentUserDocument?.username, ''),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Poppins',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyMediumFamily,
                           fontSize: 24.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
                   ),
                 ),
@@ -259,10 +262,19 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Poppins',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.w600,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
                                                         ),
                                               ),
                                               Row(
@@ -307,12 +319,18 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                                   .of(context)
                                                               .bodySmall
                                                               .override(
-                                                                fontFamily:
-                                                                    'Poppins',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily,
                                                                 fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodySmallFamily),
                                                               ),
                                                         );
                                                       },
@@ -353,12 +371,18 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                                   .of(context)
                                                               .bodySmall
                                                               .override(
-                                                                fontFamily:
-                                                                    'Poppins',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily,
                                                                 fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodySmallFamily),
                                                               ),
                                                         );
                                                       },
@@ -409,12 +433,18 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                                   .of(context)
                                                               .bodySmall
                                                               .override(
-                                                                fontFamily:
-                                                                    'Poppins',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily,
                                                                 fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodySmallFamily),
                                                               ),
                                                         );
                                                       },

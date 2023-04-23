@@ -220,7 +220,8 @@ class _NewFollowerNotificationWidgetState
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: (currentUserDocument?.following
                                                         ?.toList() ??
                                                     [])
@@ -231,6 +232,10 @@ class _NewFollowerNotificationWidgetState
                                             : Colors.white,
                                         fontSize: 13.0,
                                         fontWeight: FontWeight.w600,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
                                       ),
                                 ),
                               ],
@@ -288,9 +293,11 @@ class _NewFollowerNotificationWidgetState
                 },
                 textAlign: TextAlign.start,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                       color: FlutterFlowTheme.of(context).primary,
                       fontSize: 0.0,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).bodyMediumFamily),
                     ),
               ),
             ],

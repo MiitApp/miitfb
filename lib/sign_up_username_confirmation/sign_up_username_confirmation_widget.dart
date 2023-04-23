@@ -78,7 +78,12 @@ class _SignUpUsernameConfirmationWidgetState
                                 style: FlutterFlowTheme.of(context)
                                     .displaySmall
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .displaySmallFamily,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .displaySmallFamily),
                                       lineHeight: 1.5,
                                     ),
                               ),
@@ -89,7 +94,12 @@ class _SignUpUsernameConfirmationWidgetState
                               style: FlutterFlowTheme.of(context)
                                   .displaySmall
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .displaySmallFamily,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .displaySmallFamily),
                                     lineHeight: 1.5,
                                   ),
                             ),
@@ -102,8 +112,13 @@ class _SignUpUsernameConfirmationWidgetState
                                 style: FlutterFlowTheme.of(context)
                                     .bodySmall
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodySmallFamily,
                                       fontWeight: FontWeight.normal,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodySmallFamily),
                                       lineHeight: 1.5,
                                     ),
                               ),
@@ -121,9 +136,14 @@ class _SignUpUsernameConfirmationWidgetState
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: Colors.white,
                                     fontSize: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                               validator: _model.emailHIDDENControllerValidator
                                   .asValidator(context),
@@ -155,9 +175,14 @@ class _SignUpUsernameConfirmationWidgetState
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: Colors.white,
                                     fontSize: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                               validator: _model
                                   .passwordHIDDENControllerValidator
@@ -172,12 +197,17 @@ class _SignUpUsernameConfirmationWidgetState
                         child: Text(
                           'By tapping Sign up, you agree to our Terms, Privacy Policy and Cookies Policy.',
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.normal,
-                                    lineHeight: 1.5,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodySmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodySmallFamily,
+                                fontWeight: FontWeight.normal,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodySmallFamily),
+                                lineHeight: 1.5,
+                              ),
                         ),
                       ),
                     ],
@@ -287,9 +317,14 @@ class _SignUpUsernameConfirmationWidgetState
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
                                     color: Colors.white,
                                     fontSize: 14.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .titleSmallFamily),
                                   ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -314,10 +349,14 @@ class _SignUpUsernameConfirmationWidgetState
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
                                 ),
                           ),
                           Padding(
@@ -345,10 +384,15 @@ class _SignUpUsernameConfirmationWidgetState
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                             ),

@@ -192,9 +192,14 @@ class _SearchWidgetState extends State<SearchWidget>
                               hintStyle: FlutterFlowTheme.of(context)
                                   .bodySmall
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodySmallFamily,
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.normal,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodySmallFamily),
                                     lineHeight: 1.5,
                                   ),
                               enabledBorder: OutlineInputBorder(
@@ -288,9 +293,13 @@ class _SearchWidgetState extends State<SearchWidget>
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
                                 ),
                             validator: _model.searchFieldControllerValidator
                                 .asValidator(context),
@@ -316,12 +325,17 @@ class _SearchWidgetState extends State<SearchWidget>
                         },
                         child: Text(
                           'Cancel',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.normal,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
                         ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation']!),
@@ -379,9 +393,13 @@ class _SearchWidgetState extends State<SearchWidget>
                         },
                         textAlign: TextAlign.start,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Poppins',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: Colors.white,
                               fontSize: 1.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
                             ),
                       );
                     },
@@ -423,8 +441,13 @@ class _SearchWidgetState extends State<SearchWidget>
                               labelStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     fontSize: 16.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                               indicatorColor: Colors.black,
                               tabs: [
@@ -544,10 +567,16 @@ class _SearchWidgetState extends State<SearchWidget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   fontSize:
                                                                       14.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
                                                                 ),
                                                           ),
                                                           Padding(
@@ -571,10 +600,15 @@ class _SearchWidgetState extends State<SearchWidget>
                                                                   .bodySmall
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Poppins',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodySmallFamily,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodySmallFamily),
                                                                   ),
                                                             ),
                                                           ),
@@ -764,8 +798,17 @@ class _SearchWidgetState extends State<SearchWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Poppins',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           fontSize: 14.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
                                                         ),
                                               ),
                                               Padding(
@@ -780,9 +823,18 @@ class _SearchWidgetState extends State<SearchWidget>
                                                           context)
                                                       .bodySmall
                                                       .override(
-                                                        fontFamily: 'Poppins',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmallFamily,
                                                         fontWeight:
                                                             FontWeight.normal,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily),
                                                       ),
                                                 ),
                                               ),

@@ -69,8 +69,10 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
           title: Text(
             'Call to action',
             style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                   fontSize: 16.0,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).titleMediumFamily),
                 ),
           ),
           actions: [
@@ -103,10 +105,13 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                     child: Text(
                       'Done',
                       style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily: 'Poppins',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleMediumFamily,
                             color: FlutterFlowTheme.of(context).secondary,
                             fontSize: 16.0,
                             fontWeight: FontWeight.w500,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).titleMediumFamily),
                           ),
                     ),
                   ),
@@ -138,8 +143,11 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                   child: Text(
                     'Create a call to action button that will appear at the bottom of your uploaded image.',
                     style: FlutterFlowTheme.of(context).bodySmall.override(
-                          fontFamily: 'Poppins',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodySmallFamily,
                           fontWeight: FontWeight.normal,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).bodySmallFamily),
                         ),
                   ),
                 ),
@@ -168,9 +176,14 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                             ),
@@ -192,11 +205,16 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
                                       ),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
@@ -242,8 +260,13 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontWeight: FontWeight.normal,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                                 validator: _model.textController1Validator
                                     .asValidator(context),
@@ -271,12 +294,17 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                         flex: 3,
                         child: Text(
                           'Button link',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.normal,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
                         ),
                       ),
                       Expanded(
@@ -291,11 +319,15 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                             hintStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
                                 ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -338,11 +370,16 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                               ),
                             ),
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                fontWeight: FontWeight.normal,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
                           keyboardType: TextInputType.url,
                           validator: _model.textController2Validator
                               .asValidator(context),
@@ -412,10 +449,18 @@ class _CallToActionWidgetState extends State<CallToActionWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Poppins',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
                                                 color: Colors.white,
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.w500,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily),
                                               ),
                                         ),
                                         Icon(

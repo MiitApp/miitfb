@@ -56,8 +56,10 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
           title: Text(
             'Select users',
             style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                   fontSize: 16.0,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).titleMediumFamily),
                 ),
           ),
           actions: [],
@@ -127,9 +129,14 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodySmall
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodySmallFamily,
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.normal,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodySmallFamily),
                                       lineHeight: 1.5,
                                     ),
                                 enabledBorder: OutlineInputBorder(
@@ -208,9 +215,14 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.normal,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                               keyboardType: TextInputType.name,
                               validator: _model.textControllerValidator
@@ -233,12 +245,17 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                         },
                         child: Text(
                           'Cancel',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.normal,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
                         ),
                       ),
                     ),
@@ -307,8 +324,17 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Poppins',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   fontSize: 14.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
                                                 ),
                                           ),
                                           Padding(
@@ -322,9 +348,18 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall
                                                       .override(
-                                                        fontFamily: 'Poppins',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmallFamily,
                                                         fontWeight:
                                                             FontWeight.normal,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily),
                                                       ),
                                             ),
                                           ),

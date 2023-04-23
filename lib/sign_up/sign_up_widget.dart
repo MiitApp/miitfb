@@ -93,8 +93,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           style: FlutterFlowTheme.of(context)
                               .titleSmall
                               .override(
-                                fontFamily: 'Poppins',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleSmallFamily,
                                 color: FlutterFlowTheme.of(context).primaryText,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .titleSmallFamily),
                                 lineHeight: 1.5,
                               ),
                         ),
@@ -113,9 +117,14 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               hintStyle: FlutterFlowTheme.of(context)
                                   .bodySmall
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodySmallFamily,
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodySmallFamily),
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -151,9 +160,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
                                 ),
                             keyboardType: TextInputType.emailAddress,
                             validator: _model.emailAddressControllerValidator
@@ -189,9 +202,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleSmallFamily,
                                   color: Colors.white,
                                   fontSize: 14.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .titleSmallFamily),
                                 ),
                             elevation: 0.0,
                             borderSide: BorderSide(
@@ -225,10 +242,14 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
                                 ),
                           ),
                           Padding(
@@ -247,10 +268,15 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .secondary,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                             ),

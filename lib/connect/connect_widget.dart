@@ -154,10 +154,14 @@ class _ConnectWidgetState extends State<ConnectWidget>
                         'Firenze - Giardino Bardini',
                         style:
                             FlutterFlowTheme.of(context).displaySmall.override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .displaySmallFamily,
                                   color: Colors.white,
                                   fontSize: 32.0,
                                   fontWeight: FontWeight.w500,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .displaySmallFamily),
                                 ),
                       ),
                       Padding(
@@ -176,8 +180,13 @@ class _ConnectWidgetState extends State<ConnectWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .headlineSmall
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .headlineSmallFamily,
                                         color: Colors.white,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineSmallFamily),
                                       ),
                                 ),
                                 Padding(
@@ -205,10 +214,18 @@ class _ConnectWidgetState extends State<ConnectWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall
                                               .override(
-                                                fontFamily: 'Poppins',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmallFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBtnText,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmallFamily),
                                               ),
                                         ),
                                       ),
@@ -232,9 +249,14 @@ class _ConnectWidgetState extends State<ConnectWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
                                       ),
                                 ),
                               ),
@@ -247,11 +269,16 @@ class _ConnectWidgetState extends State<ConnectWidget>
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                         child: Text(
                           'Description',
-                          style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodySmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodySmallFamily,
+                                color: Colors.white,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodySmallFamily),
+                              ),
                         ),
                       ),
                       Padding(
@@ -259,11 +286,16 @@ class _ConnectWidgetState extends State<ConnectWidget>
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                         child: Text(
                           'Non so se la bellezza salverà il mondo ma sicuramente aiuta. Sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                          style:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0x9AFFFFFF),
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleSmallFamily,
+                                color: Color(0x9AFFFFFF),
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .titleSmallFamily),
+                              ),
                         ),
                       ),
                     ],

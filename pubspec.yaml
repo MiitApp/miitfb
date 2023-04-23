@@ -146,6 +146,9 @@ flutter:
     - family: InstagramIcons
       fonts:
         - asset: assets/fonts/InstagramIcons.ttf
+    - family: Icomoon
+      fonts:
+        - asset: assets/fonts/icomoon.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -75,7 +75,11 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                           style: FlutterFlowTheme.of(context)
                               .displaySmall
                               .override(
-                                fontFamily: 'Poppins',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .displaySmallFamily,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .displaySmallFamily),
                                 lineHeight: 1.5,
                               ),
                         ),
@@ -86,12 +90,17 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                         child: Text(
                           'This wont be part of your public profile.',
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.normal,
-                                    lineHeight: 1.5,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodySmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodySmallFamily,
+                                fontWeight: FontWeight.normal,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodySmallFamily),
+                                lineHeight: 1.5,
+                              ),
                         ),
                       ),
                       Form(
@@ -158,7 +167,9 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: _model.datePicked != null
                                                 ? FlutterFlowTheme.of(context)
                                                     .primaryText
@@ -166,6 +177,10 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                                                     .secondaryText,
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.normal,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily),
                                           ),
                                     ),
                                   ],
@@ -205,9 +220,13 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleSmallFamily,
                                   color: Colors.white,
                                   fontSize: 14.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .titleSmallFamily),
                                 ),
                             elevation: 0.0,
                             borderSide: BorderSide(
@@ -224,12 +243,17 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                         child: Text(
                           'Use your own birthday, even if this account is for a business, a pet or something else.',
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.normal,
-                                    lineHeight: 1.5,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodySmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodySmallFamily,
+                                fontWeight: FontWeight.normal,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodySmallFamily),
+                                lineHeight: 1.5,
+                              ),
                         ),
                       ),
                     ],
@@ -257,10 +281,14 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
                                 ),
                           ),
                           Padding(
@@ -288,10 +316,15 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                             ),

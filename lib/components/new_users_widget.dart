@@ -106,9 +106,14 @@ class _NewUsersWidgetState extends State<NewUsersWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodySmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .tertiary,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodySmallFamily),
                                       ),
                                 ),
                               ],
@@ -131,9 +136,14 @@ class _NewUsersWidgetState extends State<NewUsersWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodySmall
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodySmallFamily,
                                       color:
                                           FlutterFlowTheme.of(context).primary,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodySmallFamily),
                                     ),
                               ),
                             ),
@@ -201,9 +211,14 @@ class _NewUsersWidgetState extends State<NewUsersWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodySmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .tertiary,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodySmallFamily),
                                       ),
                                 ),
                               ],
@@ -226,9 +241,14 @@ class _NewUsersWidgetState extends State<NewUsersWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodySmall
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodySmallFamily,
                                       color:
                                           FlutterFlowTheme.of(context).primary,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodySmallFamily),
                                     ),
                               ),
                             ),

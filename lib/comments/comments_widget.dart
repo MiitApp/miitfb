@@ -101,8 +101,10 @@ class _CommentsWidgetState extends State<CommentsWidget>
           title: Text(
             'Comments',
             style: FlutterFlowTheme.of(context).headlineSmall.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
                   fontSize: 16.0,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).headlineSmallFamily),
                 ),
           ),
           actions: [
@@ -579,12 +581,18 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                   .of(context)
                                                               .bodySmall
                                                               .override(
-                                                                fontFamily:
-                                                                    'Poppins',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily,
                                                                 fontSize: 11.5,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodySmallFamily),
                                                               ),
                                                         ),
                                                       ),
@@ -977,12 +985,17 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                     .bodySmall
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Poppins',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodySmallFamily,
                                                                       fontSize:
                                                                           11.5,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
                                                                     ),
                                                               ),
                                                               Padding(
@@ -1011,11 +1024,13 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                       .bodySmall
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Poppins',
+                                                                            FlutterFlowTheme.of(context).bodySmallFamily,
                                                                         fontSize:
                                                                             11.5,
                                                                         fontWeight:
                                                                             FontWeight.w600,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
                                                                       ),
                                                                 ),
                                                               ),
@@ -1079,11 +1094,13 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                         .bodySmall
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Poppins',
+                                                                              FlutterFlowTheme.of(context).bodySmallFamily,
                                                                           fontSize:
                                                                               11.5,
                                                                           fontWeight:
                                                                               FontWeight.w600,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
                                                                         ),
                                                                   ),
                                                                 ),
@@ -1138,11 +1155,13 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                           .bodySmall
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Poppins',
+                                                                                FlutterFlowTheme.of(context).bodySmallFamily,
                                                                             fontSize:
                                                                                 11.5,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
                                                                           ),
                                                                     ),
                                                                   ),
@@ -1338,8 +1357,13 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 28.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                               Text(
@@ -1347,8 +1371,13 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 28.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                               Text(
@@ -1356,8 +1385,13 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 28.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                               Text(
@@ -1365,8 +1399,13 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 28.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                               Text(
@@ -1374,8 +1413,13 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 28.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                               Text(
@@ -1383,8 +1427,13 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 28.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                               Text(
@@ -1392,8 +1441,13 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 28.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                             ],
@@ -1448,11 +1502,20 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                     context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Poppins',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryText,
                                                   fontWeight: FontWeight.normal,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
                                                 ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
@@ -1494,8 +1557,16 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Poppins',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
                                                 fontWeight: FontWeight.normal,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily),
                                                 lineHeight: 1.5,
                                               ),
                                           maxLines: 5,
@@ -1635,10 +1706,19 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Poppins',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondary,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
                                                         ),
                                               ),
                                             );
@@ -1678,7 +1758,12 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .displaySmall
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .displaySmallFamily,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .displaySmallFamily),
                                         lineHeight: 1.2,
                                       ),
                                 ),
@@ -1691,9 +1776,15 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Poppins',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.normal,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
                                           lineHeight: 1.5,
                                         ),
                                   ),
@@ -1715,11 +1806,17 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .secondary,
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.normal,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily),
                                             lineHeight: 1.5,
                                           ),
                                     ),

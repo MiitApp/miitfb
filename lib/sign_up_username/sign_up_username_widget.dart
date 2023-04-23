@@ -68,7 +68,11 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                           style: FlutterFlowTheme.of(context)
                               .displaySmall
                               .override(
-                                fontFamily: 'Poppins',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .displaySmallFamily,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .displaySmallFamily),
                                 lineHeight: 1.5,
                               ),
                         ),
@@ -79,12 +83,17 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                         child: Text(
                           'Pick a username for your new account. You can always change it later.',
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.normal,
-                                    lineHeight: 1.5,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodySmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodySmallFamily,
+                                fontWeight: FontWeight.normal,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodySmallFamily),
+                                lineHeight: 1.5,
+                              ),
                         ),
                       ),
                       Form(
@@ -132,15 +141,22 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           hintText: 'Username',
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall
-                                                  .override(
-                                                    fontFamily: 'Poppins',
-                                                    fontSize: 14.0,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodySmall
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmallFamily,
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.normal,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmallFamily),
+                                              ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFDADADA),
@@ -183,9 +199,17 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Poppins',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.normal,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
                                             ),
                                         keyboardType: TextInputType.name,
                                         validator: _model
@@ -315,9 +339,15 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
                                             color: Colors.white,
                                             fontSize: 14.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily),
                                           ),
                                       elevation: 0.0,
                                       borderSide: BorderSide(
@@ -358,10 +388,14 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
                                 ),
                           ),
                           Padding(
@@ -389,10 +423,15 @@ class _SignUpUsernameWidgetState extends State<SignUpUsernameWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                             ),

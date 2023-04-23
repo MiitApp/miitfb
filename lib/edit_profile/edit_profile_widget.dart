@@ -83,10 +83,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   child: Text(
                     'Cancel',
                     style: FlutterFlowTheme.of(context).titleMedium.override(
-                          fontFamily: 'Poppins',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).titleMediumFamily,
                           color: FlutterFlowTheme.of(context).primaryText,
                           fontSize: 14.0,
                           fontWeight: FontWeight.normal,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).titleMediumFamily),
                         ),
                   ),
                 ),
@@ -96,8 +99,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
           title: Text(
             'Edit profile',
             style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                   fontSize: 16.0,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).titleMediumFamily),
                 ),
           ),
           actions: [
@@ -156,10 +161,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           style: FlutterFlowTheme.of(context)
                               .titleMedium
                               .override(
-                                fontFamily: 'Poppins',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleMediumFamily,
                                 color: FlutterFlowTheme.of(context).secondary,
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.w500,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .titleMediumFamily),
                               ),
                         ),
                       );
@@ -294,10 +303,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     child: Text(
                       'Edit picture',
                       style: FlutterFlowTheme.of(context).bodySmall.override(
-                            fontFamily: 'Poppins',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodySmallFamily,
                             color: FlutterFlowTheme.of(context).secondary,
                             fontSize: 14.0,
                             fontWeight: FontWeight.w500,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodySmallFamily),
                           ),
                     ),
                   ),
@@ -328,9 +340,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                             ),
                           ),
@@ -347,11 +364,16 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
                                       ),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
@@ -397,9 +419,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                                 validator: _model.textController1Validator
                                     .asValidator(context),
@@ -437,9 +464,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                             ),
                           ),
@@ -458,11 +490,16 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
                                       ),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
@@ -508,9 +545,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                                 keyboardType: TextInputType.emailAddress,
                                 validator: _model.textController2Validator
@@ -553,9 +595,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                             ),
@@ -573,11 +620,16 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
                                       ),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
@@ -623,9 +675,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                                 maxLines: 3,
                                 keyboardType: TextInputType.multiline,
@@ -657,9 +714,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                             ),
                           ),
@@ -676,11 +738,16 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
                                       ),
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
@@ -726,9 +793,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                                 validator: _model.textController4Validator
                                     .asValidator(context),
@@ -767,9 +839,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       child: Text(
                         'Enable profile contact button',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Poppins',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               fontSize: 14.0,
                               fontWeight: FontWeight.normal,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
                             ),
                       ),
                     ),

@@ -60,8 +60,11 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
               child: Text(
                 'You quotes',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Poppins',
+                      fontFamily:
+                          FlutterFlowTheme.of(context).headlineMediumFamily,
                       color: Colors.white,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).headlineMediumFamily),
                     ),
               ),
             ),
@@ -70,8 +73,10 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
               child: Text(
                 'You will find your quote options below.',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                       color: Colors.white,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).bodyMediumFamily),
                     ),
               ),
             ),

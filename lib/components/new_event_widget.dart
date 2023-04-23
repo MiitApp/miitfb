@@ -96,8 +96,11 @@ class _NewEventWidgetState extends State<NewEventWidget> {
                     Text(
                       'Secondary Text',
                       style: FlutterFlowTheme.of(context).bodySmall.override(
-                            fontFamily: 'Poppins',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodySmallFamily,
                             color: FlutterFlowTheme.of(context).secondary,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodySmallFamily),
                           ),
                     ),
                   ],
@@ -136,11 +139,16 @@ class _NewEventWidgetState extends State<NewEventWidget> {
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primaryBackground,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Poppins',
-                                  color: FlutterFlowTheme.of(context).primary,
-                                ),
+                        textStyle: FlutterFlowTheme.of(context)
+                            .titleSmall
+                            .override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).titleSmallFamily,
+                              color: FlutterFlowTheme.of(context).primary,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .titleSmallFamily),
+                            ),
                         elevation: 0.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
@@ -164,11 +172,16 @@ class _NewEventWidgetState extends State<NewEventWidget> {
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primaryBackground,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                  ),
+                          textStyle: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleSmallFamily,
+                                color: FlutterFlowTheme.of(context).primary,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .titleSmallFamily),
+                              ),
                           elevation: 0.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,

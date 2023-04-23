@@ -51,8 +51,10 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
           title: Text(
             'Tag users',
             style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                   fontSize: 16.0,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).titleMediumFamily),
                 ),
           ),
           actions: [
@@ -72,10 +74,13 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                     child: Text(
                       'Done',
                       style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily: 'Poppins',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleMediumFamily,
                             color: FlutterFlowTheme.of(context).secondary,
                             fontSize: 16.0,
                             fontWeight: FontWeight.w500,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).titleMediumFamily),
                           ),
                     ),
                   ),
@@ -126,8 +131,11 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                       child: Text(
                         'Tag users so others know who is shown in the photo.',
                         style: FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: 'Poppins',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodySmallFamily,
                               fontWeight: FontWeight.normal,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).bodySmallFamily),
                             ),
                       ),
                     ),
@@ -215,8 +223,17 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Poppins',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           fontSize: 14.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
                                                         ),
                                               ),
                                               Padding(
@@ -230,9 +247,18 @@ class _TagUsersWidgetState extends State<TagUsersWidget> {
                                                           context)
                                                       .bodySmall
                                                       .override(
-                                                        fontFamily: 'Poppins',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmallFamily,
                                                         fontWeight:
                                                             FontWeight.normal,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily),
                                                       ),
                                                 ),
                                               ),

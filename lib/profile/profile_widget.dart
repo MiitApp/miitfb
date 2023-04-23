@@ -576,10 +576,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   fontSize:
                                                                       18.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
                                                                 ),
                                                           ),
                                                         ),
@@ -669,12 +675,17 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Poppins',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primary,
                                                                     fontSize:
                                                                         15.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                   ),
                                                             ),
                                                           ),
@@ -694,13 +705,19 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primary,
                                                                   fontSize:
                                                                       15.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
                                                                 ),
                                                           ),
                                                         ),
@@ -766,9 +783,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Poppins',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       fontSize:
                                                                           14.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
                                                               );
                                                             },
@@ -788,12 +810,17 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Poppins',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     fontSize:
                                                                         10.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                   ),
                                                             ),
                                                           ),
@@ -877,9 +904,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Poppins',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         fontSize:
                                                                             14.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                       ),
                                                                 );
                                                               },
@@ -899,12 +928,17 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Poppins',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       fontSize:
                                                                           10.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
                                                               ),
                                                             ),
@@ -951,9 +985,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Poppins',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       fontSize:
                                                                           14.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
                                                               ),
                                                             ),
@@ -972,12 +1011,17 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Poppins',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       fontSize:
                                                                           10.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
                                                               ),
                                                             ),
@@ -1242,8 +1286,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Poppins',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               fontSize: 16.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
                                             ),
                                         indicatorColor:
                                             FlutterFlowTheme.of(context)
@@ -1647,8 +1699,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiary,
@@ -1657,6 +1710,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
                                                                 ),
                                                           ),
                                                         ),
@@ -1692,12 +1750,18 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Poppins',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
                                                               ),
                                                         ),
                                                       ),
@@ -1713,8 +1777,17 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Poppins',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         fontSize: 32.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
                                                       ),
                                             ),
                                           ),

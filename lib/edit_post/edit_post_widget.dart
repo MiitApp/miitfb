@@ -85,10 +85,13 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                   child: Text(
                     'Cancel',
                     style: FlutterFlowTheme.of(context).titleMedium.override(
-                          fontFamily: 'Poppins',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).titleMediumFamily,
                           color: FlutterFlowTheme.of(context).primaryText,
                           fontSize: 16.0,
                           fontWeight: FontWeight.normal,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).titleMediumFamily),
                         ),
                   ),
                 ),
@@ -98,8 +101,10 @@ class _EditPostWidgetState extends State<EditPostWidget> {
           title: Text(
             'Edit info',
             style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                   fontSize: 16.0,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).titleMediumFamily),
                 ),
           ),
           actions: [
@@ -127,10 +132,13 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                     child: Text(
                       'Done',
                       style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily: 'Poppins',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleMediumFamily,
                             color: FlutterFlowTheme.of(context).secondary,
                             fontSize: 16.0,
                             fontWeight: FontWeight.w500,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).titleMediumFamily),
                           ),
                     ),
                   ),
@@ -198,8 +206,13 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: Color(0x7F000000),
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
                                     ),
                               ),
                             ),
@@ -236,9 +249,15 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Poppins',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           fontSize: 12.0,
                                           fontWeight: FontWeight.normal,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
                                         ),
                                   ),
                                 ),
@@ -336,8 +355,14 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: Colors.white,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily),
                                           ),
                                     ),
                                   ),
@@ -358,12 +383,16 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                     obscureText: false,
                     decoration: InputDecoration(
                       hintText: 'Add a caption...',
-                      hintStyle:
-                          FlutterFlowTheme.of(context).bodySmall.override(
-                                fontFamily: 'Poppins',
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.normal,
-                              ),
+                      hintStyle: FlutterFlowTheme.of(context)
+                          .bodySmall
+                          .override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodySmallFamily,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.normal,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodySmallFamily),
+                          ),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
@@ -406,9 +435,12 @@ class _EditPostWidgetState extends State<EditPostWidget> {
                       ),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Poppins',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyMediumFamily,
                           fontSize: 14.0,
                           fontWeight: FontWeight.normal,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
                     maxLines: 20,
                     minLines: 1,

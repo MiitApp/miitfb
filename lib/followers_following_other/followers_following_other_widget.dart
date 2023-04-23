@@ -93,8 +93,11 @@ class _FollowersFollowingOtherWidgetState
                   'user',
                 ),
                 style: FlutterFlowTheme.of(context).titleMedium.override(
-                      fontFamily: 'Poppins',
+                      fontFamily:
+                          FlutterFlowTheme.of(context).titleMediumFamily,
                       fontSize: 16.0,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).titleMediumFamily),
                     ),
               );
             },
@@ -164,8 +167,13 @@ class _FollowersFollowingOtherWidgetState
                               labelStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     fontSize: 15.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
                                   ),
                               indicatorColor:
                                   FlutterFlowTheme.of(context).alternate,

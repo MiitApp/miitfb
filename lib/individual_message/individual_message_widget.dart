@@ -132,11 +132,16 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                         final usernameUsersRecord = snapshot.data!;
                         return Text(
                           usernameUsersRecord.username!,
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 24.0,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                fontSize: 24.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
                         );
                       },
                     ),
@@ -317,13 +322,15 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Poppins',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 Colors.white,
                                                                             fontSize:
                                                                                 15.0,
                                                                             fontWeight:
                                                                                 FontWeight.normal,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                             lineHeight:
                                                                                 1.5,
                                                                           ),
@@ -892,13 +899,15 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Poppins',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryText,
                                                                             fontSize:
                                                                                 15.0,
                                                                             fontWeight:
                                                                                 FontWeight.normal,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                             lineHeight:
                                                                                 1.5,
                                                                           ),
@@ -1413,13 +1422,22 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Poppins',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
                                                           fontSize: 15.0,
                                                           fontWeight:
                                                               FontWeight.normal,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
                                                         ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
@@ -1469,10 +1487,19 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Poppins',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         fontSize: 15.0,
                                                         fontWeight:
                                                             FontWeight.normal,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
                                                         lineHeight: 1.5,
                                                       ),
                                               maxLines: 5,
@@ -1575,8 +1602,9 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                   context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Poppins',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondary,
@@ -1584,6 +1612,11 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
                                                               ),
                                                     ),
                                                   );

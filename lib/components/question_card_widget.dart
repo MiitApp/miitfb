@@ -86,9 +86,13 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                         style: FlutterFlowTheme.of(context)
                             .titleMedium
                             .override(
-                              fontFamily: 'Poppins',
+                              fontFamily: FlutterFlowTheme.of(context)
+                                  .titleMediumFamily,
                               color:
                                   FlutterFlowTheme.of(context).primaryBtnText,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .titleMediumFamily),
                             ),
                       ),
                     ),
@@ -112,9 +116,12 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                       child: Text(
                         'Nice outdoor courts, solid concrete and good hoops for the neighborhood.',
                         style: FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: 'Poppins',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodySmallFamily,
                               color:
                                   FlutterFlowTheme.of(context).primaryBtnText,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).bodySmallFamily),
                             ),
                       ),
                     ),
@@ -157,9 +164,14 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodySmall
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodySmallFamily,
                                     color:
                                         FlutterFlowTheme.of(context).alternate,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodySmallFamily),
                                   ),
                             ),
                           ),
@@ -189,9 +201,14 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodySmall
                                   .override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodySmallFamily,
                                     color:
                                         FlutterFlowTheme.of(context).alternate,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodySmallFamily),
                                   ),
                             ),
                           ),

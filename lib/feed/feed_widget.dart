@@ -85,6 +85,9 @@ class _FeedWidgetState extends State<FeedWidget> {
                                   fontFamily: 'Poppins',
                                   fontSize: 36.0,
                                   fontWeight: FontWeight.bold,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .displaySmallFamily),
                                 ),
                           ),
                         ),
@@ -687,12 +690,21 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Poppins',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color:
                                                               Color(0x80000000),
                                                           fontSize: 12.0,
                                                           fontWeight:
                                                               FontWeight.normal,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
                                                         ),
                                               ),
                                             ),
@@ -957,13 +969,15 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Poppins',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: Colors
                                                                             .black,
                                                                         fontSize:
                                                                             12.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                       ),
                                                                 ),
                                                               ),

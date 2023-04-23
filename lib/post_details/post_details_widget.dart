@@ -147,7 +147,15 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .displaySmall
                                               .override(
-                                                fontFamily: 'Poppins',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displaySmallFamily,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .displaySmallFamily),
                                                 lineHeight: 1.2,
                                               ),
                                         ),
@@ -161,9 +169,18 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Poppins',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   fontSize: 14.0,
                                                   fontWeight: FontWeight.normal,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
                                                   lineHeight: 1.5,
                                                 ),
                                           ),
@@ -187,7 +204,10 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Poppins',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -195,6 +215,12 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                                         fontSize: 14.0,
                                                         fontWeight:
                                                             FontWeight.normal,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
                                                         lineHeight: 1.5,
                                                       ),
                                             ),
