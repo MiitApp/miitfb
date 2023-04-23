@@ -66,6 +66,10 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
                 child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   onTap: () async {
                     context.pushNamed(
                       'EditProfile',
@@ -107,7 +111,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                             children: [
                               Text(
                                 'Edit Profile',
-                                style: FlutterFlowTheme.of(context).subtitle2,
+                                style: FlutterFlowTheme.of(context).titleSmall,
                               ),
                             ],
                           ),
@@ -154,7 +158,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                           children: [
                             Text(
                               'Settings',
-                              style: FlutterFlowTheme.of(context).subtitle2,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ],
                         ),
@@ -200,7 +204,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                           children: [
                             Text(
                               'Share URL',
-                              style: FlutterFlowTheme.of(context).subtitle2,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ],
                         ),
@@ -246,7 +250,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                           children: [
                             Text(
                               'Share Profile',
-                              style: FlutterFlowTheme.of(context).subtitle2,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ],
                         ),
@@ -292,7 +296,7 @@ class _ProfileSettingsWidgetState extends State<ProfileSettingsWidget> {
                           children: [
                             Text(
                               'Logout',
-                              style: FlutterFlowTheme.of(context).subtitle2,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ],
                         ),

@@ -1,11 +1,11 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/profile_settings_widget.dart';
 import '/components/story_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/upload_media.dart';
+import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -48,12 +48,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -182,6 +182,15 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
                                                             onTap: () async {
                                                               await showModalBottomSheet(
                                                                 isScrollControlled:
@@ -189,18 +198,27 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 backgroundColor:
                                                                     Colors
                                                                         .transparent,
+                                                                barrierColor: Color(
+                                                                    0x00000000),
                                                                 context:
                                                                     context,
                                                                 builder:
-                                                                    (context) {
-                                                                  return Padding(
-                                                                    padding: MediaQuery.of(
+                                                                    (bottomSheetContext) {
+                                                                  return GestureDetector(
+                                                                    onTap: () => FocusScope.of(
                                                                             context)
-                                                                        .viewInsets,
+                                                                        .requestFocus(
+                                                                            _unfocusNode),
                                                                     child:
-                                                                        StoryWidget(
-                                                                      story:
-                                                                          stackStoriesRecord,
+                                                                        Padding(
+                                                                      padding: MediaQuery.of(
+                                                                              bottomSheetContext)
+                                                                          .viewInsets,
+                                                                      child:
+                                                                          StoryWidget(
+                                                                        story:
+                                                                            stackStoriesRecord,
+                                                                      ),
                                                                     ),
                                                                   );
                                                                 },
@@ -218,10 +236,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   colors: [
                                                                     FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiaryColor,
+                                                                        .tertiary,
                                                                     FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryColor,
+                                                                        .secondary,
                                                                     FlutterFlowTheme.of(
                                                                             context)
                                                                         .alternate
@@ -254,6 +272,15 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             AuthUserStreamWidget(
                                                           builder: (context) =>
                                                               InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
                                                             onTap: () async {
                                                               if (stackStoriesRecord !=
                                                                   null) {
@@ -263,18 +290,27 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   backgroundColor:
                                                                       Colors
                                                                           .transparent,
+                                                                  barrierColor:
+                                                                      Color(
+                                                                          0x00000000),
                                                                   context:
                                                                       context,
                                                                   builder:
-                                                                      (context) {
-                                                                    return Padding(
-                                                                      padding: MediaQuery.of(
+                                                                      (bottomSheetContext) {
+                                                                    return GestureDetector(
+                                                                      onTap: () => FocusScope.of(
                                                                               context)
-                                                                          .viewInsets,
+                                                                          .requestFocus(
+                                                                              _unfocusNode),
                                                                       child:
-                                                                          StoryWidget(
-                                                                        story:
-                                                                            stackStoriesRecord,
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.of(bottomSheetContext).viewInsets,
+                                                                        child:
+                                                                            StoryWidget(
+                                                                          story:
+                                                                              stackStoriesRecord,
+                                                                        ),
                                                                       ),
                                                                     );
                                                                   },
@@ -332,6 +368,15 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               AlignmentDirectional(
                                                                   1.0, 1.0),
                                                           child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
                                                             onTap: () async {
                                                               final selectedMedia =
                                                                   await selectMediaWithSourceBottomSheet(
@@ -351,7 +396,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                           m.storagePath,
                                                                           context))) {
                                                                 setState(() =>
-                                                                    _model.isMediaUploading =
+                                                                    _model.isDataUploading =
                                                                         true);
                                                                 var selectedUploadedFiles =
                                                                     <FFUploadedFile>[];
@@ -372,6 +417,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                                 bytes: m.bytes,
                                                                                 height: m.dimensions?.height,
                                                                                 width: m.dimensions?.width,
+                                                                                blurHash: m.blurHash,
                                                                               ))
                                                                           .toList();
 
@@ -394,7 +440,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   ScaffoldMessenger.of(
                                                                           context)
                                                                       .hideCurrentSnackBar();
-                                                                  _model.isMediaUploading =
+                                                                  _model.isDataUploading =
                                                                       false;
                                                                 }
                                                                 if (selectedUploadedFiles
@@ -421,7 +467,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       () {});
                                                                   showUploadMessage(
                                                                       context,
-                                                                      'Failed to upload media');
+                                                                      'Failed to upload data');
                                                                   return;
                                                                 }
                                                               }
@@ -462,7 +508,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   BoxDecoration(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .secondary,
                                                                 shape: BoxShape
                                                                     .circle,
                                                                 border:
@@ -528,7 +574,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             maxLines: 1,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Poppins',
@@ -539,6 +585,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         ),
                                                       ),
                                                     InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
                                                       onTap: () async {
                                                         await showModalBottomSheet(
                                                           isScrollControlled:
@@ -546,15 +600,25 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                           backgroundColor:
                                                               Colors
                                                                   .transparent,
+                                                          barrierColor:
+                                                              Color(0x00000000),
                                                           enableDrag: false,
                                                           context: context,
-                                                          builder: (context) {
-                                                            return Padding(
-                                                              padding: MediaQuery
-                                                                      .of(context)
-                                                                  .viewInsets,
-                                                              child:
-                                                                  ProfileSettingsWidget(),
+                                                          builder:
+                                                              (bottomSheetContext) {
+                                                            return GestureDetector(
+                                                              onTap: () => FocusScope
+                                                                      .of(
+                                                                          context)
+                                                                  .requestFocus(
+                                                                      _unfocusNode),
+                                                              child: Padding(
+                                                                padding: MediaQuery.of(
+                                                                        bottomSheetContext)
+                                                                    .viewInsets,
+                                                                child:
+                                                                    ProfileSettingsWidget(),
+                                                              ),
                                                             );
                                                           },
                                                         ).then((value) =>
@@ -602,13 +666,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               '@',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyText1
+                                                                  .bodyMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         'Poppins',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primaryColor,
+                                                                        .primary,
                                                                     fontSize:
                                                                         15.0,
                                                                   ),
@@ -628,13 +692,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 ''),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primary,
                                                                   fontSize:
                                                                       15.0,
                                                                 ),
@@ -699,7 +763,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Poppins',
@@ -721,7 +785,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               'Posts',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyText1
+                                                                  .bodyMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         'Poppins',
@@ -738,6 +802,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                     ),
                                                     Expanded(
                                                       child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
                                                         onTap: () async {
                                                           context.pushNamed(
                                                               'FollowersFollowing');
@@ -802,7 +874,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
+                                                                      .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
@@ -824,7 +896,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 'Followers',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Poppins',
@@ -842,6 +914,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                     ),
                                                     Expanded(
                                                       child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
                                                         onTap: () async {
                                                           context.pushNamed(
                                                               'FollowersFollowing');
@@ -868,7 +948,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Poppins',
@@ -889,7 +969,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 'Following',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Poppins',
@@ -1147,43 +1227,46 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 initialIndex: 0,
                                 child: Column(
                                   children: [
-                                    TabBar(
-                                      isScrollable: true,
-                                      labelColor: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      unselectedLabelColor:
-                                          FlutterFlowTheme.of(context)
-                                              .lineColor,
-                                      labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              20.0, 0.0, 20.0, 0.0),
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 16.0,
+                                    Align(
+                                      alignment: Alignment(0.0, 0),
+                                      child: TabBar(
+                                        isScrollable: true,
+                                        labelColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        unselectedLabelColor:
+                                            FlutterFlowTheme.of(context)
+                                                .lineColor,
+                                        labelPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                20.0, 0.0, 20.0, 0.0),
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 16.0,
+                                            ),
+                                        indicatorColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                        indicatorWeight: 2.0,
+                                        tabs: [
+                                          Tab(
+                                            text: 'Posts',
                                           ),
-                                      indicatorColor:
-                                          FlutterFlowTheme.of(context)
-                                              .alternate,
-                                      indicatorWeight: 2.0,
-                                      tabs: [
-                                        Tab(
-                                          text: 'Posts',
-                                        ),
-                                        Tab(
-                                          text: 'Tags',
-                                        ),
-                                        Tab(
-                                          text: 'Saved',
-                                        ),
-                                        Tab(
-                                          text: 'Profile',
-                                        ),
-                                        Tab(
-                                          text: 'Events',
-                                        ),
-                                      ],
+                                          Tab(
+                                            text: 'Tags',
+                                          ),
+                                          Tab(
+                                            text: 'Saved',
+                                          ),
+                                          Tab(
+                                            text: 'Profile',
+                                          ),
+                                          Tab(
+                                            text: 'Events',
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                     Expanded(
                                       child: TabBarView(
@@ -1241,6 +1324,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         profilePhotosPostsRecordList[
                                                             profilePhotosIndex];
                                                     return InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
                                                       onTap: () async {
                                                         context.pushNamed(
                                                           'PostDetails',
@@ -1328,6 +1419,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         taggedPhotosPostsRecordList[
                                                             taggedPhotosIndex];
                                                     return InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
                                                       onTap: () async {
                                                         context.pushNamed(
                                                           'PostDetails',
@@ -1447,6 +1546,15 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             final photoPostsRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -1515,6 +1623,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                           AuthUserStreamWidget(
                                                         builder: (context) =>
                                                             InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
                                                           onTap: () async {
                                                             await launchURL(
                                                                 valueOrDefault(
@@ -1529,13 +1645,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 ''),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Poppins',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiaryColor,
+                                                                      .tertiary,
                                                                   fontSize:
                                                                       14.0,
                                                                   fontWeight:
@@ -1574,7 +1690,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               ''),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
@@ -1595,7 +1711,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               'Tab View 5',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         fontSize: 32.0,

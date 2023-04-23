@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -60,110 +60,119 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        automaticallyImplyLeading: false,
-        title: StreamBuilder<ChatsRecord>(
-          stream: ChatsRecord.getDocument(widget.chat!),
-          builder: (context, snapshot) {
-            // Customize what your widget looks like when it's loading.
-            if (!snapshot.hasData) {
-              return Center(
-                child: SizedBox(
-                  width: 12.0,
-                  height: 12.0,
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: false,
+          title: StreamBuilder<ChatsRecord>(
+            stream: ChatsRecord.getDocument(widget.chat!),
+            builder: (context, snapshot) {
+              // Customize what your widget looks like when it's loading.
+              if (!snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
+                    width: 12.0,
+                    height: 12.0,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-              );
-            }
-            final rowChatsRecord = snapshot.data!;
-            return Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                InkWell(
-                  onTap: () async {
-                    context.pushNamed(
-                      'Messages',
-                      extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
-                          hasTransition: true,
-                          transitionType: PageTransitionType.leftToRight,
-                        ),
-                      },
-                    );
-                  },
-                  child: Icon(
-                    FFIcons.karrowLeft,
-                    color: Colors.black,
-                    size: 24.0,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
-                  child: StreamBuilder<UsersRecord>(
-                    stream: UsersRecord.getDocument(
-                        rowChatsRecord.userA == currentUserReference
-                            ? rowChatsRecord.userB!
-                            : rowChatsRecord.userA!),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 12.0,
-                            height: 12.0,
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                            ),
+                );
+              }
+              final rowChatsRecord = snapshot.data!;
+              return Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed(
+                        'Messages',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.leftToRight,
                           ),
-                        );
-                      }
-                      final usernameUsersRecord = snapshot.data!;
-                      return Text(
-                        usernameUsersRecord.username!,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Poppins',
-                              fontSize: 24.0,
-                            ),
+                        },
                       );
                     },
+                    child: Icon(
+                      FFIcons.karrowLeft,
+                      color: Colors.black,
+                      size: 24.0,
+                    ),
                   ),
-                ),
-              ],
-            );
-          },
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                InkWell(
-                  onTap: () async {
-                    await widget.chat!.delete();
-                  },
-                  child: Icon(
-                    Icons.delete_outline_outlined,
-                    color: Colors.black,
-                    size: 26.0,
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
+                    child: StreamBuilder<UsersRecord>(
+                      stream: UsersRecord.getDocument(
+                          rowChatsRecord.userA == currentUserReference
+                              ? rowChatsRecord.userB!
+                              : rowChatsRecord.userA!),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 12.0,
+                              height: 12.0,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            ),
+                          );
+                        }
+                        final usernameUsersRecord = snapshot.data!;
+                        return Text(
+                          usernameUsersRecord.username!,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 24.0,
+                                  ),
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              );
+            },
           ),
-        ],
-        centerTitle: false,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      await widget.chat!.delete();
+                    },
+                    child: Icon(
+                      Icons.delete_outline_outlined,
+                      color: Colors.black,
+                      size: 26.0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+          centerTitle: false,
+          elevation: 0.0,
+        ),
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -305,7 +314,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                           .text!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Poppins',
@@ -332,6 +341,14 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                   .commentRef !=
                                                               null))
                                                         InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
                                                           onTap: () async {
                                                             context.pushNamed(
                                                               'PostDetails',
@@ -492,6 +509,10 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                                             child: Padding(
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                                                                                               child: InkWell(
+                                                                                                splashColor: Colors.transparent,
+                                                                                                focusColor: Colors.transparent,
+                                                                                                hoverColor: Colors.transparent,
+                                                                                                highlightColor: Colors.transparent,
                                                                                                 onTap: () async {
                                                                                                   if (rowUsersRecord.reference == currentUserReference) {
                                                                                                     context.pushNamed('Profile');
@@ -523,7 +544,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                                                     ),
                                                                                                     shape: BoxShape.circle,
                                                                                                     border: Border.all(
-                                                                                                      color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                      color: FlutterFlowTheme.of(context).primary,
                                                                                                       width: 2.0,
                                                                                                     ),
                                                                                                   ),
@@ -539,6 +560,10 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                                                 Padding(
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
                                                                                                   child: InkWell(
+                                                                                                    splashColor: Colors.transparent,
+                                                                                                    focusColor: Colors.transparent,
+                                                                                                    hoverColor: Colors.transparent,
+                                                                                                    highlightColor: Colors.transparent,
                                                                                                     onTap: () async {
                                                                                                       if (rowUsersRecord.reference == currentUserReference) {
                                                                                                         context.pushNamed('Profile');
@@ -617,6 +642,15 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                             final photoSharingPostPostsRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -712,7 +746,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                                       ),
                                                                                       shape: BoxShape.circle,
                                                                                       border: Border.all(
-                                                                                        color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                        color: FlutterFlowTheme.of(context).primary,
                                                                                         width: 2.0,
                                                                                       ),
                                                                                     ),
@@ -725,7 +759,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                                   replacement: '…',
                                                                                 ),
                                                                                 maxLines: 1,
-                                                                                style: FlutterFlowTheme.of(context).bodyText1,
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium,
                                                                               ),
                                                                             ],
                                                                           ),
@@ -855,7 +889,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                           .text!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Poppins',
@@ -882,6 +916,14 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                   .commentRef !=
                                                               null))
                                                         InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
                                                           onTap: () async {
                                                             context.pushNamed(
                                                               'PostDetails',
@@ -1057,7 +1099,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                                                   ),
                                                                                                   shape: BoxShape.circle,
                                                                                                   border: Border.all(
-                                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                    color: FlutterFlowTheme.of(context).primary,
                                                                                                     width: 2.0,
                                                                                                   ),
                                                                                                 ),
@@ -1133,6 +1175,15 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                             final photoSharingPostPostsRecord =
                                                                 snapshot.data!;
                                                             return InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -1228,7 +1279,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                                       ),
                                                                                       shape: BoxShape.circle,
                                                                                       border: Border.all(
-                                                                                        color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                        color: FlutterFlowTheme.of(context).primary,
                                                                                         width: 2.0,
                                                                                       ),
                                                                                     ),
@@ -1241,7 +1292,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                                                   replacement: '…',
                                                                                 ),
                                                                                 maxLines: 1,
-                                                                                style: FlutterFlowTheme.of(context).bodyText1,
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium,
                                                                               ),
                                                                             ],
                                                                           ),
@@ -1356,11 +1407,11 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                               decoration: InputDecoration(
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1,
+                                                        .bodyMedium,
                                                 hintText: 'Message...',
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           color: FlutterFlowTheme
@@ -1416,7 +1467,7 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         fontSize: 15.0,
@@ -1454,6 +1505,14 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                   final sendChatsRecord =
                                                       snapshot.data!;
                                                   return InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
                                                     onTap: () async {
                                                       final chatMessagesCreateData =
                                                           createChatMessagesRecordData(
@@ -1514,13 +1573,13 @@ class _IndividualMessageWidgetState extends State<IndividualMessageWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .secondary,
                                                                 fontSize: 15.0,
                                                                 fontWeight:
                                                                     FontWeight

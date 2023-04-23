@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/components/post_options_widget.dart';
@@ -45,8 +45,8 @@ class _CommentsWidgetState extends State<CommentsWidget>
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 0.2,
-          end: 1.0,
+          begin: Offset(0.2, 0.2),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -74,116 +74,140 @@ class _CommentsWidgetState extends State<CommentsWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        iconTheme:
-            IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
-        automaticallyImplyLeading: false,
-        leading: InkWell(
-          onTap: () async {
-            context.pop();
-          },
-          child: Icon(
-            FFIcons.karrowLeft,
-            color: Colors.black,
-            size: 24.0,
-          ),
-        ),
-        title: Text(
-          'Comments',
-          style: FlutterFlowTheme.of(context).title3.override(
-                fontFamily: 'Poppins',
-                fontSize: 16.0,
-              ),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-            child: FutureBuilder<PostsRecord>(
-              future: PostsRecord.getDocumentOnce(widget.post!),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 12.0,
-                      height: 12.0,
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
-                      ),
-                    ),
-                  );
-                }
-                final stackPostsRecord = snapshot.data!;
-                return Stack(
-                  children: [
-                    if (stackPostsRecord.postUser != currentUserReference)
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: InkWell(
-                          onTap: () async {
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              context: context,
-                              builder: (context) {
-                                return Padding(
-                                  padding: MediaQuery.of(context).viewInsets,
-                                  child: SendPostWidget(
-                                    post: widget.post,
-                                  ),
-                                );
-                              },
-                            ).then((value) => setState(() {}));
-                          },
-                          child: Icon(
-                            FFIcons.kshare,
-                            color: Colors.black,
-                            size: 24.0,
-                          ),
-                        ),
-                      ),
-                    if (stackPostsRecord.postUser == currentUserReference)
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: InkWell(
-                          onTap: () async {
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              context: context,
-                              builder: (context) {
-                                return Padding(
-                                  padding: MediaQuery.of(context).viewInsets,
-                                  child: PostOptionsWidget(
-                                    post: stackPostsRecord,
-                                  ),
-                                );
-                              },
-                            ).then((value) => setState(() {}));
-                          },
-                          child: Icon(
-                            Icons.more_vert,
-                            color: Colors.black,
-                            size: 24.0,
-                          ),
-                        ),
-                      ),
-                  ],
-                );
-              },
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          iconTheme:
+              IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
+          automaticallyImplyLeading: false,
+          leading: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              context.pop();
+            },
+            child: Icon(
+              FFIcons.karrowLeft,
+              color: Colors.black,
+              size: 24.0,
             ),
           ),
-        ],
-        centerTitle: true,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          title: Text(
+            'Comments',
+            style: FlutterFlowTheme.of(context).headlineSmall.override(
+                  fontFamily: 'Poppins',
+                  fontSize: 16.0,
+                ),
+          ),
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+              child: FutureBuilder<PostsRecord>(
+                future: PostsRecord.getDocumentOnce(widget.post!),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 12.0,
+                        height: 12.0,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                  }
+                  final stackPostsRecord = snapshot.data!;
+                  return Stack(
+                    children: [
+                      if (stackPostsRecord.postUser != currentUserReference)
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                barrierColor: Color(0x00000000),
+                                context: context,
+                                builder: (bottomSheetContext) {
+                                  return GestureDetector(
+                                    onTap: () => FocusScope.of(context)
+                                        .requestFocus(_unfocusNode),
+                                    child: Padding(
+                                      padding: MediaQuery.of(bottomSheetContext)
+                                          .viewInsets,
+                                      child: SendPostWidget(
+                                        post: widget.post,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => setState(() {}));
+                            },
+                            child: Icon(
+                              FFIcons.kshare,
+                              color: Colors.black,
+                              size: 24.0,
+                            ),
+                          ),
+                        ),
+                      if (stackPostsRecord.postUser == currentUserReference)
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                barrierColor: Color(0x00000000),
+                                context: context,
+                                builder: (bottomSheetContext) {
+                                  return GestureDetector(
+                                    onTap: () => FocusScope.of(context)
+                                        .requestFocus(_unfocusNode),
+                                    child: Padding(
+                                      padding: MediaQuery.of(bottomSheetContext)
+                                          .viewInsets,
+                                      child: PostOptionsWidget(
+                                        post: stackPostsRecord,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => setState(() {}));
+                            },
+                            child: Icon(
+                              Icons.more_vert,
+                              color: Colors.black,
+                              size: 24.0,
+                            ),
+                          ),
+                        ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ],
+          centerTitle: true,
+          elevation: 0.0,
+        ),
+        body: SafeArea(
           child: StreamBuilder<PostsRecord>(
             stream: PostsRecord.getDocument(widget.post!),
             builder: (context, snapshot) {
@@ -325,6 +349,15 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                       .first
                                                                   : null;
                                                           return InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
                                                             onTap: () async {
                                                               await showModalBottomSheet(
                                                                 isScrollControlled:
@@ -332,18 +365,27 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                 backgroundColor:
                                                                     Colors
                                                                         .transparent,
+                                                                barrierColor: Color(
+                                                                    0x00000000),
                                                                 context:
                                                                     context,
                                                                 builder:
-                                                                    (context) {
-                                                                  return Padding(
-                                                                    padding: MediaQuery.of(
+                                                                    (bottomSheetContext) {
+                                                                  return GestureDetector(
+                                                                    onTap: () => FocusScope.of(
                                                                             context)
-                                                                        .viewInsets,
+                                                                        .requestFocus(
+                                                                            _unfocusNode),
                                                                     child:
-                                                                        StoryWidget(
-                                                                      story:
-                                                                          containerStoriesRecord,
+                                                                        Padding(
+                                                                      padding: MediaQuery.of(
+                                                                              bottomSheetContext)
+                                                                          .viewInsets,
+                                                                      child:
+                                                                          StoryWidget(
+                                                                        story:
+                                                                            containerStoriesRecord,
+                                                                      ),
                                                                     ),
                                                                   );
                                                                 },
@@ -361,10 +403,10 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                   colors: [
                                                                     FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiaryColor,
+                                                                        .tertiary,
                                                                     FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryColor,
+                                                                        .secondary,
                                                                     FlutterFlowTheme.of(
                                                                             context)
                                                                         .alternate
@@ -395,6 +437,14 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                             AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
                                                           onTap: () async {
                                                             if (rowUsersRecord
                                                                     .reference ==
@@ -444,7 +494,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                   Border.all(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryColor,
+                                                                    .primary,
                                                                 width: 2.0,
                                                               ),
                                                             ),
@@ -463,6 +513,14 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                             .start,
                                                     children: [
                                                       InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
                                                         onTap: () async {
                                                           if (rowUsersRecord
                                                                   .reference ==
@@ -519,7 +577,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
@@ -668,6 +726,15 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                         .first
                                                                     : null;
                                                             return InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
                                                               onTap: () async {
                                                                 await showModalBottomSheet(
                                                                   isScrollControlled:
@@ -675,18 +742,27 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                   backgroundColor:
                                                                       Colors
                                                                           .transparent,
+                                                                  barrierColor:
+                                                                      Color(
+                                                                          0x00000000),
                                                                   context:
                                                                       context,
                                                                   builder:
-                                                                      (context) {
-                                                                    return Padding(
-                                                                      padding: MediaQuery.of(
+                                                                      (bottomSheetContext) {
+                                                                    return GestureDetector(
+                                                                      onTap: () => FocusScope.of(
                                                                               context)
-                                                                          .viewInsets,
+                                                                          .requestFocus(
+                                                                              _unfocusNode),
                                                                       child:
-                                                                          StoryWidget(
-                                                                        story:
-                                                                            containerStoriesRecord,
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.of(bottomSheetContext).viewInsets,
+                                                                        child:
+                                                                            StoryWidget(
+                                                                          story:
+                                                                              containerStoriesRecord,
+                                                                        ),
                                                                       ),
                                                                     );
                                                                   },
@@ -704,10 +780,10 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                     colors: [
                                                                       FlutterFlowTheme.of(
                                                                               context)
-                                                                          .tertiaryColor,
+                                                                          .tertiary,
                                                                       FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryColor,
+                                                                          .secondary,
                                                                       FlutterFlowTheme.of(
                                                                               context)
                                                                           .alternate
@@ -737,6 +813,15 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                               AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
                                                             onTap: () async {
                                                               if (rowUsersRecord
                                                                       .reference ==
@@ -787,7 +872,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                     Border.all(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primary,
                                                                   width: 2.0,
                                                                 ),
                                                               ),
@@ -810,6 +895,15 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                               MainAxisSize.max,
                                                           children: [
                                                             InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
                                                               onTap: () async {
                                                                 if (rowUsersRecord
                                                                         .reference ==
@@ -880,7 +974,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText2
+                                                                    .bodySmall
                                                                     .override(
                                                                       fontFamily:
                                                                           'Poppins',
@@ -914,7 +1008,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                   )}${listViewCommentsRecord.likes!.toList().length == 1 ? ' like' : ' likes'}',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText2
+                                                                      .bodySmall
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
@@ -934,6 +1028,16 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                             0.0,
                                                                             0.0),
                                                                 child: InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
                                                                   onTap:
                                                                       () async {
                                                                     await showModalBottomSheet(
@@ -942,19 +1046,25 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                       backgroundColor:
                                                                           Colors
                                                                               .transparent,
+                                                                      barrierColor:
+                                                                          Color(
+                                                                              0x00000000),
                                                                       context:
                                                                           context,
                                                                       builder:
-                                                                          (context) {
-                                                                        return Padding(
-                                                                          padding:
-                                                                              MediaQuery.of(context).viewInsets,
+                                                                          (bottomSheetContext) {
+                                                                        return GestureDetector(
+                                                                          onTap: () =>
+                                                                              FocusScope.of(context).requestFocus(_unfocusNode),
                                                                           child:
-                                                                              SendPostWidget(
-                                                                            post:
-                                                                                widget.post,
-                                                                            comment:
-                                                                                listViewCommentsRecord.reference,
+                                                                              Padding(
+                                                                            padding:
+                                                                                MediaQuery.of(bottomSheetContext).viewInsets,
+                                                                            child:
+                                                                                SendPostWidget(
+                                                                              post: widget.post,
+                                                                              comment: listViewCommentsRecord.reference,
+                                                                            ),
                                                                           ),
                                                                         );
                                                                       },
@@ -966,7 +1076,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                     'Send',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyText2
+                                                                        .bodySmall
                                                                         .override(
                                                                           fontFamily:
                                                                               'Poppins',
@@ -993,6 +1103,18 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                           0.0),
                                                                   child:
                                                                       InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
                                                                     onTap:
                                                                         () async {
                                                                       await listViewCommentsRecord
@@ -1013,7 +1135,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                                       'Delete',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText2
+                                                                          .bodySmall
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Poppins',
@@ -1039,6 +1161,14 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                           .contains(
                                                               currentUserReference))
                                                         InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
                                                           onTap: () async {
                                                             final commentsUpdateData =
                                                                 {
@@ -1137,6 +1267,14 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                           .contains(
                                                               currentUserReference))
                                                         InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
                                                           onTap: () async {
                                                             final commentsUpdateData =
                                                                 {
@@ -1154,7 +1292,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                             FFIcons.kheart1,
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .tertiaryColor,
+                                                                .tertiary,
                                                             size: 14.0,
                                                           ),
                                                         ).animateOnPageLoad(
@@ -1198,7 +1336,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                               Text(
                                 '🥳',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 28.0,
@@ -1207,7 +1345,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                               Text(
                                 '🤩',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 28.0,
@@ -1216,7 +1354,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                               Text(
                                 '🎉',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 28.0,
@@ -1225,7 +1363,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                               Text(
                                 '💯',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 28.0,
@@ -1234,7 +1372,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                               Text(
                                 '🔥',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 28.0,
@@ -1243,7 +1381,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                               Text(
                                 '🚀',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 28.0,
@@ -1252,7 +1390,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                               Text(
                                 '😂',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 28.0,
@@ -1303,12 +1441,12 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                           decoration: InputDecoration(
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText1,
+                                                    .bodyMedium,
                                             hintText:
                                                 'Add a comment as ${valueOrDefault(currentUserDocument?.username, '')}...',
                                             hintStyle: FlutterFlowTheme.of(
                                                     context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Poppins',
                                                   color: FlutterFlowTheme.of(
@@ -1354,7 +1492,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                     16.0, 16.0, 50.0, 16.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.normal,
@@ -1390,6 +1528,11 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                             final textPostsRecord =
                                                 snapshot.data!;
                                             return InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
                                               onTap: () async {
                                                 final commentsCreateData = {
                                                   ...createCommentsRecordData(
@@ -1490,12 +1633,12 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                                 'Post',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondary,
                                                         ),
                                               ),
                                             );
@@ -1533,7 +1676,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                   'Sorry, this post isn\'t\navailable.',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
-                                      .title1
+                                      .displaySmall
                                       .override(
                                         fontFamily: 'Poppins',
                                         lineHeight: 1.2,
@@ -1546,7 +1689,7 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                     'The link you followed may be broken, or the post may have been removed.',
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
                                           fontSize: 14.0,
@@ -1559,6 +1702,10 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 24.0, 0.0, 0.0),
                                   child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pop();
                                     },
@@ -1566,11 +1713,11 @@ class _CommentsWidgetState extends State<CommentsWidget>
                                       'Go back.',
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Poppins',
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.normal,
                                             lineHeight: 1.5,

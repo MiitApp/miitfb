@@ -112,7 +112,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            FlutterFlowTheme.of(context).primaryColor,
+                            FlutterFlowTheme.of(context).primary,
                             Color(0xCAE41253)
                           ],
                           stops: [0.0, 1.0],

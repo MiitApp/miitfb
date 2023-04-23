@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -49,12 +49,12 @@ class _SignUpUsernameConfirmationWidgetState
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: SafeArea(
           child: Align(
             alignment: AlignmentDirectional(0.0, 0.0),
             child: Column(
@@ -76,7 +76,7 @@ class _SignUpUsernameConfirmationWidgetState
                                 'Sign up as',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
-                                    .title1
+                                    .displaySmall
                                     .override(
                                       fontFamily: 'Poppins',
                                       lineHeight: 1.5,
@@ -86,11 +86,12 @@ class _SignUpUsernameConfirmationWidgetState
                             Text(
                               '${FFAppState().signupUsername}?',
                               textAlign: TextAlign.center,
-                              style:
-                                  FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Poppins',
-                                        lineHeight: 1.5,
-                                      ),
+                              style: FlutterFlowTheme.of(context)
+                                  .displaySmall
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    lineHeight: 1.5,
+                                  ),
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -99,7 +100,7 @@ class _SignUpUsernameConfirmationWidgetState
                                 'You can always change your username later.',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText2
+                                    .bodySmall
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.normal,
@@ -118,7 +119,7 @@ class _SignUpUsernameConfirmationWidgetState
                                 focusedErrorBorder: InputBorder.none,
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
@@ -152,7 +153,7 @@ class _SignUpUsernameConfirmationWidgetState
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
@@ -172,7 +173,7 @@ class _SignUpUsernameConfirmationWidgetState
                           'By tapping Sign up, you agree to our Terms, Privacy Policy and Cookies Policy.',
                           textAlign: TextAlign.center,
                           style:
-                              FlutterFlowTheme.of(context).bodyText2.override(
+                              FlutterFlowTheme.of(context).bodySmall.override(
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.normal,
                                     lineHeight: 1.5,
@@ -223,7 +224,8 @@ class _SignUpUsernameConfirmationWidgetState
                             onPressed: () async {
                               GoRouter.of(context).prepareAuthEvent();
 
-                              final user = await createAccountWithEmail(
+                              final user =
+                                  await authManager.createAccountWithEmail(
                                 context,
                                 _model.emailHIDDENController.text,
                                 _model.passwordHIDDENController.text,
@@ -281,10 +283,9 @@ class _SignUpUsernameConfirmationWidgetState
                                   0.0, 0.0, 0.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
+                              color: FlutterFlowTheme.of(context).secondary,
                               textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
+                                  .titleSmall
                                   .override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
@@ -310,18 +311,23 @@ class _SignUpUsernameConfirmationWidgetState
                         children: [
                           Text(
                             'Already have an account?',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      fontWeight: FontWeight.normal,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontWeight: FontWeight.normal,
+                                ),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 3.0, 0.0, 0.0, 0.0),
                             child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.goNamed(
                                   'SignIn',
@@ -337,7 +343,7 @@ class _SignUpUsernameConfirmationWidgetState
                               child: Text(
                                 'Sign In.',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)

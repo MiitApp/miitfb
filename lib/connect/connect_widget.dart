@@ -47,12 +47,12 @@ class _ConnectWidgetState extends State<ConnectWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-        child: Container(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: Container(
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
@@ -152,12 +152,13 @@ class _ConnectWidgetState extends State<ConnectWidget>
                     children: [
                       Text(
                         'Firenze - Giardino Bardini',
-                        style: FlutterFlowTheme.of(context).title1.override(
-                              fontFamily: 'Poppins',
-                              color: Colors.white,
-                              fontSize: 32.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                        style:
+                            FlutterFlowTheme.of(context).displaySmall.override(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.white,
+                                  fontSize: 32.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -173,7 +174,7 @@ class _ConnectWidgetState extends State<ConnectWidget>
                                 Text(
                                   '4 Night Stay',
                                   style: FlutterFlowTheme.of(context)
-                                      .title3
+                                      .headlineSmall
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: Colors.white,
@@ -202,7 +203,7 @@ class _ConnectWidgetState extends State<ConnectWidget>
                                         child: Text(
                                           '4.7',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText2
+                                              .bodySmall
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 color:
@@ -229,7 +230,7 @@ class _ConnectWidgetState extends State<ConnectWidget>
                                 child: Text(
                                   '\$220 USD',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
@@ -247,7 +248,7 @@ class _ConnectWidgetState extends State<ConnectWidget>
                         child: Text(
                           'Description',
                           style:
-                              FlutterFlowTheme.of(context).bodyText2.override(
+                              FlutterFlowTheme.of(context).bodySmall.override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
                                   ),
@@ -259,7 +260,7 @@ class _ConnectWidgetState extends State<ConnectWidget>
                         child: Text(
                           'Non so se la bellezza salverà il mondo ma sicuramente aiuta. Sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
                           style:
-                              FlutterFlowTheme.of(context).subtitle2.override(
+                              FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Poppins',
                                     color: Color(0x9AFFFFFF),
                                   ),

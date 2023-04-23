@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -109,6 +109,10 @@ class _StoryWidgetState extends State<StoryWidget>
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   onTap: () async {
                     Navigator.pop(context);
                   },
@@ -168,6 +172,10 @@ class _StoryWidgetState extends State<StoryWidget>
                                 }
                                 final rowUsersRecord = snapshot.data!;
                                 return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     if (rowUsersRecord.reference ==
                                         currentUserReference) {
@@ -218,7 +226,7 @@ class _StoryWidgetState extends State<StoryWidget>
                                             'user',
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 color: Colors.white,
@@ -240,7 +248,7 @@ class _StoryWidgetState extends State<StoryWidget>
                                             'now',
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 color: Color(0x80FFFFFF),
@@ -255,6 +263,10 @@ class _StoryWidgetState extends State<StoryWidget>
                             ),
                             if (widget.story!.user == currentUserReference)
                               InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   await widget.story!.reference.delete();
                                   Navigator.pop(context);

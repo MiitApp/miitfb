@@ -73,14 +73,14 @@ class _SociaSliderWidgetState extends State<SociaSliderWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Text(
                   'UserName',
-                  style: FlutterFlowTheme.of(context).subtitle1,
+                  style: FlutterFlowTheme.of(context).titleMedium,
                 ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                 child: Text(
                   'Subtitle',
-                  style: FlutterFlowTheme.of(context).bodyText2,
+                  style: FlutterFlowTheme.of(context).bodySmall,
                 ),
               ),
             ],

@@ -1,11 +1,11 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/post_widget.dart';
 import '/components/story_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/upload_media.dart';
+import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -48,212 +48,225 @@ class _FeedWidgetState extends State<FeedWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: NestedScrollView(
-        headerSliverBuilder: (context, _) => [
-          SliverAppBar(
-            expandedHeight: 80.0,
-            pinned: false,
-            floating: true,
-            snap: true,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            automaticallyImplyLeading: false,
-            actions: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 1.0,
-                  height: 80.0,
-                  decoration: BoxDecoration(),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                        child: Text(
-                          'Discover',
-                          style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Poppins',
-                                fontSize: 36.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 23.0, 0.0),
-                            child: InkWell(
-                              onTap: () async {
-                                FFAppState().update(() {
-                                  FFAppState().uploadPhoto = '';
-                                  FFAppState().taggedUsers = [];
-                                });
-                                FFAppState().update(() {
-                                  FFAppState().location = '';
-                                  FFAppState().calltoactiontext = '';
-                                });
-                                FFAppState().update(() {
-                                  FFAppState().calltoactionurl = '';
-                                  FFAppState().calltoactionenabled = false;
-                                });
-                                final selectedMedia = await selectMedia(
-                                  mediaSource: MediaSource.photoGallery,
-                                  multiImage: false,
-                                );
-                                if (selectedMedia != null &&
-                                    selectedMedia.every((m) =>
-                                        validateFileFormat(
-                                            m.storagePath, context))) {
-                                  setState(
-                                      () => _model.isMediaUploading2 = true);
-                                  var selectedUploadedFiles =
-                                      <FFUploadedFile>[];
-                                  var downloadUrls = <String>[];
-                                  try {
-                                    showUploadMessage(
-                                      context,
-                                      'Uploading file...',
-                                      showLoading: true,
-                                    );
-                                    selectedUploadedFiles = selectedMedia
-                                        .map((m) => FFUploadedFile(
-                                              name:
-                                                  m.storagePath.split('/').last,
-                                              bytes: m.bytes,
-                                              height: m.dimensions?.height,
-                                              width: m.dimensions?.width,
-                                            ))
-                                        .toList();
-
-                                    downloadUrls = (await Future.wait(
-                                      selectedMedia.map(
-                                        (m) async => await uploadData(
-                                            m.storagePath, m.bytes),
-                                      ),
-                                    ))
-                                        .where((u) => u != null)
-                                        .map((u) => u!)
-                                        .toList();
-                                  } finally {
-                                    ScaffoldMessenger.of(context)
-                                        .hideCurrentSnackBar();
-                                    _model.isMediaUploading2 = false;
-                                  }
-                                  if (selectedUploadedFiles.length ==
-                                          selectedMedia.length &&
-                                      downloadUrls.length ==
-                                          selectedMedia.length) {
-                                    setState(() {
-                                      _model.uploadedLocalFile2 =
-                                          selectedUploadedFiles.first;
-                                      _model.uploadedFileUrl2 =
-                                          downloadUrls.first;
-                                    });
-                                    showUploadMessage(context, 'Success!');
-                                  } else {
-                                    setState(() {});
-                                    showUploadMessage(
-                                        context, 'Failed to upload media');
-                                    return;
-                                  }
-                                }
-
-                                if (_model.uploadedFileUrl2 != null &&
-                                    _model.uploadedFileUrl2 != '') {
-                                  FFAppState().update(() {
-                                    FFAppState().uploadPhoto =
-                                        _model.uploadedFileUrl2;
-                                  });
-
-                                  context.pushNamed(
-                                    'NewPost',
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType:
-                                            PageTransitionType.leftToRight,
-                                      ),
-                                    },
-                                  );
-                                }
-                              },
-                              child: Icon(
-                                FFIcons.kadd,
-                                color: Colors.black,
-                                size: 28.0,
-                              ),
-                            ),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: NestedScrollView(
+          headerSliverBuilder: (context, _) => [
+            SliverAppBar(
+              expandedHeight: 80.0,
+              pinned: false,
+              floating: true,
+              snap: true,
+              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              automaticallyImplyLeading: false,
+              actions: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 1.0,
+                    height: 80.0,
+                    decoration: BoxDecoration(),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Discover',
+                            style: FlutterFlowTheme.of(context)
+                                .displaySmall
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 36.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
-                          Stack(
-                            alignment: AlignmentDirectional(-0.125, -1.125),
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 23.0, 0.0),
-                                child: InkWell(
-                                  onTap: () async {
-                                    context.pushNamed('Notifications');
-                                  },
-                                  child: Icon(
-                                    Icons.mark_chat_unread_outlined,
-                                    color: Colors.black,
-                                    size: 28.0,
-                                  ),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 23.0, 0.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  FFAppState().update(() {
+                                    FFAppState().uploadPhoto = '';
+                                    FFAppState().taggedUsers = [];
+                                  });
+                                  FFAppState().update(() {
+                                    FFAppState().location = '';
+                                    FFAppState().calltoactiontext = '';
+                                  });
+                                  FFAppState().update(() {
+                                    FFAppState().calltoactionurl = '';
+                                    FFAppState().calltoactionenabled = false;
+                                  });
+                                  final selectedMedia = await selectMedia(
+                                    mediaSource: MediaSource.photoGallery,
+                                    multiImage: false,
+                                  );
+                                  if (selectedMedia != null &&
+                                      selectedMedia.every((m) =>
+                                          validateFileFormat(
+                                              m.storagePath, context))) {
+                                    setState(
+                                        () => _model.isDataUploading2 = true);
+                                    var selectedUploadedFiles =
+                                        <FFUploadedFile>[];
+                                    var downloadUrls = <String>[];
+                                    try {
+                                      showUploadMessage(
+                                        context,
+                                        'Uploading file...',
+                                        showLoading: true,
+                                      );
+                                      selectedUploadedFiles = selectedMedia
+                                          .map((m) => FFUploadedFile(
+                                                name: m.storagePath
+                                                    .split('/')
+                                                    .last,
+                                                bytes: m.bytes,
+                                                height: m.dimensions?.height,
+                                                width: m.dimensions?.width,
+                                                blurHash: m.blurHash,
+                                              ))
+                                          .toList();
+
+                                      downloadUrls = (await Future.wait(
+                                        selectedMedia.map(
+                                          (m) async => await uploadData(
+                                              m.storagePath, m.bytes),
+                                        ),
+                                      ))
+                                          .where((u) => u != null)
+                                          .map((u) => u!)
+                                          .toList();
+                                    } finally {
+                                      ScaffoldMessenger.of(context)
+                                          .hideCurrentSnackBar();
+                                      _model.isDataUploading2 = false;
+                                    }
+                                    if (selectedUploadedFiles.length ==
+                                            selectedMedia.length &&
+                                        downloadUrls.length ==
+                                            selectedMedia.length) {
+                                      setState(() {
+                                        _model.uploadedLocalFile2 =
+                                            selectedUploadedFiles.first;
+                                        _model.uploadedFileUrl2 =
+                                            downloadUrls.first;
+                                      });
+                                      showUploadMessage(context, 'Success!');
+                                    } else {
+                                      setState(() {});
+                                      showUploadMessage(
+                                          context, 'Failed to upload data');
+                                      return;
+                                    }
+                                  }
+
+                                  if (_model.uploadedFileUrl2 != null &&
+                                      _model.uploadedFileUrl2 != '') {
+                                    FFAppState().update(() {
+                                      FFAppState().uploadPhoto =
+                                          _model.uploadedFileUrl2;
+                                    });
+
+                                    context.pushNamed(
+                                      'NewPost',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.leftToRight,
+                                        ),
+                                      },
+                                    );
+                                  }
+                                },
+                                child: Icon(
+                                  FFIcons.kadd,
+                                  color: Colors.black,
+                                  size: 28.0,
                                 ),
                               ),
-                              if ((currentUserDocument?.unreadNotifications
-                                              ?.toList() ??
-                                          [])
-                                      .length >
-                                  0)
-                                AuthUserStreamWidget(
-                                  builder: (context) => Container(
-                                    width: 10.0,
-                                    height: 10.0,
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          FlutterFlowTheme.of(context)
-                                              .secondaryColor,
-                                          FlutterFlowTheme.of(context)
-                                              .secondaryColor
-                                        ],
-                                        stops: [0.0, 1.0],
-                                        begin: AlignmentDirectional(1.0, -1.0),
-                                        end: AlignmentDirectional(-1.0, 1.0),
-                                      ),
-                                      shape: BoxShape.circle,
+                            ),
+                            Stack(
+                              alignment: AlignmentDirectional(-0.125, -1.125),
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 23.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed('Notifications');
+                                    },
+                                    child: Icon(
+                                      Icons.mark_chat_unread_outlined,
+                                      color: Colors.black,
+                                      size: 28.0,
                                     ),
                                   ),
                                 ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
+                                if ((currentUserDocument?.unreadNotifications
+                                                ?.toList() ??
+                                            [])
+                                        .length >
+                                    0)
+                                  AuthUserStreamWidget(
+                                    builder: (context) => Container(
+                                      width: 10.0,
+                                      height: 10.0,
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            FlutterFlowTheme.of(context)
+                                                .secondary
+                                          ],
+                                          stops: [0.0, 1.0],
+                                          begin:
+                                              AlignmentDirectional(1.0, -1.0),
+                                          end: AlignmentDirectional(-1.0, 1.0),
+                                        ),
+                                        shape: BoxShape.circle,
+                                      ),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-            centerTitle: false,
-            toolbarHeight: 60.0,
-            elevation: 0.0,
-          )
-        ],
-        body: Builder(
-          builder: (context) {
-            return SafeArea(
-              child: GestureDetector(
-                onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+              ],
+              centerTitle: false,
+              toolbarHeight: 60.0,
+              elevation: 0.0,
+            )
+          ],
+          body: Builder(
+            builder: (context) {
+              return SafeArea(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -333,6 +346,14 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                     if (!(stackStoriesRecord !=
                                                         null))
                                                       InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
                                                         onTap: () async {
                                                           final selectedMedia =
                                                               await selectMediaWithSourceBottomSheet(
@@ -349,7 +370,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                                       m.storagePath,
                                                                       context))) {
                                                             setState(() => _model
-                                                                    .isMediaUploading1 =
+                                                                    .isDataUploading1 =
                                                                 true);
                                                             var selectedUploadedFiles =
                                                                 <FFUploadedFile>[];
@@ -374,6 +395,8 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                                                 m.dimensions?.height,
                                                                             width:
                                                                                 m.dimensions?.width,
+                                                                            blurHash:
+                                                                                m.blurHash,
                                                                           ))
                                                                       .toList();
 
@@ -398,7 +421,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                               ScaffoldMessenger
                                                                       .of(context)
                                                                   .hideCurrentSnackBar();
-                                                              _model.isMediaUploading1 =
+                                                              _model.isDataUploading1 =
                                                                   false;
                                                             }
                                                             if (selectedUploadedFiles
@@ -424,7 +447,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                               setState(() {});
                                                               showUploadMessage(
                                                                   context,
-                                                                  'Failed to upload media');
+                                                                  'Failed to upload data');
                                                               return;
                                                             }
                                                           }
@@ -498,7 +521,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                                   BoxDecoration(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .secondary,
                                                                 shape: BoxShape
                                                                     .circle,
                                                                 border:
@@ -532,10 +555,10 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                             colors: [
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .tertiaryColor,
+                                                                  .tertiary,
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .secondaryColor,
+                                                                  .secondary,
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .alternate
@@ -564,6 +587,15 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                             builder:
                                                                 (context) =>
                                                                     InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
                                                               onTap: () async {
                                                                 showModalBottomSheet(
                                                                   isScrollControlled:
@@ -571,18 +603,27 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                                   backgroundColor:
                                                                       Colors
                                                                           .transparent,
+                                                                  barrierColor:
+                                                                      Color(
+                                                                          0x00000000),
                                                                   context:
                                                                       context,
                                                                   builder:
-                                                                      (context) {
-                                                                    return Padding(
-                                                                      padding: MediaQuery.of(
+                                                                      (bottomSheetContext) {
+                                                                    return GestureDetector(
+                                                                      onTap: () => FocusScope.of(
                                                                               context)
-                                                                          .viewInsets,
+                                                                          .requestFocus(
+                                                                              _unfocusNode),
                                                                       child:
-                                                                          StoryWidget(
-                                                                        story:
-                                                                            stackStoriesRecord,
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.of(bottomSheetContext).viewInsets,
+                                                                        child:
+                                                                            StoryWidget(
+                                                                          story:
+                                                                              stackStoriesRecord,
+                                                                        ),
                                                                       ),
                                                                     );
                                                                   },
@@ -644,7 +685,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                 'Your story',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           color:
@@ -732,6 +773,14 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                         final columnUsersRecord =
                                                             snapshot.data!;
                                                         return InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
                                                           onTap: () async {
                                                             showModalBottomSheet(
                                                               isScrollControlled:
@@ -739,17 +788,26 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                               backgroundColor:
                                                                   Colors
                                                                       .transparent,
+                                                              barrierColor: Color(
+                                                                  0x00000000),
                                                               context: context,
                                                               builder:
-                                                                  (context) {
-                                                                return Padding(
-                                                                  padding: MediaQuery.of(
+                                                                  (bottomSheetContext) {
+                                                                return GestureDetector(
+                                                                  onTap: () => FocusScope.of(
                                                                           context)
-                                                                      .viewInsets,
+                                                                      .requestFocus(
+                                                                          _unfocusNode),
                                                                   child:
-                                                                      StoryWidget(
-                                                                    story:
-                                                                        userStoriesStoriesRecord,
+                                                                      Padding(
+                                                                    padding: MediaQuery.of(
+                                                                            bottomSheetContext)
+                                                                        .viewInsets,
+                                                                    child:
+                                                                        StoryWidget(
+                                                                      story:
+                                                                          userStoriesStoriesRecord,
+                                                                    ),
                                                                   ),
                                                                 );
                                                               },
@@ -796,10 +854,10 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                                     colors: [
                                                                       FlutterFlowTheme.of(
                                                                               context)
-                                                                          .tertiaryColor,
+                                                                          .tertiary,
                                                                       FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryColor,
+                                                                          .secondary,
                                                                       FlutterFlowTheme.of(
                                                                               context)
                                                                           .alternate
@@ -896,7 +954,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
+                                                                      .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
@@ -953,25 +1011,28 @@ class _FeedWidgetState extends State<FeedWidget> {
                                       initialIndex: 0,
                                       child: Column(
                                         children: [
-                                          TabBar(
-                                            labelColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBtnText,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyText1,
-                                            indicatorColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            indicatorWeight: 0.0,
-                                            tabs: [
-                                              Tab(
-                                                text: 'Discover',
-                                              ),
-                                              Tab(
-                                                text: 'For  You',
-                                              ),
-                                            ],
+                                          Align(
+                                            alignment: Alignment(0.0, 0),
+                                            child: TabBar(
+                                              labelColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBtnText,
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                              indicatorColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              indicatorWeight: 0.0,
+                                              tabs: [
+                                                Tab(
+                                                  text: 'Discover',
+                                                ),
+                                                Tab(
+                                                  text: 'For  You',
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                           Expanded(
                                             child: TabBarView(
@@ -1076,6 +1137,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                   padding: EdgeInsets.zero,
                                   primary: false,
                                   shrinkWrap: true,
+                                  reverse: false,
                                   scrollDirection: Axis.vertical,
                                   builderDelegate:
                                       PagedChildBuilderDelegate<PostsRecord>(
@@ -1115,9 +1177,9 @@ class _FeedWidgetState extends State<FeedWidget> {
                     ),
                   ],
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

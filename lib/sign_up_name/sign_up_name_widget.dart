@@ -41,12 +41,12 @@ class _SignUpNameWidgetState extends State<SignUpNameWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: SafeArea(
           child: Align(
             alignment: AlignmentDirectional(0.0, 0.0),
             child: Column(
@@ -63,7 +63,9 @@ class _SignUpNameWidgetState extends State<SignUpNameWidget> {
                         child: Text(
                           'Add Your Name',
                           textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context).title1.override(
+                          style: FlutterFlowTheme.of(context)
+                              .displaySmall
+                              .override(
                                 fontFamily: 'Poppins',
                                 lineHeight: 1.5,
                               ),
@@ -76,7 +78,7 @@ class _SignUpNameWidgetState extends State<SignUpNameWidget> {
                           'Add your name so friends can find you.ody',
                           textAlign: TextAlign.center,
                           style:
-                              FlutterFlowTheme.of(context).bodyText2.override(
+                              FlutterFlowTheme.of(context).bodySmall.override(
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.normal,
                                     lineHeight: 1.5,
@@ -95,7 +97,7 @@ class _SignUpNameWidgetState extends State<SignUpNameWidget> {
                             decoration: InputDecoration(
                               hintText: 'Full Name',
                               hintStyle: FlutterFlowTheme.of(context)
-                                  .bodyText2
+                                  .bodySmall
                                   .override(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
@@ -132,12 +134,13 @@ class _SignUpNameWidgetState extends State<SignUpNameWidget> {
                               filled: true,
                               fillColor: Color(0xFFF9F9F9),
                             ),
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
                             keyboardType: TextInputType.name,
                             validator: _model.fullNameControllerValidator
                                 .asValidator(context),
@@ -168,13 +171,14 @@ class _SignUpNameWidgetState extends State<SignUpNameWidget> {
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).secondaryColor,
-                            textStyle:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                      fontSize: 14.0,
-                                    ),
+                            color: FlutterFlowTheme.of(context).secondary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                ),
                             elevation: 0.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
@@ -206,18 +210,23 @@ class _SignUpNameWidgetState extends State<SignUpNameWidget> {
                         children: [
                           Text(
                             'Already have an account?',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      fontWeight: FontWeight.normal,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontWeight: FontWeight.normal,
+                                ),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 3.0, 0.0, 0.0, 0.0),
                             child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.goNamed(
                                   'SignIn',
@@ -233,7 +242,7 @@ class _SignUpNameWidgetState extends State<SignUpNameWidget> {
                               child: Text(
                                 'Sign In.',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
                                       color: FlutterFlowTheme.of(context)

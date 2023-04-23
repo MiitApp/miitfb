@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -93,35 +93,244 @@ class _SearchWidgetState extends State<SearchWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        automaticallyImplyLeading: false,
-        title: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
-                  child: InkWell(
-                    onTap: () async {
-                      context.safePop();
-                    },
-                    child: FaIcon(
-                      FontAwesomeIcons.angleLeft,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 24.0,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: false,
+          title: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.safePop();
+                      },
+                      child: FaIcon(
+                        FontAwesomeIcons.angleLeft,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 24.0,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: StreamBuilder<List<UsersRecord>>(
-                    stream: queryUsersRecord(),
+                  Expanded(
+                    child: StreamBuilder<List<UsersRecord>>(
+                      stream: queryUsersRecord(),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 12.0,
+                              height: 12.0,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            ),
+                          );
+                        }
+                        List<UsersRecord> searchFieldUsersRecordList = snapshot
+                            .data!
+                            .where((u) => u.uid != currentUserUid)
+                            .toList();
+                        return Container(
+                          width: 50.0,
+                          child: TextFormField(
+                            controller: _model.searchFieldController,
+                            onChanged: (_) => EasyDebounce.debounce(
+                              '_model.searchFieldController',
+                              Duration(milliseconds: 1000),
+                              () async {
+                                _model
+                                    .timerSearchFieldActionsController.onExecute
+                                    .add(StopWatchExecute.reset);
+
+                                setState(() {
+                                  _model.simpleSearchResults1 = TextSearch(
+                                    searchFieldUsersRecordList
+                                        .map(
+                                          (record) => TextSearchItem(record, [
+                                            record.displayName!,
+                                            record.username!
+                                          ]),
+                                        )
+                                        .toList(),
+                                  )
+                                      .search(valueOrDefault<String>(
+                                        _model.searchFieldController.text,
+                                        'a',
+                                      ))
+                                      .map((r) => r.object)
+                                      .take(15)
+                                      .toList();
+                                });
+                                FFAppState().update(() {
+                                  FFAppState().currentSearch =
+                                      _model.searchFieldController.text;
+                                });
+                                _model
+                                    .timerSearchFieldActionsController.onExecute
+                                    .add(StopWatchExecute.start);
+                              },
+                            ),
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              hintText: 'Search',
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.normal,
+                                    lineHeight: 1.5,
+                                  ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              filled: true,
+                              fillColor: Color(0xFFF2F2F2),
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 0.0, 24.0, 0.0),
+                              prefixIcon: Icon(
+                                FFIcons.ksearch,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 16.0,
+                              ),
+                              suffixIcon: _model
+                                      .searchFieldController!.text.isNotEmpty
+                                  ? InkWell(
+                                      onTap: () async {
+                                        _model.searchFieldController?.clear();
+                                        _model.timerSearchFieldActionsController
+                                            .onExecute
+                                            .add(StopWatchExecute.reset);
+
+                                        setState(() {
+                                          _model.simpleSearchResults1 =
+                                              TextSearch(
+                                            searchFieldUsersRecordList
+                                                .map(
+                                                  (record) => TextSearchItem(
+                                                      record, [
+                                                    record.displayName!,
+                                                    record.username!
+                                                  ]),
+                                                )
+                                                .toList(),
+                                          )
+                                                  .search(
+                                                      valueOrDefault<String>(
+                                                    _model.searchFieldController
+                                                        .text,
+                                                    'a',
+                                                  ))
+                                                  .map((r) => r.object)
+                                                  .take(15)
+                                                  .toList();
+                                        });
+                                        FFAppState().update(() {
+                                          FFAppState().currentSearch =
+                                              _model.searchFieldController.text;
+                                        });
+                                        _model.timerSearchFieldActionsController
+                                            .onExecute
+                                            .add(StopWatchExecute.start);
+                                        setState(() {});
+                                      },
+                                      child: Icon(
+                                        Icons.clear,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 18.0,
+                                      ),
+                                    )
+                                  : null,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                            validator: _model.searchFieldControllerValidator
+                                .asValidator(context),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  if (_model.searchFieldController.text != null &&
+                      _model.searchFieldController.text != '')
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          setState(() {
+                            _model.searchFieldController?.clear();
+                          });
+                        },
+                        child: Text(
+                          'Cancel',
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                        ),
+                      ).animateOnPageLoad(
+                          animationsMap['textOnPageLoadAnimation']!),
+                    ),
+                  StreamBuilder<List<PostsRecord>>(
+                    stream: queryPostsRecord(
+                      queryBuilder: (postsRecord) =>
+                          postsRecord.where('deleted', isEqualTo: false),
+                    ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -135,248 +344,57 @@ class _SearchWidgetState extends State<SearchWidget>
                           ),
                         );
                       }
-                      List<UsersRecord> searchFieldUsersRecordList = snapshot
-                          .data!
-                          .where((u) => u.uid != currentUserUid)
-                          .toList();
-                      return Container(
-                        width: 50.0,
-                        child: TextFormField(
-                          controller: _model.searchFieldController,
-                          onChanged: (_) => EasyDebounce.debounce(
-                            '_model.searchFieldController',
-                            Duration(milliseconds: 1000),
-                            () async {
-                              _model.timerSearchFieldActionsController.onExecute
-                                  .add(StopWatchExecute.reset);
-
-                              setState(() {
-                                _model.simpleSearchResults1 = TextSearch(
-                                  searchFieldUsersRecordList
-                                      .map(
-                                        (record) => TextSearchItem(record, [
-                                          record.displayName!,
-                                          record.username!
-                                        ]),
-                                      )
-                                      .toList(),
-                                )
-                                    .search(valueOrDefault<String>(
-                                      _model.searchFieldController.text,
-                                      'a',
-                                    ))
-                                    .map((r) => r.object)
-                                    .take(15)
-                                    .toList();
-                              });
-                              FFAppState().update(() {
-                                FFAppState().currentSearch =
-                                    _model.searchFieldController.text;
-                              });
-                              _model.timerSearchFieldActionsController.onExecute
-                                  .add(StopWatchExecute.start);
-                            },
-                          ),
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            hintText: 'Search',
-                            hintStyle:
-                                FlutterFlowTheme.of(context).bodyText2.override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.normal,
-                                      lineHeight: 1.5,
-                                    ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            filled: true,
-                            fillColor: Color(0xFFF2F2F2),
-                            contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            prefixIcon: Icon(
-                              FFIcons.ksearch,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 16.0,
-                            ),
-                            suffixIcon: _model
-                                    .searchFieldController!.text.isNotEmpty
-                                ? InkWell(
-                                    onTap: () async {
-                                      _model.searchFieldController?.clear();
-                                      _model.timerSearchFieldActionsController
-                                          .onExecute
-                                          .add(StopWatchExecute.reset);
-
-                                      setState(() {
-                                        _model
-                                            .simpleSearchResults1 = TextSearch(
-                                          searchFieldUsersRecordList
-                                              .map(
-                                                (record) => TextSearchItem(
-                                                    record, [
-                                                  record.displayName!,
-                                                  record.username!
-                                                ]),
-                                              )
-                                              .toList(),
-                                        )
-                                            .search(valueOrDefault<String>(
-                                              _model.searchFieldController.text,
-                                              'a',
-                                            ))
-                                            .map((r) => r.object)
-                                            .take(15)
-                                            .toList();
-                                      });
-                                      FFAppState().update(() {
-                                        FFAppState().currentSearch =
-                                            _model.searchFieldController.text;
-                                      });
-                                      _model.timerSearchFieldActionsController
-                                          .onExecute
-                                          .add(StopWatchExecute.start);
-                                      setState(() {});
-                                    },
-                                    child: Icon(
-                                      Icons.clear,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 18.0,
-                                    ),
-                                  )
-                                : null,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                          validator: _model.searchFieldControllerValidator
-                              .asValidator(context),
+                      List<PostsRecord> timerSearchFieldActionsPostsRecordList =
+                          snapshot.data!;
+                      return FlutterFlowTimer(
+                        initialTime: _model.timerSearchFieldActionsMilliseconds,
+                        getDisplayTime: (value) =>
+                            StopWatchTimer.getDisplayTime(
+                          value,
+                          hours: false,
+                          minute: false,
+                          milliSecond: false,
                         ),
+                        timer: _model.timerSearchFieldActionsController,
+                        onChanged: (value, displayTime, shouldUpdate) {
+                          _model.timerSearchFieldActionsMilliseconds = value;
+                          _model.timerSearchFieldActionsValue = displayTime;
+                          if (shouldUpdate) setState(() {});
+                        },
+                        onEnded: () async {
+                          setState(() {
+                            _model.simpleSearchResults2 = TextSearch(
+                              timerSearchFieldActionsPostsRecordList
+                                  .map(
+                                    (record) => TextSearchItem(
+                                        record, [record.labels!]),
+                                  )
+                                  .toList(),
+                            )
+                                .search(_model.searchFieldController.text)
+                                .map((r) => r.object)
+                                .take(15)
+                                .toList();
+                          });
+                        },
+                        textAlign: TextAlign.start,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontSize: 1.0,
+                            ),
                       );
                     },
                   ),
-                ),
-                if (_model.searchFieldController.text != null &&
-                    _model.searchFieldController.text != '')
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
-                    child: InkWell(
-                      onTap: () async {
-                        setState(() {
-                          _model.searchFieldController?.clear();
-                        });
-                      },
-                      child: Text(
-                        'Cancel',
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Poppins',
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.normal,
-                            ),
-                      ),
-                    ).animateOnPageLoad(
-                        animationsMap['textOnPageLoadAnimation']!),
-                  ),
-                StreamBuilder<List<PostsRecord>>(
-                  stream: queryPostsRecord(
-                    queryBuilder: (postsRecord) =>
-                        postsRecord.where('deleted', isEqualTo: false),
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 12.0,
-                          height: 12.0,
-                          child: CircularProgressIndicator(
-                            color: Colors.white,
-                          ),
-                        ),
-                      );
-                    }
-                    List<PostsRecord> timerSearchFieldActionsPostsRecordList =
-                        snapshot.data!;
-                    return FlutterFlowTimer(
-                      initialTime: _model.timerSearchFieldActionsMilliseconds,
-                      getDisplayTime: (value) => StopWatchTimer.getDisplayTime(
-                        value,
-                        hours: false,
-                        minute: false,
-                        milliSecond: false,
-                      ),
-                      timer: _model.timerSearchFieldActionsController,
-                      onChanged: (value, displayTime, shouldUpdate) {
-                        _model.timerSearchFieldActionsMilliseconds = value;
-                        _model.timerSearchFieldActionsValue = displayTime;
-                        if (shouldUpdate) setState(() {});
-                      },
-                      onEnded: () async {
-                        setState(() {
-                          _model.simpleSearchResults2 = TextSearch(
-                            timerSearchFieldActionsPostsRecordList
-                                .map(
-                                  (record) =>
-                                      TextSearchItem(record, [record.labels!]),
-                                )
-                                .toList(),
-                          )
-                              .search(_model.searchFieldController.text)
-                              .map((r) => r.object)
-                              .take(15)
-                              .toList();
-                        });
-                      },
-                      textAlign: TextAlign.start,
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: Colors.white,
-                            fontSize: 1.0,
-                          ),
-                    );
-                  },
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
+          actions: [],
+          centerTitle: true,
+          elevation: 0.0,
         ),
-        actions: [],
-        centerTitle: true,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -397,23 +415,27 @@ class _SearchWidgetState extends State<SearchWidget>
                       initialIndex: 0,
                       child: Column(
                         children: [
-                          TabBar(
-                            labelColor: Colors.black,
-                            unselectedLabelColor: Color(0x80000000),
-                            labelStyle:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 16.0,
-                                    ),
-                            indicatorColor: Colors.black,
-                            tabs: [
-                              Tab(
-                                text: 'Profiles',
-                              ),
-                              Tab(
-                                text: 'Images',
-                              ),
-                            ],
+                          Align(
+                            alignment: Alignment(0.0, 0),
+                            child: TabBar(
+                              labelColor: Colors.black,
+                              unselectedLabelColor: Color(0x80000000),
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16.0,
+                                  ),
+                              indicatorColor: Colors.black,
+                              tabs: [
+                                Tab(
+                                  text: 'Profiles',
+                                ),
+                                Tab(
+                                  text: 'Images',
+                                ),
+                              ],
+                            ),
                           ),
                           Expanded(
                             child: TabBarView(
@@ -441,6 +463,11 @@ class _SearchWidgetState extends State<SearchWidget>
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 12.0, 0.0, 0.0),
                                             child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
                                               onTap: () async {
                                                 final recentSearchesCreateData =
                                                     createRecentSearchesRecordData(
@@ -515,7 +542,7 @@ class _SearchWidgetState extends State<SearchWidget>
                                                             maxLines: 1,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Poppins',
@@ -541,7 +568,7 @@ class _SearchWidgetState extends State<SearchWidget>
                                                               maxLines: 1,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyText2
+                                                                  .bodySmall
                                                                   .override(
                                                                     fontFamily:
                                                                         'Poppins',
@@ -589,6 +616,10 @@ class _SearchWidgetState extends State<SearchWidget>
                                         final searchimagesItem =
                                             searchimages[searchimagesIndex];
                                         return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
                                           onTap: () async {
                                             context.pushNamed(
                                               'PostDetails',
@@ -682,6 +713,10 @@ class _SearchWidgetState extends State<SearchWidget>
                                 }
                                 final profileInfoUsersRecord = snapshot.data!;
                                 return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed(
                                       'ProfileOther',
@@ -727,7 +762,7 @@ class _SearchWidgetState extends State<SearchWidget>
                                                 maxLines: 1,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontSize: 14.0,
@@ -743,7 +778,7 @@ class _SearchWidgetState extends State<SearchWidget>
                                                   maxLines: 1,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText2
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         fontWeight:
@@ -756,6 +791,10 @@ class _SearchWidgetState extends State<SearchWidget>
                                         ),
                                       ),
                                       InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
                                         onTap: () async {
                                           await recentSearchesRecentSearchesRecord
                                               .reference
@@ -842,6 +881,10 @@ class _SearchWidgetState extends State<SearchWidget>
                                         photoGalleryPostsRecordList[
                                             photoGalleryIndex];
                                     return InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed(
                                           'PostDetails',

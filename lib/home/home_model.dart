@@ -1,11 +1,11 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/new_event_widget.dart';
 import '/components/new_users_widget.dart';
 import '/components/question_card_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/upload_media.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,7 +20,7 @@ class HomeModel extends FlutterFlowModel {
   late NewUsersModel newUsersModel;
   // Model for NewEvent component.
   late NewEventModel newEventModel;
-  bool isMediaUploading = false;
+  bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl = '';

@@ -48,7 +48,7 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
         width: double.infinity,
         height: 270.0,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).primaryColor,
+          color: FlutterFlowTheme.of(context).primary,
           borderRadius: BorderRadius.circular(0.0),
         ),
         child: Column(
@@ -59,7 +59,7 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
               padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
               child: Text(
                 'You quotes',
-                style: FlutterFlowTheme.of(context).title2.override(
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Poppins',
                       color: Colors.white,
                     ),
@@ -69,7 +69,7 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
               padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 12.0),
               child: Text(
                 'You will find your quote options below.',
-                style: FlutterFlowTheme.of(context).bodyText1.override(
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Poppins',
                       color: Colors.white,
                     ),
@@ -113,13 +113,12 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
                                   child: Text(
                                     'Company Name',
                                     style:
-                                        FlutterFlowTheme.of(context).subtitle2,
+                                        FlutterFlowTheme.of(context).titleSmall,
                                   ),
                                 ),
                                 Icon(
                                   Icons.star_rounded,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   size: 24.0,
                                 ),
                                 Padding(
@@ -128,12 +127,12 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
                                   child: Text(
                                     '4.5',
                                     style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                 ),
                                 Text(
                                   '(242)',
-                                  style: FlutterFlowTheme.of(context).bodyText2,
+                                  style: FlutterFlowTheme.of(context).bodySmall,
                                 ),
                               ],
                             ),
@@ -146,13 +145,14 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
                                 children: [
                                   Text(
                                     '\$194.25',
-                                    style: FlutterFlowTheme.of(context).title1,
+                                    style: FlutterFlowTheme.of(context)
+                                        .displaySmall,
                                   ),
                                   Expanded(
                                     child: Text(
                                       '/mo',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText2,
+                                          .bodySmall,
                                     ),
                                   ),
                                   FlutterFlowIconButton(
@@ -184,7 +184,8 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
                                 ),
                                 Text(
                                   '\$124.29 yearly savings',
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                               ],
                             ),
@@ -224,13 +225,12 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
                                   child: Text(
                                     'Company Name',
                                     style:
-                                        FlutterFlowTheme.of(context).subtitle2,
+                                        FlutterFlowTheme.of(context).titleSmall,
                                   ),
                                 ),
                                 Icon(
                                   Icons.star_rounded,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   size: 24.0,
                                 ),
                                 Padding(
@@ -239,12 +239,12 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
                                   child: Text(
                                     '4.5',
                                     style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                 ),
                                 Text(
                                   '(242)',
-                                  style: FlutterFlowTheme.of(context).bodyText2,
+                                  style: FlutterFlowTheme.of(context).bodySmall,
                                 ),
                               ],
                             ),
@@ -257,13 +257,14 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
                                 children: [
                                   Text(
                                     '\$194.25',
-                                    style: FlutterFlowTheme.of(context).title1,
+                                    style: FlutterFlowTheme.of(context)
+                                        .displaySmall,
                                   ),
                                   Expanded(
                                     child: Text(
                                       '/mo',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText2,
+                                          .bodySmall,
                                     ),
                                   ),
                                   FlutterFlowIconButton(
@@ -295,7 +296,8 @@ class _NewUsers2WidgetState extends State<NewUsers2Widget> {
                                 ),
                                 Text(
                                   '\$124.29 yearly savings',
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                               ],
                             ),
