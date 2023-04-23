@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
@@ -103,99 +103,107 @@ class _NewPostWidgetState extends State<NewPostWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        automaticallyImplyLeading: false,
-        leading: InkWell(
-          onTap: () async {
-            context.goNamed('Feed');
-          },
-          child: Icon(
-            Icons.close_rounded,
-            color: Colors.black,
-            size: 24.0,
-          ),
-        ),
-        title: Text(
-          'New post',
-          style: FlutterFlowTheme.of(context).subtitle1.override(
-                fontFamily: 'Poppins',
-                fontSize: 16.0,
-              ),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                InkWell(
-                  onTap: () async {
-                    final postsCreateData = {
-                      ...createPostsRecordData(
-                        postPhoto: FFAppState().uploadPhoto,
-                        postUser: currentUserReference,
-                        timePosted: getCurrentTimestamp,
-                        numComments: 0,
-                        postCaption: _model.textController.text,
-                        allowComments: !_model.switchValue2!,
-                        allowLikes: !_model.switchValue1!,
-                        location: FFAppState().location,
-                        callToActionEnabled: FFAppState().calltoactionenabled,
-                        callToActionText: FFAppState().calltoactiontext,
-                        callToActionLink: FFAppState().calltoactionurl,
-                        labels: FFAppState().imageLabels,
-                        deleted: false,
-                      ),
-                      'likes': FFAppState().emptyList,
-                      'tagged_users': FFAppState().taggedUsers,
-                    };
-                    var postsRecordReference = PostsRecord.collection.doc();
-                    await postsRecordReference.set(postsCreateData);
-                    _model.post = PostsRecord.getDocumentFromData(
-                        postsCreateData, postsRecordReference);
-                    if (FFAppState().taggedUsers.length > 0) {
-                      triggerPushNotification(
-                        notificationTitle: 'Instagram',
-                        notificationText:
-                            '${valueOrDefault(currentUserDocument?.username, '')} tagged you in a photo.',
-                        notificationImageUrl: FFAppState().uploadPhoto,
-                        notificationSound: 'default',
-                        userRefs: FFAppState().taggedUsers.toList(),
-                        initialPageName: 'PostDetails',
-                        parameterData: {
-                          'post': _model.post!.reference,
-                        },
-                      );
-                    }
-
-                    context.goNamed('Feed');
-
-                    setState(() {});
-                  },
-                  child: Text(
-                    'Share',
-                    style: FlutterFlowTheme.of(context).subtitle1.override(
-                          fontFamily: 'Poppins',
-                          color: FlutterFlowTheme.of(context).secondaryColor,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w500,
-                        ),
-                  ),
-                ),
-              ],
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: false,
+          leading: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              context.goNamed('Feed');
+            },
+            child: Icon(
+              Icons.close_rounded,
+              color: Colors.black,
+              size: 24.0,
             ),
           ),
-        ],
-        centerTitle: true,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          title: Text(
+            'New post',
+            style: FlutterFlowTheme.of(context).titleMedium.override(
+                  fontFamily: 'Poppins',
+                  fontSize: 16.0,
+                ),
+          ),
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      final postsCreateData = {
+                        ...createPostsRecordData(
+                          postPhoto: FFAppState().uploadPhoto,
+                          postUser: currentUserReference,
+                          timePosted: getCurrentTimestamp,
+                          numComments: 0,
+                          postCaption: _model.textController.text,
+                          allowComments: !_model.switchValue2!,
+                          allowLikes: !_model.switchValue1!,
+                          location: FFAppState().location,
+                          callToActionEnabled: FFAppState().calltoactionenabled,
+                          callToActionText: FFAppState().calltoactiontext,
+                          callToActionLink: FFAppState().calltoactionurl,
+                          labels: FFAppState().imageLabels,
+                          deleted: false,
+                        ),
+                        'likes': FFAppState().emptyList,
+                        'tagged_users': FFAppState().taggedUsers,
+                      };
+                      var postsRecordReference = PostsRecord.collection.doc();
+                      await postsRecordReference.set(postsCreateData);
+                      _model.post = PostsRecord.getDocumentFromData(
+                          postsCreateData, postsRecordReference);
+                      if (FFAppState().taggedUsers.length > 0) {
+                        triggerPushNotification(
+                          notificationTitle: 'Instagram',
+                          notificationText:
+                              '${valueOrDefault(currentUserDocument?.username, '')} tagged you in a photo.',
+                          notificationImageUrl: FFAppState().uploadPhoto,
+                          notificationSound: 'default',
+                          userRefs: FFAppState().taggedUsers.toList(),
+                          initialPageName: 'PostDetails',
+                          parameterData: {
+                            'post': _model.post!.reference,
+                          },
+                        );
+                      }
+
+                      context.goNamed('Feed');
+
+                      setState(() {});
+                    },
+                    child: Text(
+                      'Share',
+                      style: FlutterFlowTheme.of(context).titleMedium.override(
+                            fontFamily: 'Poppins',
+                            color: FlutterFlowTheme.of(context).secondary,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w500,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+          centerTitle: true,
+          elevation: 0.0,
+        ),
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -222,6 +230,10 @@ class _NewPostWidgetState extends State<NewPostWidget>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             await Navigator.push(
                               context,
@@ -259,7 +271,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelStyle: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.normal,
@@ -267,7 +279,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                     ),
                                 hintText: 'Write a caption...',
                                 hintStyle: FlutterFlowTheme.of(context)
-                                    .bodyText2
+                                    .bodySmall
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
@@ -315,7 +327,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
@@ -348,6 +360,10 @@ class _NewPostWidgetState extends State<NewPostWidget>
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 24.0),
                             child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
                                   'TagUsers',
@@ -371,7 +387,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                     child: Text(
                                       'Tag people',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Poppins',
                                             fontSize: 14.0,
@@ -399,6 +415,10 @@ class _NewPostWidgetState extends State<NewPostWidget>
                               children: [
                                 if (FFAppState().calltoactionenabled)
                                   InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pushNamed(
                                         'CallToAction',
@@ -429,7 +449,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                 FFAppState().calltoactiontext,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontSize: 14.0,
@@ -445,7 +465,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                   FFAppState().calltoactionurl,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         color:
@@ -466,6 +486,10 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 15.0, 0.0),
                                           child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               FFAppState().update(() {
                                                 FFAppState()
@@ -491,6 +515,10 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                   ),
                                 if (!FFAppState().calltoactionenabled)
                                   InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pushNamed(
                                         'CallToAction',
@@ -515,7 +543,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                           child: Text(
                                             'Add call to action',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Poppins',
                                                   fontSize: 14.0,
@@ -548,6 +576,10 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 16.0),
                                   child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pushNamed(
                                         'Location',
@@ -572,7 +604,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                           child: Text(
                                             'Add location',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Poppins',
                                                   fontSize: 14.0,
@@ -611,6 +643,10 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   15.0, 0.0, 10.0, 0.0),
                                           child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               FFAppState().update(() {
                                                 FFAppState().location =
@@ -641,7 +677,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                         'New York, NY',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
-                                                            .bodyText1
+                                                            .bodyMedium
                                                             .override(
                                                               fontFamily:
                                                                   'Poppins',
@@ -663,6 +699,10 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 10.0, 0.0),
                                           child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               FFAppState().update(() {
                                                 FFAppState().location =
@@ -693,7 +733,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                         'Silicon Valley, CA',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
-                                                            .bodyText1
+                                                            .bodyMedium
                                                             .override(
                                                               fontFamily:
                                                                   'Poppins',
@@ -715,6 +755,10 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 10.0, 0.0),
                                           child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               FFAppState().update(() {
                                                 FFAppState().location =
@@ -745,7 +789,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                         'Miami, FL',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
-                                                            .bodyText1
+                                                            .bodyMedium
                                                             .override(
                                                               fontFamily:
                                                                   'Poppins',
@@ -767,6 +811,10 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 10.0, 0.0),
                                           child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               FFAppState().update(() {
                                                 FFAppState().location =
@@ -797,7 +845,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                         'Chicago, IL',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
-                                                            .bodyText1
+                                                            .bodyMedium
                                                             .override(
                                                               fontFamily:
                                                                   'Poppins',
@@ -824,6 +872,10 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 16.0),
                                   child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pushNamed(
                                         'CallToAction',
@@ -854,7 +906,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                                 FFAppState().location,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontSize: 14.0,
@@ -870,6 +922,10 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 15.0, 0.0),
                                           child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               FFAppState().update(() {
                                                 FFAppState().location = '';
@@ -901,7 +957,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                   child: Text(
                                     'Hide like and view counts on post',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
                                           fontSize: 14.0,
@@ -920,8 +976,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                     },
                                     activeColor: Colors.white,
                                     activeTrackColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryColor,
+                                        FlutterFlowTheme.of(context).secondary,
                                     inactiveTrackColor: Color(0xFFDADADA),
                                     inactiveThumbColor: Colors.white,
                                   ),
@@ -942,7 +997,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                   child: Text(
                                     'Hide comments on post',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
                                           fontSize: 14.0,
@@ -961,8 +1016,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                                     },
                                     activeColor: Colors.white,
                                     activeTrackColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryColor,
+                                        FlutterFlowTheme.of(context).secondary,
                                     inactiveTrackColor: Color(0xFFDADADA),
                                     inactiveThumbColor: Colors.white,
                                   ),

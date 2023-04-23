@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -42,76 +42,84 @@ class _MessagesWidgetState extends State<MessagesWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        automaticallyImplyLeading: false,
-        title: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            InkWell(
-              onTap: () async {
-                context.pushNamed(
-                  'Feed',
-                  extra: <String, dynamic>{
-                    kTransitionInfoKey: TransitionInfo(
-                      hasTransition: true,
-                      transitionType: PageTransitionType.leftToRight,
-                    ),
-                  },
-                );
-              },
-              child: Icon(
-                FFIcons.karrowLeft,
-                color: Colors.black,
-                size: 24.0,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
-              child: AuthUserStreamWidget(
-                builder: (context) => Text(
-                  valueOrDefault(currentUserDocument?.username, ''),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Poppins',
-                        fontSize: 24.0,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: false,
+          title: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed(
+                    'Feed',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.leftToRight,
                       ),
+                    },
+                  );
+                },
+                child: Icon(
+                  FFIcons.karrowLeft,
+                  color: Colors.black,
+                  size: 24.0,
                 ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
+                child: AuthUserStreamWidget(
+                  builder: (context) => Text(
+                    valueOrDefault(currentUserDocument?.username, ''),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 24.0,
+                        ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      if (Navigator.of(context).canPop()) {
+                        context.pop();
+                      }
+                      context.pushNamed('NewMessage');
+                    },
+                    child: FaIcon(
+                      FontAwesomeIcons.edit,
+                      color: Colors.black,
+                      size: 22.0,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
+          centerTitle: false,
+          elevation: 0.0,
         ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                InkWell(
-                  onTap: () async {
-                    if (Navigator.of(context).canPop()) {
-                      context.pop();
-                    }
-                    context.pushNamed('NewMessage');
-                  },
-                  child: FaIcon(
-                    FontAwesomeIcons.edit,
-                    color: Colors.black,
-                    size: 22.0,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-        centerTitle: false,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -176,6 +184,10 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                 }
                                 final chatDetailsUsersRecord = snapshot.data!;
                                 return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed(
                                       'IndividualMessage',
@@ -245,7 +257,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                 maxLines: 1,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontSize: 14.0,
@@ -293,7 +305,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                           maxLines: 1,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
@@ -339,7 +351,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                           maxLines: 1,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
@@ -395,7 +407,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                           maxLines: 1,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',

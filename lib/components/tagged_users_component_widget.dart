@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
@@ -72,6 +72,10 @@ class _TaggedUsersComponentWidgetState
           }
           final rowUsersRecord = snapshot.data!;
           return InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onTap: () async {
               if (rowUsersRecord.reference == currentUserReference) {
                 context.pushNamed('Profile');
@@ -117,7 +121,7 @@ class _TaggedUsersComponentWidgetState
                           rowUsersRecord.displayName!,
                           maxLines: 1,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
                                   ),
@@ -129,7 +133,7 @@ class _TaggedUsersComponentWidgetState
                             rowUsersRecord.username!,
                             maxLines: 1,
                             style:
-                                FlutterFlowTheme.of(context).bodyText2.override(
+                                FlutterFlowTheme.of(context).bodySmall.override(
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -167,6 +171,10 @@ class _TaggedUsersComponentWidgetState
                                 ? containerFollowersRecordList.first
                                 : null;
                         return InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             if ((currentUserDocument?.following?.toList() ?? [])
                                 .contains(rowUsersRecord.reference)) {
@@ -207,12 +215,12 @@ class _TaggedUsersComponentWidgetState
                             width: 110.0,
                             height: 35.0,
                             decoration: BoxDecoration(
-                              color: (currentUserDocument?.following
-                                              ?.toList() ??
-                                          [])
-                                      .contains(rowUsersRecord.reference)
-                                  ? Color(0xFFEFEFEF)
-                                  : FlutterFlowTheme.of(context).secondaryColor,
+                              color:
+                                  (currentUserDocument?.following?.toList() ??
+                                              [])
+                                          .contains(rowUsersRecord.reference)
+                                      ? Color(0xFFEFEFEF)
+                                      : FlutterFlowTheme.of(context).secondary,
                               borderRadius: BorderRadius.circular(40.0),
                             ),
                             child: Align(
@@ -251,7 +259,7 @@ class _TaggedUsersComponentWidgetState
                                         }
                                       }(),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Poppins',
                                             color: (currentUserDocument
@@ -316,9 +324,9 @@ class _TaggedUsersComponentWidgetState
                     setState(() {});
                   },
                   textAlign: TextAlign.start,
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Poppins',
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primary,
                         fontSize: 0.0,
                       ),
                 ),

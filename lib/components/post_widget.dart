@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/components/personal_post_options_widget.dart';
@@ -45,15 +45,15 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 0.2,
-          end: 1.0,
+          begin: Offset(0.2, 0.2),
+          end: Offset(1.0, 1.0),
         ),
         ScaleEffect(
           curve: Curves.easeOut,
           delay: 1000.ms,
           duration: 150.ms,
-          begin: 1.0,
-          end: 0.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -64,8 +64,8 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 0.2,
-          end: 1.0,
+          begin: Offset(0.2, 0.2),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -76,8 +76,8 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 0.2,
-          end: 1.0,
+          begin: Offset(0.2, 0.2),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -150,6 +150,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                     Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
                       child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onDoubleTap: () async {
                           if (widget.post!.allowLikes!) {
                             if (widget.post!.likes!
@@ -245,6 +249,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                       Align(
                         alignment: AlignmentDirectional(0.0, 1.0),
                         child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             await launchURL(widget.post!.callToActionLink!);
                           },
@@ -252,8 +260,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                             width: MediaQuery.of(context).size.width * 1.0,
                             height: 50.0,
                             decoration: BoxDecoration(
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
+                              color: FlutterFlowTheme.of(context).secondary,
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(12.0),
                                 bottomRight: Radius.circular(12.0),
@@ -277,7 +284,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                         'Learn More',
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Poppins',
                                             color: Colors.white,
@@ -304,14 +311,20 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 32.0, 12.0, 0.0),
                           child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: Colors.transparent,
+                                barrierColor: Color(0x00000000),
                                 context: context,
-                                builder: (context) {
+                                builder: (bottomSheetContext) {
                                   return Padding(
-                                    padding: MediaQuery.of(context).viewInsets,
+                                    padding: MediaQuery.of(bottomSheetContext)
+                                        .viewInsets,
                                     child: TaggedUsersWidget(
                                       post: widget.post,
                                     ),
@@ -360,6 +373,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     .toList()
                                     .contains(currentUserReference))
                                   InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       if (animationsMap[
                                               'iconOnActionTriggerAnimation'] !=
@@ -433,6 +450,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     .toList()
                                     .contains(currentUserReference))
                                   InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       final postsUpdateData = {
                                         'likes': FieldValue.arrayRemove(
@@ -452,8 +473,8 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     },
                                     child: Icon(
                                       FFIcons.kheart1,
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
                                       size: 28.0,
                                     ),
                                   ).animateOnPageLoad(animationsMap[
@@ -466,6 +487,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 16.0, 0.0),
                             child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
                                   'Comments',
@@ -485,14 +510,20 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                             ),
                           ),
                         InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             await showModalBottomSheet(
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
+                              barrierColor: Color(0x00000000),
                               context: context,
-                              builder: (context) {
+                              builder: (bottomSheetContext) {
                                 return Padding(
-                                  padding: MediaQuery.of(context).viewInsets,
+                                  padding: MediaQuery.of(bottomSheetContext)
+                                      .viewInsets,
                                   child: SendPostWidget(
                                     post: widget.post!.reference,
                                   ),
@@ -538,6 +569,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                 .toList()
                                 .contains(widget.post!.reference))
                               InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   final bookmarksUpdateData = {
                                     'postRefs': FieldValue.arrayUnion(
@@ -557,6 +592,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                 .toList()
                                 .contains(widget.post!.reference))
                               InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   final bookmarksUpdateData = {
                                     'postRefs': FieldValue.arrayRemove(
@@ -586,6 +625,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         if (columnUsersRecord.reference ==
                             currentUserReference) {
@@ -606,6 +649,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               if (columnUsersRecord.reference ==
                                   currentUserReference) {
@@ -653,6 +700,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     if (columnUsersRecord.reference ==
                                         currentUserReference) {
@@ -675,7 +726,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                       'user',
                                     ),
                                     style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                 ),
                                 if (widget.post!.location != null &&
@@ -683,7 +734,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                   Text(
                                     widget.post!.location!,
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
                                           fontSize: 12.0,
@@ -697,15 +748,21 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                       ),
                     ),
                     InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         if (widget.post!.postUser == currentUserReference) {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
+                            barrierColor: Color(0x00000000),
                             context: context,
-                            builder: (context) {
+                            builder: (bottomSheetContext) {
                               return Padding(
-                                padding: MediaQuery.of(context).viewInsets,
+                                padding: MediaQuery.of(bottomSheetContext)
+                                    .viewInsets,
                                 child: PersonalPostOptionsWidget(
                                   post: widget.post,
                                 ),
@@ -716,10 +773,12 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
+                            barrierColor: Color(0x00000000),
                             context: context,
-                            builder: (context) {
+                            builder: (bottomSheetContext) {
                               return Padding(
-                                padding: MediaQuery.of(context).viewInsets,
+                                padding: MediaQuery.of(bottomSheetContext)
+                                    .viewInsets,
                                 child: PostOptionsWidget(
                                   post: widget.post,
                                 ),
@@ -801,7 +860,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                   ),
                                   '0',
                                 )}${widget.post!.likes!.toList().length == 1 ? ' like' : ' likes'}',
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                           ],
                         ),
@@ -814,6 +873,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                         children: [
                           Expanded(
                             child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 if (widget.post!.allowComments!) {
                                   context.pushNamed(
@@ -867,6 +930,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                 List<CommentsRecord> textCommentsRecordList =
                                     snapshot.data!;
                                 return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed(
                                       'Comments',
@@ -884,7 +951,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                       formatType: FormatType.compact,
                                     )} comments',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
@@ -916,6 +983,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                 List<CommentsRecord> textCommentsRecordList =
                                     snapshot.data!;
                                 return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed(
                                       'Comments',
@@ -930,7 +1001,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                   child: Text(
                                     'View 1 comment',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
@@ -970,6 +1041,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                             List<CommentsRecord> columnCommentsRecordList =
                                 snapshot.data!;
                             return InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
                                   'Comments',
@@ -1033,6 +1108,10 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                         child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             if (widget.post!.allowComments!) {
                               context.pushNamed(
@@ -1079,7 +1158,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     child: Text(
                                       'Add a comment...',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Poppins',
                                             color: FlutterFlowTheme.of(context)
@@ -1099,7 +1178,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     child: Text(
                                       '🎉',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                          .bodyMedium,
                                     ),
                                   ),
                                   Padding(
@@ -1108,13 +1187,13 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     child: Text(
                                       '🤩',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                          .bodyMedium,
                                     ),
                                   ),
                                   Text(
                                     '🥰',
                                     style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                 ],
                               ),
@@ -1134,7 +1213,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                           ),
                           'now',
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Poppins',
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontWeight: FontWeight.normal,

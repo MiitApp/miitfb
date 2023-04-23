@@ -43,33 +43,33 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        automaticallyImplyLeading: false,
-        leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30.0,
-          borderWidth: 1.0,
-          buttonSize: 60.0,
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: FlutterFlowTheme.of(context).secondaryText,
-            size: 30.0,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: FlutterFlowTheme.of(context).secondaryText,
+              size: 30.0,
+            ),
+            onPressed: () {
+              print('IconButton pressed ...');
+            },
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
-          },
+          actions: [],
+          centerTitle: false,
+          elevation: 0.0,
         ),
-        actions: [],
-        centerTitle: false,
-        elevation: 0.0,
-      ),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-        child: Column(
+        body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -104,12 +104,12 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                   Text(
                                     'Alexandria Smith',
                                     style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                   Text(
                                     '1m ago',
                                     style:
-                                        FlutterFlowTheme.of(context).bodyText2,
+                                        FlutterFlowTheme.of(context).bodySmall,
                                   ),
                                 ],
                               ),
@@ -136,7 +136,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                          style: FlutterFlowTheme.of(context).bodyText2,
+                          style: FlutterFlowTheme.of(context).bodySmall,
                         ),
                       ),
                       Padding(
@@ -155,7 +155,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                   4.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 '3',
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ),
                             Padding(
@@ -163,7 +163,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                   4.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'likes',
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ),
                             Padding(
@@ -181,7 +181,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                   4.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 '8',
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ),
                             Padding(
@@ -189,7 +189,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                   4.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'Comments',
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ),
                           ],
@@ -254,13 +254,13 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                                   'Randy Alcorn',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1,
+                                                      .bodyMedium,
                                                 ),
                                                 Text(
                                                   'I\'m not really sure about this section here aI think you should do soemthing cool!',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText2,
+                                                      .bodySmall,
                                                 ),
                                               ],
                                             ),
@@ -273,7 +273,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                         child: Text(
                                           'a min ago',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText2,
+                                              .bodySmall,
                                         ),
                                       ),
                                     ],
@@ -327,13 +327,13 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                                 'Sandra Smith',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1,
+                                                        .bodyMedium,
                                               ),
                                               Text(
                                                 'I\'m not really sure about this section here aI think you should do soemthing cool!',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText2,
+                                                        .bodySmall,
                                               ),
                                             ],
                                           ),
@@ -346,7 +346,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                       child: Text(
                                         'a min ago',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText2,
+                                            .bodySmall,
                                       ),
                                     ),
                                   ],
@@ -407,10 +407,10 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                     decoration: InputDecoration(
                                       labelText: 'Leave comment...',
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .bodyText2,
+                                          .bodySmall,
                                       hintText: 'Leave comment...',
                                       hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                          .bodyMedium,
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
@@ -448,7 +448,7 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                               0.0, 16.0, 0.0, 0.0),
                                     ),
                                     style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                     maxLines: 4,
                                     keyboardType: TextInputType.multiline,
                                     validator: _model
@@ -472,10 +472,9 @@ class _QuestionsWidgetState extends State<QuestionsWidget> {
                                         0.0, 0.0, 0.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
+                                        .titleSmall
                                         .override(
                                           fontFamily: 'Poppins',
                                           color: Colors.white,

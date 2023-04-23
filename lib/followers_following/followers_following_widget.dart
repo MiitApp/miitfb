@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/components/follower_componant_widget.dart';
@@ -45,38 +45,42 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        automaticallyImplyLeading: false,
-        leading: InkWell(
-          onTap: () async {
-            context.pop();
-          },
-          child: Icon(
-            FFIcons.karrowLeft,
-            color: Colors.black,
-            size: 24.0,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: false,
+          leading: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              context.pop();
+            },
+            child: Icon(
+              FFIcons.karrowLeft,
+              color: Colors.black,
+              size: 24.0,
+            ),
           ),
-        ),
-        title: AuthUserStreamWidget(
-          builder: (context) => Text(
-            valueOrDefault(currentUserDocument?.username, ''),
-            style: FlutterFlowTheme.of(context).subtitle1.override(
-                  fontFamily: 'Poppins',
-                  fontSize: 16.0,
-                ),
+          title: AuthUserStreamWidget(
+            builder: (context) => Text(
+              valueOrDefault(currentUserDocument?.username, ''),
+              style: FlutterFlowTheme.of(context).titleMedium.override(
+                    fontFamily: 'Poppins',
+                    fontSize: 16.0,
+                  ),
+            ),
           ),
+          actions: [],
+          centerTitle: true,
+          elevation: 0.0,
         ),
-        actions: [],
-        centerTitle: true,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+        body: SafeArea(
           child: Container(
             width: double.infinity,
             height: MediaQuery.of(context).size.height * 1.0,
@@ -112,42 +116,46 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                   initialIndex: 0,
                   child: Column(
                     children: [
-                      TabBar(
-                        labelColor: FlutterFlowTheme.of(context).alternate,
-                        unselectedLabelColor: Color(0x80000000),
-                        labelStyle:
-                            FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 15.0,
-                                ),
-                        indicatorColor: FlutterFlowTheme.of(context).alternate,
-                        indicatorWeight: 2.0,
-                        tabs: [
-                          Tab(
-                            text: valueOrDefault<String>(
-                              '${formatNumber(
-                                tabBarFollowersRecord!.userRefs!
-                                    .toList()
-                                    .length,
-                                formatType: FormatType.compact,
-                              )} Followers',
-                              '0 Followers',
-                            ),
-                          ),
-                          AuthUserStreamWidget(
-                            builder: (context) => Tab(
+                      Align(
+                        alignment: Alignment(0.0, 0),
+                        child: TabBar(
+                          labelColor: FlutterFlowTheme.of(context).alternate,
+                          unselectedLabelColor: Color(0x80000000),
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 15.0,
+                                  ),
+                          indicatorColor:
+                              FlutterFlowTheme.of(context).alternate,
+                          indicatorWeight: 2.0,
+                          tabs: [
+                            Tab(
                               text: valueOrDefault<String>(
                                 '${formatNumber(
-                                  (currentUserDocument?.following?.toList() ??
-                                          [])
+                                  tabBarFollowersRecord!.userRefs!
+                                      .toList()
                                       .length,
                                   formatType: FormatType.compact,
-                                )} Following',
+                                )} Followers',
                                 '0 Followers',
                               ),
                             ),
-                          ),
-                        ],
+                            AuthUserStreamWidget(
+                              builder: (context) => Tab(
+                                text: valueOrDefault<String>(
+                                  '${formatNumber(
+                                    (currentUserDocument?.following?.toList() ??
+                                            [])
+                                        .length,
+                                    formatType: FormatType.compact,
+                                  )} Following',
+                                  '0 Followers',
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       Expanded(
                         child: TabBarView(
@@ -193,6 +201,11 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                               final rowUsersRecord =
                                                   snapshot.data!;
                                               return InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
                                                 onTap: () async {
                                                   if (rowUsersRecord
                                                           .reference ==
@@ -270,7 +283,7 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                   maxLines: 1,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
+                                                                      .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Poppins',
@@ -294,7 +307,7 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                           1,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Poppins',
@@ -345,6 +358,14 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                             ? textFollowersRecordList.first
                                                                             : null;
                                                                         return InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
                                                                           onTap:
                                                                               () async {
                                                                             final usersUpdateData =
@@ -381,9 +402,9 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                             'Follow',
                                                                             maxLines:
                                                                                 1,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Poppins',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                  color: FlutterFlowTheme.of(context).secondary,
                                                                                   fontSize: 14.0,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -408,7 +429,7 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                 maxLines: 1,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText2
+                                                                    .bodySmall
                                                                     .override(
                                                                       fontFamily:
                                                                           'Poppins',
@@ -466,6 +487,15 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                       .first
                                                                   : null;
                                                           return InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
                                                             onTap: () async {
                                                               final usersUpdateData =
                                                                   {
@@ -529,7 +559,7 @@ class _FollowersFollowingWidgetState extends State<FollowersFollowingWidget> {
                                                                       Text(
                                                                         'Remove',
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
+                                                                            .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Poppins',
                                                                               fontSize: 13.0,

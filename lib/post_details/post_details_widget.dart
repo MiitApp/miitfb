@@ -48,12 +48,12 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -96,6 +96,10 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 32.0, 0.0, 0.0),
                                   child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.safePop();
                                     },
@@ -141,7 +145,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                           'Sorry, this post isn\'t\navailable.',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
-                                              .title1
+                                              .displaySmall
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 lineHeight: 1.2,
@@ -155,7 +159,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                             'The link you followed may be broken, or the post may have been removed.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Poppins',
                                                   fontSize: 14.0,
@@ -169,6 +173,10 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 24.0, 0.0, 0.0),
                                           child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               context.pop();
                                             },
@@ -177,13 +185,13 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                               textAlign: TextAlign.center,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .secondary,
                                                         fontSize: 14.0,
                                                         fontWeight:
                                                             FontWeight.normal,

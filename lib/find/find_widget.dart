@@ -40,41 +40,41 @@ class _FindWidgetState extends State<FindWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        automaticallyImplyLeading: false,
-        title: Text(
-          'Clubs',
-          style: FlutterFlowTheme.of(context).title1,
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-            child: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 30.0,
-              borderWidth: 1.0,
-              buttonSize: 44.0,
-              icon: Icon(
-                Icons.notifications_none,
-                color: FlutterFlowTheme.of(context).secondaryText,
-                size: 24.0,
-              ),
-              onPressed: () {
-                print('IconButton pressed ...');
-              },
-            ),
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Clubs',
+            style: FlutterFlowTheme.of(context).displaySmall,
           ),
-        ],
-        centerTitle: false,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+              child: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30.0,
+                borderWidth: 1.0,
+                buttonSize: 44.0,
+                icon: Icon(
+                  Icons.notifications_none,
+                  color: FlutterFlowTheme.of(context).secondaryText,
+                  size: 24.0,
+                ),
+                onPressed: () {
+                  print('IconButton pressed ...');
+                },
+              ),
+            ),
+          ],
+          centerTitle: false,
+          elevation: 0.0,
+        ),
+        body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -153,7 +153,7 @@ class _FindWidgetState extends State<FindWidget> {
                                         child: Text(
                                           'The Key to Starting Every Day Right',
                                           style: FlutterFlowTheme.of(context)
-                                              .subtitle1,
+                                              .titleMedium,
                                         ),
                                       ),
                                       Row(
@@ -167,7 +167,7 @@ class _FindWidgetState extends State<FindWidget> {
                                                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText2,
+                                                        .bodySmall,
                                               ),
                                             ),
                                           ),
@@ -242,7 +242,7 @@ class _FindWidgetState extends State<FindWidget> {
                                         child: Text(
                                           'The Key to Starting Every Day Right',
                                           style: FlutterFlowTheme.of(context)
-                                              .subtitle1,
+                                              .titleMedium,
                                         ),
                                       ),
                                       Row(
@@ -256,7 +256,7 @@ class _FindWidgetState extends State<FindWidget> {
                                                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText2,
+                                                        .bodySmall,
                                               ),
                                             ),
                                           ),
@@ -281,7 +281,7 @@ class _FindWidgetState extends State<FindWidget> {
                     children: [
                       Text(
                         'Trainings',
-                        style: FlutterFlowTheme.of(context).title2,
+                        style: FlutterFlowTheme.of(context).headlineMedium,
                       ),
                     ],
                   ),
@@ -340,8 +340,8 @@ class _FindWidgetState extends State<FindWidget> {
                                   children: [
                                     Text(
                                       'Title',
-                                      style:
-                                          FlutterFlowTheme.of(context).title3,
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineSmall,
                                     ),
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -353,7 +353,7 @@ class _FindWidgetState extends State<FindWidget> {
                                           child: Text(
                                             'Subtitle',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText2,
+                                                .bodySmall,
                                           ),
                                         ),
                                         Padding(
@@ -363,7 +363,7 @@ class _FindWidgetState extends State<FindWidget> {
                                           child: Text(
                                             'subtext',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1,
+                                                .bodyMedium,
                                           ),
                                         ),
                                       ],
@@ -421,7 +421,8 @@ class _FindWidgetState extends State<FindWidget> {
                                 children: [
                                   Text(
                                     'Title',
-                                    style: FlutterFlowTheme.of(context).title3,
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall,
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -432,7 +433,7 @@ class _FindWidgetState extends State<FindWidget> {
                                         child: Text(
                                           'Subtitle',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText2,
+                                              .bodySmall,
                                         ),
                                       ),
                                       Padding(
@@ -441,7 +442,7 @@ class _FindWidgetState extends State<FindWidget> {
                                         child: Text(
                                           'subtext',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1,
+                                              .bodyMedium,
                                         ),
                                       ),
                                     ],

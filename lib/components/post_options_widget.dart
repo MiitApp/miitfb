@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -90,6 +90,10 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 6.0, 0.0),
                             child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 Navigator.pop(context);
                                 await Share.share(
@@ -122,7 +126,7 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                                         child: Text(
                                           'Share',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.normal,
@@ -142,6 +146,10 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               6.0, 0.0, 6.0, 0.0),
                           child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await actions.copyText(
                                 'miitfirebase://miitfirebase.com${GoRouter.of(context).location}',
@@ -172,7 +180,7 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                                       child: Text(
                                         'Link',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Poppins',
                                               fontWeight: FontWeight.normal,
@@ -215,6 +223,10 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                                       ? containerBookmarksRecordList.first
                                       : null;
                               return InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   final bookmarksUpdateData = {
                                     'postRefs': FieldValue.arrayUnion(
@@ -259,7 +271,7 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                                                     'Save',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontWeight:
@@ -295,7 +307,7 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                                                     'Unsave',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontWeight:
@@ -345,6 +357,10 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                                   }
                                   final stackUsersRecord = snapshot.data!;
                                   return InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       Navigator.pop(context);
 
@@ -386,7 +402,7 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                                                     'Profile',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           fontWeight:
@@ -435,7 +451,7 @@ class _PostOptionsWidgetState extends State<PostOptionsWidget> {
                             child: Text(
                               'Report Post',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Poppins',
                                     color: Color(0xFFF83639),

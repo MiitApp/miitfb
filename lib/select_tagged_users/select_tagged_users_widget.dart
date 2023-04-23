@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -45,26 +45,26 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        automaticallyImplyLeading: false,
-        title: Text(
-          'Select users',
-          style: FlutterFlowTheme.of(context).subtitle1.override(
-                fontFamily: 'Poppins',
-                fontSize: 16.0,
-              ),
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Select users',
+            style: FlutterFlowTheme.of(context).titleMedium.override(
+                  fontFamily: 'Poppins',
+                  fontSize: 16.0,
+                ),
+          ),
+          actions: [],
+          centerTitle: true,
+          elevation: 0.0,
         ),
-        actions: [],
-        centerTitle: true,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -125,7 +125,7 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                               decoration: InputDecoration(
                                 hintText: 'Search for a person',
                                 hintStyle: FlutterFlowTheme.of(context)
-                                    .bodyText2
+                                    .bodySmall
                                     .override(
                                       fontFamily: 'Poppins',
                                       fontSize: 16.0,
@@ -206,7 +206,7 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                                     : null,
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Poppins',
                                     fontSize: 16.0,
@@ -224,13 +224,17 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pop();
                         },
                         child: Text(
                           'Cancel',
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.normal,
@@ -259,6 +263,10 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 FFAppState().update(() {
                                   FFAppState().addToTaggedUsers(
@@ -297,7 +305,7 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                                             taggedUsersItem.displayName!,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Poppins',
                                                   fontSize: 14.0,
@@ -312,7 +320,7 @@ class _SelectTaggedUsersWidgetState extends State<SelectTaggedUsersWidget> {
                                               maxLines: 1,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText2
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         fontWeight:

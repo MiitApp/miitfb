@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -72,6 +72,10 @@ class _FollowerComponantWidgetState extends State<FollowerComponantWidget> {
           }
           final rowUsersRecord = snapshot.data!;
           return InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onTap: () async {
               if (rowUsersRecord.reference == currentUserReference) {
                 context.pushNamed('Profile');
@@ -120,7 +124,7 @@ class _FollowerComponantWidgetState extends State<FollowerComponantWidget> {
                           ),
                           maxLines: 1,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
                                   ),
@@ -135,7 +139,7 @@ class _FollowerComponantWidgetState extends State<FollowerComponantWidget> {
                             ),
                             maxLines: 1,
                             style:
-                                FlutterFlowTheme.of(context).bodyText2.override(
+                                FlutterFlowTheme.of(context).bodySmall.override(
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -173,6 +177,10 @@ class _FollowerComponantWidgetState extends State<FollowerComponantWidget> {
                                 ? containerFollowersRecordList.first
                                 : null;
                         return InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             if ((currentUserDocument?.following?.toList() ?? [])
                                 .contains(rowUsersRecord.reference)) {
@@ -213,12 +221,12 @@ class _FollowerComponantWidgetState extends State<FollowerComponantWidget> {
                             width: 110.0,
                             height: 35.0,
                             decoration: BoxDecoration(
-                              color: (currentUserDocument?.following
-                                              ?.toList() ??
-                                          [])
-                                      .contains(rowUsersRecord.reference)
-                                  ? Color(0xFFEFEFEF)
-                                  : FlutterFlowTheme.of(context).secondaryColor,
+                              color:
+                                  (currentUserDocument?.following?.toList() ??
+                                              [])
+                                          .contains(rowUsersRecord.reference)
+                                      ? Color(0xFFEFEFEF)
+                                      : FlutterFlowTheme.of(context).secondary,
                               borderRadius: BorderRadius.circular(40.0),
                             ),
                             child: Align(
@@ -257,7 +265,7 @@ class _FollowerComponantWidgetState extends State<FollowerComponantWidget> {
                                         }
                                       }(),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Poppins',
                                             color: (currentUserDocument
@@ -335,9 +343,9 @@ class _FollowerComponantWidgetState extends State<FollowerComponantWidget> {
                     setState(() {});
                   },
                   textAlign: TextAlign.start,
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Poppins',
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primary,
                         fontSize: 0.0,
                       ),
                 ),
