@@ -103,6 +103,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       topLeft: Radius.circular(12.0),
                                       topRight: Radius.circular(12.0),
                                     ),
+                                    border: Border.all(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                    ),
                                   ),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -242,7 +246,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                         .secondary,
                                                                     FlutterFlowTheme.of(
                                                                             context)
-                                                                        .alternate
+                                                                        .primary
                                                                   ],
                                                                   stops: [
                                                                     0.0,
@@ -679,7 +683,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                             .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiary,
+                                                                        .primary,
                                                                     fontSize:
                                                                         15.0,
                                                                     useGoogleFonts: GoogleFonts
@@ -1306,7 +1310,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                             ),
                                         indicatorColor:
                                             FlutterFlowTheme.of(context)
-                                                .alternate,
+                                                .primaryBackground,
                                         indicatorWeight: 2.0,
                                         tabs: [
                                           Tab(

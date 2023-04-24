@@ -564,7 +564,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                                   .secondary,
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .alternate
+                                                                  .primary
                                                             ],
                                                             stops: [
                                                               0.0,
@@ -872,7 +872,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                                                           .secondary,
                                                                       FlutterFlowTheme.of(
                                                                               context)
-                                                                          .alternate
+                                                                          .primary
                                                                     ],
                                                                     stops: [
                                                                       0.0,
