@@ -75,17 +75,38 @@ class _SignInWidgetState extends State<SignInWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      if (!(isWeb
-                          ? MediaQuery.of(context).viewInsets.bottom > 0
-                          : _isKeyboardVisible))
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 24.0),
-                          child: Image.asset(
-                            'assets/images/Landing.png',
-                            fit: BoxFit.fitWidth,
+                      Stack(
+                        alignment: AlignmentDirectional(0.0, 1.0),
+                        children: [
+                          if (!(isWeb
+                              ? MediaQuery.of(context).viewInsets.bottom > 0
+                              : _isKeyboardVisible))
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 24.0),
+                              child: Image.asset(
+                                'assets/images/Landing.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          Align(
+                            alignment: AlignmentDirectional(-0.8, 0.0),
+                            child: Text(
+                              'miit',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Racing Sans One',
+                                    fontSize: 42.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
+                                  ),
+                            ),
                           ),
-                        ),
+                        ],
+                      ),
                       Form(
                         key: _model.formKey,
                         autovalidateMode: AutovalidateMode.disabled,
@@ -376,7 +397,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
-                                          .secondary,
+                                          .alternate,
                                       fontWeight: FontWeight.w500,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(

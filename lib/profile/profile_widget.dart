@@ -80,7 +80,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 AuthUserStreamWidget(
                                   builder: (context) => Container(
                                     height: MediaQuery.of(context).size.height *
-                                        0.9,
+                                        0.875,
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
@@ -679,7 +679,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                             .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primary,
+                                                                        .tertiary,
                                                                     fontSize:
                                                                         15.0,
                                                                     useGoogleFonts: GoogleFonts
@@ -1046,7 +1046,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         Container(
                           width: double.infinity,
                           height: MediaQuery.of(context).size.height * 0.1,
-                          decoration: BoxDecoration(),
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                            ),
+                          ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),

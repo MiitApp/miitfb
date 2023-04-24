@@ -19,10 +19,10 @@ export '/sign_up_password/sign_up_password_widget.dart'
     show SignUpPasswordWidget;
 export '/sign_up_birthday/sign_up_birthday_widget.dart'
     show SignUpBirthdayWidget;
-export '/sign_up_username/sign_up_username_widget.dart'
-    show SignUpUsernameWidget;
 export '/sign_up_username_confirmation/sign_up_username_confirmation_widget.dart'
     show SignUpUsernameConfirmationWidget;
+export '/sign_up_username/sign_up_username_widget.dart'
+    show SignUpUsernameWidget;
 export '/tag_users/tag_users_widget.dart' show TagUsersWidget;
 export '/select_tagged_users/select_tagged_users_widget.dart'
     show SelectTaggedUsersWidget;

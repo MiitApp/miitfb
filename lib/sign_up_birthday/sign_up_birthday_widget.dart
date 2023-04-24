@@ -1,8 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'sign_up_birthday_model.dart';
@@ -20,11 +22,22 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
+  late StreamSubscription<bool> _keyboardVisibilitySubscription;
+  bool _isKeyboardVisible = false;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => SignUpBirthdayModel());
+
+    if (!isWeb) {
+      _keyboardVisibilitySubscription =
+          KeyboardVisibilityController().onChange.listen((bool visible) {
+        setState(() {
+          _isKeyboardVisible = visible;
+        });
+      });
+    }
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -34,6 +47,9 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
     _model.dispose();
 
     _unfocusNode.dispose();
+    if (!isWeb) {
+      _keyboardVisibilitySubscription.cancel();
+    }
     super.dispose();
   }
 
@@ -57,15 +73,17 @@ class _SignUpBirthdayWidgetState extends State<SignUpBirthdayWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 58.0, 0.0, 0.0),
-                        child: Image.asset(
-                          'assets/images/Birthday_Image.png',
-                          height: 150.0,
-                          fit: BoxFit.cover,
+                      if (!(isWeb
+                          ? MediaQuery.of(context).viewInsets.bottom > 0
+                          : _isKeyboardVisible))
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 58.0, 0.0, 0.0),
+                          child: Image.asset(
+                            'assets/images/Birthday.png',
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
