@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/profile_settings_widget.dart';
 import '/components/story_widget.dart';
+import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
@@ -1284,16 +1285,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   children: [
                                     Align(
                                       alignment: Alignment(0.0, 0),
-                                      child: TabBar(
+                                      child: FlutterFlowButtonTabBar(
+                                        useToggleButtonStyle: false,
                                         isScrollable: true,
-                                        labelColor: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        unselectedLabelColor:
-                                            FlutterFlowTheme.of(context)
-                                                .lineColor,
-                                        labelPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 0.0, 20.0, 0.0),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -1308,10 +1302,44 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               context)
                                                           .bodyMediumFamily),
                                             ),
-                                        indicatorColor:
+                                        unselectedLabelStyle:
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  fontSize: 16.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
+                                                ),
+                                        labelColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        unselectedLabelColor:
+                                            FlutterFlowTheme.of(context)
+                                                .lineColor,
+                                        backgroundColor:
                                             FlutterFlowTheme.of(context)
                                                 .primaryBackground,
-                                        indicatorWeight: 2.0,
+                                        unselectedBackgroundColor:
+                                            Color(0x00EDEDF0),
+                                        borderColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                        borderWidth: 6.0,
+                                        borderRadius: 25.0,
+                                        elevation: 0.0,
+                                        labelPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                20.0, 0.0, 20.0, 0.0),
+                                        buttonMargin:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 10.0),
                                         tabs: [
                                           Tab(
                                             text: 'Posts',
