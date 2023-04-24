@@ -1222,7 +1222,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.network(
-                                      'https://www.freeiconspng.com/thumbs/spotify-icon/spotify-icon-22.png',
+                                      'https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotify_icon.svg/1982px-Spotify_icon.svg.png',
                                       fit: BoxFit.fitWidth,
                                     ),
                                   ),
@@ -1269,13 +1269,17 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           decoration: BoxDecoration(),
                           child: Stack(
                             children: [
-                              Container(
-                                width: double.infinity,
-                                height: 45.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(25.0),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    4.0, 0.0, 4.0, 0.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 54.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(25.0),
+                                  ),
                                 ),
                               ),
                               DefaultTabController(
@@ -1331,7 +1335,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         borderColor:
                                             FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
-                                        borderWidth: 6.0,
+                                        borderWidth: 0.0,
                                         borderRadius: 25.0,
                                         elevation: 0.0,
                                         labelPadding:
@@ -1339,7 +1343,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 20.0, 0.0, 20.0, 0.0),
                                         buttonMargin:
                                             EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 10.0),
+                                                8.0, 4.0, 8.0, 10.0),
                                         tabs: [
                                           Tab(
                                             text: 'Posts',
