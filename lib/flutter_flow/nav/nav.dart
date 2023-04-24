@@ -197,14 +197,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SignUpBirthdayWidget(),
             ),
             FFRoute(
-              name: 'SignUp_Username',
-              path: 'signUpUsername',
-              builder: (context, params) => SignUpUsernameWidget(),
-            ),
-            FFRoute(
               name: 'SignUp_UsernameConfirmation',
               path: 'signUpUsernameConfirmation',
               builder: (context, params) => SignUpUsernameConfirmationWidget(),
+            ),
+            FFRoute(
+              name: 'SignUp_Username',
+              path: 'signUpUsername',
+              builder: (context, params) => SignUpUsernameWidget(),
             ),
             FFRoute(
               name: 'TagUsers',

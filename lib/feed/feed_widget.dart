@@ -1008,59 +1008,6 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: double.infinity,
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.07,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 12.0, 0.0),
-                                    child: DefaultTabController(
-                                      length: 2,
-                                      initialIndex: 0,
-                                      child: Column(
-                                        children: [
-                                          Align(
-                                            alignment: Alignment(0.0, 0),
-                                            child: TabBar(
-                                              labelColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBtnText,
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              indicatorColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              indicatorWeight: 0.0,
-                                              tabs: [
-                                                Tab(
-                                                  text: 'Discover',
-                                                ),
-                                                Tab(
-                                                  text: 'For  You',
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: TabBarView(
-                                              children: [
-                                                Container(),
-                                                Container(),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
