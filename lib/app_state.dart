@@ -181,6 +181,12 @@ class FFAppState extends ChangeNotifier {
   set tempUserRecord(DocumentReference? _value) {
     _tempUserRecord = _value;
   }
+
+  String _tempCoverPic = '';
+  String get tempCoverPic => _tempCoverPic;
+  set tempCoverPic(String _value) {
+    _tempCoverPic = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

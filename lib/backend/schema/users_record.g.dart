@@ -126,6 +126,14 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
                   DocumentReference, const [const FullType.nullable(Object)])
             ])));
     }
+    value = object.coverImage;
+    if (value != null) {
+      result
+        ..add('cover_image')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -213,6 +221,12 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
                     DocumentReference, const [const FullType.nullable(Object)])
               ]))! as BuiltList<Object?>);
           break;
+        case 'cover_image':
+          result.coverImage.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -256,6 +270,8 @@ class _$UsersRecord extends UsersRecord {
   @override
   final BuiltList<DocumentReference<Object?>>? chats;
   @override
+  final BuiltList<String>? coverImage;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder)? updates]) =>
@@ -276,6 +292,7 @@ class _$UsersRecord extends UsersRecord {
       this.birthday,
       this.unreadNotifications,
       this.chats,
+      this.coverImage,
       this.ffRef})
       : super._();
 
@@ -304,42 +321,31 @@ class _$UsersRecord extends UsersRecord {
         birthday == other.birthday &&
         unreadNotifications == other.unreadNotifications &&
         chats == other.chats &&
+        coverImage == other.coverImage &&
         ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(0,
-                                                                email.hashCode),
-                                                            displayName
-                                                                .hashCode),
-                                                        photoUrl.hashCode),
-                                                    uid.hashCode),
-                                                createdTime.hashCode),
-                                            phoneNumber.hashCode),
-                                        username.hashCode),
-                                    bio.hashCode),
-                                website.hashCode),
-                            following.hashCode),
-                        enableEmail.hashCode),
-                    birthday.hashCode),
-                unreadNotifications.hashCode),
-            chats.hashCode),
-        ffRef.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, displayName.hashCode);
+    _$hash = $jc(_$hash, photoUrl.hashCode);
+    _$hash = $jc(_$hash, uid.hashCode);
+    _$hash = $jc(_$hash, createdTime.hashCode);
+    _$hash = $jc(_$hash, phoneNumber.hashCode);
+    _$hash = $jc(_$hash, username.hashCode);
+    _$hash = $jc(_$hash, bio.hashCode);
+    _$hash = $jc(_$hash, website.hashCode);
+    _$hash = $jc(_$hash, following.hashCode);
+    _$hash = $jc(_$hash, enableEmail.hashCode);
+    _$hash = $jc(_$hash, birthday.hashCode);
+    _$hash = $jc(_$hash, unreadNotifications.hashCode);
+    _$hash = $jc(_$hash, chats.hashCode);
+    _$hash = $jc(_$hash, coverImage.hashCode);
+    _$hash = $jc(_$hash, ffRef.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -359,6 +365,7 @@ class _$UsersRecord extends UsersRecord {
           ..add('birthday', birthday)
           ..add('unreadNotifications', unreadNotifications)
           ..add('chats', chats)
+          ..add('coverImage', coverImage)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -431,6 +438,12 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   set chats(ListBuilder<DocumentReference<Object?>>? chats) =>
       _$this._chats = chats;
 
+  ListBuilder<String>? _coverImage;
+  ListBuilder<String> get coverImage =>
+      _$this._coverImage ??= new ListBuilder<String>();
+  set coverImage(ListBuilder<String>? coverImage) =>
+      _$this._coverImage = coverImage;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -456,6 +469,7 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _birthday = $v.birthday;
       _unreadNotifications = $v.unreadNotifications?.toBuilder();
       _chats = $v.chats?.toBuilder();
+      _coverImage = $v.coverImage?.toBuilder();
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -495,6 +509,7 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
               birthday: birthday,
               unreadNotifications: _unreadNotifications?.build(),
               chats: _chats?.build(),
+              coverImage: _coverImage?.build(),
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
@@ -506,6 +521,8 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
         _unreadNotifications?.build();
         _$failedField = 'chats';
         _chats?.build();
+        _$failedField = 'coverImage';
+        _coverImage?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'UsersRecord', _$failedField, e.toString());
@@ -517,4 +534,4 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint
