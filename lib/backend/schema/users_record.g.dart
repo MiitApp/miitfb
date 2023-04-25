@@ -126,14 +126,6 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
                   DocumentReference, const [const FullType.nullable(Object)])
             ])));
     }
-    value = object.coverImage;
-    if (value != null) {
-      result
-        ..add('cover_image')
-        ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(String)])));
-    }
     value = object.coverImage1;
     if (value != null) {
       result
@@ -159,6 +151,13 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
     if (value != null) {
       result
         ..add('cover_image4')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.coverImage;
+    if (value != null) {
+      result
+        ..add('cover_image')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -249,12 +248,6 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
                     DocumentReference, const [const FullType.nullable(Object)])
               ]))! as BuiltList<Object?>);
           break;
-        case 'cover_image':
-          result.coverImage.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object?>);
-          break;
         case 'cover_image1':
           result.coverImage1 = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -269,6 +262,10 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           break;
         case 'cover_image4':
           result.coverImage4 = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'cover_image':
+          result.coverImage = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
@@ -314,8 +311,6 @@ class _$UsersRecord extends UsersRecord {
   @override
   final BuiltList<DocumentReference<Object?>>? chats;
   @override
-  final BuiltList<String>? coverImage;
-  @override
   final String? coverImage1;
   @override
   final String? coverImage2;
@@ -323,6 +318,8 @@ class _$UsersRecord extends UsersRecord {
   final String? coverImage3;
   @override
   final String? coverImage4;
+  @override
+  final String? coverImage;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -344,11 +341,11 @@ class _$UsersRecord extends UsersRecord {
       this.birthday,
       this.unreadNotifications,
       this.chats,
-      this.coverImage,
       this.coverImage1,
       this.coverImage2,
       this.coverImage3,
       this.coverImage4,
+      this.coverImage,
       this.ffRef})
       : super._();
 
@@ -377,11 +374,11 @@ class _$UsersRecord extends UsersRecord {
         birthday == other.birthday &&
         unreadNotifications == other.unreadNotifications &&
         chats == other.chats &&
-        coverImage == other.coverImage &&
         coverImage1 == other.coverImage1 &&
         coverImage2 == other.coverImage2 &&
         coverImage3 == other.coverImage3 &&
         coverImage4 == other.coverImage4 &&
+        coverImage == other.coverImage &&
         ffRef == other.ffRef;
   }
 
@@ -402,11 +399,11 @@ class _$UsersRecord extends UsersRecord {
     _$hash = $jc(_$hash, birthday.hashCode);
     _$hash = $jc(_$hash, unreadNotifications.hashCode);
     _$hash = $jc(_$hash, chats.hashCode);
-    _$hash = $jc(_$hash, coverImage.hashCode);
     _$hash = $jc(_$hash, coverImage1.hashCode);
     _$hash = $jc(_$hash, coverImage2.hashCode);
     _$hash = $jc(_$hash, coverImage3.hashCode);
     _$hash = $jc(_$hash, coverImage4.hashCode);
+    _$hash = $jc(_$hash, coverImage.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -429,11 +426,11 @@ class _$UsersRecord extends UsersRecord {
           ..add('birthday', birthday)
           ..add('unreadNotifications', unreadNotifications)
           ..add('chats', chats)
-          ..add('coverImage', coverImage)
           ..add('coverImage1', coverImage1)
           ..add('coverImage2', coverImage2)
           ..add('coverImage3', coverImage3)
           ..add('coverImage4', coverImage4)
+          ..add('coverImage', coverImage)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -506,12 +503,6 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   set chats(ListBuilder<DocumentReference<Object?>>? chats) =>
       _$this._chats = chats;
 
-  ListBuilder<String>? _coverImage;
-  ListBuilder<String> get coverImage =>
-      _$this._coverImage ??= new ListBuilder<String>();
-  set coverImage(ListBuilder<String>? coverImage) =>
-      _$this._coverImage = coverImage;
-
   String? _coverImage1;
   String? get coverImage1 => _$this._coverImage1;
   set coverImage1(String? coverImage1) => _$this._coverImage1 = coverImage1;
@@ -527,6 +518,10 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   String? _coverImage4;
   String? get coverImage4 => _$this._coverImage4;
   set coverImage4(String? coverImage4) => _$this._coverImage4 = coverImage4;
+
+  String? _coverImage;
+  String? get coverImage => _$this._coverImage;
+  set coverImage(String? coverImage) => _$this._coverImage = coverImage;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -553,11 +548,11 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _birthday = $v.birthday;
       _unreadNotifications = $v.unreadNotifications?.toBuilder();
       _chats = $v.chats?.toBuilder();
-      _coverImage = $v.coverImage?.toBuilder();
       _coverImage1 = $v.coverImage1;
       _coverImage2 = $v.coverImage2;
       _coverImage3 = $v.coverImage3;
       _coverImage4 = $v.coverImage4;
+      _coverImage = $v.coverImage;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -597,11 +592,11 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
               birthday: birthday,
               unreadNotifications: _unreadNotifications?.build(),
               chats: _chats?.build(),
-              coverImage: _coverImage?.build(),
               coverImage1: coverImage1,
               coverImage2: coverImage2,
               coverImage3: coverImage3,
               coverImage4: coverImage4,
+              coverImage: coverImage,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
@@ -613,8 +608,6 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
         _unreadNotifications?.build();
         _$failedField = 'chats';
         _chats?.build();
-        _$failedField = 'coverImage';
-        _coverImage?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'UsersRecord', _$failedField, e.toString());

@@ -110,12 +110,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 builder: (context) =>
                                                     Image.network(
                                                   valueOrDefault<String>(
-                                                    (currentUserDocument
-                                                                ?.coverImage
-                                                                ?.toList() ??
-                                                            [])
-                                                        .last,
-                                                    'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                                    valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.coverImage,
+                                                        ''),
+                                                    'https://parkridgevet.com.au/wp-content/uploads/2022/06/blank-profile.jpg',
                                                   ),
                                                   width: 100.0,
                                                   height: 100.0,
@@ -130,7 +129,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         currentUserDocument
                                                             ?.coverImage1,
                                                         ''),
-                                                    'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                                    'https://parkridgevet.com.au/wp-content/uploads/2022/06/blank-profile.jpg',
                                                   ),
                                                   width: 100.0,
                                                   height: 100.0,
@@ -145,7 +144,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         currentUserDocument
                                                             ?.coverImage2,
                                                         ''),
-                                                    'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                                    'https://parkridgevet.com.au/wp-content/uploads/2022/06/blank-profile.jpg',
                                                   ),
                                                   width: 100.0,
                                                   height: 100.0,
@@ -160,7 +159,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         currentUserDocument
                                                             ?.coverImage3,
                                                         ''),
-                                                    'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                                    'https://parkridgevet.com.au/wp-content/uploads/2022/06/blank-profile.jpg',
                                                   ),
                                                   width: 100.0,
                                                   height: 100.0,
@@ -175,7 +174,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         currentUserDocument
                                                             ?.coverImage4,
                                                         ''),
-                                                    'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                                    'https://parkridgevet.com.au/wp-content/uploads/2022/06/blank-profile.jpg',
                                                   ),
                                                   width: 100.0,
                                                   height: 100.0,
