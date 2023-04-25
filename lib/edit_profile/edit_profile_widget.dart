@@ -146,11 +146,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           size: 16.0,
                         ),
                         options: FFButtonOptions(
-                          height: 28.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
+                              0.0, 0.0, 8.0, 2.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
+                              6.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle: TextStyle(
                             color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -191,7 +190,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 4.0),
+                          EdgeInsetsDirectional.fromSTEB(15.0, 12.0, 0.0, 8.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -264,8 +263,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           }
                         },
                         child: Container(
-                          width: 60.0,
-                          height: 60.0,
+                          width: 72.0,
+                          height: 72.0,
                           clipBehavior: Clip.antiAlias,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
@@ -304,7 +303,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   children: [
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(
-                          18.0, 18.0, 18.0, 18.0),
+                          15.0, 15.0, 15.0, 15.0),
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.33,
                         height: MediaQuery.of(context).size.height * 0.3,
@@ -355,7 +354,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 18.0, 0.0),
+                              10.0, 0.0, 15.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
