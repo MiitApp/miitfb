@@ -278,8 +278,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                           ),
-                          child: Image.network(
-                            valueOrDefault<String>(
+                          child: CachedNetworkImage(
+                            imageUrl: valueOrDefault<String>(
                               FFAppState().tempProfilePic,
                               'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
                             ),
@@ -328,7 +328,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               child: CachedNetworkImage(
                                 imageUrl: valueOrDefault<String>(
                                   FFAppState().tempCoverPic,
-                                  'https://commons.wikimedia.org/wiki/File:Empty_frame.jpg',
+                                  'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
                                 ),
                                 width: MediaQuery.of(context).size.width * 0.33,
                                 height:
@@ -473,7 +473,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           child: CachedNetworkImage(
                                             imageUrl: valueOrDefault<String>(
                                               FFAppState().tempCoverPic1,
-                                              'https://commons.wikimedia.org/wiki/File:Empty_frame.jpg',
+                                              'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
                                             ),
                                             width: MediaQuery.of(context)
                                                     .size
@@ -638,7 +638,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           child: CachedNetworkImage(
                                             imageUrl: valueOrDefault<String>(
                                               FFAppState().tempCoverPic2,
-                                              'https://commons.wikimedia.org/wiki/File:Empty_frame.jpg',
+                                              'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
                                             ),
                                             width: MediaQuery.of(context)
                                                     .size
@@ -810,7 +810,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           child: CachedNetworkImage(
                                             imageUrl: valueOrDefault<String>(
                                               FFAppState().tempCoverPic3,
-                                              'https://commons.wikimedia.org/wiki/File:Empty_frame.jpg',
+                                              'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
                                             ),
                                             width: MediaQuery.of(context)
                                                     .size
@@ -975,7 +975,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           child: CachedNetworkImage(
                                             imageUrl: valueOrDefault<String>(
                                               FFAppState().tempCoverPic4,
-                                              'https://commons.wikimedia.org/wiki/File:Empty_frame.jpg',
+                                              'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
                                             ),
                                             width: MediaQuery.of(context)
                                                     .size

@@ -115,7 +115,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 ?.toList() ??
                                                             [])
                                                         .last,
-                                                    'https://picsum.photos/',
+                                                    'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
                                                   ),
                                                   width: 100.0,
                                                   height: 100.0,
@@ -130,7 +130,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         currentUserDocument
                                                             ?.coverImage1,
                                                         ''),
-                                                    'https://picsum.photos/seed/74/600',
+                                                    'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
                                                   ),
                                                   width: 100.0,
                                                   height: 100.0,
@@ -145,7 +145,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         currentUserDocument
                                                             ?.coverImage2,
                                                         ''),
-                                                    'https://picsum.photos/seed/74/600',
+                                                    'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
                                                   ),
                                                   width: 100.0,
                                                   height: 100.0,
@@ -160,7 +160,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         currentUserDocument
                                                             ?.coverImage3,
                                                         ''),
-                                                    'https://picsum.photos/seed/74/600',
+                                                    'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
                                                   ),
                                                   width: 100.0,
                                                   height: 100.0,
@@ -175,7 +175,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         currentUserDocument
                                                             ?.coverImage4,
                                                         ''),
-                                                    'https://picsum.photos/seed/74/600',
+                                                    'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
                                                   ),
                                                   width: 100.0,
                                                   height: 100.0,
