@@ -141,10 +141,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 [_model.uploadedFileUrl2]),
                           };
                           await currentUserReference!.update(usersUpdateData);
+                          FFAppState().update(() {});
 
                           context.pushNamed('Profile');
-
-                          FFAppState().update(() {});
                         },
                         text: 'UPDATE',
                         icon: Icon(
@@ -325,7 +324,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               child: CachedNetworkImage(
                                 imageUrl: valueOrDefault<String>(
                                   FFAppState().tempCoverPic,
-                                  'https://upload.wikimedia.org/wikipedia/commons/4/4b/Empty_frame.jpgault_pfp.jpg',
+                                  'https://commons.wikimedia.org/wiki/File:Empty_frame.jpg#/media/File:Empty_frame.jpg',
                                 ),
                                 width: MediaQuery.of(context).size.width * 0.33,
                                 height:

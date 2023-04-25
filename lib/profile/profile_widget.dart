@@ -89,7 +89,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           (currentUserDocument?.coverImage
                                                       ?.toList() ??
                                                   [])
-                                              .first,
+                                              .last,
                                         ).image,
                                       ),
                                     ),
