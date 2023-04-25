@@ -151,9 +151,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         ),
                         options: FFButtonOptions(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 8.0, 2.0),
+                              0.0, 0.0, 12.0, 2.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              6.0, 0.0, 0.0, 0.0),
+                              10.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle: TextStyle(
                             color: FlutterFlowTheme.of(context).primaryBtnText,
