@@ -321,7 +321,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(12.0),
                               child: CachedNetworkImage(
-                                imageUrl: 'https://picsum.photos/seed/248/600',
+                                imageUrl: _model.uploadedFileUrl2,
                                 width: MediaQuery.of(context).size.width * 0.33,
                                 height:
                                     MediaQuery.of(context).size.height * 0.3,
