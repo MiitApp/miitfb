@@ -134,6 +134,34 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
+    value = object.coverImage1;
+    if (value != null) {
+      result
+        ..add('cover_image1')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.coverImage2;
+    if (value != null) {
+      result
+        ..add('cover_image2')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.coverImage3;
+    if (value != null) {
+      result
+        ..add('cover_image3')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.coverImage4;
+    if (value != null) {
+      result
+        ..add('cover_image4')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -227,6 +255,22 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
                       BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
+        case 'cover_image1':
+          result.coverImage1 = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'cover_image2':
+          result.coverImage2 = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'cover_image3':
+          result.coverImage3 = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'cover_image4':
+          result.coverImage4 = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -272,6 +316,14 @@ class _$UsersRecord extends UsersRecord {
   @override
   final BuiltList<String>? coverImage;
   @override
+  final String? coverImage1;
+  @override
+  final String? coverImage2;
+  @override
+  final String? coverImage3;
+  @override
+  final String? coverImage4;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder)? updates]) =>
@@ -293,6 +345,10 @@ class _$UsersRecord extends UsersRecord {
       this.unreadNotifications,
       this.chats,
       this.coverImage,
+      this.coverImage1,
+      this.coverImage2,
+      this.coverImage3,
+      this.coverImage4,
       this.ffRef})
       : super._();
 
@@ -322,6 +378,10 @@ class _$UsersRecord extends UsersRecord {
         unreadNotifications == other.unreadNotifications &&
         chats == other.chats &&
         coverImage == other.coverImage &&
+        coverImage1 == other.coverImage1 &&
+        coverImage2 == other.coverImage2 &&
+        coverImage3 == other.coverImage3 &&
+        coverImage4 == other.coverImage4 &&
         ffRef == other.ffRef;
   }
 
@@ -343,6 +403,10 @@ class _$UsersRecord extends UsersRecord {
     _$hash = $jc(_$hash, unreadNotifications.hashCode);
     _$hash = $jc(_$hash, chats.hashCode);
     _$hash = $jc(_$hash, coverImage.hashCode);
+    _$hash = $jc(_$hash, coverImage1.hashCode);
+    _$hash = $jc(_$hash, coverImage2.hashCode);
+    _$hash = $jc(_$hash, coverImage3.hashCode);
+    _$hash = $jc(_$hash, coverImage4.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -366,6 +430,10 @@ class _$UsersRecord extends UsersRecord {
           ..add('unreadNotifications', unreadNotifications)
           ..add('chats', chats)
           ..add('coverImage', coverImage)
+          ..add('coverImage1', coverImage1)
+          ..add('coverImage2', coverImage2)
+          ..add('coverImage3', coverImage3)
+          ..add('coverImage4', coverImage4)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -444,6 +512,22 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   set coverImage(ListBuilder<String>? coverImage) =>
       _$this._coverImage = coverImage;
 
+  String? _coverImage1;
+  String? get coverImage1 => _$this._coverImage1;
+  set coverImage1(String? coverImage1) => _$this._coverImage1 = coverImage1;
+
+  String? _coverImage2;
+  String? get coverImage2 => _$this._coverImage2;
+  set coverImage2(String? coverImage2) => _$this._coverImage2 = coverImage2;
+
+  String? _coverImage3;
+  String? get coverImage3 => _$this._coverImage3;
+  set coverImage3(String? coverImage3) => _$this._coverImage3 = coverImage3;
+
+  String? _coverImage4;
+  String? get coverImage4 => _$this._coverImage4;
+  set coverImage4(String? coverImage4) => _$this._coverImage4 = coverImage4;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -470,6 +554,10 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _unreadNotifications = $v.unreadNotifications?.toBuilder();
       _chats = $v.chats?.toBuilder();
       _coverImage = $v.coverImage?.toBuilder();
+      _coverImage1 = $v.coverImage1;
+      _coverImage2 = $v.coverImage2;
+      _coverImage3 = $v.coverImage3;
+      _coverImage4 = $v.coverImage4;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -510,6 +598,10 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
               unreadNotifications: _unreadNotifications?.build(),
               chats: _chats?.build(),
               coverImage: _coverImage?.build(),
+              coverImage1: coverImage1,
+              coverImage2: coverImage2,
+              coverImage3: coverImage3,
+              coverImage4: coverImage4,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;

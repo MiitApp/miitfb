@@ -8,6 +8,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +30,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
+  int get pageViewCurrentIndex => _model.pageViewController != null &&
+          _model.pageViewController!.hasClients &&
+          _model.pageViewController!.page != null
+      ? _model.pageViewController!.page!.round()
+      : 0;
 
   @override
   void initState() {
@@ -78,20 +85,146 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             Stack(
                               alignment: AlignmentDirectional(0.0, 1.0),
                               children: [
-                                AuthUserStreamWidget(
-                                  builder: (context) => Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.875,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: Image.network(
-                                          (currentUserDocument?.coverImage
-                                                      ?.toList() ??
-                                                  [])
-                                              .last,
-                                        ).image,
-                                      ),
+                                Container(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.875,
+                                  decoration: BoxDecoration(),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 500.0,
+                                    child: Stack(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 50.0),
+                                          child: PageView(
+                                            controller: _model
+                                                    .pageViewController ??=
+                                                PageController(initialPage: 0),
+                                            onPageChanged: (_) =>
+                                                setState(() {}),
+                                            scrollDirection: Axis.horizontal,
+                                            children: [
+                                              AuthUserStreamWidget(
+                                                builder: (context) =>
+                                                    Image.network(
+                                                  valueOrDefault<String>(
+                                                    (currentUserDocument
+                                                                ?.coverImage
+                                                                ?.toList() ??
+                                                            [])
+                                                        .last,
+                                                    'https://picsum.photos/',
+                                                  ),
+                                                  width: 100.0,
+                                                  height: 100.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              AuthUserStreamWidget(
+                                                builder: (context) =>
+                                                    Image.network(
+                                                  valueOrDefault<String>(
+                                                    valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.coverImage1,
+                                                        ''),
+                                                    'https://picsum.photos/seed/74/600',
+                                                  ),
+                                                  width: 100.0,
+                                                  height: 100.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              AuthUserStreamWidget(
+                                                builder: (context) =>
+                                                    Image.network(
+                                                  valueOrDefault<String>(
+                                                    valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.coverImage2,
+                                                        ''),
+                                                    'https://picsum.photos/seed/74/600',
+                                                  ),
+                                                  width: 100.0,
+                                                  height: 100.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              AuthUserStreamWidget(
+                                                builder: (context) =>
+                                                    Image.network(
+                                                  valueOrDefault<String>(
+                                                    valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.coverImage3,
+                                                        ''),
+                                                    'https://picsum.photos/seed/74/600',
+                                                  ),
+                                                  width: 100.0,
+                                                  height: 100.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              AuthUserStreamWidget(
+                                                builder: (context) =>
+                                                    Image.network(
+                                                  valueOrDefault<String>(
+                                                    valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.coverImage4,
+                                                        ''),
+                                                    'https://picsum.photos/seed/74/600',
+                                                  ),
+                                                  width: 100.0,
+                                                  height: 100.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.6),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 10.0),
+                                            child: smooth_page_indicator
+                                                .SmoothPageIndicator(
+                                              controller:
+                                                  _model.pageViewController ??=
+                                                      PageController(
+                                                          initialPage: 0),
+                                              count: 5,
+                                              axisDirection: Axis.horizontal,
+                                              onDotClicked: (i) async {
+                                                await _model.pageViewController!
+                                                    .animateToPage(
+                                                  i,
+                                                  duration: Duration(
+                                                      milliseconds: 500),
+                                                  curve: Curves.ease,
+                                                );
+                                              },
+                                              effect: smooth_page_indicator
+                                                  .ExpandingDotsEffect(
+                                                expansionFactor: 2.0,
+                                                spacing: 8.0,
+                                                radius: 16.0,
+                                                dotWidth: 10.0,
+                                                dotHeight: 10.0,
+                                                dotColor: Color(0x89D7DEE8),
+                                                activeDotColor:
+                                                    Color(0x89FE8893),
+                                                paintStyle: PaintingStyle.fill,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),

@@ -187,6 +187,30 @@ class FFAppState extends ChangeNotifier {
   set tempCoverPic(String _value) {
     _tempCoverPic = _value;
   }
+
+  String _tempCoverPic1 = '';
+  String get tempCoverPic1 => _tempCoverPic1;
+  set tempCoverPic1(String _value) {
+    _tempCoverPic1 = _value;
+  }
+
+  String _tempCoverPic2 = '';
+  String get tempCoverPic2 => _tempCoverPic2;
+  set tempCoverPic2(String _value) {
+    _tempCoverPic2 = _value;
+  }
+
+  String _tempCoverPic3 = '';
+  String get tempCoverPic3 => _tempCoverPic3;
+  set tempCoverPic3(String _value) {
+    _tempCoverPic3 = _value;
+  }
+
+  String _tempCoverPic4 = '';
+  String get tempCoverPic4 => _tempCoverPic4;
+  set tempCoverPic4(String _value) {
+    _tempCoverPic4 = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
