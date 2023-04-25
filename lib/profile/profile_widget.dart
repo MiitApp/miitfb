@@ -1824,7 +1824,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                        .primaryBackground,
                                               ),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
