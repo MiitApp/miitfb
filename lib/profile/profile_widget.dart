@@ -86,7 +86,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
                                         image: Image.network(
-                                          currentUserPhoto,
+                                          (currentUserDocument?.coverImage
+                                                      ?.toList() ??
+                                                  [])
+                                              .first,
                                         ).image,
                                       ),
                                     ),
