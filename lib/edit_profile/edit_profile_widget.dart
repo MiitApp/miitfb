@@ -940,7 +940,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         '') {
                                                   setState(() {
                                                     FFAppState().tempCoverPic3 =
-                                                        _model.uploadedFileUrl4;
+                                                        _model.uploadedFileUrl5;
                                                   });
                                                 }
                                               },
