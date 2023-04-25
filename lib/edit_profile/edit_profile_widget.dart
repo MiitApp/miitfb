@@ -136,9 +136,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               website: _model.textController4.text,
                               enableEmail: _model.switchValue2,
                               email: _model.textController2.text,
+                              coverImage1: FFAppState().tempCoverPic1,
+                              coverImage2: FFAppState().tempCoverPic2,
+                              coverImage3: FFAppState().tempCoverPic3,
+                              coverImage4: FFAppState().tempCoverPic4,
                             ),
                             'cover_image': FieldValue.arrayUnion(
-                                [_model.uploadedFileUrl2]),
+                                [FFAppState().tempCoverPic]),
                           };
                           await currentUserReference!.update(usersUpdateData);
                           FFAppState().update(() {});
@@ -274,8 +278,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                           ),
-                          child: Image.network(
-                            valueOrDefault<String>(
+                          child: CachedNetworkImage(
+                            imageUrl: valueOrDefault<String>(
                               FFAppState().tempProfilePic,
                               'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
                             ),
@@ -324,7 +328,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               child: CachedNetworkImage(
                                 imageUrl: valueOrDefault<String>(
                                   FFAppState().tempCoverPic,
-                                  'https://commons.wikimedia.org/wiki/File:Empty_frame.jpg#/media/File:Empty_frame.jpg',
+                                  'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
                                 ),
                                 width: MediaQuery.of(context).size.width * 0.33,
                                 height:
@@ -411,10 +415,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                       }
                                     }
 
-                                    setState(() {
-                                      FFAppState().tempCoverPic =
-                                          _model.uploadedFileUrl2;
-                                    });
+                                    if (_model.uploadedFileUrl2 != null &&
+                                        _model.uploadedFileUrl2 != '') {
+                                      setState(() {
+                                        FFAppState().tempCoverPic =
+                                            _model.uploadedFileUrl2;
+                                      });
+                                    }
                                   },
                                   child: FaIcon(
                                     FontAwesomeIcons.camera,
@@ -464,8 +471,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           child: CachedNetworkImage(
-                                            imageUrl:
-                                                'https://picsum.photos/seed/106/600',
+                                            imageUrl: valueOrDefault<String>(
+                                              FFAppState().tempCoverPic1,
+                                              'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                            ),
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
@@ -494,12 +503,117 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.0, 0.0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.camera,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBtnText,
-                                              size: 24.0,
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                final selectedMedia =
+                                                    await selectMedia(
+                                                  mediaSource:
+                                                      MediaSource.photoGallery,
+                                                  multiImage: false,
+                                                );
+                                                if (selectedMedia != null &&
+                                                    selectedMedia.every((m) =>
+                                                        validateFileFormat(
+                                                            m.storagePath,
+                                                            context))) {
+                                                  setState(() => _model
+                                                      .isDataUploading3 = true);
+                                                  var selectedUploadedFiles =
+                                                      <FFUploadedFile>[];
+                                                  var downloadUrls = <String>[];
+                                                  try {
+                                                    showUploadMessage(
+                                                      context,
+                                                      'Uploading file...',
+                                                      showLoading: true,
+                                                    );
+                                                    selectedUploadedFiles =
+                                                        selectedMedia
+                                                            .map((m) =>
+                                                                FFUploadedFile(
+                                                                  name: m
+                                                                      .storagePath
+                                                                      .split(
+                                                                          '/')
+                                                                      .last,
+                                                                  bytes:
+                                                                      m.bytes,
+                                                                  height: m
+                                                                      .dimensions
+                                                                      ?.height,
+                                                                  width: m
+                                                                      .dimensions
+                                                                      ?.width,
+                                                                  blurHash: m
+                                                                      .blurHash,
+                                                                ))
+                                                            .toList();
+
+                                                    downloadUrls = (await Future
+                                                            .wait(
+                                                      selectedMedia.map(
+                                                        (m) async =>
+                                                            await uploadData(
+                                                                m.storagePath,
+                                                                m.bytes),
+                                                      ),
+                                                    ))
+                                                        .where((u) => u != null)
+                                                        .map((u) => u!)
+                                                        .toList();
+                                                  } finally {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .hideCurrentSnackBar();
+                                                    _model.isDataUploading3 =
+                                                        false;
+                                                  }
+                                                  if (selectedUploadedFiles
+                                                              .length ==
+                                                          selectedMedia
+                                                              .length &&
+                                                      downloadUrls.length ==
+                                                          selectedMedia
+                                                              .length) {
+                                                    setState(() {
+                                                      _model.uploadedLocalFile3 =
+                                                          selectedUploadedFiles
+                                                              .first;
+                                                      _model.uploadedFileUrl3 =
+                                                          downloadUrls.first;
+                                                    });
+                                                    showUploadMessage(
+                                                        context, 'Success!');
+                                                  } else {
+                                                    setState(() {});
+                                                    showUploadMessage(context,
+                                                        'Failed to upload data');
+                                                    return;
+                                                  }
+                                                }
+
+                                                if (_model.uploadedFileUrl3 !=
+                                                        null &&
+                                                    _model.uploadedFileUrl3 !=
+                                                        '') {
+                                                  setState(() {
+                                                    FFAppState().tempCoverPic1 =
+                                                        _model.uploadedFileUrl3;
+                                                  });
+                                                }
+                                              },
+                                              child: FaIcon(
+                                                FontAwesomeIcons.camera,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBtnText,
+                                                size: 24.0,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -522,8 +636,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           child: CachedNetworkImage(
-                                            imageUrl:
-                                                'https://picsum.photos/seed/107/600',
+                                            imageUrl: valueOrDefault<String>(
+                                              FFAppState().tempCoverPic2,
+                                              'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                            ),
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
@@ -552,12 +668,117 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.0, 0.0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.camera,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBtnText,
-                                              size: 24.0,
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                final selectedMedia =
+                                                    await selectMedia(
+                                                  mediaSource:
+                                                      MediaSource.photoGallery,
+                                                  multiImage: false,
+                                                );
+                                                if (selectedMedia != null &&
+                                                    selectedMedia.every((m) =>
+                                                        validateFileFormat(
+                                                            m.storagePath,
+                                                            context))) {
+                                                  setState(() => _model
+                                                      .isDataUploading4 = true);
+                                                  var selectedUploadedFiles =
+                                                      <FFUploadedFile>[];
+                                                  var downloadUrls = <String>[];
+                                                  try {
+                                                    showUploadMessage(
+                                                      context,
+                                                      'Uploading file...',
+                                                      showLoading: true,
+                                                    );
+                                                    selectedUploadedFiles =
+                                                        selectedMedia
+                                                            .map((m) =>
+                                                                FFUploadedFile(
+                                                                  name: m
+                                                                      .storagePath
+                                                                      .split(
+                                                                          '/')
+                                                                      .last,
+                                                                  bytes:
+                                                                      m.bytes,
+                                                                  height: m
+                                                                      .dimensions
+                                                                      ?.height,
+                                                                  width: m
+                                                                      .dimensions
+                                                                      ?.width,
+                                                                  blurHash: m
+                                                                      .blurHash,
+                                                                ))
+                                                            .toList();
+
+                                                    downloadUrls = (await Future
+                                                            .wait(
+                                                      selectedMedia.map(
+                                                        (m) async =>
+                                                            await uploadData(
+                                                                m.storagePath,
+                                                                m.bytes),
+                                                      ),
+                                                    ))
+                                                        .where((u) => u != null)
+                                                        .map((u) => u!)
+                                                        .toList();
+                                                  } finally {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .hideCurrentSnackBar();
+                                                    _model.isDataUploading4 =
+                                                        false;
+                                                  }
+                                                  if (selectedUploadedFiles
+                                                              .length ==
+                                                          selectedMedia
+                                                              .length &&
+                                                      downloadUrls.length ==
+                                                          selectedMedia
+                                                              .length) {
+                                                    setState(() {
+                                                      _model.uploadedLocalFile4 =
+                                                          selectedUploadedFiles
+                                                              .first;
+                                                      _model.uploadedFileUrl4 =
+                                                          downloadUrls.first;
+                                                    });
+                                                    showUploadMessage(
+                                                        context, 'Success!');
+                                                  } else {
+                                                    setState(() {});
+                                                    showUploadMessage(context,
+                                                        'Failed to upload data');
+                                                    return;
+                                                  }
+                                                }
+
+                                                if (_model.uploadedFileUrl4 !=
+                                                        null &&
+                                                    _model.uploadedFileUrl4 !=
+                                                        '') {
+                                                  setState(() {
+                                                    FFAppState().tempCoverPic2 =
+                                                        _model.uploadedFileUrl4;
+                                                  });
+                                                }
+                                              },
+                                              child: FaIcon(
+                                                FontAwesomeIcons.camera,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBtnText,
+                                                size: 24.0,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -587,8 +808,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           child: CachedNetworkImage(
-                                            imageUrl:
-                                                'https://picsum.photos/seed/108/600',
+                                            imageUrl: valueOrDefault<String>(
+                                              FFAppState().tempCoverPic3,
+                                              'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                            ),
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
@@ -617,12 +840,117 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.0, 0.0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.camera,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBtnText,
-                                              size: 24.0,
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                final selectedMedia =
+                                                    await selectMedia(
+                                                  mediaSource:
+                                                      MediaSource.photoGallery,
+                                                  multiImage: false,
+                                                );
+                                                if (selectedMedia != null &&
+                                                    selectedMedia.every((m) =>
+                                                        validateFileFormat(
+                                                            m.storagePath,
+                                                            context))) {
+                                                  setState(() => _model
+                                                      .isDataUploading5 = true);
+                                                  var selectedUploadedFiles =
+                                                      <FFUploadedFile>[];
+                                                  var downloadUrls = <String>[];
+                                                  try {
+                                                    showUploadMessage(
+                                                      context,
+                                                      'Uploading file...',
+                                                      showLoading: true,
+                                                    );
+                                                    selectedUploadedFiles =
+                                                        selectedMedia
+                                                            .map((m) =>
+                                                                FFUploadedFile(
+                                                                  name: m
+                                                                      .storagePath
+                                                                      .split(
+                                                                          '/')
+                                                                      .last,
+                                                                  bytes:
+                                                                      m.bytes,
+                                                                  height: m
+                                                                      .dimensions
+                                                                      ?.height,
+                                                                  width: m
+                                                                      .dimensions
+                                                                      ?.width,
+                                                                  blurHash: m
+                                                                      .blurHash,
+                                                                ))
+                                                            .toList();
+
+                                                    downloadUrls = (await Future
+                                                            .wait(
+                                                      selectedMedia.map(
+                                                        (m) async =>
+                                                            await uploadData(
+                                                                m.storagePath,
+                                                                m.bytes),
+                                                      ),
+                                                    ))
+                                                        .where((u) => u != null)
+                                                        .map((u) => u!)
+                                                        .toList();
+                                                  } finally {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .hideCurrentSnackBar();
+                                                    _model.isDataUploading5 =
+                                                        false;
+                                                  }
+                                                  if (selectedUploadedFiles
+                                                              .length ==
+                                                          selectedMedia
+                                                              .length &&
+                                                      downloadUrls.length ==
+                                                          selectedMedia
+                                                              .length) {
+                                                    setState(() {
+                                                      _model.uploadedLocalFile5 =
+                                                          selectedUploadedFiles
+                                                              .first;
+                                                      _model.uploadedFileUrl5 =
+                                                          downloadUrls.first;
+                                                    });
+                                                    showUploadMessage(
+                                                        context, 'Success!');
+                                                  } else {
+                                                    setState(() {});
+                                                    showUploadMessage(context,
+                                                        'Failed to upload data');
+                                                    return;
+                                                  }
+                                                }
+
+                                                if (_model.uploadedFileUrl5 !=
+                                                        null &&
+                                                    _model.uploadedFileUrl5 !=
+                                                        '') {
+                                                  setState(() {
+                                                    FFAppState().tempCoverPic3 =
+                                                        _model.uploadedFileUrl4;
+                                                  });
+                                                }
+                                              },
+                                              child: FaIcon(
+                                                FontAwesomeIcons.camera,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBtnText,
+                                                size: 24.0,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -645,8 +973,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           child: CachedNetworkImage(
-                                            imageUrl:
-                                                'https://picsum.photos/seed/110/600',
+                                            imageUrl: valueOrDefault<String>(
+                                              FFAppState().tempCoverPic4,
+                                              'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                            ),
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
@@ -675,12 +1005,117 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(0.0, 0.0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.camera,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBtnText,
-                                              size: 24.0,
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                final selectedMedia =
+                                                    await selectMedia(
+                                                  mediaSource:
+                                                      MediaSource.photoGallery,
+                                                  multiImage: false,
+                                                );
+                                                if (selectedMedia != null &&
+                                                    selectedMedia.every((m) =>
+                                                        validateFileFormat(
+                                                            m.storagePath,
+                                                            context))) {
+                                                  setState(() => _model
+                                                      .isDataUploading6 = true);
+                                                  var selectedUploadedFiles =
+                                                      <FFUploadedFile>[];
+                                                  var downloadUrls = <String>[];
+                                                  try {
+                                                    showUploadMessage(
+                                                      context,
+                                                      'Uploading file...',
+                                                      showLoading: true,
+                                                    );
+                                                    selectedUploadedFiles =
+                                                        selectedMedia
+                                                            .map((m) =>
+                                                                FFUploadedFile(
+                                                                  name: m
+                                                                      .storagePath
+                                                                      .split(
+                                                                          '/')
+                                                                      .last,
+                                                                  bytes:
+                                                                      m.bytes,
+                                                                  height: m
+                                                                      .dimensions
+                                                                      ?.height,
+                                                                  width: m
+                                                                      .dimensions
+                                                                      ?.width,
+                                                                  blurHash: m
+                                                                      .blurHash,
+                                                                ))
+                                                            .toList();
+
+                                                    downloadUrls = (await Future
+                                                            .wait(
+                                                      selectedMedia.map(
+                                                        (m) async =>
+                                                            await uploadData(
+                                                                m.storagePath,
+                                                                m.bytes),
+                                                      ),
+                                                    ))
+                                                        .where((u) => u != null)
+                                                        .map((u) => u!)
+                                                        .toList();
+                                                  } finally {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .hideCurrentSnackBar();
+                                                    _model.isDataUploading6 =
+                                                        false;
+                                                  }
+                                                  if (selectedUploadedFiles
+                                                              .length ==
+                                                          selectedMedia
+                                                              .length &&
+                                                      downloadUrls.length ==
+                                                          selectedMedia
+                                                              .length) {
+                                                    setState(() {
+                                                      _model.uploadedLocalFile6 =
+                                                          selectedUploadedFiles
+                                                              .first;
+                                                      _model.uploadedFileUrl6 =
+                                                          downloadUrls.first;
+                                                    });
+                                                    showUploadMessage(
+                                                        context, 'Success!');
+                                                  } else {
+                                                    setState(() {});
+                                                    showUploadMessage(context,
+                                                        'Failed to upload data');
+                                                    return;
+                                                  }
+                                                }
+
+                                                if (_model.uploadedFileUrl6 !=
+                                                        null &&
+                                                    _model.uploadedFileUrl6 !=
+                                                        '') {
+                                                  setState(() {
+                                                    FFAppState().tempCoverPic4 =
+                                                        _model.uploadedFileUrl5;
+                                                  });
+                                                }
+                                              },
+                                              child: FaIcon(
+                                                FontAwesomeIcons.camera,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBtnText,
+                                                size: 24.0,
+                                              ),
                                             ),
                                           ),
                                         ),

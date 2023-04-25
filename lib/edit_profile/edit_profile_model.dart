@@ -27,6 +27,26 @@ class EditProfileModel extends FlutterFlowModel {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl2 = '';
 
+  bool isDataUploading3 = false;
+  FFUploadedFile uploadedLocalFile3 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl3 = '';
+
+  bool isDataUploading4 = false;
+  FFUploadedFile uploadedLocalFile4 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl4 = '';
+
+  bool isDataUploading5 = false;
+  FFUploadedFile uploadedLocalFile5 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl5 = '';
+
+  bool isDataUploading6 = false;
+  FFUploadedFile uploadedLocalFile6 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl6 = '';
+
   // State field(s) for TextField widget.
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
