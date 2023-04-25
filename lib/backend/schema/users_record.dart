@@ -42,9 +42,6 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 
   BuiltList<DocumentReference>? get chats;
 
-  @BuiltValueField(wireName: 'cover_image')
-  BuiltList<String>? get coverImage;
-
   @BuiltValueField(wireName: 'cover_image1')
   String? get coverImage1;
 
@@ -56,6 +53,9 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 
   @BuiltValueField(wireName: 'cover_image4')
   String? get coverImage4;
+
+  @BuiltValueField(wireName: 'cover_image')
+  String? get coverImage;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
@@ -74,11 +74,11 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..enableEmail = false
     ..unreadNotifications = ListBuilder()
     ..chats = ListBuilder()
-    ..coverImage = ListBuilder()
     ..coverImage1 = ''
     ..coverImage2 = ''
     ..coverImage3 = ''
-    ..coverImage4 = '';
+    ..coverImage4 = ''
+    ..coverImage = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -117,6 +117,7 @@ Map<String, dynamic> createUsersRecordData({
   String? coverImage2,
   String? coverImage3,
   String? coverImage4,
+  String? coverImage,
 }) {
   final firestoreData = serializers.toFirestore(
     UsersRecord.serializer,
@@ -136,11 +137,11 @@ Map<String, dynamic> createUsersRecordData({
         ..birthday = birthday
         ..unreadNotifications = null
         ..chats = null
-        ..coverImage = null
         ..coverImage1 = coverImage1
         ..coverImage2 = coverImage2
         ..coverImage3 = coverImage3
-        ..coverImage4 = coverImage4,
+        ..coverImage4 = coverImage4
+        ..coverImage = coverImage,
     ),
   );
 

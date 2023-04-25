@@ -128,22 +128,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             return;
                           }
 
-                          final usersUpdateData = {
-                            ...createUsersRecordData(
-                              displayName: _model.textController1.text,
-                              photoUrl: FFAppState().tempProfilePic,
-                              bio: _model.textController3.text,
-                              website: _model.textController4.text,
-                              enableEmail: _model.switchValue2,
-                              email: _model.textController2.text,
-                              coverImage1: FFAppState().tempCoverPic1,
-                              coverImage2: FFAppState().tempCoverPic2,
-                              coverImage3: FFAppState().tempCoverPic3,
-                              coverImage4: FFAppState().tempCoverPic4,
-                            ),
-                            'cover_image': FieldValue.arrayUnion(
-                                [FFAppState().tempCoverPic]),
-                          };
+                          final usersUpdateData = createUsersRecordData(
+                            displayName: _model.textController1.text,
+                            photoUrl: FFAppState().tempProfilePic,
+                            bio: _model.textController3.text,
+                            website: _model.textController4.text,
+                            enableEmail: _model.switchValue2,
+                            email: _model.textController2.text,
+                            coverImage: _model.uploadedFileUrl2,
+                            coverImage1: FFAppState().tempCoverPic1,
+                            coverImage2: FFAppState().tempCoverPic2,
+                            coverImage3: FFAppState().tempCoverPic3,
+                            coverImage4: FFAppState().tempCoverPic4,
+                          );
                           await currentUserReference!.update(usersUpdateData);
                           FFAppState().update(() {});
 
@@ -328,7 +325,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               child: CachedNetworkImage(
                                 imageUrl: valueOrDefault<String>(
                                   FFAppState().tempCoverPic,
-                                  'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                  'https://parkridgevet.com.au/wp-content/uploads/2022/06/blank-profile.jpg',
                                 ),
                                 width: MediaQuery.of(context).size.width * 0.33,
                                 height:
@@ -473,7 +470,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           child: CachedNetworkImage(
                                             imageUrl: valueOrDefault<String>(
                                               FFAppState().tempCoverPic1,
-                                              'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                              'https://parkridgevet.com.au/wp-content/uploads/2022/06/blank-profile.jpg',
                                             ),
                                             width: MediaQuery.of(context)
                                                     .size
@@ -638,7 +635,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           child: CachedNetworkImage(
                                             imageUrl: valueOrDefault<String>(
                                               FFAppState().tempCoverPic2,
-                                              'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                              'https://parkridgevet.com.au/wp-content/uploads/2022/06/blank-profile.jpg',
                                             ),
                                             width: MediaQuery.of(context)
                                                     .size
@@ -810,7 +807,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           child: CachedNetworkImage(
                                             imageUrl: valueOrDefault<String>(
                                               FFAppState().tempCoverPic3,
-                                              'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                              'https://parkridgevet.com.au/wp-content/uploads/2022/06/blank-profile.jpg',
                                             ),
                                             width: MediaQuery.of(context)
                                                     .size
@@ -975,7 +972,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           child: CachedNetworkImage(
                                             imageUrl: valueOrDefault<String>(
                                               FFAppState().tempCoverPic4,
-                                              'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+                                              'https://parkridgevet.com.au/wp-content/uploads/2022/06/blank-profile.jpg',
                                             ),
                                             width: MediaQuery.of(context)
                                                     .size
