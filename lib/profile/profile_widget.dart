@@ -1351,7 +1351,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1367,7 +1367,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1383,7 +1383,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1399,7 +1399,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1415,7 +1415,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1431,7 +1431,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1447,7 +1447,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1463,7 +1463,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1479,7 +1479,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1495,7 +1495,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1511,7 +1511,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1527,7 +1527,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1543,7 +1543,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1559,7 +1559,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1575,7 +1575,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -1591,7 +1591,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          10.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
