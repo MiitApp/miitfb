@@ -211,18 +211,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => EditProfileWidget(),
             ),
             FFRoute(
+              name: 'FollowersFollowing',
+              path: 'followersFollowing',
+              requireAuth: true,
+              builder: (context, params) => FollowersFollowingWidget(),
+            ),
+            FFRoute(
               name: 'ProfileOther',
               path: 'profileOther',
               requireAuth: true,
               builder: (context, params) => ProfileOtherWidget(
                 username: params.getParam('username', ParamType.String),
+                displayname: params.getParam('displayname', ParamType.String),
               ),
-            ),
-            FFRoute(
-              name: 'FollowersFollowing',
-              path: 'followersFollowing',
-              requireAuth: true,
-              builder: (context, params) => FollowersFollowingWidget(),
             ),
             FFRoute(
               name: 'FollowersFollowingOther',

@@ -25,9 +25,9 @@ export '/tag_users/tag_users_widget.dart' show TagUsersWidget;
 export '/select_tagged_users/select_tagged_users_widget.dart'
     show SelectTaggedUsersWidget;
 export '/edit_profile/edit_profile_widget.dart' show EditProfileWidget;
-export '/profile_other/profile_other_widget.dart' show ProfileOtherWidget;
 export '/followers_following/followers_following_widget.dart'
     show FollowersFollowingWidget;
+export '/profile_other/profile_other_widget.dart' show ProfileOtherWidget;
 export '/followers_following_other/followers_following_other_widget.dart'
     show FollowersFollowingOtherWidget;
 export '/edit_post/edit_post_widget.dart' show EditPostWidget;
