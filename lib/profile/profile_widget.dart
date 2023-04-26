@@ -965,101 +965,124 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         child: TabBarView(
                                           children: [
                                             KeepAliveWidgetWrapper(
-                                              builder: (context) =>
-                                                  StreamBuilder<
-                                                      List<PostsRecord>>(
-                                                stream: queryPostsRecord(
-                                                  queryBuilder: (postsRecord) =>
-                                                      postsRecord
-                                                          .where(
-                                                              'post_user',
-                                                              isEqualTo:
-                                                                  currentUserReference)
-                                                          .where('deleted',
-                                                              isEqualTo: false)
-                                                          .orderBy(
-                                                              'time_posted',
-                                                              descending: true),
-                                                ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 12.0,
-                                                        height: 12.0,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          color: Colors.white,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  }
-                                                  List<PostsRecord>
-                                                      profilePhotosPostsRecordList =
-                                                      snapshot.data!;
-                                                  return GridView.builder(
-                                                    padding: EdgeInsets.zero,
-                                                    gridDelegate:
-                                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                                      crossAxisCount: 3,
-                                                      crossAxisSpacing: 1.0,
-                                                      mainAxisSpacing: 1.0,
-                                                      childAspectRatio: 1.0,
-                                                    ),
-                                                    primary: false,
-                                                    shrinkWrap: true,
-                                                    scrollDirection:
-                                                        Axis.vertical,
-                                                    itemCount:
-                                                        profilePhotosPostsRecordList
-                                                            .length,
-                                                    itemBuilder: (context,
-                                                        profilePhotosIndex) {
-                                                      final profilePhotosPostsRecord =
-                                                          profilePhotosPostsRecordList[
-                                                              profilePhotosIndex];
-                                                      return InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          context.pushNamed(
-                                                            'PostDetails',
-                                                            queryParams: {
-                                                              'post':
-                                                                  serializeParam(
-                                                                profilePhotosPostsRecord
-                                                                    .reference,
-                                                                ParamType
-                                                                    .DocumentReference,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
-                                                        },
-                                                        child: Hero(
-                                                          tag:
-                                                              profilePhotosPostsRecord
-                                                                  .postPhoto!,
-                                                          transitionOnUserGestures:
-                                                              true,
-                                                          child: Image.network(
-                                                            profilePhotosPostsRecord
-                                                                .postPhoto!,
-                                                            width: 100.0,
-                                                            height: 100.0,
-                                                            fit: BoxFit.cover,
+                                              builder: (context) => Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        4.0, 0.0, 8.0, 0.0),
+                                                child: StreamBuilder<
+                                                    List<PostsRecord>>(
+                                                  stream: queryPostsRecord(
+                                                    queryBuilder: (postsRecord) =>
+                                                        postsRecord
+                                                            .where(
+                                                                'post_user',
+                                                                isEqualTo:
+                                                                    currentUserReference)
+                                                            .where('deleted',
+                                                                isEqualTo:
+                                                                    false)
+                                                            .orderBy(
+                                                                'time_posted',
+                                                                descending:
+                                                                    true),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 12.0,
+                                                          height: 12.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            color: Colors.white,
                                                           ),
                                                         ),
                                                       );
-                                                    },
-                                                  );
-                                                },
+                                                    }
+                                                    List<PostsRecord>
+                                                        profilePhotosPostsRecordList =
+                                                        snapshot.data!;
+                                                    return GridView.builder(
+                                                      padding: EdgeInsets.zero,
+                                                      gridDelegate:
+                                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                                        crossAxisCount: 3,
+                                                        crossAxisSpacing: 1.0,
+                                                        mainAxisSpacing: 1.0,
+                                                        childAspectRatio: 1.0,
+                                                      ),
+                                                      primary: false,
+                                                      shrinkWrap: true,
+                                                      scrollDirection:
+                                                          Axis.vertical,
+                                                      itemCount:
+                                                          profilePhotosPostsRecordList
+                                                              .length,
+                                                      itemBuilder: (context,
+                                                          profilePhotosIndex) {
+                                                        final profilePhotosPostsRecord =
+                                                            profilePhotosPostsRecordList[
+                                                                profilePhotosIndex];
+                                                        return Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      4.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      4.0),
+                                                          child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              context.pushNamed(
+                                                                'PostDetails',
+                                                                queryParams: {
+                                                                  'post':
+                                                                      serializeParam(
+                                                                    profilePhotosPostsRecord
+                                                                        .reference,
+                                                                    ParamType
+                                                                        .DocumentReference,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                              );
+                                                            },
+                                                            child: Hero(
+                                                              tag: profilePhotosPostsRecord
+                                                                  .postPhoto!,
+                                                              transitionOnUserGestures:
+                                                                  true,
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            12.0),
+                                                                child: Image
+                                                                    .network(
+                                                                  profilePhotosPostsRecord
+                                                                      .postPhoto!,
+                                                                  width: 100.0,
+                                                                  height: 100.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                ),
                                               ),
                                             ),
                                             KeepAliveWidgetWrapper(
