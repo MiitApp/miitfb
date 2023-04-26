@@ -74,16 +74,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               size: 24.0,
             ),
           ),
-          title: AuthUserStreamWidget(
-            builder: (context) => Text(
-              valueOrDefault(currentUserDocument?.username, ''),
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                    fontSize: 16.0,
-                    useGoogleFonts: GoogleFonts.asMap().containsKey(
-                        FlutterFlowTheme.of(context).bodyMediumFamily),
-                  ),
-            ),
+          title: Text(
+            '',
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                  fontSize: 16.0,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).bodyMediumFamily),
+                ),
           ),
           actions: [
             Row(
