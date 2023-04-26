@@ -1300,16 +1300,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                if (valueOrDefault(
-                                                            currentUserDocument
-                                                                ?.bio,
-                                                            '') !=
-                                                        null &&
-                                                    valueOrDefault(
-                                                            currentUserDocument
-                                                                ?.bio,
-                                                            '') !=
-                                                        '')
+                                                if (valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.enableSocialLinks,
+                                                        false) ==
+                                                    true)
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -1338,334 +1333,337 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       ),
                                                     ),
                                                   ),
-                                                Container(
-                                                  width: double.infinity,
-                                                  height: 64.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                    border: Border.all(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .primaryBackground,
-                                                    ),
-                                                  ),
-                                                  child: Visibility(
-                                                    visible: valueOrDefault<
-                                                                bool>(
-                                                            currentUserDocument
-                                                                ?.enableSocialLinks,
-                                                            false) !=
-                                                        null,
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child:
-                                                          AuthUserStreamWidget(
-                                                        builder: (context) =>
-                                                            ListView(
+                                                if (valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.enableSocialLinks,
+                                                        false) ==
+                                                    true)
+                                                  AuthUserStreamWidget(
+                                                    builder: (context) =>
+                                                        Container(
+                                                      width: double.infinity,
+                                                      height: 64.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                        ),
+                                                      ),
+                                                      child: Visibility(
+                                                        visible: valueOrDefault<
+                                                                    bool>(
+                                                                currentUserDocument
+                                                                    ?.enableSocialLinks,
+                                                                false) !=
+                                                            null,
+                                                        child: Padding(
                                                           padding:
-                                                              EdgeInsets.zero,
-                                                          primary: false,
-                                                          scrollDirection:
-                                                              Axis.horizontal,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          15.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .facebook,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: ListView(
+                                                            padding:
+                                                                EdgeInsets.zero,
+                                                            primary: false,
+                                                            scrollDirection:
+                                                                Axis.horizontal,
+                                                            children: [
+                                                              Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        0.0,
+                                                                        12.0,
+                                                                        0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .facebook,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .instagram,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .instagram,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .twitter,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .twitter,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .snapchatGhost,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .snapchatGhost,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .linkedinIn,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .linkedinIn,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .pinterestP,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .pinterestP,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .tiktok,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .tiktok,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .youtube,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .youtube,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .spotify,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .spotify,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .github,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .github,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .soundcloud,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .soundcloud,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .twitch,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .twitch,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .discord,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .discord,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .etsy,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .etsy,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .shopify,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .shopify,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          20.0,
-                                                                          0.0),
-                                                              child: FaIcon(
-                                                                FontAwesomeIcons
-                                                                    .mediumM,
-                                                                color: Colors
-                                                                    .black,
-                                                                size: 36.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            20.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .mediumM,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 36.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    if (valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.bio,
-                                                                '') !=
-                                                            null &&
-                                                        valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.bio,
-                                                                '') !=
-                                                            '')
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    15.0,
-                                                                    24.0,
-                                                                    0.0,
-                                                                    6.0),
-                                                        child:
-                                                            AuthUserStreamWidget(
-                                                          builder: (context) =>
-                                                              Text(
+                                                if (valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.bio,
+                                                            '') !=
+                                                        null &&
+                                                    valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.bio,
+                                                            '') !=
+                                                        '')
+                                                  AuthUserStreamWidget(
+                                                    builder: (context) =>
+                                                        Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      15.0,
+                                                                      24.0,
+                                                                      0.0,
+                                                                      6.0),
+                                                          child: Text(
                                                             'About me',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1684,29 +1682,15 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    if (valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.bio,
-                                                                '') !=
-                                                            null &&
-                                                        valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.bio,
-                                                                '') !=
-                                                            '')
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    15.0,
-                                                                    4.0,
-                                                                    15.0,
-                                                                    0.0),
-                                                        child:
-                                                            AuthUserStreamWidget(
-                                                          builder: (context) =>
-                                                              Text(
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      15.0,
+                                                                      4.0,
+                                                                      15.0,
+                                                                      0.0),
+                                                          child: Text(
                                                             valueOrDefault(
                                                                 currentUserDocument
                                                                     ?.bio,
@@ -1731,37 +1715,37 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 ),
                                                           ),
                                                         ),
-                                                      ),
-                                                  ],
-                                                ),
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    if (valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.website,
-                                                                '') !=
-                                                            null &&
-                                                        valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.website,
-                                                                '') !=
-                                                            '')
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    15.0,
-                                                                    24.0,
-                                                                    0.0,
-                                                                    6.0),
-                                                        child:
-                                                            AuthUserStreamWidget(
-                                                          builder: (context) =>
-                                                              Text(
+                                                      ],
+                                                    ),
+                                                  ),
+                                                if (valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.website,
+                                                            '') !=
+                                                        null &&
+                                                    valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.website,
+                                                            '') !=
+                                                        '')
+                                                  AuthUserStreamWidget(
+                                                    builder: (context) =>
+                                                        Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      15.0,
+                                                                      24.0,
+                                                                      0.0,
+                                                                      6.0),
+                                                          child: Text(
                                                             'Website',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1780,29 +1764,15 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    if (valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.website,
-                                                                '') !=
-                                                            null &&
-                                                        valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.website,
-                                                                '') !=
-                                                            '')
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    15.0,
-                                                                    4.0,
-                                                                    15.0,
-                                                                    0.0),
-                                                        child:
-                                                            AuthUserStreamWidget(
-                                                          builder: (context) =>
-                                                              InkWell(
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      15.0,
+                                                                      4.0,
+                                                                      15.0,
+                                                                      0.0),
+                                                          child: InkWell(
                                                             splashColor: Colors
                                                                 .transparent,
                                                             focusColor: Colors
@@ -1847,56 +1817,47 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                  ],
-                                                ),
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    if (valueOrDefault<bool>(
-                                                            currentUserDocument
-                                                                ?.enableIceBreakers,
-                                                            false) !=
-                                                        null)
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    15.0,
-                                                                    24.0,
-                                                                    0.0,
-                                                                    6.0),
-                                                        child:
-                                                            AuthUserStreamWidget(
-                                                          builder: (context) =>
-                                                              Text(
+                                                      ],
+                                                    ),
+                                                  ),
+                                                if (valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.enableIceBreakers,
+                                                        false) ==
+                                                    true)
+                                                  AuthUserStreamWidget(
+                                                    builder: (context) =>
+                                                        Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      15.0,
+                                                                      24.0,
+                                                                      0.0,
+                                                                      6.0),
+                                                          child: Text(
                                                             '[Ice breakers go here]',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .titleMedium,
                                                           ),
                                                         ),
-                                                      ),
-                                                    if (valueOrDefault<bool>(
-                                                            currentUserDocument
-                                                                ?.enableIceBreakers,
-                                                            false) !=
-                                                        null)
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    15.0,
-                                                                    4.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child:
-                                                            AuthUserStreamWidget(
-                                                          builder: (context) =>
-                                                              InkWell(
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      15.0,
+                                                                      4.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: InkWell(
                                                             splashColor: Colors
                                                                 .transparent,
                                                             focusColor: Colors
@@ -1941,9 +1902,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                  ],
-                                                ),
+                                                      ],
+                                                    ),
+                                                  ),
                                               ],
                                             ),
                                           ),

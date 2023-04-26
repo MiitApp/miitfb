@@ -1706,8 +1706,8 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     if (bodyUsersRecord!
-                                                            .enableSocialLinks !=
-                                                        null)
+                                                            .enableSocialLinks ==
+                                                        true)
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
@@ -1734,23 +1734,23 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                               ),
                                                         ),
                                                       ),
-                                                    Container(
-                                                      width: double.infinity,
-                                                      height: 64.0,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
-                                                        border: Border.all(
+                                                    if (bodyUsersRecord!
+                                                            .enableSocialLinks ==
+                                                        true)
+                                                      Container(
+                                                        width: double.infinity,
+                                                        height: 64.0,
+                                                        decoration:
+                                                            BoxDecoration(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBackground,
+                                                          border: Border.all(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBackground,
+                                                          ),
                                                         ),
-                                                      ),
-                                                      child: Visibility(
-                                                        visible: bodyUsersRecord!
-                                                                .enableSocialLinks !=
-                                                            null,
                                                         child: Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -2025,20 +2025,17 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        if (bodyUsersRecord!
-                                                                    .bio !=
-                                                                null &&
-                                                            bodyUsersRecord!
-                                                                    .bio !=
-                                                                '')
+                                                    if (bodyUsersRecord!.bio !=
+                                                            null &&
+                                                        bodyUsersRecord!.bio !=
+                                                            '')
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
                                                           Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
@@ -2065,12 +2062,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                                   ),
                                                             ),
                                                           ),
-                                                        if (bodyUsersRecord!
-                                                                    .bio !=
-                                                                null &&
-                                                            bodyUsersRecord!
-                                                                    .bio !=
-                                                                '')
                                                           Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
@@ -2101,21 +2092,21 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                                   ),
                                                             ),
                                                           ),
-                                                      ],
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        if (bodyUsersRecord!
-                                                                    .website !=
-                                                                null &&
-                                                            bodyUsersRecord!
-                                                                    .website !=
-                                                                '')
+                                                        ],
+                                                      ),
+                                                    if (bodyUsersRecord!
+                                                                .website !=
+                                                            null &&
+                                                        bodyUsersRecord!
+                                                                .website !=
+                                                            '')
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
                                                           Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
@@ -2142,12 +2133,6 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                                   ),
                                                             ),
                                                           ),
-                                                        if (bodyUsersRecord!
-                                                                    .website !=
-                                                                null &&
-                                                            bodyUsersRecord!
-                                                                    .website !=
-                                                                '')
                                                           Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
@@ -2199,11 +2184,11 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                               ),
                                                             ),
                                                           ),
-                                                      ],
-                                                    ),
+                                                        ],
+                                                      ),
                                                     if (bodyUsersRecord!
-                                                            .enableIceBreakers !=
-                                                        null)
+                                                            .enableIceBreakers ==
+                                                        true)
                                                       Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
