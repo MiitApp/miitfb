@@ -1337,7 +1337,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       ),
                                                     Container(
                                                       width: double.infinity,
-                                                      height: 50.0,
+                                                      height: 64.0,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
                                                                 .of(context)
@@ -1352,8 +1352,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         padding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    20.0,
                                                                     0.0,
+                                                                    10.0,
                                                                     0.0,
                                                                     0.0),
                                                         child: ListView(
@@ -1367,7 +1367,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               padding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          0.0,
+                                                                          15.0,
                                                                           0.0,
                                                                           12.0,
                                                                           0.0),
@@ -1609,7 +1609,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          12.0,
+                                                                          20.0,
                                                                           0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
