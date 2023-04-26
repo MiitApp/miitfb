@@ -137,12 +137,13 @@ final parametersBuilderMap =
   'TagUsers': ParameterData.none(),
   'SelectTaggedUsers': ParameterData.none(),
   'EditProfile': ParameterData.none(),
+  'FollowersFollowing': ParameterData.none(),
   'ProfileOther': (data) async => ParameterData(
         allParams: {
           'username': getParameter<String>(data, 'username'),
+          'displayname': getParameter<String>(data, 'displayname'),
         },
       ),
-  'FollowersFollowing': ParameterData.none(),
   'FollowersFollowingOther': (data) async => ParameterData(
         allParams: {
           'userRef': getParameter<DocumentReference>(data, 'userRef'),
