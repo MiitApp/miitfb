@@ -1329,7 +1329,19 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             'All my links',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .titleMedium,
+                                                                .titleMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMediumFamily,
+                                                                  fontSize:
+                                                                      24.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleMediumFamily),
+                                                                ),
                                                           ),
                                                         ),
                                                       ),
@@ -1654,7 +1666,18 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 'About me',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .titleMedium,
+                                                                    .titleMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleMediumFamily,
+                                                                      fontSize:
+                                                                          24.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    ),
                                                               ),
                                                             ),
                                                           ),
@@ -1693,7 +1716,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                           FlutterFlowTheme.of(context)
                                                                               .bodyMediumFamily,
                                                                       fontSize:
-                                                                          14.0,
+                                                                          18.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
@@ -1740,7 +1763,18 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                 'Website',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .titleMedium,
+                                                                    .titleMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleMediumFamily,
+                                                                      fontSize:
+                                                                          24.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    ),
                                                               ),
                                                             ),
                                                           ),
@@ -1798,7 +1832,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .tertiary,
                                                                         fontSize:
-                                                                            14.0,
+                                                                            18.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
                                                                         useGoogleFonts:
