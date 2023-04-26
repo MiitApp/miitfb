@@ -2196,100 +2196,75 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          if (valueOrDefault(
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        24.0,
+                                                                        0.0,
+                                                                        6.0),
+                                                            child: Text(
+                                                              '[Ice breakers go here]',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMedium,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        4.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child:
+                                                                AuthUserStreamWidget(
+                                                              builder:
+                                                                  (context) =>
+                                                                      InkWell(
+                                                                splashColor: Colors
+                                                                    .transparent,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                onTap:
+                                                                    () async {
+                                                                  await launchURL(
+                                                                      valueOrDefault(
+                                                                          currentUserDocument
+                                                                              ?.website,
+                                                                          ''));
+                                                                },
+                                                                child: Text(
+                                                                  valueOrDefault(
                                                                       currentUserDocument
                                                                           ?.website,
-                                                                      '') !=
-                                                                  null &&
-                                                              valueOrDefault(
-                                                                      currentUserDocument
-                                                                          ?.website,
-                                                                      '') !=
-                                                                  '')
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          15.0,
-                                                                          24.0,
-                                                                          0.0,
-                                                                          6.0),
-                                                              child:
-                                                                  AuthUserStreamWidget(
-                                                                builder:
-                                                                    (context) =>
-                                                                        Text(
-                                                                  '[Ice breakers go here]',
+                                                                      ''),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .titleMedium,
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .tertiary,
+                                                                        fontSize:
+                                                                            14.0,
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
                                                                 ),
                                                               ),
                                                             ),
-                                                          if (valueOrDefault(
-                                                                      currentUserDocument
-                                                                          ?.website,
-                                                                      '') !=
-                                                                  null &&
-                                                              valueOrDefault(
-                                                                      currentUserDocument
-                                                                          ?.website,
-                                                                      '') !=
-                                                                  '')
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          15.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child:
-                                                                  AuthUserStreamWidget(
-                                                                builder:
-                                                                    (context) =>
-                                                                        InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    await launchURL(valueOrDefault(
-                                                                        currentUserDocument
-                                                                            ?.website,
-                                                                        ''));
-                                                                  },
-                                                                  child: Text(
-                                                                    valueOrDefault(
-                                                                        currentUserDocument
-                                                                            ?.website,
-                                                                        ''),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).tertiary,
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          fontWeight:
-                                                                              FontWeight.normal,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
+                                                          ),
                                                         ],
                                                       ),
                                                   ],
