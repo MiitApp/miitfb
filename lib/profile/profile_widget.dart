@@ -76,7 +76,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
-                context.pop();
+                context.pushNamed('Home');
               },
               child: Icon(
                 FFIcons.karrowLeft,
@@ -1856,16 +1856,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
-                                                    if (valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.website,
-                                                                '') !=
-                                                            null &&
-                                                        valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.website,
-                                                                '') !=
-                                                            '')
+                                                    if (valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.enableIceBreakers,
+                                                            false) !=
+                                                        null)
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
@@ -1885,16 +1880,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                           ),
                                                         ),
                                                       ),
-                                                    if (valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.website,
-                                                                '') !=
-                                                            null &&
-                                                        valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.website,
-                                                                '') !=
-                                                            '')
+                                                    if (valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.enableIceBreakers,
+                                                            false) !=
+                                                        null)
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional

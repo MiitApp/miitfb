@@ -133,13 +133,17 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             photoUrl: FFAppState().tempProfilePic,
                             bio: _model.textController3.text,
                             website: _model.textController4.text,
-                            enableEmail: _model.switchValue2,
+                            enableEmail: _model.switchValue3,
                             email: _model.textController2.text,
                             coverImage: _model.uploadedFileUrl2,
                             coverImage1: FFAppState().tempCoverPic1,
                             coverImage2: FFAppState().tempCoverPic2,
                             coverImage3: FFAppState().tempCoverPic3,
                             coverImage4: FFAppState().tempCoverPic4,
+                            openDirectMessages: _model.switchValue1,
+                            enableFollowers: _model.switchValue2,
+                            enableSocialLinks: _model.switchValue4,
+                            enableIceBreakers: _model.switchValue5,
                           );
                           await currentUserReference!.update(usersUpdateData);
                           FFAppState().update(() {});
