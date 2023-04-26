@@ -303,7 +303,7 @@ class _SignUpUsernameConfirmationWidgetState
                                       currentUserReference!)
                                   .set(bookmarksCreateData);
 
-                              context.goNamedAuth('Feed', mounted);
+                              context.goNamedAuth('Home', mounted);
                             },
                             text: 'Sign up',
                             options: FFButtonOptions(

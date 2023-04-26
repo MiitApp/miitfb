@@ -4646,7 +4646,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                       HapticFeedback.lightImpact();
 
                                       context.pushNamed(
-                                        'Feed',
+                                        'Home',
                                         extra: <String, dynamic>{
                                           kTransitionInfoKey: TransitionInfo(
                                             hasTransition: true,

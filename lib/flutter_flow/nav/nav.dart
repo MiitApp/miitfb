@@ -88,14 +88,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : HomeWidget(),
             ),
             FFRoute(
-              name: 'Feed',
-              path: 'feed',
-              requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Feed')
-                  : FeedWidget(),
-            ),
-            FFRoute(
               name: 'Notifications',
               path: 'notifications',
               requireAuth: true,
@@ -110,14 +102,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : ConnectWidget(),
             ),
             FFRoute(
-              name: 'Find',
-              path: 'find',
-              requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Find')
-                  : FindWidget(),
-            ),
-            FFRoute(
               name: 'Questions',
               path: 'questions',
               requireAuth: true,
@@ -127,7 +111,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Search',
               path: 'search',
               requireAuth: true,
-              builder: (context, params) => SearchWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Search')
+                  : SearchWidget(),
             ),
             FFRoute(
               name: 'Profile',
@@ -286,6 +272,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'getStarted',
               requireAuth: true,
               builder: (context, params) => GetStartedWidget(),
+            ),
+            FFRoute(
+              name: 'ProfileOtherCopy',
+              path: 'profileOtherCopy',
+              requireAuth: true,
+              builder: (context, params) => ProfileOtherCopyWidget(
+                username: params.getParam('username', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

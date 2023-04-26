@@ -117,7 +117,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              context.goNamed('Feed');
+              context.goNamed('Home');
             },
             child: Icon(
               Icons.close_rounded,
@@ -184,7 +184,7 @@ class _NewPostWidgetState extends State<NewPostWidget>
                         );
                       }
 
-                      context.goNamed('Feed');
+                      context.goNamed('Home');
 
                       setState(() {});
                     },

@@ -15,11 +15,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'profile_other_model.dart';
-export 'profile_other_model.dart';
+import 'profile_other_copy_model.dart';
+export 'profile_other_copy_model.dart';
 
-class ProfileOtherWidget extends StatefulWidget {
-  const ProfileOtherWidget({
+class ProfileOtherCopyWidget extends StatefulWidget {
+  const ProfileOtherCopyWidget({
     Key? key,
     this.username,
   }) : super(key: key);
@@ -27,11 +27,11 @@ class ProfileOtherWidget extends StatefulWidget {
   final String? username;
 
   @override
-  _ProfileOtherWidgetState createState() => _ProfileOtherWidgetState();
+  _ProfileOtherCopyWidgetState createState() => _ProfileOtherCopyWidgetState();
 }
 
-class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
-  late ProfileOtherModel _model;
+class _ProfileOtherCopyWidgetState extends State<ProfileOtherCopyWidget> {
+  late ProfileOtherCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -41,7 +41,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ProfileOtherModel());
+    _model = createModel(context, () => ProfileOtherCopyModel());
 
     if (!isWeb) {
       _keyboardVisibilitySubscription =
@@ -1367,7 +1367,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                         userRefs: [
                                           columnUsersRecord!.reference
                                         ],
-                                        initialPageName: 'ProfileOther',
+                                        initialPageName: 'ProfileOtherCopy',
                                         parameterData: {
                                           'username': valueOrDefault(
                                               currentUserDocument?.username,

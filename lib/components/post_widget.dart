@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -843,7 +844,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                     final likedByUsersRecord = snapshot.data!;
                                     return custom_widgets.LikedBy(
                                       width: double.infinity,
-                                      height: 17.0,
+                                      height: 20.0,
                                       name: valueOrDefault<String>(
                                         likedByUsersRecord.username,
                                         'user',
@@ -902,14 +903,18 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                   );
                                 }
                               },
-                              child: custom_widgets.PhotoCaption(
+                              child: Container(
                                 width: double.infinity,
                                 height: 20.0,
-                                name: valueOrDefault<String>(
-                                  columnUsersRecord.username,
-                                  'user',
+                                child: custom_widgets.PhotoCaption(
+                                  width: double.infinity,
+                                  height: 20.0,
+                                  name: valueOrDefault<String>(
+                                    columnUsersRecord.username,
+                                    'user',
+                                  ),
+                                  caption: widget.post!.postCaption!,
                                 ),
-                                caption: widget.post!.postCaption!,
                               ),
                             ),
                           ),
@@ -957,7 +962,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                       }.withoutNulls,
                                     );
                                   },
-                                  child: Text(
+                                  child: AutoSizeText(
                                     'View all ${formatNumber(
                                       textCommentsRecordList.length,
                                       formatType: FormatType.compact,
@@ -970,6 +975,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                                   .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
+                                          fontSize: 12.0,
                                           fontWeight: FontWeight.normal,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
@@ -1108,15 +1114,19 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                                         }
                                         final photoCaptionUsersRecord =
                                             snapshot.data!;
-                                        return custom_widgets.PhotoCaption(
+                                        return Container(
                                           width: double.infinity,
-                                          height: 19.0,
-                                          name: valueOrDefault<String>(
-                                            photoCaptionUsersRecord.username,
-                                            'user',
+                                          height: 20.0,
+                                          child: custom_widgets.PhotoCaption(
+                                            width: double.infinity,
+                                            height: 20.0,
+                                            name: valueOrDefault<String>(
+                                              photoCaptionUsersRecord.username,
+                                              'user',
+                                            ),
+                                            caption:
+                                                columnCommentsRecord.comment!,
                                           ),
-                                          caption:
-                                              columnCommentsRecord.comment!,
                                         );
                                       },
                                     ),

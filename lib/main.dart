@@ -128,9 +128,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Home': HomeWidget(),
-      'Feed': FeedWidget(),
       'Connect': ConnectWidget(),
-      'Find': FindWidget(),
+      'Search': SearchWidget(),
       'Messages': MessagesWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -149,7 +148,7 @@ class _NavBarPageState extends State<NavBarPage> {
         selectedBackgroundColor: Color(0x00000000),
         borderRadius: 100.0,
         itemBorderRadius: 8.0,
-        margin: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 10.0),
+        margin: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 10.0),
         padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
         width: MediaQuery.of(context).size.width * 1.0,
         elevation: 0.0,
@@ -184,15 +183,15 @@ class _NavBarPageState extends State<NavBarPage> {
               children: [
                 Icon(
                   currentIndex == 1
-                      ? Icons.perm_media_rounded
-                      : Icons.perm_media_outlined,
+                      ? FontAwesomeIcons.solidAddressCard
+                      : FontAwesomeIcons.addressCard,
                   color: currentIndex == 1
                       ? FlutterFlowTheme.of(context).primaryBtnText
                       : FlutterFlowTheme.of(context).secondaryText,
-                  size: 22.0,
+                  size: 20.0,
                 ),
                 Text(
-                  'Discover',
+                  'Connect',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 1
@@ -209,16 +208,14 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  currentIndex == 2
-                      ? FontAwesomeIcons.solidAddressCard
-                      : FontAwesomeIcons.addressCard,
+                  FontAwesomeIcons.search,
                   color: currentIndex == 2
                       ? FlutterFlowTheme.of(context).primaryBtnText
                       : FlutterFlowTheme.of(context).secondaryText,
-                  size: 20.0,
+                  size: 24.0,
                 ),
                 Text(
-                  'Connect',
+                  'Search',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 2
@@ -236,35 +233,9 @@ class _NavBarPageState extends State<NavBarPage> {
               children: [
                 Icon(
                   currentIndex == 3
-                      ? Icons.explore_rounded
-                      : Icons.explore_outlined,
-                  color: currentIndex == 3
-                      ? FlutterFlowTheme.of(context).primaryBtnText
-                      : FlutterFlowTheme.of(context).secondaryText,
-                  size: 24.0,
-                ),
-                Text(
-                  'Find',
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: currentIndex == 3
-                        ? FlutterFlowTheme.of(context).primaryBtnText
-                        : FlutterFlowTheme.of(context).secondaryText,
-                    fontSize: 11.0,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          FloatingNavbarItem(
-            customWidget: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  currentIndex == 4
                       ? Icons.mail_rounded
                       : Icons.mail_outline_outlined,
-                  color: currentIndex == 4
+                  color: currentIndex == 3
                       ? FlutterFlowTheme.of(context).primaryBtnText
                       : FlutterFlowTheme.of(context).secondaryText,
                   size: 24.0,
@@ -273,7 +244,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   'Chat',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 4
+                    color: currentIndex == 3
                         ? FlutterFlowTheme.of(context).primaryBtnText
                         : FlutterFlowTheme.of(context).secondaryText,
                     fontSize: 11.0,
