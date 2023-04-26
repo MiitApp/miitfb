@@ -3,15 +3,16 @@ import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/components/story_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
-import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -37,6 +38,11 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
+  int get pageViewCurrentIndex => _model.pageViewController != null &&
+          _model.pageViewController!.hasClients &&
+          _model.pageViewController!.page != null
+      ? _model.pageViewController!.page!.round()
+      : 0;
 
   @override
   void initState() {
@@ -1463,321 +1469,68 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                         child: TabBarView(
                                           children: [
                                             KeepAliveWidgetWrapper(
-                                              builder: (context) =>
-                                                  StreamBuilder<
-                                                      List<PostsRecord>>(
-                                                stream: queryPostsRecord(
-                                                  queryBuilder: (postsRecord) =>
-                                                      postsRecord
-                                                          .where(
-                                                              'post_user',
-                                                              isEqualTo:
-                                                                  bodyUsersRecord!
-                                                                      .reference)
-                                                          .where('deleted',
-                                                              isEqualTo: false)
-                                                          .orderBy(
-                                                              'time_posted',
-                                                              descending: true),
-                                                ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 12.0,
-                                                        height: 12.0,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          color: Colors.white,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  }
-                                                  List<PostsRecord>
-                                                      profilePhotosPostsRecordList =
-                                                      snapshot.data!;
-                                                  return GridView.builder(
-                                                    padding: EdgeInsets.zero,
-                                                    gridDelegate:
-                                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                                      crossAxisCount: 3,
-                                                      crossAxisSpacing: 1.0,
-                                                      mainAxisSpacing: 1.0,
-                                                      childAspectRatio: 1.0,
-                                                    ),
-                                                    primary: false,
-                                                    shrinkWrap: true,
-                                                    scrollDirection:
-                                                        Axis.vertical,
-                                                    itemCount:
-                                                        profilePhotosPostsRecordList
-                                                            .length,
-                                                    itemBuilder: (context,
-                                                        profilePhotosIndex) {
-                                                      final profilePhotosPostsRecord =
-                                                          profilePhotosPostsRecordList[
-                                                              profilePhotosIndex];
-                                                      return InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          context.pushNamed(
-                                                            'PostDetails',
-                                                            queryParams: {
-                                                              'post':
-                                                                  serializeParam(
-                                                                profilePhotosPostsRecord
-                                                                    .reference,
-                                                                ParamType
-                                                                    .DocumentReference,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
-                                                        },
-                                                        child: Hero(
-                                                          tag:
-                                                              profilePhotosPostsRecord
-                                                                  .postPhoto!,
-                                                          transitionOnUserGestures:
-                                                              true,
-                                                          child: Image.network(
-                                                            profilePhotosPostsRecord
-                                                                .postPhoto!,
-                                                            width: 100.0,
-                                                            height: 100.0,
-                                                            fit: BoxFit.cover,
+                                              builder: (context) => Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        4.0, 0.0, 4.0, 0.0),
+                                                child: StreamBuilder<
+                                                    List<PostsRecord>>(
+                                                  stream: queryPostsRecord(
+                                                    queryBuilder: (postsRecord) =>
+                                                        postsRecord
+                                                            .where(
+                                                                'post_user',
+                                                                isEqualTo:
+                                                                    bodyUsersRecord!
+                                                                        .reference)
+                                                            .where(
+                                                                'deleted',
+                                                                isEqualTo:
+                                                                    false)
+                                                            .orderBy(
+                                                                'time_posted',
+                                                                descending:
+                                                                    true),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 12.0,
+                                                          height: 12.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            color: Colors.white,
                                                           ),
                                                         ),
                                                       );
-                                                    },
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                            KeepAliveWidgetWrapper(
-                                              builder: (context) =>
-                                                  StreamBuilder<
-                                                      List<PostsRecord>>(
-                                                stream: queryPostsRecord(
-                                                  queryBuilder: (postsRecord) =>
-                                                      postsRecord
-                                                          .where(
-                                                              'tagged_users',
-                                                              arrayContains:
-                                                                  bodyUsersRecord!
-                                                                      .reference)
-                                                          .where('deleted',
-                                                              isEqualTo: false)
-                                                          .orderBy(
-                                                              'time_posted',
-                                                              descending: true),
-                                                ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 12.0,
-                                                        height: 12.0,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          color: Colors.white,
-                                                        ),
+                                                    }
+                                                    List<PostsRecord>
+                                                        profilePhotosPostsRecordList =
+                                                        snapshot.data!;
+                                                    return GridView.builder(
+                                                      padding: EdgeInsets.zero,
+                                                      gridDelegate:
+                                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                                        crossAxisCount: 3,
+                                                        crossAxisSpacing: 4.0,
+                                                        mainAxisSpacing: 4.0,
+                                                        childAspectRatio: 1.0,
                                                       ),
-                                                    );
-                                                  }
-                                                  List<PostsRecord>
-                                                      taggedPhotosPostsRecordList =
-                                                      snapshot.data!;
-                                                  return GridView.builder(
-                                                    padding: EdgeInsets.zero,
-                                                    gridDelegate:
-                                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                                      crossAxisCount: 3,
-                                                      crossAxisSpacing: 1.0,
-                                                      mainAxisSpacing: 1.0,
-                                                      childAspectRatio: 1.0,
-                                                    ),
-                                                    primary: false,
-                                                    shrinkWrap: true,
-                                                    scrollDirection:
-                                                        Axis.vertical,
-                                                    itemCount:
-                                                        taggedPhotosPostsRecordList
-                                                            .length,
-                                                    itemBuilder: (context,
-                                                        taggedPhotosIndex) {
-                                                      final taggedPhotosPostsRecord =
-                                                          taggedPhotosPostsRecordList[
-                                                              taggedPhotosIndex];
-                                                      return InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          context.pushNamed(
-                                                            'PostDetails',
-                                                            queryParams: {
-                                                              'post':
-                                                                  serializeParam(
-                                                                taggedPhotosPostsRecord
-                                                                    .reference,
-                                                                ParamType
-                                                                    .DocumentReference,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
-                                                        },
-                                                        child: Hero(
-                                                          tag:
-                                                              taggedPhotosPostsRecord
-                                                                  .postPhoto!,
-                                                          transitionOnUserGestures:
-                                                              true,
-                                                          child: Image.network(
-                                                            taggedPhotosPostsRecord
-                                                                .postPhoto!,
-                                                            width: 100.0,
-                                                            height: 100.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                            KeepAliveWidgetWrapper(
-                                              builder: (context) => Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  if (bodyUsersRecord!.bio !=
-                                                          null &&
-                                                      bodyUsersRecord!.bio !=
-                                                          '')
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  4.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        bodyUsersRecord!.bio!,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  if (bodyUsersRecord!
-                                                              .website !=
-                                                          null &&
-                                                      bodyUsersRecord!
-                                                              .website !=
-                                                          '')
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  4.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          await launchURL(
-                                                              bodyUsersRecord!
-                                                                  .website!);
-                                                        },
-                                                        child: Text(
-                                                          bodyUsersRecord!
-                                                              .website!,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .tertiary,
-                                                                fontSize: 14.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                ],
-                                              ),
-                                            ),
-                                            KeepAliveWidgetWrapper(
-                                              builder: (context) => Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    4.0,
-                                                                    0.0,
-                                                                    4.0,
-                                                                    0.0),
-                                                        child: InkWell(
+                                                      primary: false,
+                                                      shrinkWrap: true,
+                                                      scrollDirection:
+                                                          Axis.vertical,
+                                                      itemCount:
+                                                          profilePhotosPostsRecordList
+                                                              .length,
+                                                      itemBuilder: (context,
+                                                          profilePhotosIndex) {
+                                                        final profilePhotosPostsRecord =
+                                                            profilePhotosPostsRecordList[
+                                                                profilePhotosIndex];
+                                                        return InkWell(
                                                           splashColor: Colors
                                                               .transparent,
                                                           focusColor: Colors
@@ -1787,47 +1540,23 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                           highlightColor: Colors
                                                               .transparent,
                                                           onTap: () async {
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              PageTransition(
-                                                                type:
-                                                                    PageTransitionType
-                                                                        .fade,
-                                                                child:
-                                                                    FlutterFlowExpandedImageView(
-                                                                  image: Image
-                                                                      .network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      bodyUsersRecord!
-                                                                          .coverImage1,
-                                                                      'https://picsum.photos/seed/687/600',
-                                                                    ),
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                  allowRotation:
-                                                                      false,
-                                                                  tag: valueOrDefault<
-                                                                      String>(
-                                                                    bodyUsersRecord!
-                                                                        .coverImage1,
-                                                                    'https://picsum.photos/seed/687/600',
-                                                                  ),
-                                                                  useHeroAnimation:
-                                                                      true,
+                                                            context.pushNamed(
+                                                              'PostDetails',
+                                                              queryParams: {
+                                                                'post':
+                                                                    serializeParam(
+                                                                  profilePhotosPostsRecord
+                                                                      .reference,
+                                                                  ParamType
+                                                                      .DocumentReference,
                                                                 ),
-                                                              ),
+                                                              }.withoutNulls,
                                                             );
                                                           },
                                                           child: Hero(
-                                                            tag: valueOrDefault<
-                                                                String>(
-                                                              bodyUsersRecord!
-                                                                  .coverImage1,
-                                                              'https://picsum.photos/seed/687/600',
-                                                            ),
+                                                            tag:
+                                                                profilePhotosPostsRecord
+                                                                    .postPhoto!,
                                                             transitionOnUserGestures:
                                                                 true,
                                                             child: ClipRRect(
@@ -1837,430 +1566,839 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                                           12.0),
                                                               child:
                                                                   Image.network(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  bodyUsersRecord!
-                                                                      .coverImage1,
-                                                                  'https://picsum.photos/seed/687/600',
-                                                                ),
-                                                                width: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .width *
-                                                                    0.5,
-                                                                height: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .height *
-                                                                    0.5,
+                                                                profilePhotosPostsRecord
+                                                                    .postPhoto!,
+                                                                width: 100.0,
+                                                                height: 100.0,
                                                                 fit: BoxFit
                                                                     .cover,
                                                               ),
                                                             ),
                                                           ),
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                            KeepAliveWidgetWrapper(
+                                              builder: (context) => Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        4.0, 0.0, 4.0, 0.0),
+                                                child: StreamBuilder<
+                                                    List<PostsRecord>>(
+                                                  stream: queryPostsRecord(
+                                                    queryBuilder: (postsRecord) =>
+                                                        postsRecord
+                                                            .where(
+                                                                'tagged_users',
+                                                                arrayContains:
+                                                                    bodyUsersRecord!
+                                                                        .reference)
+                                                            .where(
+                                                                'deleted',
+                                                                isEqualTo:
+                                                                    false)
+                                                            .orderBy(
+                                                                'time_posted',
+                                                                descending:
+                                                                    true),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 12.0,
+                                                          height: 12.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    List<PostsRecord>
+                                                        taggedPhotosPostsRecordList =
+                                                        snapshot.data!;
+                                                    return GridView.builder(
+                                                      padding: EdgeInsets.zero,
+                                                      gridDelegate:
+                                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                                        crossAxisCount: 3,
+                                                        crossAxisSpacing: 4.0,
+                                                        mainAxisSpacing: 4.0,
+                                                        childAspectRatio: 1.0,
+                                                      ),
+                                                      primary: false,
+                                                      shrinkWrap: true,
+                                                      scrollDirection:
+                                                          Axis.vertical,
+                                                      itemCount:
+                                                          taggedPhotosPostsRecordList
+                                                              .length,
+                                                      itemBuilder: (context,
+                                                          taggedPhotosIndex) {
+                                                        final taggedPhotosPostsRecord =
+                                                            taggedPhotosPostsRecordList[
+                                                                taggedPhotosIndex];
+                                                        return InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            context.pushNamed(
+                                                              'PostDetails',
+                                                              queryParams: {
+                                                                'post':
+                                                                    serializeParam(
+                                                                  taggedPhotosPostsRecord
+                                                                      .reference,
+                                                                  ParamType
+                                                                      .DocumentReference,
+                                                                ),
+                                                              }.withoutNulls,
+                                                            );
+                                                          },
+                                                          child: Hero(
+                                                            tag:
+                                                                taggedPhotosPostsRecord
+                                                                    .postPhoto!,
+                                                            transitionOnUserGestures:
+                                                                true,
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12.0),
+                                                              child:
+                                                                  Image.network(
+                                                                taggedPhotosPostsRecord
+                                                                    .postPhoto!,
+                                                                width: 100.0,
+                                                                height: 100.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                            KeepAliveWidgetWrapper(
+                                              builder: (context) =>
+                                                  SingleChildScrollView(
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    if (bodyUsersRecord!
+                                                            .enableSocialLinks !=
+                                                        null)
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    15.0,
+                                                                    24.0,
+                                                                    0.0,
+                                                                    6.0),
+                                                        child: Text(
+                                                          'All my links',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumFamily,
+                                                                fontSize: 24.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleMediumFamily),
+                                                              ),
                                                         ),
                                                       ),
-                                                    ],
-                                                  ),
-                                                  Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.48,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.5,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .primaryBackground,
+                                                    Container(
+                                                      width: double.infinity,
+                                                      height: 64.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                        ),
+                                                      ),
+                                                      child: Visibility(
+                                                        visible: bodyUsersRecord!
+                                                                .enableSocialLinks !=
+                                                            null,
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: ListView(
+                                                            padding:
+                                                                EdgeInsets.zero,
+                                                            primary: false,
+                                                            scrollDirection:
+                                                                Axis.horizontal,
+                                                            children: [
+                                                              Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        0.0,
+                                                                        12.0,
+                                                                        0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .facebook,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .instagram,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .twitter,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .snapchatGhost,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .linkedinIn,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .pinterestP,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .tiktok,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .youtube,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .spotify,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .github,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .soundcloud,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .twitch,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .discord,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .etsy,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .shopify,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            20.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .mediumM,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  size: 32.0,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
                                                     ),
-                                                    child: Column(
+                                                    Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      4.0,
-                                                                      4.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              await Navigator
-                                                                  .push(
-                                                                context,
-                                                                PageTransition(
-                                                                  type:
-                                                                      PageTransitionType
-                                                                          .fade,
-                                                                  child:
-                                                                      FlutterFlowExpandedImageView(
-                                                                    image: Image
-                                                                        .network(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        bodyUsersRecord!
-                                                                            .coverImage2,
-                                                                        'https://picsum.photos/seed/687/600',
-                                                                      ),
-                                                                      fit: BoxFit
-                                                                          .contain,
-                                                                    ),
-                                                                    allowRotation:
-                                                                        false,
-                                                                    tag: valueOrDefault<
-                                                                        String>(
-                                                                      bodyUsersRecord!
-                                                                          .coverImage2,
-                                                                      'https://picsum.photos/seed/687/600',
-                                                                    ),
-                                                                    useHeroAnimation:
-                                                                        true,
+                                                        if (bodyUsersRecord!
+                                                                    .bio !=
+                                                                null &&
+                                                            bodyUsersRecord!
+                                                                    .bio !=
+                                                                '')
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        24.0,
+                                                                        0.0,
+                                                                        6.0),
+                                                            child: Text(
+                                                              'About me',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleMediumFamily,
+                                                                    fontSize:
+                                                                        24.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
                                                                   ),
-                                                                ),
-                                                              );
-                                                            },
-                                                            child: Hero(
-                                                              tag:
-                                                                  valueOrDefault<
-                                                                      String>(
+                                                            ),
+                                                          ),
+                                                        if (bodyUsersRecord!
+                                                                    .bio !=
+                                                                null &&
+                                                            bodyUsersRecord!
+                                                                    .bio !=
+                                                                '')
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        4.0,
+                                                                        15.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              bodyUsersRecord!
+                                                                  .bio!,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    fontSize:
+                                                                        18.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                      ],
+                                                    ),
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        if (bodyUsersRecord!
+                                                                    .website !=
+                                                                null &&
+                                                            bodyUsersRecord!
+                                                                    .website !=
+                                                                '')
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        24.0,
+                                                                        0.0,
+                                                                        6.0),
+                                                            child: Text(
+                                                              'Website',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleMediumFamily,
+                                                                    fontSize:
+                                                                        24.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        if (bodyUsersRecord!
+                                                                    .website !=
+                                                                null &&
+                                                            bodyUsersRecord!
+                                                                    .website !=
+                                                                '')
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        4.0,
+                                                                        15.0,
+                                                                        0.0),
+                                                            child: InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                await launchURL(
+                                                                    valueOrDefault(
+                                                                        currentUserDocument
+                                                                            ?.website,
+                                                                        ''));
+                                                              },
+                                                              child: Text(
                                                                 bodyUsersRecord!
-                                                                    .coverImage2,
-                                                                'https://picsum.photos/seed/687/600',
+                                                                    .website!,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      fontSize:
+                                                                          18.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    ),
                                                               ),
-                                                              transitionOnUserGestures:
-                                                                  true,
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            12.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    bodyUsersRecord!
-                                                                        .coverImage2,
-                                                                    'https://picsum.photos/seed/687/600',
-                                                                  ),
-                                                                  width: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .width *
-                                                                      0.46,
-                                                                  height: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .height *
-                                                                      0.12,
-                                                                  fit: BoxFit
-                                                                      .cover,
+                                                            ),
+                                                          ),
+                                                      ],
+                                                    ),
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        if (valueOrDefault(
+                                                                    currentUserDocument
+                                                                        ?.website,
+                                                                    '') !=
+                                                                null &&
+                                                            valueOrDefault(
+                                                                    currentUserDocument
+                                                                        ?.website,
+                                                                    '') !=
+                                                                '')
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        24.0,
+                                                                        0.0,
+                                                                        6.0),
+                                                            child:
+                                                                AuthUserStreamWidget(
+                                                              builder:
+                                                                  (context) =>
+                                                                      Text(
+                                                                '[Ice breakers go here]',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMedium,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (valueOrDefault(
+                                                                    currentUserDocument
+                                                                        ?.website,
+                                                                    '') !=
+                                                                null &&
+                                                            valueOrDefault(
+                                                                    currentUserDocument
+                                                                        ?.website,
+                                                                    '') !=
+                                                                '')
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        4.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child:
+                                                                AuthUserStreamWidget(
+                                                              builder:
+                                                                  (context) =>
+                                                                      InkWell(
+                                                                splashColor: Colors
+                                                                    .transparent,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                onTap:
+                                                                    () async {
+                                                                  await launchURL(
+                                                                      valueOrDefault(
+                                                                          currentUserDocument
+                                                                              ?.website,
+                                                                          ''));
+                                                                },
+                                                                child: Text(
+                                                                  valueOrDefault(
+                                                                      currentUserDocument
+                                                                          ?.website,
+                                                                      ''),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .tertiary,
+                                                                        fontSize:
+                                                                            14.0,
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            KeepAliveWidgetWrapper(
+                                              builder: (context) => Container(
+                                                width: double.infinity,
+                                                height: 500.0,
+                                                child: Stack(
+                                                  children: [
+                                                    PageView(
+                                                      controller: _model
+                                                              .pageViewController ??=
+                                                          PageController(
+                                                              initialPage: 0),
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      children: [
+                                                        Image.network(
+                                                          'https://picsum.photos/seed/291/600',
+                                                          width: 100.0,
+                                                          height: 100.0,
+                                                          fit: BoxFit.cover,
                                                         ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      4.0,
-                                                                      4.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              await Navigator
-                                                                  .push(
-                                                                context,
-                                                                PageTransition(
-                                                                  type:
-                                                                      PageTransitionType
-                                                                          .fade,
-                                                                  child:
-                                                                      FlutterFlowExpandedImageView(
-                                                                    image: Image
-                                                                        .network(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        bodyUsersRecord!
-                                                                            .coverImage2,
-                                                                        'https://picsum.photos/seed/687/600',
-                                                                      ),
-                                                                      fit: BoxFit
-                                                                          .contain,
-                                                                    ),
-                                                                    allowRotation:
-                                                                        false,
-                                                                    tag: valueOrDefault<
-                                                                        String>(
-                                                                      bodyUsersRecord!
-                                                                          .coverImage2,
-                                                                      'https://picsum.photos/seed/687/600',
-                                                                    ),
-                                                                    useHeroAnimation:
-                                                                        true,
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            },
-                                                            child: Hero(
-                                                              tag:
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                bodyUsersRecord!
-                                                                    .coverImage2,
-                                                                'https://picsum.photos/seed/687/600',
-                                                              ),
-                                                              transitionOnUserGestures:
-                                                                  true,
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            12.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    bodyUsersRecord!
-                                                                        .coverImage2,
-                                                                    'https://picsum.photos/seed/687/600',
-                                                                  ),
-                                                                  width: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .width *
-                                                                      0.46,
-                                                                  height: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .height *
-                                                                      0.12,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
+                                                        Image.network(
+                                                          'https://picsum.photos/seed/897/600',
+                                                          width: 100.0,
+                                                          height: 100.0,
+                                                          fit: BoxFit.cover,
                                                         ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      4.0,
-                                                                      4.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              await Navigator
-                                                                  .push(
-                                                                context,
-                                                                PageTransition(
-                                                                  type:
-                                                                      PageTransitionType
-                                                                          .fade,
-                                                                  child:
-                                                                      FlutterFlowExpandedImageView(
-                                                                    image: Image
-                                                                        .network(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        bodyUsersRecord!
-                                                                            .coverImage2,
-                                                                        'https://picsum.photos/seed/687/600',
-                                                                      ),
-                                                                      fit: BoxFit
-                                                                          .contain,
-                                                                    ),
-                                                                    allowRotation:
-                                                                        false,
-                                                                    tag: valueOrDefault<
-                                                                        String>(
-                                                                      bodyUsersRecord!
-                                                                          .coverImage2,
-                                                                      'https://picsum.photos/seed/687/600',
-                                                                    ),
-                                                                    useHeroAnimation:
-                                                                        true,
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            },
-                                                            child: Hero(
-                                                              tag:
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                bodyUsersRecord!
-                                                                    .coverImage2,
-                                                                'https://picsum.photos/seed/687/600',
-                                                              ),
-                                                              transitionOnUserGestures:
-                                                                  true,
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            12.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    bodyUsersRecord!
-                                                                        .coverImage2,
-                                                                    'https://picsum.photos/seed/687/600',
-                                                                  ),
-                                                                  width: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .width *
-                                                                      0.46,
-                                                                  height: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .height *
-                                                                      0.12,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              await Navigator
-                                                                  .push(
-                                                                context,
-                                                                PageTransition(
-                                                                  type:
-                                                                      PageTransitionType
-                                                                          .fade,
-                                                                  child:
-                                                                      FlutterFlowExpandedImageView(
-                                                                    image: Image
-                                                                        .network(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        bodyUsersRecord!
-                                                                            .coverImage2,
-                                                                        'https://picsum.photos/seed/687/600',
-                                                                      ),
-                                                                      fit: BoxFit
-                                                                          .contain,
-                                                                    ),
-                                                                    allowRotation:
-                                                                        false,
-                                                                    tag: valueOrDefault<
-                                                                        String>(
-                                                                      bodyUsersRecord!
-                                                                          .coverImage2,
-                                                                      'https://picsum.photos/seed/687/600',
-                                                                    ),
-                                                                    useHeroAnimation:
-                                                                        true,
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            },
-                                                            child: Hero(
-                                                              tag:
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                bodyUsersRecord!
-                                                                    .coverImage2,
-                                                                'https://picsum.photos/seed/687/600',
-                                                              ),
-                                                              transitionOnUserGestures:
-                                                                  true,
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            12.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    bodyUsersRecord!
-                                                                        .coverImage2,
-                                                                    'https://picsum.photos/seed/687/600',
-                                                                  ),
-                                                                  width: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .width *
-                                                                      0.46,
-                                                                  height: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .height *
-                                                                      0.12,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
+                                                        Image.network(
+                                                          'https://picsum.photos/seed/721/600',
+                                                          width: 100.0,
+                                                          height: 100.0,
+                                                          fit: BoxFit.cover,
                                                         ),
                                                       ],
                                                     ),
-                                                  ),
-                                                ],
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 1.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0),
+                                                        child: smooth_page_indicator
+                                                            .SmoothPageIndicator(
+                                                          controller: _model
+                                                                  .pageViewController ??=
+                                                              PageController(
+                                                                  initialPage:
+                                                                      0),
+                                                          count: 3,
+                                                          axisDirection:
+                                                              Axis.horizontal,
+                                                          onDotClicked:
+                                                              (i) async {
+                                                            await _model
+                                                                .pageViewController!
+                                                                .animateToPage(
+                                                              i,
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                              curve:
+                                                                  Curves.ease,
+                                                            );
+                                                          },
+                                                          effect: smooth_page_indicator
+                                                              .ExpandingDotsEffect(
+                                                            expansionFactor:
+                                                                2.0,
+                                                            spacing: 8.0,
+                                                            radius: 16.0,
+                                                            dotWidth: 8.0,
+                                                            dotHeight: 8.0,
+                                                            dotColor: Color(
+                                                                0x89D7DEE8),
+                                                            activeDotColor:
+                                                                Color(
+                                                                    0x89FE8893),
+                                                            paintStyle:
+                                                                PaintingStyle
+                                                                    .fill,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ],
