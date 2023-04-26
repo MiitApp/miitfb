@@ -314,7 +314,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                               return;
                             }
 
-                            context.pushNamedAuth('Feed', mounted);
+                            context.pushNamedAuth('Home', mounted);
                           },
                           text: 'Log in',
                           options: FFButtonOptions(

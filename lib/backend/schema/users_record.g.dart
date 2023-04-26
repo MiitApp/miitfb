@@ -161,6 +161,34 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.openDirectMessages;
+    if (value != null) {
+      result
+        ..add('open_direct_messages')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.enableFollowers;
+    if (value != null) {
+      result
+        ..add('enable_followers')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.enableSocialLinks;
+    if (value != null) {
+      result
+        ..add('enable_social_links')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.enableIceBreakers;
+    if (value != null) {
+      result
+        ..add('enable_ice_breakers')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -268,6 +296,22 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.coverImage = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'open_direct_messages':
+          result.openDirectMessages = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'enable_followers':
+          result.enableFollowers = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'enable_social_links':
+          result.enableSocialLinks = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'enable_ice_breakers':
+          result.enableIceBreakers = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -321,6 +365,14 @@ class _$UsersRecord extends UsersRecord {
   @override
   final String? coverImage;
   @override
+  final bool? openDirectMessages;
+  @override
+  final bool? enableFollowers;
+  @override
+  final bool? enableSocialLinks;
+  @override
+  final bool? enableIceBreakers;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder)? updates]) =>
@@ -346,6 +398,10 @@ class _$UsersRecord extends UsersRecord {
       this.coverImage3,
       this.coverImage4,
       this.coverImage,
+      this.openDirectMessages,
+      this.enableFollowers,
+      this.enableSocialLinks,
+      this.enableIceBreakers,
       this.ffRef})
       : super._();
 
@@ -379,6 +435,10 @@ class _$UsersRecord extends UsersRecord {
         coverImage3 == other.coverImage3 &&
         coverImage4 == other.coverImage4 &&
         coverImage == other.coverImage &&
+        openDirectMessages == other.openDirectMessages &&
+        enableFollowers == other.enableFollowers &&
+        enableSocialLinks == other.enableSocialLinks &&
+        enableIceBreakers == other.enableIceBreakers &&
         ffRef == other.ffRef;
   }
 
@@ -404,6 +464,10 @@ class _$UsersRecord extends UsersRecord {
     _$hash = $jc(_$hash, coverImage3.hashCode);
     _$hash = $jc(_$hash, coverImage4.hashCode);
     _$hash = $jc(_$hash, coverImage.hashCode);
+    _$hash = $jc(_$hash, openDirectMessages.hashCode);
+    _$hash = $jc(_$hash, enableFollowers.hashCode);
+    _$hash = $jc(_$hash, enableSocialLinks.hashCode);
+    _$hash = $jc(_$hash, enableIceBreakers.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -431,6 +495,10 @@ class _$UsersRecord extends UsersRecord {
           ..add('coverImage3', coverImage3)
           ..add('coverImage4', coverImage4)
           ..add('coverImage', coverImage)
+          ..add('openDirectMessages', openDirectMessages)
+          ..add('enableFollowers', enableFollowers)
+          ..add('enableSocialLinks', enableSocialLinks)
+          ..add('enableIceBreakers', enableIceBreakers)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -523,6 +591,26 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   String? get coverImage => _$this._coverImage;
   set coverImage(String? coverImage) => _$this._coverImage = coverImage;
 
+  bool? _openDirectMessages;
+  bool? get openDirectMessages => _$this._openDirectMessages;
+  set openDirectMessages(bool? openDirectMessages) =>
+      _$this._openDirectMessages = openDirectMessages;
+
+  bool? _enableFollowers;
+  bool? get enableFollowers => _$this._enableFollowers;
+  set enableFollowers(bool? enableFollowers) =>
+      _$this._enableFollowers = enableFollowers;
+
+  bool? _enableSocialLinks;
+  bool? get enableSocialLinks => _$this._enableSocialLinks;
+  set enableSocialLinks(bool? enableSocialLinks) =>
+      _$this._enableSocialLinks = enableSocialLinks;
+
+  bool? _enableIceBreakers;
+  bool? get enableIceBreakers => _$this._enableIceBreakers;
+  set enableIceBreakers(bool? enableIceBreakers) =>
+      _$this._enableIceBreakers = enableIceBreakers;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -553,6 +641,10 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _coverImage3 = $v.coverImage3;
       _coverImage4 = $v.coverImage4;
       _coverImage = $v.coverImage;
+      _openDirectMessages = $v.openDirectMessages;
+      _enableFollowers = $v.enableFollowers;
+      _enableSocialLinks = $v.enableSocialLinks;
+      _enableIceBreakers = $v.enableIceBreakers;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -597,6 +689,10 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
               coverImage3: coverImage3,
               coverImage4: coverImage4,
               coverImage: coverImage,
+              openDirectMessages: openDirectMessages,
+              enableFollowers: enableFollowers,
+              enableSocialLinks: enableSocialLinks,
+              enableIceBreakers: enableIceBreakers,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;

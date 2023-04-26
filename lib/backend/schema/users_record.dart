@@ -57,6 +57,18 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   @BuiltValueField(wireName: 'cover_image')
   String? get coverImage;
 
+  @BuiltValueField(wireName: 'open_direct_messages')
+  bool? get openDirectMessages;
+
+  @BuiltValueField(wireName: 'enable_followers')
+  bool? get enableFollowers;
+
+  @BuiltValueField(wireName: 'enable_social_links')
+  bool? get enableSocialLinks;
+
+  @BuiltValueField(wireName: 'enable_ice_breakers')
+  bool? get enableIceBreakers;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -78,7 +90,11 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..coverImage2 = ''
     ..coverImage3 = ''
     ..coverImage4 = ''
-    ..coverImage = '';
+    ..coverImage = ''
+    ..openDirectMessages = false
+    ..enableFollowers = false
+    ..enableSocialLinks = false
+    ..enableIceBreakers = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -118,6 +134,10 @@ Map<String, dynamic> createUsersRecordData({
   String? coverImage3,
   String? coverImage4,
   String? coverImage,
+  bool? openDirectMessages,
+  bool? enableFollowers,
+  bool? enableSocialLinks,
+  bool? enableIceBreakers,
 }) {
   final firestoreData = serializers.toFirestore(
     UsersRecord.serializer,
@@ -141,7 +161,11 @@ Map<String, dynamic> createUsersRecordData({
         ..coverImage2 = coverImage2
         ..coverImage3 = coverImage3
         ..coverImage4 = coverImage4
-        ..coverImage = coverImage,
+        ..coverImage = coverImage
+        ..openDirectMessages = openDirectMessages
+        ..enableFollowers = enableFollowers
+        ..enableSocialLinks = enableSocialLinks
+        ..enableIceBreakers = enableIceBreakers,
     ),
   );
 

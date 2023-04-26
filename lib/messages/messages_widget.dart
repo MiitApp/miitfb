@@ -60,7 +60,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                 highlightColor: Colors.transparent,
                 onTap: () async {
                   context.pushNamed(
-                    'Feed',
+                    'Home',
                     extra: <String, dynamic>{
                       kTransitionInfoKey: TransitionInfo(
                         hasTransition: true,

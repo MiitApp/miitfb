@@ -1,9 +1,7 @@
 // Export pages
 export '/home/home_widget.dart' show HomeWidget;
-export '/feed/feed_widget.dart' show FeedWidget;
 export '/notifications/notifications_widget.dart' show NotificationsWidget;
 export '/connect/connect_widget.dart' show ConnectWidget;
-export '/find/find_widget.dart' show FindWidget;
 export '/questions/questions_widget.dart' show QuestionsWidget;
 export '/search/search_widget.dart' show SearchWidget;
 export '/profile/profile_widget.dart' show ProfileWidget;
@@ -38,3 +36,5 @@ export '/new_message/new_message_widget.dart' show NewMessageWidget;
 export '/individual_message/individual_message_widget.dart'
     show IndividualMessageWidget;
 export '/get_started/get_started_widget.dart' show GetStartedWidget;
+export '/profile_other_copy/profile_other_copy_widget.dart'
+    show ProfileOtherCopyWidget;

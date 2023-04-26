@@ -83,10 +83,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   onTap: () async {
                     context.pushNamed('Profile');
                   },
-                  child: FaIcon(
-                    FontAwesomeIcons.chevronLeft,
+                  child: Icon(
+                    FFIcons.karrowLeft,
                     color: Colors.black,
-                    size: 18.0,
+                    size: 24.0,
                   ),
                 ),
               ],
@@ -1682,7 +1682,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               builder: (context) => Switch(
                                 value: _model.switchValue1 ??=
                                     valueOrDefault<bool>(
-                                        currentUserDocument?.enableEmail,
+                                        currentUserDocument?.openDirectMessages,
                                         false),
                                 onChanged: (newValue) async {
                                   setState(
@@ -1710,7 +1710,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 0.0, 0.0),
                             child: Text(
-                              'Enable match requests',
+                              'Enable followers',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -1732,7 +1732,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               builder: (context) => Switch(
                                 value: _model.switchValue2 ??=
                                     valueOrDefault<bool>(
-                                        currentUserDocument?.enableEmail,
+                                        currentUserDocument?.enableFollowers,
                                         false),
                                 onChanged: (newValue) async {
                                   setState(
@@ -1846,7 +1846,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               builder: (context) => Switch(
                                 value: _model.switchValue4 ??=
                                     valueOrDefault<bool>(
-                                        currentUserDocument?.enableEmail,
+                                        currentUserDocument?.enableSocialLinks,
                                         false),
                                 onChanged: (newValue) async {
                                   setState(
@@ -1948,7 +1948,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               builder: (context) => Switch(
                                 value: _model.switchValue5 ??=
                                     valueOrDefault<bool>(
-                                        currentUserDocument?.enableEmail,
+                                        currentUserDocument?.enableIceBreakers,
                                         false),
                                 onChanged: (newValue) async {
                                   setState(
