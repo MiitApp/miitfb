@@ -73,7 +73,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
           headerSliverBuilder: (context, _) => [
             SliverAppBar(
               expandedHeight: MediaQuery.of(context).size.height * 0.1,
-              collapsedHeight: MediaQuery.of(context).size.height * 0.05,
+              collapsedHeight: MediaQuery.of(context).size.height * 0.1,
               pinned: false,
               floating: false,
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
