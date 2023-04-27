@@ -1167,137 +1167,124 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                             );
                                           },
                                         ),
-                                        if (!(bodyUsersRecord!.following!
-                                                    .toList()
-                                                    .contains(
-                                                        currentUserReference) &&
-                                                (currentUserDocument?.following
-                                                            ?.toList() ??
-                                                        [])
-                                                    .contains(bodyUsersRecord!
-                                                        .reference)) ||
-                                            (bodyUsersRecord!
-                                                    .openDirectMessages ==
-                                                true))
-                                          AuthUserStreamWidget(
-                                            builder: (context) => StreamBuilder<
-                                                List<ChatsRecord>>(
-                                              stream: queryChatsRecord(
-                                                queryBuilder: (chatsRecord) =>
-                                                    chatsRecord
-                                                        .where('user_a',
-                                                            isEqualTo:
-                                                                currentUserReference)
-                                                        .where('user_b',
-                                                            isEqualTo:
-                                                                bodyUsersRecord!
-                                                                    .reference),
-                                                singleRecord: true,
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 12.0,
-                                                      height: 12.0,
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<ChatsRecord>
-                                                    messageButton2ChatsRecordList =
-                                                    snapshot.data!;
-                                                // Return an empty Container when the item does not exist.
-                                                if (snapshot.data!.isEmpty) {
-                                                  return Container();
-                                                }
-                                                final messageButton2ChatsRecord =
-                                                    messageButton2ChatsRecordList
-                                                            .isNotEmpty
-                                                        ? messageButton2ChatsRecordList
-                                                            .first
-                                                        : null;
-                                                return InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    context.pushNamed(
-                                                      'IndividualMessage',
-                                                      queryParams: {
-                                                        'chat': serializeParam(
-                                                          messageButton2ChatsRecord!
-                                                              .reference,
-                                                          ParamType
-                                                              .DocumentReference,
-                                                        ),
-                                                      }.withoutNulls,
-                                                    );
-                                                  },
-                                                  child: Container(
-                                                    height: 35.0,
-                                                    decoration: BoxDecoration(
-                                                      color: Color(0xFFEFEFEF),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              40.0),
-                                                    ),
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    6.0,
-                                                                    8.0,
-                                                                    6.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Text(
-                                                              'Message',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily,
-                                                                    fontSize:
-                                                                        13.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                  ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
+                                        if (bodyUsersRecord!
+                                                .openDirectMessages ==
+                                            true)
+                                          StreamBuilder<List<ChatsRecord>>(
+                                            stream: queryChatsRecord(
+                                              queryBuilder: (chatsRecord) =>
+                                                  chatsRecord
+                                                      .where(
+                                                          'user_a',
+                                                          isEqualTo:
+                                                              currentUserReference)
+                                                      .where('user_b',
+                                                          isEqualTo:
+                                                              bodyUsersRecord!
+                                                                  .reference),
+                                              singleRecord: true,
+                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 12.0,
+                                                    height: 12.0,
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      color: Colors.white,
                                                     ),
                                                   ),
                                                 );
-                                              },
-                                            ),
+                                              }
+                                              List<ChatsRecord>
+                                                  messageButton2ChatsRecordList =
+                                                  snapshot.data!;
+                                              // Return an empty Container when the item does not exist.
+                                              if (snapshot.data!.isEmpty) {
+                                                return Container();
+                                              }
+                                              final messageButton2ChatsRecord =
+                                                  messageButton2ChatsRecordList
+                                                          .isNotEmpty
+                                                      ? messageButton2ChatsRecordList
+                                                          .first
+                                                      : null;
+                                              return InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context.pushNamed(
+                                                    'IndividualMessage',
+                                                    queryParams: {
+                                                      'chat': serializeParam(
+                                                        messageButton2ChatsRecord!
+                                                            .reference,
+                                                        ParamType
+                                                            .DocumentReference,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                child: Container(
+                                                  height: 35.0,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xFFEFEFEF),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            40.0),
+                                                  ),
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  8.0,
+                                                                  6.0,
+                                                                  8.0,
+                                                                  6.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                            'Message',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  fontSize:
+                                                                      13.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
                                           ),
                                       ],
                                     ),
