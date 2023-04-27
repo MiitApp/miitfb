@@ -713,193 +713,195 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 6.0, 0.0),
-                                child: AuthUserStreamWidget(
-                                  builder: (context) =>
-                                      StreamBuilder<List<FollowersRecord>>(
-                                    stream: queryFollowersRecord(
-                                      parent: bodyUsersRecord!.reference,
-                                      singleRecord: true,
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 12.0,
-                                            height: 12.0,
-                                            child: CircularProgressIndicator(
-                                              color: Colors.white,
+                            if (bodyUsersRecord!.enableFollowers == true)
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 6.0, 0.0),
+                                  child: AuthUserStreamWidget(
+                                    builder: (context) =>
+                                        StreamBuilder<List<FollowersRecord>>(
+                                      stream: queryFollowersRecord(
+                                        parent: bodyUsersRecord!.reference,
+                                        singleRecord: true,
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 12.0,
+                                              height: 12.0,
+                                              child: CircularProgressIndicator(
+                                                color: Colors.white,
+                                              ),
                                             ),
-                                          ),
-                                        );
-                                      }
-                                      List<FollowersRecord>
-                                          followUnfollowButtonFollowersRecordList =
-                                          snapshot.data!;
-                                      final followUnfollowButtonFollowersRecord =
-                                          followUnfollowButtonFollowersRecordList
-                                                  .isNotEmpty
-                                              ? followUnfollowButtonFollowersRecordList
-                                                  .first
-                                              : null;
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          if ((currentUserDocument?.following
-                                                      ?.toList() ??
-                                                  [])
-                                              .contains(
-                                                  bodyUsersRecord!.reference)) {
-                                            final usersUpdateData1 = {
-                                              'following':
-                                                  FieldValue.arrayRemove([
-                                                bodyUsersRecord!.reference
-                                              ]),
-                                            };
-                                            await currentUserReference!
-                                                .update(usersUpdateData1);
+                                          );
+                                        }
+                                        List<FollowersRecord>
+                                            followUnfollowButtonFollowersRecordList =
+                                            snapshot.data!;
+                                        final followUnfollowButtonFollowersRecord =
+                                            followUnfollowButtonFollowersRecordList
+                                                    .isNotEmpty
+                                                ? followUnfollowButtonFollowersRecordList
+                                                    .first
+                                                : null;
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            if ((currentUserDocument?.following
+                                                        ?.toList() ??
+                                                    [])
+                                                .contains(bodyUsersRecord!
+                                                    .reference)) {
+                                              final usersUpdateData1 = {
+                                                'following':
+                                                    FieldValue.arrayRemove([
+                                                  bodyUsersRecord!.reference
+                                                ]),
+                                              };
+                                              await currentUserReference!
+                                                  .update(usersUpdateData1);
 
-                                            final followersUpdateData1 = {
-                                              'userRefs':
-                                                  FieldValue.arrayRemove(
-                                                      [currentUserReference]),
-                                            };
-                                            await followUnfollowButtonFollowersRecord!
-                                                .reference
-                                                .update(followersUpdateData1);
-                                            _model
-                                                .timerFollowButtonActionsController
-                                                .onExecute
-                                                .add(StopWatchExecute.reset);
-                                          } else {
-                                            final usersUpdateData2 = {
-                                              'following':
-                                                  FieldValue.arrayUnion([
-                                                bodyUsersRecord!.reference
-                                              ]),
-                                            };
-                                            await currentUserReference!
-                                                .update(usersUpdateData2);
+                                              final followersUpdateData1 = {
+                                                'userRefs':
+                                                    FieldValue.arrayRemove(
+                                                        [currentUserReference]),
+                                              };
+                                              await followUnfollowButtonFollowersRecord!
+                                                  .reference
+                                                  .update(followersUpdateData1);
+                                              _model
+                                                  .timerFollowButtonActionsController
+                                                  .onExecute
+                                                  .add(StopWatchExecute.reset);
+                                            } else {
+                                              final usersUpdateData2 = {
+                                                'following':
+                                                    FieldValue.arrayUnion([
+                                                  bodyUsersRecord!.reference
+                                                ]),
+                                              };
+                                              await currentUserReference!
+                                                  .update(usersUpdateData2);
 
-                                            final followersUpdateData2 = {
-                                              'userRefs': FieldValue.arrayUnion(
-                                                  [currentUserReference]),
-                                            };
-                                            await followUnfollowButtonFollowersRecord!
-                                                .reference
-                                                .update(followersUpdateData2);
-                                            _model
-                                                .timerFollowButtonActionsController
-                                                .onExecute
-                                                .add(StopWatchExecute.start);
-                                          }
-                                        },
-                                        child: Container(
-                                          height: 35.0,
-                                          decoration: BoxDecoration(
-                                            color: (currentUserDocument
-                                                            ?.following
-                                                            ?.toList() ??
-                                                        [])
-                                                    .contains(bodyUsersRecord!
-                                                        .reference)
-                                                ? Color(0xFFEFEFEF)
-                                                : FlutterFlowTheme.of(context)
-                                                    .secondary,
-                                            borderRadius:
-                                                BorderRadius.circular(40.0),
-                                          ),
-                                          child: Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(8.0, 6.0, 8.0, 6.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    () {
-                                                      if (bodyUsersRecord!
-                                                              .following!
-                                                              .toList()
-                                                              .contains(
-                                                                  currentUserReference) &&
-                                                          !(currentUserDocument
-                                                                      ?.following
-                                                                      ?.toList() ??
-                                                                  [])
-                                                              .contains(
-                                                                  bodyUsersRecord!
-                                                                      .reference)) {
-                                                        return 'Follow back';
-                                                      } else if (!bodyUsersRecord!
-                                                              .following!
-                                                              .toList()
-                                                              .contains(
-                                                                  currentUserReference) &&
-                                                          !(currentUserDocument
-                                                                      ?.following
-                                                                      ?.toList() ??
-                                                                  [])
-                                                              .contains(
-                                                                  bodyUsersRecord!
-                                                                      .reference)) {
-                                                        return 'Follow';
-                                                      } else {
-                                                        return 'Unfollow';
-                                                      }
-                                                    }(),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMediumFamily,
-                                                          color: (currentUserDocument
-                                                                          ?.following
-                                                                          ?.toList() ??
-                                                                      [])
-                                                                  .contains(
-                                                                      bodyUsersRecord!
-                                                                          .reference)
-                                                              ? FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText
-                                                              : Colors.white,
-                                                          fontSize: 13.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
-                                                        ),
-                                                  ),
-                                                ],
+                                              final followersUpdateData2 = {
+                                                'userRefs':
+                                                    FieldValue.arrayUnion(
+                                                        [currentUserReference]),
+                                              };
+                                              await followUnfollowButtonFollowersRecord!
+                                                  .reference
+                                                  .update(followersUpdateData2);
+                                              _model
+                                                  .timerFollowButtonActionsController
+                                                  .onExecute
+                                                  .add(StopWatchExecute.start);
+                                            }
+                                          },
+                                          child: Container(
+                                            height: 35.0,
+                                            decoration: BoxDecoration(
+                                              color: (currentUserDocument
+                                                              ?.following
+                                                              ?.toList() ??
+                                                          [])
+                                                      .contains(bodyUsersRecord!
+                                                          .reference)
+                                                  ? Color(0xFFEFEFEF)
+                                                  : FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                              borderRadius:
+                                                  BorderRadius.circular(40.0),
+                                            ),
+                                            child: Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        8.0, 6.0, 8.0, 6.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      () {
+                                                        if (bodyUsersRecord!
+                                                                .following!
+                                                                .toList()
+                                                                .contains(
+                                                                    currentUserReference) &&
+                                                            !(currentUserDocument
+                                                                        ?.following
+                                                                        ?.toList() ??
+                                                                    [])
+                                                                .contains(
+                                                                    bodyUsersRecord!
+                                                                        .reference)) {
+                                                          return 'Follow back';
+                                                        } else if (!bodyUsersRecord!
+                                                                .following!
+                                                                .toList()
+                                                                .contains(
+                                                                    currentUserReference) &&
+                                                            !(currentUserDocument
+                                                                        ?.following
+                                                                        ?.toList() ??
+                                                                    [])
+                                                                .contains(
+                                                                    bodyUsersRecord!
+                                                                        .reference)) {
+                                                          return 'Follow';
+                                                        } else {
+                                                          return 'Unfollow';
+                                                        }
+                                                      }(),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                color: (currentUserDocument?.following?.toList() ??
+                                                                            [])
+                                                                        .contains(bodyUsersRecord!
+                                                                            .reference)
+                                                                    ? FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText
+                                                                    : Colors
+                                                                        .white,
+                                                                fontSize: 13.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      );
-                                    },
+                                        );
+                                      },
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
                             Expanded(
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -1108,86 +1110,106 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                         );
                                       },
                                     ),
-                                    StreamBuilder<List<ChatsRecord>>(
-                                      stream: queryChatsRecord(
-                                        queryBuilder: (chatsRecord) =>
-                                            chatsRecord
-                                                .where('user_a',
-                                                    isEqualTo:
-                                                        currentUserReference)
-                                                .where('user_b',
-                                                    isEqualTo: bodyUsersRecord!
-                                                        .reference),
-                                        singleRecord: true,
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 12.0,
-                                              height: 12.0,
-                                              child: CircularProgressIndicator(
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<ChatsRecord>
-                                            messageButton2ChatsRecordList =
-                                            snapshot.data!;
-                                        // Return an empty Container when the item does not exist.
-                                        if (snapshot.data!.isEmpty) {
-                                          return Container();
-                                        }
-                                        final messageButton2ChatsRecord =
-                                            messageButton2ChatsRecordList
-                                                    .isNotEmpty
-                                                ? messageButton2ChatsRecordList
-                                                    .first
-                                                : null;
-                                        return InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.pushNamed(
-                                              'IndividualMessage',
-                                              queryParams: {
-                                                'chat': serializeParam(
-                                                  messageButton2ChatsRecord!
-                                                      .reference,
-                                                  ParamType.DocumentReference,
+                                    if ((bodyUsersRecord!.following!
+                                                .toList()
+                                                .contains(
+                                                    currentUserReference) &&
+                                            (currentUserDocument?.following
+                                                        ?.toList() ??
+                                                    [])
+                                                .contains(bodyUsersRecord!
+                                                    .reference)) ||
+                                        (bodyUsersRecord!.openDirectMessages ==
+                                            true))
+                                      AuthUserStreamWidget(
+                                        builder: (context) =>
+                                            StreamBuilder<List<ChatsRecord>>(
+                                          stream: queryChatsRecord(
+                                            queryBuilder: (chatsRecord) =>
+                                                chatsRecord
+                                                    .where('user_a',
+                                                        isEqualTo:
+                                                            currentUserReference)
+                                                    .where('user_b',
+                                                        isEqualTo:
+                                                            bodyUsersRecord!
+                                                                .reference),
+                                            singleRecord: true,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 12.0,
+                                                  height: 12.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color: Colors.white,
+                                                  ),
                                                 ),
-                                              }.withoutNulls,
-                                            );
-                                          },
-                                          child: Container(
-                                            height: 35.0,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xFFEFEFEF),
-                                              borderRadius:
-                                                  BorderRadius.circular(40.0),
-                                            ),
-                                            child: Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        8.0, 6.0, 8.0, 6.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      'Message',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                              );
+                                            }
+                                            List<ChatsRecord>
+                                                messageButton2ChatsRecordList =
+                                                snapshot.data!;
+                                            // Return an empty Container when the item does not exist.
+                                            if (snapshot.data!.isEmpty) {
+                                              return Container();
+                                            }
+                                            final messageButton2ChatsRecord =
+                                                messageButton2ChatsRecordList
+                                                        .isNotEmpty
+                                                    ? messageButton2ChatsRecordList
+                                                        .first
+                                                    : null;
+                                            return InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'IndividualMessage',
+                                                  queryParams: {
+                                                    'chat': serializeParam(
+                                                      messageButton2ChatsRecord!
+                                                          .reference,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              child: Container(
+                                                height: 35.0,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xFFEFEFEF),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          40.0),
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 6.0,
+                                                                8.0, 6.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Text(
+                                                          'Message',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily: FlutterFlowTheme.of(
@@ -1203,15 +1225,16 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    ),
+                                            );
+                                          },
+                                        ),
+                                      ),
                                   ],
                                 ),
                               ),
