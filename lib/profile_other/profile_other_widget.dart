@@ -1167,7 +1167,7 @@ class _ProfileOtherWidgetState extends State<ProfileOtherWidget> {
                                             );
                                           },
                                         ),
-                                        if ((bodyUsersRecord!.following!
+                                        if (!(bodyUsersRecord!.following!
                                                     .toList()
                                                     .contains(
                                                         currentUserReference) &&
